@@ -16,7 +16,7 @@ public class CamController : MonoBehaviour {
 
 	float distThreshold;
 	
-	void Update () {
+	void FixedUpdate () {
 		//Keep cam between players
 		playerCenter = Vector3.Lerp (player1.position, player2.position, 0.5f);
 		this.transform.position = new Vector3(playerCenter.x, playerCenter.y, transform.position.z);
@@ -34,7 +34,7 @@ public class CamController : MonoBehaviour {
 		//Resize camera to match
 		if (p1Dist > distThreshold || p2Dist > distThreshold){
 			Camera.main.orthographicSize += Time.deltaTime * 4;
-		} else if (p1Dist < distThreshold || p2Dist < distThreshold){
+		} else if (p1Dist < distThreshold * 0.9f || p2Dist < distThreshold * 0.9f){
 			Camera.main.orthographicSize -= Time.deltaTime * 4;
 		}
 	}
