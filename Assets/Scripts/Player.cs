@@ -97,9 +97,13 @@ public class Player : MonoBehaviour
 		}
 		
 		// Jump
-		if ((grounded == true) && (v > 0) && (!climbingLadder))
+		if ((grounded == true) && Input.GetKeyDown(KeyCode.Space) && (!climbingLadder))
 		{
-			playerRigid.AddForce(Vector3.up * jumpForce);
+			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+		}
+		if ((grounded == true) && Input.GetKeyDown(KeyCode.JoystickButton0) && (!climbingLadder))
+		{
+			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
 
 		// Climb

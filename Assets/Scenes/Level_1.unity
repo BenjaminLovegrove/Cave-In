@@ -223,7 +223,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerRigid: {fileID: 0}
   movementForce: 10
-  jumpForce: 50
+  jumpForce: 120
   playerHP: 0
   climbingLadder: 0
 --- !u!23 &787295284
@@ -253,7 +253,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787295281}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -307,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899808176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.34825659, y: .0116574839, z: 0}
+  m_LocalPosition: {x: 1.25062513, y: .0116574839, z: 0}
   m_LocalScale: {x: 1, y: .484848499, z: 1}
   m_Children: []
   m_Father: {fileID: 787295282}
