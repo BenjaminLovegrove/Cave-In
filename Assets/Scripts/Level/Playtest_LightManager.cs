@@ -42,7 +42,7 @@ public class Playtest_LightManager : MonoBehaviour {
 	
 	// Update is called once per frame
 void LateUpdate () {
-		//Debug.Log("LightsActive: " +numLightsActive);
+		Debug.Log("LightsActive: " +numLightsActive);
 
 		//spawn them as one is destroyed
 		if (spawnNext == 1 && maxLights < 9){caveLight07.SetActive (true);}

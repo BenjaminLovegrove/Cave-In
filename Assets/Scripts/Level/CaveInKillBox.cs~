@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CaveInKillBox : MonoBehaviour {
+	public GameObject rockPreTestFall;
+	private bool rockfalling = false;
 
 	// Use this for initialization
 	void Start () {
@@ -10,10 +12,20 @@ public class CaveInKillBox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (!rockfalling){
+			StartCoroutine(SpawnRock());
+		}
 	}
 
-	void OnTriggerExit(Collider col)
+	public IEnumerator SpawnRock()
+	{
+		rockfalling = true;
+		Instantiate(rockPreTestFall, gameObject.transform.position, rockPreTestFall.transform.rotation);
+		yield return new WaitForSeconds (0.2f);
+		rockfalling = false;
+	}
+
+	void OnTriggerEnter(Collider col)
 	{
 		if (col.gameObject.tag == "Player")
 		{
