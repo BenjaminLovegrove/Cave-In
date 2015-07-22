@@ -35,7 +35,7 @@ GameObject:
   - 54: {fileID: 5446928}
   m_Layer: 0
   m_Name: Sorek_Jarred
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +55,7 @@ GameObject:
   - 54: {fileID: 5446930}
   m_Layer: 0
   m_Name: Hickory
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
