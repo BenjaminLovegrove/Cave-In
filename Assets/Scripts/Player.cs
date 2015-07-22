@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
 
 	public GameObject player;
 
+	public bool playerOne;
+
 	public Rigidbody playerRigid;
 
 	public float movementForce = 10;
 
-	public float jumpForce = 50;
+	public float jumpForce = 120;
 
 	public int playerHP;
 
@@ -33,8 +35,13 @@ public class Player : MonoBehaviour
 	void FixedUpdate ()
 	{
 		// Get and set control inputs
-		h = Input.GetAxis("Horizontal");
-		v = Input.GetAxis("Vertical");
+		if (playerOne) {
+			h = Input.GetAxis ("Horizontal");
+			v = Input.GetAxis ("Vertical");
+		} else {
+			h = Input.GetAxis ("Horizontal2");
+			v = Input.GetAxis ("Vertical2");
+		}
 
 		// Function calls
 		Grounded ();
@@ -101,9 +108,14 @@ public class Player : MonoBehaviour
 		{
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
-		if ((grounded == true) && Input.GetKeyDown(KeyCode.JoystickButton0) && (!climbingLadder))
-		{
-			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+		if (playerOne) {
+			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick1Button0) && (!climbingLadder)) {
+				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+			}
+		} else {
+			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick2Button0) && (!climbingLadder)) {
+				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+			}
 		}
 
 		// Climb
