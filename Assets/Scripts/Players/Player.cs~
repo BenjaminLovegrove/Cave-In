@@ -76,30 +76,12 @@ public class Player : MonoBehaviour
 	// Grounded check
 	private void Grounded()
 	{
-		Vector3 leftExtent = new Vector3 (this.transform.position.x - collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
-		Vector3 rightExtent = new Vector3 (this.transform.position.x + collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
-
 		if (Physics.Raycast (this.transform.position, Vector3.down, 2))
 		{
 			grounded = true;
-		} 
-		else if (Physics.Raycast (leftExtent, Vector3.down, 2))
-		{
-			grounded = true;
-		} 
-		else if (Physics.Raycast (rightExtent, Vector3.down, 2))
-		{
-			grounded = true;
-		} 
-
-		else 
-		{
-			grounded = false;
 		}
-
-		Debug.DrawRay (leftExtent, Vector3.down);
-		Debug.DrawRay (rightExtent, Vector3.down);
-
+		
+		else grounded = false;
 	}
 
 	// Controls

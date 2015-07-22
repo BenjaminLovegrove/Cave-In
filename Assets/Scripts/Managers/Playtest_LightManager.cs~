@@ -1,0 +1,40 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Playtest_LightManager : MonoBehaviour {
+
+	public static int numLightsActive;
+	private int maxLights = 8;
+
+	public GameObject 
+		caveLight01,
+		caveLight02,
+		caveLight03,
+		caveLight04,
+		caveLight05,
+		caveLight06,
+		caveLight07,
+		caveLight08,
+		caveLight09,
+		caveLight10,
+		caveLight11,
+		caveLight12,
+		caveLight13,
+		caveLight14,
+		caveLight15,
+		caveLight16,
+		caveLight17,
+		caveLight18,
+		caveLight19;
+
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
