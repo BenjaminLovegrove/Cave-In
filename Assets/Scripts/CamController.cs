@@ -25,7 +25,7 @@ public class CamController : MonoBehaviour {
 		p1Pos = Camera.main.WorldToScreenPoint (player1.position);
 		p2Pos = Camera.main.WorldToScreenPoint (player2.position);
 		camCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-		distThreshold = Screen.width * 0.3f;
+		distThreshold = Screen.width * 0.2f;
 
 		//Player distance from screen center
 		p1Dist = Vector3.Distance (p1Pos, camCenter);
@@ -34,8 +34,12 @@ public class CamController : MonoBehaviour {
 		//Resize camera to match
 		if (p1Dist > distThreshold || p2Dist > distThreshold){
 			Camera.main.orthographicSize += Time.deltaTime * 4;
-		} else if (p1Dist < distThreshold * 0.9f || p2Dist < distThreshold * 0.9f){
-			Camera.main.orthographicSize -= Time.deltaTime * 4;
+		}
+
+		if (Camera.main.orthographicSize > 5f) {
+			if (p1Dist < distThreshold * 0.9f || p2Dist < distThreshold * 0.9f) {
+				Camera.main.orthographicSize -= Time.deltaTime * 4;
+			}
 		}
 	}
 }
