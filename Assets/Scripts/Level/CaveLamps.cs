@@ -4,6 +4,8 @@ using System.Collections;
 public class CaveLamps : MonoBehaviour {
 
 	public float destroyTimer;
+	public GameObject lightSpark;
+	public bool sparkSpawn = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +15,12 @@ public class CaveLamps : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		destroyTimer -= Time.deltaTime;
+		if (destroyTimer <= 2 && !sparkSpawn)
+		{
+			sparkSpawn = true;
+			Instantiate (lightSpark, this.transform.position, Quaternion.identity);
+		}
 	
 	
 	}

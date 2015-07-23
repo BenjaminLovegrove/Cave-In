@@ -3,8 +3,10 @@ using System.Collections;
 
 public class Test_CaveLightFlicker : MonoBehaviour {
 
-	public float caveLightFlicker;
+	private float caveLightFlicker;
 	private bool activeFlicker = false;
+	public float minRange, maxRange;
+	public float flickerTiming;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +15,7 @@ public class Test_CaveLightFlicker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		caveLightFlicker = Random.Range(-5,5);
+		caveLightFlicker = Random.Range(minRange,maxRange);
 
 
 		if (!activeFlicker){
@@ -26,7 +28,7 @@ public class Test_CaveLightFlicker : MonoBehaviour {
 	{
 		activeFlicker = true;
 		this.light.range = caveLightFlicker;
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(flickerTiming);
 		activeFlicker = false;
 
 	}
