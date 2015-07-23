@@ -13,5 +13,9 @@ public class LampSorek : MonoBehaviour {
 			Instantiate (fireSpread, transform.position, Quaternion.identity);
 		}
 
+		if (Input.GetKeyDown(KeyCode.Joystick1Button1)){
+			Instantiate (fireSpread, transform.position, Quaternion.identity);
+		}
+
 	}
 }

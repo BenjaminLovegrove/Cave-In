@@ -48,6 +48,7 @@ GameObject:
   - 114: {fileID: 11493484}
   - 65: {fileID: 6593482}
   - 54: {fileID: 5493480}
+  - 114: {fileID: 11456432}
   m_Layer: 10
   m_Name: Hickory
   m_TagString: Player
@@ -134,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.72000003, y: 6.63000011, z: 0}
+  m_LocalPosition: {x: -1.77976179, y: 6.63422489, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493488}
@@ -461,6 +462,19 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11456432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4acca2734677243b7119d7e6e8e95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingTime: 0
+  PickHit: {fileID: 8300000, guid: 97ff3675c31a7bf4f9e9eed35464a9fc, type: 3}
 --- !u!114 &11483066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,7 +596,7 @@ MonoBehaviour:
   lightRadius: 3
   coneStart: 0
   coneAngle: 360
-  lightColor: {r: .80392158, g: .549019635, b: .0980392173, a: 0}
+  lightColor: {r: .801470578, g: .546492994, b: .106076993, a: 0}
   lightDetail: 1008
   lightMaterial: {fileID: 2100000, guid: e59eef300ef3e7d49b4def05ab2750f2, type: 2}
   shadowLayer:
