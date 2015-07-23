@@ -19,7 +19,7 @@ Shader "Ferr/Lightmap Textured Vertex Color (8 lights|lightmap +0 light)" {
 			#pragma  fragmentoption ARB_precision_hint_fastest
 			#pragma  target 3.0
 			
-			#define  MAX_LIGHTS 8
+			#define  MAX_LIGHTS 99
 			
 			#include "UnityCG.cginc"
 			#include "Ferr2DTCommon.cginc"

@@ -5,7 +5,7 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Destroy(gameObject,2.0f);
+		Destroy(gameObject,5.0f);
 	}
 	
 	// Update is called once per frame

@@ -140,6 +140,7 @@ public class Player : MonoBehaviour
 		if (climbingLadder)
 		{
 			playerRigid.useGravity = false;
+			playerRigid.velocity = Vector3.zero;
 
 			// Ascend
 			if (v > 0)

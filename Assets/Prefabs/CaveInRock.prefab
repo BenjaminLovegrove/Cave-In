@@ -1,51 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &156834
+--- !u!1 &125432
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 456834}
-  - 33: {fileID: 3356834}
-  - 23: {fileID: 2356834}
-  - 54: {fileID: 5456834}
-  - 75: {fileID: 7504948}
-  - 114: {fileID: 11445324}
-  - 135: {fileID: 13522064}
+  - 4: {fileID: 425432}
+  - 33: {fileID: 3325432}
+  - 65: {fileID: 6525432}
+  - 23: {fileID: 2325432}
+  - 95: {fileID: 9525432}
+  - 114: {fileID: 11425432}
   m_Layer: 0
-  m_Name: CaveInPreTest
+  m_Name: CaveInRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &456834
+--- !u!4 &425432
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
-  m_LocalRotation: {x: 0, y: 0, z: .185347155, w: .982673168}
-  m_LocalPosition: {x: 5.47910023, y: 15.7340002, z: 0}
-  m_LocalScale: {x: .0760609135, y: .0760608763, z: .0760608763}
+  m_GameObject: {fileID: 125432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.82999992, y: 4.09000015, z: 0}
+  m_LocalScale: {x: 1, y: 6.91250038, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2356834
+--- !u!23 &2325432
 Renderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
+  m_GameObject: {fileID: 125432}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 269817710844ddc4fb07bc8ee29bae4f, type: 2}
+  - {fileID: 2100000, guid: 19343560dda28664e885f9ed7207d2a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -53,62 +52,52 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3356834
+--- !u!33 &3325432
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
-  m_Mesh: {fileID: 4300002, guid: b170a071d9c685343bdda95ed3bf48ef, type: 3}
---- !u!54 &5456834
-Rigidbody:
+  m_GameObject: {fileID: 125432}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6525432
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
+  m_GameObject: {fileID: 125432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 8
-  m_CollisionDetection: 0
---- !u!75 &7504948
-ConstantForce:
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9525432
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
-  m_Enabled: 0
-  m_Force: {x: 0, y: 0, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 50}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
---- !u!114 &11445324
+  m_GameObject: {fileID: 125432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 696cdfaf54332694aaf0490c98a6b039, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11425432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
+  m_GameObject: {fileID: 125432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acaec0b05eed6c946aaf0d31563e584b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cf4e454438ba164baafcffde1bbcc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13522064
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 18.6978989
-  m_Center: {x: -.857749939, y: .874025345, z: -.0699243546}
+  rockPreTestFall: {fileID: 156834, guid: ae6a24a249f45104d827330a3c5e5128, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -118,6 +107,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 156834}
+  m_RootGameObject: {fileID: 125432}
   m_IsPrefabParent: 1
   m_IsExploded: 1

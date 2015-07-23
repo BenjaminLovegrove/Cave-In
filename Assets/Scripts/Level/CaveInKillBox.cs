@@ -21,7 +21,7 @@ public class CaveInKillBox : MonoBehaviour {
 	{
 		rockfalling = true;
 		Instantiate(rockPreTestFall, gameObject.transform.position, rockPreTestFall.transform.rotation);
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (0.5f);
 		rockfalling = false;
 	}
 
