@@ -101,7 +101,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 493490}
   - 33: {fileID: 3393486}
-  - 65: {fileID: 6593486}
   - 23: {fileID: 2393486}
   - 114: {fileID: 11493490}
   - 114: {fileID: 11493488}
@@ -135,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.77976179, y: 6.63422489, z: 0}
+  m_LocalPosition: {x: -1.72000003, y: 6.63000011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493488}
@@ -176,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .100000001, y: -.219999999, z: 0}
+  m_LocalPosition: {x: .0700000003, y: -.219999999, z: -.99000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 493490}
@@ -213,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -.370000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 493482}
@@ -392,18 +391,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6593486
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &10893480
 Light:
   m_ObjectHideFlags: 1
@@ -413,7 +400,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: .627451003, g: .392156869, b: 0, a: 0}
+  m_Color: {r: 1, g: .696691155, b: .191176474, a: 0}
   m_Intensity: 2.5
   m_Range: 3.4000001
   m_SpotAngle: 30
@@ -450,7 +437,7 @@ Light:
   m_Type: 2
   m_Color: {r: .627451003, g: .49601084, b: 0, a: 0}
   m_Intensity: 2
-  m_Range: 3.4000001
+  m_Range: 4
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -503,7 +490,7 @@ MonoBehaviour:
   lightRadius: .5
   coneStart: 0
   coneAngle: 360
-  lightColor: {r: .988965511, g: 1, b: .800000012, a: 0}
+  lightColor: {r: .529411793, g: .147923902, b: .147923902, a: 0}
   lightDetail: 1008
   lightMaterial: {fileID: 2100000, guid: e59eef300ef3e7d49b4def05ab2750f2, type: 2}
   shadowLayer:
@@ -595,12 +582,12 @@ MonoBehaviour:
   lightRadius: 3
   coneStart: 0
   coneAngle: 360
-  lightColor: {r: .235294119, g: .149019614, b: 0, a: 0}
+  lightColor: {r: .80392158, g: .549019635, b: .0980392173, a: 0}
   lightDetail: 1008
   lightMaterial: {fileID: 2100000, guid: e59eef300ef3e7d49b4def05ab2750f2, type: 2}
   shadowLayer:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   useEvents: 0
   lightEnabled: 1
   beamSize: 25
