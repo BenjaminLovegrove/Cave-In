@@ -9,3 +9,4 @@ Assets/Tools/Ferr/2DTerrain/TerrainMaterials/PipeMaterial.prefab
 Assets/Tools/Ferr/2DTerrain/TerrainMaterials/SandTerrainMaterial.prefab
 
 [Ferr2DT_PathTerrain]
+Assets/Prefabs/Terrain Backup/Main terrain.prefab

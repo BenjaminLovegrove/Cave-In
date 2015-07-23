@@ -46,10 +46,6 @@ public class Player : MonoBehaviour
 		// Function calls
 		Grounded ();
 		Controls ();
-		//Pause ();
-
-		// Sync player HP
-		//playerHP = EventManager.instance.playerHP;
 	
 	}
 
@@ -97,8 +93,8 @@ public class Player : MonoBehaviour
 			grounded = false;
 		}
 
-		Debug.DrawRay (leftExtent, Vector3.down);
-		Debug.DrawRay (rightExtent, Vector3.down);
+		//Debug.DrawRay (leftExtent, Vector3.down);
+		//Debug.DrawRay (rightExtent, Vector3.down);
 
 	}
 
@@ -155,26 +151,6 @@ public class Player : MonoBehaviour
 		else playerRigid.useGravity = true;
 
 	}
-
-	/*
-	// Pause and Unpause Game
-	private void Pause()
-	{
-		// Pause
-		if ((Input.GetKeyDown (KeyCode.P) && EventManager.instance.paused == false))
-		{
-			EventManager.instance.Pause ();
-			//EventManager.instance.paused = true;
-		}
-		
-		// Unpause
-		if ((Input.GetKeyDown (KeyCode.P) && EventManager.instance.pauseDelay == true))
-		{
-			Debug.Log ("Unpaused");
-			EventManager.instance.Unpause ();
-			//EventManager.instance.paused = false;
-		}
-	}*/
 
 	// Sendmessage receiver for ladder state
 	void Ladder(float ladderState)

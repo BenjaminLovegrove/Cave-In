@@ -3,9 +3,11 @@ using System.Collections;
 
 public class CaveInDestroyOnLoad : MonoBehaviour {
 
+	public float desTimer = 5f;
+
 	// Use this for initialization
 	void Start () {
-		Destroy(gameObject,5.0f);
+		Destroy(gameObject, desTimer);
 	}
 	
 	// Update is called once per frame

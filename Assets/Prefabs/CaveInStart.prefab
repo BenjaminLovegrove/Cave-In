@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fe7ec03d990b14ea6e9635ba69ca05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTimer: 5
+  StartTimer: 15
   caveInPrefab: {fileID: 125432, guid: cb072df4fc99bc24e852d2b647c82d9e, type: 2}
 --- !u!1001 &100100000
 Prefab:

@@ -52,11 +52,13 @@ public class CollisionManager : MonoBehaviour
 			}
 
 			// Ladder enter send message function
-			else */if (ladder)
+			else */
+
+		if (ladder)
 
 			{
 				temp.gameObject.SendMessage("Ladder", 1f, SendMessageOptions.DontRequireReceiver);
-				Debug.Log ("Climbing Ladder");
+				//Debug.Log ("Climbing Ladder");
 			}
 		}
 
@@ -79,7 +81,7 @@ public class CollisionManager : MonoBehaviour
 			
 		{
 			temp.gameObject.SendMessage("Ladder", 0f, SendMessageOptions.DontRequireReceiver);
-			Debug.Log ("Jumped off Ladder");
+			//Debug.Log ("Jumped off Ladder");
 		}
 	}
 	
