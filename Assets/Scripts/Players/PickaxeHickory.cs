@@ -4,6 +4,7 @@ using XInputDotNetPure; // Required in C#
 
 public class PickaxeHickory : MonoBehaviour {
 
+	Player hickoryScr;
 	public float swingLength = 1f;
 	float swingTime;
 	public AudioClip PickHit;
@@ -15,10 +16,11 @@ public class PickaxeHickory : MonoBehaviour {
 
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
+		hickoryScr = GetComponent<Player> ();
 	}
 
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Joystick2Button1) && swinging == false){
+		if (hickoryScr.prevState.Buttons.B == ButtonState.Released && hickoryScr.state.Buttons.B == ButtonState.Pressed && swinging == false){
 			Swing();
 		}
 		if (Input.GetKeyDown(KeyCode.P) && swinging == false){

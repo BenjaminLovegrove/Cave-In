@@ -25,9 +25,38 @@ public class Player : MonoBehaviour
 
 	//xInput
 	bool playerIndexSet = false;
-	PlayerIndex playerIndex;
-	GamePadState state;
-	GamePadState prevState;
+	public PlayerIndex playerIndex;
+	public GamePadState state;
+	public GamePadState prevState;
+
+	// Static variables for
+	public 	static float h1 = 0.0f;
+	public static float v1 = 0.0f;
+	
+	public static float h2 = 0.0f;
+	public static float v2 = 0.0f;
+	
+	public static bool  buttonA = false;
+	public static bool  buttonB = false;
+	public static bool  buttonX = false;
+	public static bool  buttonY = false;
+	
+	public static bool  dpadUp = false;
+	public static bool  dpadDown = false;
+	public static bool  dpadLeft = false;
+	public static bool  dpadRight = false;
+	
+	public static bool  buttonStart = false;
+	public static bool  buttonBack = false;
+	
+	public static bool  shoulderL = false;
+	public static bool  shoulderR = false;
+	
+	public static bool  stickL = false;
+	public static bool  stickR = false;
+	
+	public static float triggerL = 0.0f;
+	public static float triggerR = 0.0f;
 
 
 	void Start(){
@@ -49,35 +78,76 @@ public class Player : MonoBehaviour
 			}
 		}
 
-		///
-		//xInput
-		///
-		 
-		 
-		 
-		 
 
+
+		///
+		//xInput detecting gamepad
+		///
+
+		prevState = state;
+		state = GamePad.GetState(playerIndex);
 
 		// Find a PlayerIndex, for a single player game
-		// Will find the first controller that is connected ans use it
-		if (!playerIndexSet || !prevState.IsConnected)
-		{
-			for (int i = 0; i < 4; ++i)
-			{
+		if ( !playerIndexSet || !prevState.IsConnected ) {
+			;
+			for ( int i = 0; i < 4; ++i ) {
+
 				PlayerIndex testPlayerIndex = (PlayerIndex)i;
-				GamePadState testState = GamePad.GetState(testPlayerIndex);
-				if (testState.IsConnected)
-				{
-					Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
-					playerIndex = testPlayerIndex;
+				switch ( i ) {
+				case 0:
+					testPlayerIndex = PlayerIndex.One;
+					break;
+				case 1:
+					testPlayerIndex = PlayerIndex.Two;
+					break;
+				case 2:
+					testPlayerIndex = PlayerIndex.Three;
+					break;
+				case 3:
+					testPlayerIndex = PlayerIndex.Four;
+					break;
+				}
+				
+				GamePadState testState = GamePad.GetState ( testPlayerIndex );
+				if ( testState.IsConnected ) {
+					Debug.Log ( "GamePad found {0}" + testPlayerIndex) ;
+					playerIndex = playerIndex;
 					playerIndexSet = true;
 				}
 			}
 		}
+		state = GamePad.GetState ( playerIndex );
+
+		h1 = state.ThumbSticks.Left.X;
+		v1 = state.ThumbSticks.Left.Y;
 		
-		prevState = state;
-		state = GamePad.GetState(playerIndex);
+		h2 = state.ThumbSticks.Right.X;
+		v2 = state.ThumbSticks.Right.Y;
 		
+		buttonA = ( state.Buttons.A == ButtonState.Pressed );
+		buttonB = ( state.Buttons.B == ButtonState.Pressed );
+		buttonX = ( state.Buttons.X == ButtonState.Pressed );
+		buttonY = ( state.Buttons.Y == ButtonState.Pressed );
+		
+		dpadUp = ( state.DPad.Up == ButtonState.Pressed );
+		dpadDown = ( state.DPad.Down == ButtonState.Pressed );
+		dpadLeft = ( state.DPad.Left == ButtonState.Pressed );
+		dpadRight = ( state.DPad.Right == ButtonState.Pressed );
+		
+		buttonStart = ( state.Buttons.Start == ButtonState.Pressed );
+		buttonBack = ( state.Buttons.Back == ButtonState.Pressed );
+		
+		shoulderL = ( state.Buttons.LeftShoulder == ButtonState.Pressed );
+		shoulderR = ( state.Buttons.RightShoulder == ButtonState.Pressed );
+		
+		stickL = ( state.Buttons.LeftStick == ButtonState.Pressed );
+		stickR = ( state.Buttons.RightStick == ButtonState.Pressed );
+		
+		triggerL = state.Triggers.Left;
+		triggerR = state.Triggers.Right;
+
+
+
 		// Detect if a button was pressed this frame
 		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
 		{
@@ -90,11 +160,14 @@ public class Player : MonoBehaviour
 		}
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
+	}
 
-
-		//use this for movement
-		//transform.localRotation *= Quaternion.Euler(0.0f, state.ThumbSticks.Left.X * 25.0f * Time.deltaTime, 0.0f);
-
+	static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
+		GamePad.SetVibration ( playerIndex, big, small );
+	}
+	
+	static void  stopPadVibration (  PlayerIndex playerIndex   ){
+		GamePad.SetVibration( playerIndex, 0, 0 );
 	}
 
 	void FixedUpdate ()
@@ -148,12 +221,12 @@ public class Player : MonoBehaviour
 		if (Physics.Raycast (this.transform.position, Vector3.down, 1.5f) || Physics.Raycast (leftExtent, Vector3.down,  1.5f)|| Physics.Raycast (rightExtent, Vector3.down,  1.5f))
 		{
 			grounded = true;
-			print ("Grounded_M: "+ grounded);
+			//print ("Grounded_M: "+ grounded);
 		} 
 		else 
 		{
 			grounded = false;
-			print ("Grounded: "+ grounded);
+			//print ("Grounded: "+ grounded);
 		}
 
 		//Debug.DrawRay (leftExtent, Vector3.down);
@@ -166,28 +239,29 @@ public class Player : MonoBehaviour
 	private void Controls()
 	{
 		//Keyboard
-		if (h > 0)
+		//Right
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			print ("keyboard currently disabled - Jarred");
-			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (h) * Time.deltaTime);
+			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = true;
+			print ("move right");
 			Flip ();
 		}
-		
+			
 		// Left
-		if (h < 0)
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
-			print ("keyboard currently disabled - Jarred");
-			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (h) * Time.deltaTime);
+			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
 			rightFaced = false;
+			print ("move left");
 			Flip ();
 		}
 
 
 		//Xbox support
-//		print (state.ThumbSticks.Left.X);
 		// Right
-		if (state.ThumbSticks.Left.X > 0.1f)
+		//print (state.ThumbSticks.Left.X);
+		if (state.ThumbSticks.Left.X > 0.3f || state.DPad.Right == ButtonState.Pressed)
 		{
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = true;
@@ -195,7 +269,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// Left
-		if (state.ThumbSticks.Left.X < 0.1f)
+		if (state.ThumbSticks.Left.X < 0.3f)
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = false;
@@ -210,13 +284,13 @@ public class Player : MonoBehaviour
 		}
 		//Jump xbox controls
 		if (playerOne) {
-			if ((grounded == true) && prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
-				print ("P1_Jumped");
+			if ((grounded == true)&& prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
+				print ("P1_Jumped_xbox_p1");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 			}
 		} else {
-			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick2Button0) && (!climbingLadder)) {
-				print ("P2_Jumped");
+			if ((grounded == true)&& prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
+				print ("P2_Jumped_xbox_p2");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 			}
 		}
@@ -227,14 +301,29 @@ public class Player : MonoBehaviour
 			playerRigid.useGravity = false;
 			playerRigid.velocity = Vector3.zero;
 
+			//Keyboard
 			// Ascend
-			if (v > 0)
+			if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.UpArrow))
 			{
-				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (v) * Time.deltaTime);
+				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+			}
+			// Descend
+			else if (Input.GetKey(KeyCode.S) ||Input.GetKey(KeyCode.DownArrow))
+			{
+				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
 			}
 
+			//xbox
+			//Ascend
+			if (state.ThumbSticks.Left.Y > 0.1f)
+			{
+				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+			}
 			// Descend
-			else player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (v) * Time.deltaTime);
+			else if (state.ThumbSticks.Left.Y < 0.1f)
+			{
+				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+			}
 		}
 		
 		else playerRigid.useGravity = true;
