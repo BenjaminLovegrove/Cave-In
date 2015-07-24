@@ -580,7 +580,7 @@ MonoBehaviour:
   playerOne: 0
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 500
+  baseJumpForce: 250
   slowTimer: 0
   rightFaced: 0
   climbingLadder: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   playerOne: 1
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 500
+  baseJumpForce: 250
   slowTimer: 0
   rightFaced: 0
   climbingLadder: 0
