@@ -248,7 +248,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &33503770
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387194, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -282,7 +282,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &33503772
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387194, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -4905,7 +4905,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &197243091
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387196, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -4939,7 +4939,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &197243093
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387196, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -6216,7 +6216,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &256779558
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387198, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -6250,7 +6250,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &256779560
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387198, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -6963,7 +6963,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &377914450
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387200, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -6997,7 +6997,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &377914452
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387200, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -7087,7 +7087,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &422201450
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387202, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -7121,7 +7121,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &422201452
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387202, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -9836,7 +9836,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &595161758
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387204, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -9870,7 +9870,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &595161760
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387204, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -10190,7 +10190,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &609626878
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387206, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -10224,7 +10224,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &609626880
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387206, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -14165,7 +14165,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &780894820
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387208, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -14199,7 +14199,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &780894822
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387208, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -14463,7 +14463,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &821050787
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387210, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -14497,7 +14497,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &821050789
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387210, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -16068,7 +16068,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &909200521
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387212, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -16102,7 +16102,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &909200523
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387212, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -18063,7 +18063,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1045197098
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387214, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -18097,7 +18097,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1045197100
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387214, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22242,7 +22242,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1553408164
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387216, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22276,7 +22276,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1553408166
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387216, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22577,7 +22577,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1617744993
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387218, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22611,7 +22611,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1617744995
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387218, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22919,7 +22919,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1636657523
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387220, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -22953,7 +22953,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1636657525
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387220, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23223,7 +23223,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1673335578
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387222, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23257,7 +23257,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1673335580
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387222, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23379,6 +23379,7 @@ MonoBehaviour:
   rightFaced: 0
   climbingLadder: 0
   playerIndex: 0
+  menuActive: 0
 --- !u!23 &1678480096
 Renderer:
   m_ObjectHideFlags: 0
@@ -23474,7 +23475,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1702225350
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387224, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23508,7 +23509,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1702225352
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387224, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23951,7 +23952,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1756429116
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387226, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -23985,7 +23986,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1756429118
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387226, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -24255,7 +24256,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1807763447
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387228, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -24289,7 +24290,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1807763449
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387228, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -24561,7 +24562,7 @@ MonoBehaviour:
   sorek: {fileID: 1678480095}
 --- !u!23 &1886459362
 Renderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2387230, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -24595,7 +24596,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1886459364
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3387230, guid: 3966bd195802ecb4bbd1f21eddbbaecf,
     type: 2}
   m_PrefabInternal: {fileID: 939724666}
@@ -25460,6 +25461,7 @@ MonoBehaviour:
   rightFaced: 0
   climbingLadder: 0
   playerIndex: 0
+  menuActive: 0
 --- !u!23 &2020172365
 Renderer:
   m_ObjectHideFlags: 0
@@ -25989,3 +25991,5 @@ MonoBehaviour:
   lerpTimer: 0
   caveInObj: {fileID: 106930, guid: 01c964063eaa93a4985d2f63323dc675, type: 2}
   caveInSpawnPos: {fileID: 322521163}
+  smallRumble: 0
+  bigRumble: 0

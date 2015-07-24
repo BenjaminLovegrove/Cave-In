@@ -210,11 +210,11 @@ public class Player : MonoBehaviour
 	}
 
 
-	static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
+	public static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
 		GamePad.SetVibration ( playerIndex, big, small );
 	}
 	
-	static void  stopPadVibration (  PlayerIndex playerIndex   ){
+	public static void  stopPadVibration (  PlayerIndex playerIndex   ){
 		GamePad.SetVibration( playerIndex, 0, 0 );
 	}
 
