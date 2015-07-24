@@ -11,9 +11,15 @@ public class Player : MonoBehaviour
 
 	public Rigidbody playerRigid;
 
-	public float movementForce = 10;
+	float movementForce;
 
-	public float jumpForce = 120;
+	float jumpForce;
+
+	public float baseMovForce = 10f;
+
+	public float baseJumpForce = 500f;
+
+	public float slowTimer;
 
 	public int playerHP;
 
@@ -30,6 +36,19 @@ public class Player : MonoBehaviour
 	void Start(){
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
+		movementForce = baseMovForce;
+		jumpForce = baseJumpForce;
+	}
+
+	void Update(){
+		if (movementForce < baseMovForce) {
+			slowTimer -= Time.deltaTime;
+
+			if (slowTimer <= 0){
+				movementForce = baseMovForce;
+				jumpForce = baseJumpForce;
+			}
+		}
 	}
 
 	void FixedUpdate ()
@@ -168,5 +187,13 @@ public class Player : MonoBehaviour
 		{
 			i = 0;
 		}
+	}
+
+	//Generally used for sorek when using his lamp
+	void Slow(){
+		movementForce = baseMovForce / 2;
+		jumpForce = baseJumpForce / 2;
+
+		slowTimer = 1f;
 	}
 }

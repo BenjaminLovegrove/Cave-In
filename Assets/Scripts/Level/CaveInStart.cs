@@ -9,7 +9,6 @@ public class CaveInStart : MonoBehaviour {
 	bool startGame = false;
 
 	void Update () {
-		print ("Game Start: " +startGame);
 		if (startGame) {
 			StartTimer -= Time.deltaTime;
 			if (StartTimer <= 0f && spawned == false) {
