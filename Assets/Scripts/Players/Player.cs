@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure; // Required in C#
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class Player : MonoBehaviour
 	private float h;
 	private float v;
 
+	//xInput
+	bool playerIndexSet = false;
+	PlayerIndex playerIndex;
+	GamePadState state;
+	GamePadState prevState;
+
+
 	void Start(){
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
@@ -40,6 +48,42 @@ public class Player : MonoBehaviour
 				jumpForce = baseJumpForce;
 			}
 		}
+
+		////////
+		//xInput
+		////////
+		// Find a PlayerIndex, for a single player game
+		// Will find the first controller that is connected ans use it
+		if (!playerIndexSet || !prevState.IsConnected)
+		{
+			for (int i = 0; i < 4; ++i)
+			{
+				PlayerIndex testPlayerIndex = (PlayerIndex)i;
+				GamePadState testState = GamePad.GetState(testPlayerIndex);
+				if (testState.IsConnected)
+				{
+					Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
+					playerIndex = testPlayerIndex;
+					playerIndexSet = true;
+				}
+			}
+		}
+		
+		prevState = state;
+		state = GamePad.GetState(playerIndex);
+		
+		// Detect if a button was pressed this frame
+		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
+		{
+
+		}
+		// Detect if a button was released this frame
+		if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released)
+		{
+
+		}
+		// Set vibration according to triggers
+		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
 	}
 
