@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	public bool canMove = true;
 	public float baseMovForce = 10f;
 	public float baseJumpForce = 500f;
-	//public float slowTimer;
+	public float slowTimer;
 	private bool grounded = false;
 	public bool rightFaced;
 	public bool climbingLadder;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 	void Update(){
 
 
-		/*if (movementForce < baseMovForce) {
+		if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
 
 			if (slowTimer <= 0){
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 				jumpForce = baseJumpForce;
 			}
 		}
-		*/
+
 	}
 
 	void FixedUpdate ()
@@ -193,10 +193,10 @@ public class Player : MonoBehaviour
 	}
 
 	//Generally used for sorek when using his lamp
-	/*void Slow(){
+	void Slow(){
 		movementForce = baseMovForce / 2;
 		jumpForce = baseJumpForce / 2;
 
 		slowTimer = 1f;
-	}*/
+	}
 }
