@@ -6,31 +6,20 @@ public class Player : MonoBehaviour
 	// Script to handle player controls and most interactions
 
 	public GameObject player;
-
 	public bool playerOne;
 
-	public Rigidbody playerRigid;
-
+	Rigidbody playerRigid;
 	float movementForce;
-
 	float jumpForce;
 
+	public bool canMove = true;
 	public float baseMovForce = 10f;
-
 	public float baseJumpForce = 500f;
-
 	public float slowTimer;
-
-	public int playerHP;
-
 	private bool grounded = false;
-
-	public static bool rightFaced;
-
+	public bool rightFaced;
 	public bool climbingLadder;
-
 	private float h;
-
 	private float v;
 
 	void Start(){
@@ -64,7 +53,9 @@ public class Player : MonoBehaviour
 
 		// Function calls
 		Grounded ();
-		Controls ();
+		if (canMove) {
+			Controls ();
+		}
 	
 	}
 
@@ -187,6 +178,14 @@ public class Player : MonoBehaviour
 		{
 			i = 0;
 		}
+	}
+
+	void CanMove(bool move){
+		if (move == false) {
+			canMove = false;
+		} else {
+			canMove = true;
+		}           
 	}
 
 	//Generally used for sorek when using his lamp

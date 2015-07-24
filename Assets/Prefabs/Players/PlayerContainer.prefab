@@ -564,6 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p2_Hickory: {fileID: 493484}
+  hickoryScr: {fileID: 11493484}
 --- !u!114 &11493484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,11 +578,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerOne: 0
-  playerRigid: {fileID: 0}
+  canMove: 1
   baseMovForce: 10
   baseJumpForce: 500
   slowTimer: 0
-  playerHP: 0
+  rightFaced: 0
   climbingLadder: 0
 --- !u!114 &11493486
 MonoBehaviour:
@@ -596,11 +597,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerOne: 1
-  playerRigid: {fileID: 0}
+  canMove: 1
   baseMovForce: 10
   baseJumpForce: 500
   slowTimer: 0
-  playerHP: 0
+  rightFaced: 0
   climbingLadder: 0
 --- !u!114 &11493488
 MonoBehaviour:
@@ -614,6 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p1_Sorek: {fileID: 493488}
+  sorekScr: {fileID: 11493486}
 --- !u!114 &11493490
 MonoBehaviour:
   m_ObjectHideFlags: 1

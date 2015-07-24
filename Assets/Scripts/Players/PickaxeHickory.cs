@@ -29,6 +29,7 @@ public class PickaxeHickory : MonoBehaviour {
 
 			if (swingTime <= 0f){
 				swinging = false;
+				this.SendMessage ("CanMove", true);
 			}
 		}
 
@@ -43,18 +44,16 @@ public class PickaxeHickory : MonoBehaviour {
 		RaycastHit hit;
 		if (transform.localScale.x <= 0) {
 			if (Physics.Raycast (transform.position, -transform.right, out hit, 3f)) {
-
-				//Placeholder visual
-				GameObject pickVis;
-				pickVis = Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x,gameObject.transform.position.y +1,-3), Quaternion.identity) as GameObject;
-				pickVis.transform.parent = this.transform;
-
+				this.SendMessage("CanMove", false);
+				Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x,gameObject.transform.position.y +1,-3), Quaternion.identity);
 				AudioSource.PlayClipAtPoint(PickHit, transform.position);
 				hit.collider.gameObject.SendMessage("PickHit", SendMessageOptions.DontRequireReceiver);
 				//Particle effect
 			}
 		} else {
 			if (Physics.Raycast (transform.position, transform.right, out hit, 3f)) {
+				this.SendMessage("CanMove", false);
+				Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x,gameObject.transform.position.y +1,-3), Quaternion.identity);
 				AudioSource.PlayClipAtPoint(PickHit, transform.position);
 				hit.collider.gameObject.SendMessage("PickHit", SendMessageOptions.DontRequireReceiver);
 				//Particle effect
