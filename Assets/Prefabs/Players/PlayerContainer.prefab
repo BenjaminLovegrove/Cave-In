@@ -571,7 +571,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
@@ -580,7 +580,8 @@ MonoBehaviour:
   playerOne: 0
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 250
+  baseJumpForce: 400
+  slowTimer: 0
   rightFaced: 0
   climbingLadder: 0
 --- !u!114 &11493486
@@ -598,7 +599,8 @@ MonoBehaviour:
   playerOne: 1
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 375
+  baseJumpForce: 400
+  slowTimer: 0
   rightFaced: 0
   climbingLadder: 0
 --- !u!114 &11493488
