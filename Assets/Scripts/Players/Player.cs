@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 	public float baseJumpForce = 500f;
 	public float slowTimer;
 	private bool grounded = false;
-	public bool rightFaced;
+	public bool rightFaced = true;
 	public bool climbingLadder;
 	private float h;
 	private float v;
@@ -49,9 +49,15 @@ public class Player : MonoBehaviour
 			}
 		}
 
-		////////
+		///
 		//xInput
-		////////
+		///
+		 
+		 
+		 
+		 
+
+
 		// Find a PlayerIndex, for a single player game
 		// Will find the first controller that is connected ans use it
 		if (!playerIndexSet || !prevState.IsConnected)
@@ -85,18 +91,22 @@ public class Player : MonoBehaviour
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
+
+		//use this for movement
+		//transform.localRotation *= Quaternion.Euler(0.0f, state.ThumbSticks.Left.X * 25.0f * Time.deltaTime, 0.0f);
+
 	}
 
 	void FixedUpdate ()
 	{
-		// Get and set control inputs
-		if (playerOne) {
-			h = Input.GetAxis ("Horizontal");
-			v = Input.GetAxis ("Vertical");
-		} else {
-			h = Input.GetAxis ("Horizontal2");
-			v = Input.GetAxis ("Vertical2");
-		}
+//		// Get and set control inputs
+//		if (playerOne) {
+//			h = Input.GetAxis ("Horizontal");
+//			v = Input.GetAxis ("Vertical");
+//		} else {
+//			h = Input.GetAxis ("Horizontal2");
+//			v = Input.GetAxis ("Vertical2");
+//		}
 
 		// Function calls
 		Grounded ();
@@ -155,9 +165,10 @@ public class Player : MonoBehaviour
 	// Controls
 	private void Controls()
 	{
-		// Right
+		//Keyboard
 		if (h > 0)
 		{
+			print ("keyboard currently disabled - Jarred");
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (h) * Time.deltaTime);
 			rightFaced = true;
 			Flip ();
@@ -166,7 +177,27 @@ public class Player : MonoBehaviour
 		// Left
 		if (h < 0)
 		{
+			print ("keyboard currently disabled - Jarred");
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (h) * Time.deltaTime);
+			rightFaced = false;
+			Flip ();
+		}
+
+
+		//Xbox support
+//		print (state.ThumbSticks.Left.X);
+		// Right
+		if (state.ThumbSticks.Left.X > 0.1f)
+		{
+			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
+			rightFaced = true;
+			Flip ();
+		}
+		
+		// Left
+		if (state.ThumbSticks.Left.X < 0.1f)
+		{
+			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = false;
 			Flip ();
 		}
@@ -179,7 +210,7 @@ public class Player : MonoBehaviour
 		}
 		//Jump xbox controls
 		if (playerOne) {
-			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick1Button0) && (!climbingLadder)) {
+			if ((grounded == true) && prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
 				print ("P1_Jumped");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 			}
