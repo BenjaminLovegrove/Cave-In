@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	public bool canMove = true;
 	public float baseMovForce = 10f;
 	public float baseJumpForce = 500f;
-	public float slowTimer;
+	//public float slowTimer;
 	private bool grounded = false;
 	public bool rightFaced;
 	public bool climbingLadder;
@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
 	}
 
 	void Update(){
-		if (movementForce < baseMovForce) {
+
+
+		/*if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
 
 			if (slowTimer <= 0){
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
 				jumpForce = baseJumpForce;
 			}
 		}
+		*/
 	}
 
 	void FixedUpdate ()
@@ -56,6 +59,9 @@ public class Player : MonoBehaviour
 		if (canMove) {
 			Controls ();
 		}
+
+		Mathf.Clamp(playerRigid.velocity.magnitude,0,10);
+		//print("Magnitude: "+ rigidbody.velocity.magnitude);
 	
 	}
 
@@ -85,26 +91,20 @@ public class Player : MonoBehaviour
 		Vector3 leftExtent = new Vector3 (this.transform.position.x - collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
 		Vector3 rightExtent = new Vector3 (this.transform.position.x + collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
 
-		if (Physics.Raycast (this.transform.position, Vector3.down, 2))
+		if (Physics.Raycast (this.transform.position, Vector3.down, 1.5f) || Physics.Raycast (leftExtent, Vector3.down,  1.5f)|| Physics.Raycast (rightExtent, Vector3.down,  1.5f))
 		{
 			grounded = true;
+			print ("Grounded_M: "+ grounded);
 		} 
-		else if (Physics.Raycast (leftExtent, Vector3.down, 2))
-		{
-			grounded = true;
-		} 
-		else if (Physics.Raycast (rightExtent, Vector3.down, 2))
-		{
-			grounded = true;
-		} 
-
 		else 
 		{
 			grounded = false;
+			print ("Grounded: "+ grounded);
 		}
 
 		//Debug.DrawRay (leftExtent, Vector3.down);
 		//Debug.DrawRay (rightExtent, Vector3.down);
+		//print ("Grounded: "+ grounded);
 
 	}
 
@@ -130,14 +130,18 @@ public class Player : MonoBehaviour
 		// Jump
 		if ((grounded == true) && Input.GetKeyDown(KeyCode.Space) && (!climbingLadder))
 		{
+			print("space pressed");
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
+		//Jump xbox controls
 		if (playerOne) {
 			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick1Button0) && (!climbingLadder)) {
+				print ("P1_Jumped");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 			}
 		} else {
 			if ((grounded == true) && Input.GetKeyDown (KeyCode.Joystick2Button0) && (!climbingLadder)) {
+				print ("P2_Jumped");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 			}
 		}
@@ -189,10 +193,10 @@ public class Player : MonoBehaviour
 	}
 
 	//Generally used for sorek when using his lamp
-	void Slow(){
+	/*void Slow(){
 		movementForce = baseMovForce / 2;
 		jumpForce = baseJumpForce / 2;
 
 		slowTimer = 1f;
-	}
+	}*/
 }
