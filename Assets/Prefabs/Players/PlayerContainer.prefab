@@ -585,6 +585,7 @@ MonoBehaviour:
   rightFaced: 0
   climbingLadder: 0
   playerIndex: 0
+  menuActive: 0
 --- !u!114 &11493486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,6 +606,7 @@ MonoBehaviour:
   rightFaced: 0
   climbingLadder: 0
   playerIndex: 0
+  menuActive: 0
 --- !u!114 &11493488
 MonoBehaviour:
   m_ObjectHideFlags: 1

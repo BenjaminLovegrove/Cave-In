@@ -1,0 +1,21 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class Menu_Press_Start : MonoBehaviour {
+
+	public GameObject Toggle;
+
+
+	void start()
+	{
+		//Toggle = GameObject.Find("toggleX").GetComponent<Toggle>().isOn = true;
+	}
+
+
+	public void StartGameP1()
+	{
+		print ("recieved message");
+		GameObject.Find("toggleX").GetComponent<Toggle>().isOn = true;
+	}
+}

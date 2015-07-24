@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using XInputDotNetPure; // Required in C#
 
@@ -58,6 +59,25 @@ public class Player : MonoBehaviour
 	public static float triggerL = 0.0f;
 	public static float triggerR = 0.0f;
 
+	public bool menuActive = false;
+
+
+	void OnLevelWasLoaded(int level) {
+		print ("Level: " + level);
+
+		if (level == 0)
+		{
+			menuActive = true;
+			print ("Menu Loaded");
+		}
+
+		if (level >= 1)
+		{
+			menuActive = false;
+		}
+		
+	}
+
 
 	void Start(){
 		player = this.gameObject;
@@ -67,7 +87,6 @@ public class Player : MonoBehaviour
 	}
 
 	void Update(){
-
 
 		if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
@@ -160,7 +179,36 @@ public class Player : MonoBehaviour
 		}
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
+
+
+
+		if (menuActive)
+		{
+			if (state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
+			{
+				//Player 1 toggle
+				if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+				{
+					GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+				}
+				else
+				{
+					GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+				}
+
+				//Player 2 toggle
+				if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+				{
+					GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+				}
+				else
+				{
+					GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+				}
+			}
+		}
 	}
+
 
 	static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
 		GamePad.SetVibration ( playerIndex, big, small );
@@ -183,7 +231,7 @@ public class Player : MonoBehaviour
 
 		// Function calls
 		Grounded ();
-		if (canMove) {
+		if (canMove && !menuActive) {
 			Controls ();
 		}
 
