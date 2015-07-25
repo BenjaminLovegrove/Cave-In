@@ -39,32 +39,35 @@ public class PickaxeHickory : MonoBehaviour {
 	}
 
 	void Swing(){
-		swingTime = swingLength;
-		swinging = true;
-		//play animation
 
-		//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
-		RaycastHit hit;
-		if (transform.localScale.x <= 0) {
-			if (Physics.Raycast (transform.position, -transform.right, out hit, 3f)) {
-				this.SendMessage("CanMove", false);
-				Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x,gameObject.transform.position.y +1,-3), Quaternion.identity);
-				AudioSource.PlayClipAtPoint(PickHit, transform.position);
-				hit.collider.gameObject.SendMessage("PickHit", SendMessageOptions.DontRequireReceiver);
-				//Particle effect
-			}
-		} else {
-			if (Physics.Raycast (transform.position, transform.right, out hit, 3f)) {
-				this.SendMessage("CanMove", false);
-				Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x,gameObject.transform.position.y +1,-3), Quaternion.identity);
-				AudioSource.PlayClipAtPoint(PickHit, transform.position);
-				hit.collider.gameObject.SendMessage("PickHit", SendMessageOptions.DontRequireReceiver);
-				//Particle effect
-			}
-		}
+		if (!swinging) {
+			swingTime = swingLength;
+			swinging = true;
+			//play animation
 
-		if (hit.collider == null) {
-			//Play swing and miss sound.
+			//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
+			RaycastHit hit;
+			if (transform.localScale.x <= 0) {
+				if (Physics.Raycast (transform.position, -transform.right, out hit, 3f)) {
+					this.SendMessage ("CanMove", false);
+					Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					//Particle effect
+				}
+			} else {
+				if (Physics.Raycast (transform.position, transform.right, out hit, 3f)) {
+					this.SendMessage ("CanMove", false);
+					Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					//Particle effect
+				}
+			}
+
+			if (hit.collider == null) {
+				//Play swing and miss sound.
+			}
 		}
 
 	}

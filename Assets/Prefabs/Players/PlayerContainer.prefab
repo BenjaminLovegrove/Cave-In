@@ -582,7 +582,7 @@ MonoBehaviour:
   baseMovForce: 10
   baseJumpForce: 400
   slowTimer: 0
-  rightFaced: 0
+  rightFaced: 1
   climbingLadder: 0
   playerIndex: 0
   menuActive: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   baseMovForce: 10
   baseJumpForce: 400
   slowTimer: 0
-  rightFaced: 0
+  rightFaced: 1
   climbingLadder: 0
   playerIndex: 0
   menuActive: 0

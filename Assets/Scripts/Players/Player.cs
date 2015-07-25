@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
 		playerRigid = GetComponent<Rigidbody>();
 		movementForce = baseMovForce;
 		jumpForce = baseJumpForce;
+		Flip ();
 	}
 
 	void Update(){
@@ -96,8 +97,6 @@ public class Player : MonoBehaviour
 				jumpForce = baseJumpForce;
 			}
 		}
-
-
 
 		///
 		//xInput detecting gamepad
@@ -317,7 +316,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// Left
-		if (state.ThumbSticks.Left.X < 0.3f)
+		if (state.ThumbSticks.Left.X < -0.3f)
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = false;

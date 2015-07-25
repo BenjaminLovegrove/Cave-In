@@ -106,6 +106,9 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 			}
 
+			if (introTimer > startIntroTimer * 0.3f){
+				hickory.gameObject.SendMessage("Swing");
+			}
 
 			introTimer -= Time.deltaTime;
 			lerpTimer += Time.deltaTime / 5;
