@@ -405,7 +405,7 @@ public class Player : MonoBehaviour
 
 	//Generally used for sorek when using his lamp
 	void Slow(){
-		movementForce = baseMovForce / 2;
+		movementForce = baseMovForce / 3;
 		jumpForce = baseJumpForce / 2;
 
 		slowTimer = 1f;

@@ -53,6 +53,7 @@ public class PickaxeHickory : MonoBehaviour {
 					Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
 				}
 			} else {
@@ -61,6 +62,7 @@ public class PickaxeHickory : MonoBehaviour {
 					Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
 				}
 			}
