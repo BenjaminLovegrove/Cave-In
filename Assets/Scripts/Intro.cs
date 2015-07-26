@@ -21,6 +21,13 @@ public class Intro : MonoBehaviour {
 	Vector3 sorekCamPos;
 	Vector3 hickoryCamPos;
 
+	//outro
+	bool outro = false;
+	Vector3 outroCamStart;
+	public Transform outroCamAim;
+	public Renderer FTW;
+	float FTWalpha = 1f;
+
 	public List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
@@ -72,6 +79,10 @@ public class Intro : MonoBehaviour {
 
 	void Update () {
 
+		if (!gameStarted) {
+			hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
+		}
+
 		/*SKIP*/
 		 if (Input.GetKeyDown(KeyCode.Escape)){
 			introTimer = startIntroTimer * 0.25f;
@@ -114,6 +125,20 @@ public class Intro : MonoBehaviour {
 				hickory.gameObject.SendMessage("Swing");
 			}
 
+
+			//OUTRO//
+			if (outro){
+				transform.position = Vector3.Lerp(outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
+				FTWalpha = Mathf.Lerp(0,1,lerpTimer / 5);
+				FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
+
+				if (lerpTimer > 6f) {
+					Application.LoadLevel("MenuPlaceholder");
+				}
+			}
+
+			print (FTWalpha);
+
 			introTimer -= Time.deltaTime;
 			lerpTimer += Time.deltaTime / 5;
 		}
@@ -138,5 +163,12 @@ public class Intro : MonoBehaviour {
 				obj.SetActive (true);
 			}
 		}
+	}
+
+	void Outro(){
+		cam.SendMessage("Intro", true);
+		lerpTimer = -1f;
+		outro = true;
+		outroCamStart = transform.position;
 	}
 }
