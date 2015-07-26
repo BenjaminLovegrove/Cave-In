@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Intro : MonoBehaviour {
 
@@ -19,6 +20,8 @@ public class Intro : MonoBehaviour {
 
 	Vector3 sorekCamPos;
 	Vector3 hickoryCamPos;
+
+	public List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
 
@@ -82,6 +85,7 @@ public class Intro : MonoBehaviour {
 			//Cam move to sorek holding lamp.
 			if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)){
 				if (lerpToSorek == false){
+					ToggleAesthetics();
 					lerpToSorek = true;
 					lerpTimer = 0f;
 				}
@@ -106,7 +110,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 			}
 
-			if (introTimer > startIntroTimer * 0.3f){
+			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.825f)){
 				hickory.gameObject.SendMessage("Swing");
 			}
 
@@ -120,5 +124,19 @@ public class Intro : MonoBehaviour {
 		Player.stopPadVibration(0);
 		cam.SendMessage("Intro", false);
 		Instantiate (caveInObj, caveInSpawnPos.position, Quaternion.identity);
+	}
+
+	void ToggleMe(GameObject obj){
+		toggleObjs.Add (obj);
+	}
+
+	void ToggleAesthetics(){
+		foreach (GameObject obj in toggleObjs) {
+			if (obj.activeSelf){
+				obj.SetActive (false);
+			} else {
+				obj.SetActive (true);
+			}
+		}
 	}
 }
