@@ -296,11 +296,11 @@ MonoBehaviour:
   lerpTimer: 0
   caveInObj: {fileID: 106930, guid: 01c964063eaa93a4985d2f63323dc675, type: 2}
   caveInSpawnPos: {fileID: 0}
+  CaveInSFX: {fileID: 8300000, guid: bee5e81aae1b8e547934077f1149eecf, type: 3}
   smallRumble: 0
   bigRumble: 0
   outroCamAim: {fileID: 413758}
   FTW: {fileID: 2311774}
-  toggleObjs: []
 --- !u!124 &12449534
 Behaviour:
   m_ObjectHideFlags: 1

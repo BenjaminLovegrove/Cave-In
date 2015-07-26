@@ -15,6 +15,7 @@ public class Intro : MonoBehaviour {
 	bool gameStarted = false;
 	public GameObject caveInObj;
 	public Transform caveInSpawnPos;
+	public AudioClip CaveInSFX;
 
 	public float smallRumble, bigRumble;
 
@@ -28,7 +29,7 @@ public class Intro : MonoBehaviour {
 	public Renderer FTW;
 	float FTWalpha = 1f;
 
-	public List<GameObject> toggleObjs = new List<GameObject>();
+	List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
 
@@ -148,6 +149,7 @@ public class Intro : MonoBehaviour {
 		caveInStarted = true;
 		Player.stopPadVibration(0);
 		cam.SendMessage("Intro", false);
+		AudioSource.PlayClipAtPoint (CaveInSFX, transform.position);
 		Instantiate (caveInObj, caveInSpawnPos.position, Quaternion.identity);
 	}
 

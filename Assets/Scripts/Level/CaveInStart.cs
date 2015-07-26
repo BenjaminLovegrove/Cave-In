@@ -19,6 +19,8 @@ public class CaveInStart : MonoBehaviour {
 	}
 
 	void StartGame(){
-		startGame = true;
+		if (!startGame) {
+			startGame = true;
+		}
 	}
 }

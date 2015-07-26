@@ -607,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &159678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159616}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -1249,7 +1249,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159636}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -1714,6 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35afe9c8cf67ee24e9afcda500f5e515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intro: 1
 --- !u!114 &11405036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1725,6 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35afe9c8cf67ee24e9afcda500f5e515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intro: 0
 --- !u!114 &11459668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1796,7 +1798,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   useEvents: 0
-  lightEnabled: 0
+  lightEnabled: 1
   beamSize: 25
   beamRange: 10
   uvTiling: {x: 1, y: 1}
@@ -1842,7 +1844,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   useEvents: 0
-  lightEnabled: 0
+  lightEnabled: 1
   beamSize: 25
   beamRange: 10
   uvTiling: {x: 1, y: 1}
@@ -1862,6 +1864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitsReqd: 8
+  rockBreak: {fileID: 8300000, guid: bee5e81aae1b8e547934077f1149eecf, type: 3}
   CaveIn: {fileID: 0}
 --- !u!198 &19859652
 ParticleSystem:
