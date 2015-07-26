@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayersReadyState : MonoBehaviour {
 	bool p1_Ready = false;
 	bool p2_Ready = false;
-	bool loading = false;
 
 	void Player1Ready()
 	{
@@ -45,7 +44,6 @@ public class PlayersReadyState : MonoBehaviour {
 
 	public IEnumerator LoadLevel()
 	{
-		loading = true;
 		yield return new WaitForSeconds(1.0f);
 		Application.LoadLevel(1);
 	}

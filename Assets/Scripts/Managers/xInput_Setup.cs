@@ -69,7 +69,7 @@ public class xInput_Setup : MonoBehaviour {
 				GamePadState testState = GamePad.GetState ( testPlayerIndex );
 				if ( testState.IsConnected ) {
 					Debug.Log ( "GamePad found {0}" + testPlayerIndex) ;
-					playerIndex = playerIndex;
+					playerIndex = testPlayerIndex;
 					playerIndexSet = true;
 				}
 			}

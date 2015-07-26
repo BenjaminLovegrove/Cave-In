@@ -138,7 +138,6 @@ public class Intro : MonoBehaviour {
 				}
 			}
 
-			print (FTWalpha);
 
 			introTimer -= Time.deltaTime;
 			lerpTimer += Time.deltaTime / 5;

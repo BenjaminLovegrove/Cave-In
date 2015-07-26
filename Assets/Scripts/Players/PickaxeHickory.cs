@@ -11,11 +11,9 @@ public class PickaxeHickory : MonoBehaviour {
 	public GameObject hickoryPickAxe;
 
 	bool swinging = false;
-	Rigidbody rb; //To stand still while swinging
 
 
 	void Start(){
-		rb = GetComponent<Rigidbody> ();
 		hickoryScr = GetComponent<Player> ();
 	}
 

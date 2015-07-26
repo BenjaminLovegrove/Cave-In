@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
 				GamePadState testState = GamePad.GetState ( testPlayerIndex );
 				if ( testState.IsConnected ) {
 					Debug.Log ( "GamePad found {0}" + testPlayerIndex) ;
-					playerIndex = playerIndex;
+					playerIndex = testPlayerIndex;
 					playerIndexSet = true;
 				}
 			}
@@ -233,9 +233,7 @@ public class Player : MonoBehaviour
 		if (canMove && !menuActive) {
 			Controls ();
 		}
-
-		Mathf.Clamp(playerRigid.velocity.magnitude,0,10);
-		//print("Magnitude: "+ rigidbody.velocity.magnitude);
+		
 	
 	}
 
@@ -268,17 +266,12 @@ public class Player : MonoBehaviour
 		if (Physics.Raycast (this.transform.position, Vector3.down, 1.5f) || Physics.Raycast (leftExtent, Vector3.down,  1.5f)|| Physics.Raycast (rightExtent, Vector3.down,  1.5f))
 		{
 			grounded = true;
-			//print ("Grounded_M: "+ grounded);
 		} 
 		else 
 		{
 			grounded = false;
-			//print ("Grounded: "+ grounded);
 		}
 
-		//Debug.DrawRay (leftExtent, Vector3.down);
-		//Debug.DrawRay (rightExtent, Vector3.down);
-		//print ("Grounded: "+ grounded);
 
 	}
 
@@ -405,7 +398,7 @@ public class Player : MonoBehaviour
 
 	//Generally used for sorek when using his lamp
 	void Slow(){
-		movementForce = baseMovForce / 3;
+		movementForce = baseMovForce / 2.5f;
 		jumpForce = baseJumpForce / 2;
 
 		slowTimer = 1f;

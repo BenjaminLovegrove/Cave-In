@@ -7,7 +7,6 @@ public class Mineable : MonoBehaviour {
 	public AudioClip rockBreak;
 
 	public GameObject CaveIn;
-	bool startGame = false;	//Only use this for the first cave in
 
 	void PickHit(){
 		hitsReqd --;

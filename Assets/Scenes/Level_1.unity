@@ -17842,6 +17842,18 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2359676, guid: 96939be04ae3c1847a086fd3d2df4806, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359670, guid: 96939be04ae3c1847a086fd3d2df4806, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359664, guid: 96939be04ae3c1847a086fd3d2df4806, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96939be04ae3c1847a086fd3d2df4806, type: 2}
   m_RootGameObject: {fileID: 1183679536}
