@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3311774}
   - 64: {fileID: 6411774}
   - 23: {fileID: 2311774}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FadeToWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   hickory: {fileID: 0}
   introTimer: 30
   lerpTimer: 0
-  caveInObj: {fileID: 106930, guid: 01c964063eaa93a4985d2f63323dc675, type: 2}
+  caveInObj: {fileID: 105624, guid: 6e4a766f140d20c43ba53da733e9f571, type: 2}
   caveInSpawnPos: {fileID: 0}
   CaveInSFX: {fileID: 8300000, guid: bee5e81aae1b8e547934077f1149eecf, type: 3}
   smallRumble: 0
