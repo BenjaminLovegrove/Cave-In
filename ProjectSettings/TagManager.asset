@@ -5,6 +5,7 @@ TagManager:
   tags:
   - 
   - FxTemporaire
+  - Fire
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   User Layer 11: CaveIn
   User Layer 12: FireSphere
   User Layer 13: Background
-  User Layer 14: 
+  User Layer 14: Fire
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 

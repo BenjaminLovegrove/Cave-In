@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e13bd828c51de49ab71bea0c61307f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSpread: {fileID: 116646, guid: cd44ebd741458ab4aa2ae63884d3a510, type: 2}
+  fireSpread: {fileID: 196738, guid: 09ae53c7635178a4d905968791a13db8, type: 2}
   fireSFX: {fileID: 8300000, guid: b5468b988ddee6d4890396fa0da8511e, type: 3}
   fireCD: 1
 --- !u!114 &11489974

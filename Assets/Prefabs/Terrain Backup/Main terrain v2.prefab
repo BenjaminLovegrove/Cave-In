@@ -2725,7 +2725,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116824}
   m_LocalRotation: {x: 0, y: 0, z: .0531027727, w: .998589039}
-  m_LocalPosition: {x: -18.7489662, y: -26.8884296, z: -.46875}
+  m_LocalPosition: {x: -21.3400002, y: -17.1200008, z: -.469999999}
   m_LocalScale: {x: .527064323, y: .527064562, z: .527064562}
   m_Children: []
   m_Father: {fileID: 447768}
@@ -5189,7 +5189,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170228}
-  m_Mesh: {fileID: 4300000, guid: 2c9d0ea675624eb429cf334be82a8293, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!33 &3390206
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -5345,7 +5345,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 40
   m_CollisionDetection: 0
 --- !u!54 &5488284
 Rigidbody:
@@ -5360,7 +5360,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 40
   m_CollisionDetection: 0
 --- !u!54 &5488286
 Rigidbody:
@@ -5375,7 +5375,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 40
   m_CollisionDetection: 0
 --- !u!64 &6470118
 MeshCollider:
