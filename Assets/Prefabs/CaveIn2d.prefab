@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fe7ec03d990b14ea6e9635ba69ca05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTimer: 4
+  StartTimer: 6
   caveInPrefab: {fileID: 125432, guid: cb072df4fc99bc24e852d2b647c82d9e, type: 2}
 --- !u!114 &11405626
 MonoBehaviour:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d33fb99a0e55ad4b8f5cd2ac08bbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsReqd: 10
+  hitsReqd: 25
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 105624}
 --- !u!212 &21205626
