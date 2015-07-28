@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugState: 1
+  debugState: 0
   player: {fileID: 0}
   playerOne: 0
   canMove: 1
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugState: 1
+  debugState: 0
   player: {fileID: 0}
   playerOne: 1
   canMove: 1
