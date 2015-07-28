@@ -576,15 +576,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugState: 1
   player: {fileID: 0}
   playerOne: 0
   canMove: 1
   baseMovForce: 10
   baseJumpForce: 400
   slowTimer: 0
+  grounded: 0
   rightFaced: 1
   climbingLadder: 0
-  playerIndex: 0
+  playerIndex: 1
   menuActive: 0
 --- !u!114 &11493486
 MonoBehaviour:
@@ -597,12 +599,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugState: 1
   player: {fileID: 0}
   playerOne: 1
   canMove: 1
   baseMovForce: 10
   baseJumpForce: 400
   slowTimer: 0
+  grounded: 0
   rightFaced: 1
   climbingLadder: 0
   playerIndex: 0
