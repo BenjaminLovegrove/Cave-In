@@ -163,8 +163,13 @@ public class Player : MonoBehaviour
 //
 //		}
 		// Set vibration according to triggers
-		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
-		print (state.Triggers.Right);
+		if (playerIndex == pone)
+		{
+			padVibration(pone, state.Triggers.Left, state.Triggers.Right);
+		}
+		if (playerIndex == ptwo){
+			padVibration(ptwo, state.Triggers.Left, state.Triggers.Right);
+		}
 
 
 
@@ -172,26 +177,39 @@ public class Player : MonoBehaviour
 		{
 			if (state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
 			{
-				//Player 1 toggle
-				if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+				print ("start in menu");
+				if (playerIndex == pone)
 				{
-					GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
-				}
-				else
-				{
-					GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+					print ("P1, start in menu");
+					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+					}
+					else
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+					}
 				}
 
-				//Player 2 toggle
-				if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
-				{
-					GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
-				}
-				else
-				{
-					GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+				if (playerIndex == ptwo){
+					//Player 2 toggle
+					print ("P2, start in menu");
+					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+					}
+					else
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+					}
 				}
 			}
+		}
+
+		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
+		{
+			Intro.Skip();
+			Debug.LogWarning("Dev skip Intro");
 		}
 	}
 
@@ -293,17 +311,29 @@ public class Player : MonoBehaviour
 		//Xbox support
 		// Right
 		//print (state.ThumbSticks.Left.X);
-		if (state.ThumbSticks.Left.X > 0.3f || state.DPad.Right == ButtonState.Pressed)
+		if (state.ThumbSticks.Left.X > 0.3f )
 		{
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = true;
 			Flip ();
 		}
+		else if (state.DPad.Right == ButtonState.Pressed)
+		{
+			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+			rightFaced = true;
+			Flip ();
+		}
 		
 		// Left
-		if (state.ThumbSticks.Left.X < -0.3f || state.DPad.Left == ButtonState.Pressed)
+		if (state.ThumbSticks.Left.X < -0.3f)
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
+			rightFaced = false;
+			Flip ();
+		}
+		else if (state.DPad.Left == ButtonState.Pressed)
+		{
+			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = false;
 			Flip ();
 		}
@@ -317,7 +347,8 @@ public class Player : MonoBehaviour
 		}
 
 		//Jump xbox controls
-		if ((grounded == true) && !jumpingNow && state.Buttons.A == ButtonState.Pressed  && (!climbingLadder)) 
+		if ((grounded == true) && !jumpingNow && state.Buttons.A == ButtonState.Pressed  && (!climbingLadder) ||
+		    (grounded == true) && !jumpingNow && state.DPad.Up == ButtonState.Pressed && (!climbingLadder)) 
 		{
 				StartCoroutine(JumpCoolDown());
 				print ("P1_Jumped_xbox_p1");
@@ -357,16 +388,28 @@ public class Player : MonoBehaviour
 				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
 			}
 
+
 			//xbox
 			//Ascend
-			if (state.ThumbSticks.Left.Y > 0.1f || state.DPad.Up == ButtonState.Pressed)
+			if (state.ThumbSticks.Left.Y > 0.1f)
 			{
 				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
 			}
+			else if (state.DPad.Up == ButtonState.Pressed)
+			{
+				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+			}
+
+
 			// Descend
-			else if (state.ThumbSticks.Left.Y < 0.1f)
+			if (state.ThumbSticks.Left.Y < 0.1f)
 			{
 				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+			}
+			if (state.DPad.Down == ButtonState.Pressed)
+			{
+				print ("this doesnt work and is not needed for playtest, leaving for later");
+				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
 			}
 		}
 		
