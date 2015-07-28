@@ -57,15 +57,15 @@ public class Intro : MonoBehaviour {
 		{
 
 			//do xbox rumble here 
-			if ((introTimer > startIntroTimer * 0.2f) && (introTimer < startIntroTimer * 0.3f))
+			if ((introTimer > startIntroTimer * 0.21f) && (introTimer < startIntroTimer * 0.5f))
 			{
-				smallRumble = Random.Range(2.0f, 3.0f);
-				bigRumble = Random.Range (2.0f, 3.0f);
+				smallRumble = Random.Range(0.2f, 0.3f);
+				bigRumble = Random.Range (0.2f, 0.3f);
 			}
 			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.2f))
 			{
-				smallRumble = 5.0f;
-				bigRumble = 5.0f;
+				smallRumble = 1.0f;
+				bigRumble = 1.0f;
 			}
 			else 
 			{
@@ -73,8 +73,8 @@ public class Intro : MonoBehaviour {
 				bigRumble = 0f;
 			}
 
-			Player.padVibration(0,bigRumble,smallRumble);
-			//Player.padVibration(1,bigRumble,smallRumble);
+			Player.padVibration(Player.pone,bigRumble,smallRumble);
+			Player.padVibration(Player.ptwo,bigRumble,smallRumble);
 		}
 
 	}

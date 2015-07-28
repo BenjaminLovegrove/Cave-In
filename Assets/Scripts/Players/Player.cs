@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
 //		}
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
+		print (state.Triggers.Right);
 
 
 
@@ -300,7 +301,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// Left
-		if (state.ThumbSticks.Left.X < -0.3f)
+		if (state.ThumbSticks.Left.X < -0.3f || state.DPad.Left == ButtonState.Pressed)
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = false;
@@ -358,7 +359,7 @@ public class Player : MonoBehaviour
 
 			//xbox
 			//Ascend
-			if (state.ThumbSticks.Left.Y > 0.1f)
+			if (state.ThumbSticks.Left.Y > 0.1f || state.DPad.Up == ButtonState.Pressed)
 			{
 				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
 			}
@@ -376,7 +377,7 @@ public class Player : MonoBehaviour
 	public IEnumerator JumpCoolDown()
 	{
 		jumpingNow = true;
-		float delay = 0.2f;
+		float delay = 0.5f;
 		yield return new WaitForSeconds(delay);
 		jumpingNow = false;
 	}
