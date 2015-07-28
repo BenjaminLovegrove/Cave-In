@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class Intro : MonoBehaviour {
 
-	public bool watchIntro;
+	public static bool watchIntro = true;
 	public Player sorek;
 	public Player hickory;
-	Camera cam;
-	public float introTimer = 30f;
-	float startIntroTimer;
+	public static Camera cam;
+	public static float introTimer = 30f;
+	public static float startIntroTimer;
 	public float lerpTimer;
 	bool caveInStarted = false;
 	bool gameStarted = false;
@@ -57,15 +57,15 @@ public class Intro : MonoBehaviour {
 		{
 
 			//do xbox rumble here 
-			if ((introTimer > startIntroTimer * 0.21f) && (introTimer < startIntroTimer * 0.5f))
+			if ((introTimer > startIntroTimer * 0.25f) && (introTimer < startIntroTimer * 0.5f))
 			{
-				smallRumble = Random.Range(0.2f, 0.3f);
-				bigRumble = Random.Range (0.2f, 0.3f);
+				smallRumble = Random.Range(0.1f, 0.2f);
+				bigRumble = Random.Range (0.0f, 0.0f);
 			}
-			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.2f))
+			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.249f))
 			{
-				smallRumble = 1.0f;
-				bigRumble = 1.0f;
+				smallRumble = 5.0f;
+				bigRumble = 5.0f;
 			}
 			else 
 			{
@@ -87,9 +87,10 @@ public class Intro : MonoBehaviour {
 
 		/*SKIP*/
 		 if (Input.GetKeyDown(KeyCode.Escape)){
-			introTimer = startIntroTimer * 0.25f;
-			cam.SendMessage("Intro", false);
+			Debug.LogWarning("Dev skip Intro");
+			Skip ();
 		 }
+
 
 		if (watchIntro){
 			if (introTimer > startIntroTimer * 0.6f){
@@ -172,5 +173,11 @@ public class Intro : MonoBehaviour {
 		lerpTimer = -1f;
 		outro = true;
 		outroCamStart = transform.position;
+	}
+
+	public static void Skip(){
+		introTimer = startIntroTimer * 0.01f;
+		cam.SendMessage("Intro", false);
+		//print ("void skip()");
 	}
 }
