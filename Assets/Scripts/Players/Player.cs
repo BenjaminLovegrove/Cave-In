@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
 	// Script to handle player controls and most interactions
 
+	public bool debugState = true;
+
 	public GameObject player;
 	public bool playerOne;
 
@@ -18,11 +20,12 @@ public class Player : MonoBehaviour
 	public float baseMovForce = 10f;
 	public float baseJumpForce = 500f;
 	public float slowTimer;
-	private bool grounded = false;
+	public bool grounded = false;
 	public bool rightFaced = true;
 	public bool climbingLadder;
 	private float h;
 	private float v;
+	private bool jumpingNow = false;
 
 	//xInput
 	bool playerIndexSet = false;
@@ -30,6 +33,9 @@ public class Player : MonoBehaviour
 	public GamePadState state;
 	public GamePadState prevState;
 
+	public static PlayerIndex pone = PlayerIndex.One;
+	public static PlayerIndex ptwo = PlayerIndex.Two;
+	 
 	// Static variables for
 	public 	static float h1 = 0.0f;
 	public static float v1 = 0.0f;
@@ -85,10 +91,16 @@ public class Player : MonoBehaviour
 		movementForce = baseMovForce;
 		jumpForce = baseJumpForce;
 		Flip ();
+
+		if (debugState)
+		{
+			Debug.LogWarning ("Debug state = true");
+		}
 	}
 
 	void Update(){
-
+		//Player.padVibration(PlayerIndex.Two,0,0);
+		//Player.padVibration(PlayerIndex.One,0,0);
 		if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
 
@@ -106,7 +118,7 @@ public class Player : MonoBehaviour
 		state = GamePad.GetState(playerIndex);
 
 		// Find a PlayerIndex, for a single player game
-		if ( !playerIndexSet || !prevState.IsConnected ) {
+		/*if ( !playerIndexSet || !prevState.IsConnected ) {
 			;
 			for ( int i = 0; i < 4; ++i ) {
 
@@ -133,49 +145,23 @@ public class Player : MonoBehaviour
 					playerIndexSet = true;
 				}
 			}
-		}
+		}*/
+
 		state = GamePad.GetState ( playerIndex );
 
-		h1 = state.ThumbSticks.Left.X;
-		v1 = state.ThumbSticks.Left.Y;
-		
-		h2 = state.ThumbSticks.Right.X;
-		v2 = state.ThumbSticks.Right.Y;
-		
-		buttonA = ( state.Buttons.A == ButtonState.Pressed );
-		buttonB = ( state.Buttons.B == ButtonState.Pressed );
-		buttonX = ( state.Buttons.X == ButtonState.Pressed );
-		buttonY = ( state.Buttons.Y == ButtonState.Pressed );
-		
-		dpadUp = ( state.DPad.Up == ButtonState.Pressed );
-		dpadDown = ( state.DPad.Down == ButtonState.Pressed );
-		dpadLeft = ( state.DPad.Left == ButtonState.Pressed );
-		dpadRight = ( state.DPad.Right == ButtonState.Pressed );
-		
-		buttonStart = ( state.Buttons.Start == ButtonState.Pressed );
-		buttonBack = ( state.Buttons.Back == ButtonState.Pressed );
-		
-		shoulderL = ( state.Buttons.LeftShoulder == ButtonState.Pressed );
-		shoulderR = ( state.Buttons.RightShoulder == ButtonState.Pressed );
-		
-		stickL = ( state.Buttons.LeftStick == ButtonState.Pressed );
-		stickR = ( state.Buttons.RightStick == ButtonState.Pressed );
-		
-		triggerL = state.Triggers.Left;
-		triggerR = state.Triggers.Right;
 
 
-
-		// Detect if a button was pressed this frame
-		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
-		{
-
-		}
-		// Detect if a button was released this frame
-		if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released)
-		{
-
-		}
+//
+//		// Detect if a button was pressed this frame
+//		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
+//		{
+//
+//		}
+//		// Detect if a button was released this frame
+//		if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released)
+//		{
+//
+//		}
 		// Set vibration according to triggers
 		GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
@@ -232,6 +218,11 @@ public class Player : MonoBehaviour
 		Grounded ();
 		if (canMove && !menuActive) {
 			Controls ();
+		}
+
+		if (debugState)
+		{
+			Debug.Log ("Player Grounded: "+ grounded);
 		}
 		
 	
@@ -315,6 +306,7 @@ public class Player : MonoBehaviour
 			rightFaced = false;
 			Flip ();
 		}
+
 		
 		// Jump
 		if ((grounded == true) && Input.GetKeyDown(KeyCode.Space) && (!climbingLadder))
@@ -322,18 +314,29 @@ public class Player : MonoBehaviour
 			print("space pressed");
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
+
 		//Jump xbox controls
-		if (playerOne) {
-			if ((grounded == true)&& prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
+		if ((grounded == true) && !jumpingNow && state.Buttons.A == ButtonState.Pressed  && (!climbingLadder)) 
+		{
+				StartCoroutine(JumpCoolDown());
 				print ("P1_Jumped_xbox_p1");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
-			}
-		} else {
-			if ((grounded == true)&& prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed && (!climbingLadder)) {
-				print ("P2_Jumped_xbox_p2");
-				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
-			}
+
 		}
+
+		if (debugState)
+		{
+			Debug.Log("Jumping "+jumpingNow);
+
+//			if (playerIndex == pone)
+//				Debug.Log("Player one jumped");
+//
+//			if (playerIndex == ptwo)
+//				Debug.Log("Player two jumped");
+		}
+	
+	
+
 
 		// Climb
 		if (climbingLadder)
@@ -368,6 +371,14 @@ public class Player : MonoBehaviour
 		
 		else playerRigid.useGravity = true;
 
+	}
+
+	public IEnumerator JumpCoolDown()
+	{
+		jumpingNow = true;
+		float delay = 0.2f;
+		yield return new WaitForSeconds(delay);
+		jumpingNow = false;
 	}
 
 	// Sendmessage receiver for ladder state
