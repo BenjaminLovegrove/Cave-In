@@ -15,14 +15,10 @@ public class CameraManager : MonoBehaviour
 
 	private Vector3 originalPos;
 
-	void OnEnable()
-	{
-		originalPos = transform.localPosition;
-	}
 
 	void DoCollisionShake()
 	{
-		shakeIntensity = 0.01f;
+		shakeIntensity = 0.1f;
 		shakeTime = 0.3f;
 	}
 
@@ -42,13 +38,14 @@ public class CameraManager : MonoBehaviour
 	{
 		if (shakeTime > 0)
 		{
-			transform.localPosition = originalPos + Random.insideUnitSphere * shakeIntensity;
+			originalPos = transform.position;
+			transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
 			shakeTime -= Time.deltaTime * 1f;
 		}
 		else
 		{
 			shakeTime = 0f;
-			transform.localPosition = originalPos;
+		//	transform.localPosition = originalPos;
 		}
 	} 
 

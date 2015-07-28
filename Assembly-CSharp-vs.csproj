@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{AA8304B9-0456-FD21-9BB5-0F350F88E713}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Menu Items\PlayersReadyState.cs" />
+     <Compile Include="Assets\Scripts\CamController.cs" />
+     <Compile Include="Assets\Scripts\CameraShake\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Intro.cs" />
+     <Compile Include="Assets\Scripts\Level\CaveInDestroyOnLoad.cs" />
+     <Compile Include="Assets\Scripts\Level\CaveInKillBox.cs" />
+     <Compile Include="Assets\Scripts\Level\CaveInStart.cs" />
+     <Compile Include="Assets\Scripts\Level\CaveLamps.cs" />
+     <Compile Include="Assets\Scripts\Level\CollisionManager.cs" />
+     <Compile Include="Assets\Scripts\Level\Dynamic Lighting Follow\CandleFollow.cs" />
+     <Compile Include="Assets\Scripts\Level\Dynamic Lighting Follow\LampFollow.cs" />
+     <Compile Include="Assets\Scripts\Level\IntroToggle.cs" />
+     <Compile Include="Assets\Scripts\Level\Mineable.cs" />
+     <Compile Include="Assets\Scripts\Level\Playtest_LightManager.cs" />
+     <Compile Include="Assets\Scripts\Level\StaticLights\LightType.cs" />
+     <Compile Include="Assets\Scripts\Level\StaticLights\StaticLight.cs" />
+     <Compile Include="Assets\Scripts\Level\Test_CaveLightFlicker.cs" />
+     <Compile Include="Assets\Scripts\Level\Trigger.cs" />
+     <Compile Include="Assets\Scripts\Managers\xInput_Setup.cs" />
+     <Compile Include="Assets\Scripts\Old\CharacterController2D.cs" />
+     <Compile Include="Assets\Scripts\Old\TestMove.cs" />
+     <Compile Include="Assets\Scripts\Players\AxeTestDOL.cs" />
+     <Compile Include="Assets\Scripts\Players\LampSorek.cs" />
+     <Compile Include="Assets\Scripts\Players\PickaxeHickory.cs" />
+     <Compile Include="Assets\Scripts\Players\Player.cs" />
+     <Compile Include="Assets\Scripts\Small\DestroyOnLoad.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\Ferr2D_DynamicMesh.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\Ferr2D_IPath.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\Ferr2D_Path.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\Ferr2D_Triangulator.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\P2T.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\DelaunayTriangle.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\AdvancingFront.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\AdvancingFrontNode.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweep.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepBasin.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepConstraint.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepContext.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepDebugContext.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepEdgeEvent.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\DTSweepPointComparator.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Delaunay\Sweep\PointOnEdgeException.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\ITriangulatable.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Orientation.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\Contour.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\Polygon.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonPoint.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonSet.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Polygon\PolygonUtil.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Sets\ConstrainedPointSet.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Sets\PointSet.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationAlgorithm.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationConstraint.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationContext.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationDebugContext.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationMode.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\TriangulationPoint.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\PointGenerator.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\PolygonGenerator.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Triangulation\Util\TriangulationUtil.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\FixedArray3.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\FixedBitArray3.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\MathUtil.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\Point2D.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\Point2DList.cs" />
+     <Compile Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\Utility\Rect2D.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\BlobShadow.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\InfiniteTerrain.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\InfiniteTerrainCamera.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\ProceduralInsert.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\Toss.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\TumbleweedMotion.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Examples\Assets\TumbleweedSpawner.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Scripts\Ferr2DT_PathTerrain.cs" />
+     <Compile Include="Assets\Tools\Ferr\2DTerrain\Scripts\Ferr2DT_TerrainMaterial.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Interfaces\IBlendPaintType.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Interfaces\IBlendPaintable.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Interfaces\IProceduralMesh.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\ColorUtil.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\LambdaComparer.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\LayerUtil.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\LayoutAdvancer.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\LogoLock.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\RenderUtility.cs" />
+     <Compile Include="Assets\Tools\Ferr\Common\Scripts\SOUtil.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Core\Light2D.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Core\Light2D_EventEmitter.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\CreateLight_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\EventSample_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\FOVScript_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\HUD_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\LookAt_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\Orbit_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\RandomAimRotate_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\Rotate_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\SinMove_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\SinRotate_VLS.cs" />
+     <Compile Include="Assets\Tools\Lights\2DVLS\Samples\Scripts\StressTest_VLS.cs" />
+     <Compile Include="Assets\Tools\XboxInput\XInputDotNet\Examples\XInputTestCS.cs" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\UnlitColoredTint.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Data\cache.txt" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\UnitColoredTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\UnlitVertexColorTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\Docs\Ferr2DTerrainTool - Readme.txt" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LitWavyTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\UnlitSolidColor.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LitColored.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\Core\Shaders\2DVLS_Diffuse.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\READ-ME.txt" />
+     <None Include="Assets\Tools\XboxInput\XInputDotNet\MITLicense.txt" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LitColoredTint.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\UnlitColored.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\Ferr2DTCommon.cginc" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\GizmoShader3D.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\LitVertexColor.shader" />
+     <None Include="Assets\Prefabs\AssetStore\CFX2 Prefabs\Materials etc\Cartoon FX\Shaders\CFX2 Particle Alpha Blend Add.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\Core\Shaders\2DVLS_Cutout (2-Sided).shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LitColoredTintTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\UnlitColoredTintTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LightmapColoredTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\UnlitVertexColor.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\Core\Shaders\2DVLS_Light.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\Core\Shaders\2DVLS_Diffuse (2-Sided).shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\GizmoShader2D.shader" />
+     <None Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\LICENSE.txt" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\UnlitVertexColorTex.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\UnlitWavyTransparent.shader" />
+     <None Include="Assets\Tools\Ferr\2D\Scripts\poly2tri.cs\AUTHORS.txt" />
+     <None Include="Assets\Prefabs\AssetStore\CFX2 Prefabs\Materials etc\Cartoon FX\Shaders\CFX2 Particle Alpha Blend Tint.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\UnlitVertexColorTexTransparent.shader" />
+     <None Include="Assets\Tools\Lights\2DVLS\Core\Shaders\2DVLS_Cutout.shader" />
+     <None Include="Assets\Tools\Ferr\Common\Shaders\ShadowOnly.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LightmapColored.shader" />
+     <None Include="Assets\Tools\Ferr\2DTerrain\Shaders\LitColoredTransparent.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

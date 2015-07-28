@@ -55,13 +55,14 @@ public class Intro : MonoBehaviour {
 	{
 		if (watchIntro)
 		{
+
 			//do xbox rumble here 
-			if (introTimer <= 17 && introTimer >= 9)
+			if ((introTimer > startIntroTimer * 0.2f) && (introTimer < startIntroTimer * 0.3f))
 			{
 				smallRumble = Random.Range(2.0f, 3.0f);
 				bigRumble = Random.Range (2.0f, 3.0f);
 			}
-			else if (introTimer <=9 && introTimer >= 1)
+			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.2f))
 			{
 				smallRumble = 5.0f;
 				bigRumble = 5.0f;
@@ -109,7 +110,7 @@ public class Intro : MonoBehaviour {
 			}
 			//Screen shake
 			if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)){
-		
+				Camera.main.SendMessage ("DoCollisionShake");
 			}
 			//Cave in instantiate
 			if (introTimer < startIntroTimer * 0.2f && !caveInStarted){
