@@ -581,7 +581,7 @@ MonoBehaviour:
   playerOne: 0
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 400
+  baseJumpForce: 500
   slowTimer: 0
   grounded: 0
   rightFaced: 1
@@ -604,7 +604,7 @@ MonoBehaviour:
   playerOne: 1
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 400
+  baseJumpForce: 500
   slowTimer: 0
   grounded: 0
   rightFaced: 1
