@@ -5,6 +5,10 @@ public class PlayersReadyState : MonoBehaviour {
 	bool p1_Ready = false;
 	bool p2_Ready = false;
 
+	void Start(){
+		Screen.showCursor = false;
+	}
+
 	void Player1Ready()
 	{
 

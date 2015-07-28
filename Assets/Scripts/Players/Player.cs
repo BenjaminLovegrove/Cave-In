@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
 	public GameObject player;
 	public bool playerOne;
 
+	public SpriteRenderer UIspr;
+	public int UIdisable = 2;
+	float UIDefaultScale;
+
 	Rigidbody playerRigid;
 	float movementForce;
 	float jumpForce;
@@ -26,6 +30,12 @@ public class Player : MonoBehaviour
 	private float h;
 	private float v;
 	private bool jumpingNow = false;
+
+	//CI Rumble
+	GameObject caveIn;
+	float caveInDistance;
+	float rumbleAmt;
+
 
 	//xInput
 	bool playerIndexSet = false;
@@ -86,6 +96,7 @@ public class Player : MonoBehaviour
 
 
 	void Start(){
+		UIDefaultScale = UIspr.transform.localScale.x;
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
 		movementForce = baseMovForce;
@@ -99,8 +110,18 @@ public class Player : MonoBehaviour
 	}
 
 	void Update(){
-		//Player.padVibration(PlayerIndex.Two,0,0);
-		//Player.padVibration(PlayerIndex.One,0,0);
+		//Disable UI after 2 button press
+		if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released){
+			UIdisable --;
+		}
+		if (UIdisable <= 0){
+			UIspr.enabled = false;
+		}
+
+		if (caveIn != null){
+			CaveInRumble();
+		}
+
 		if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
 
@@ -110,58 +131,11 @@ public class Player : MonoBehaviour
 			}
 		}
 
-		///
-		//xInput detecting gamepad
-		///
-
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
 
-		// Find a PlayerIndex, for a single player game
-		/*if ( !playerIndexSet || !prevState.IsConnected ) {
-			;
-			for ( int i = 0; i < 4; ++i ) {
-
-				PlayerIndex testPlayerIndex = (PlayerIndex)i;
-				switch ( i ) {
-				case 0:
-					testPlayerIndex = PlayerIndex.One;
-					break;
-				case 1:
-					testPlayerIndex = PlayerIndex.Two;
-					break;
-				case 2:
-					testPlayerIndex = PlayerIndex.Three;
-					break;
-				case 3:
-					testPlayerIndex = PlayerIndex.Four;
-					break;
-				}
-				
-				GamePadState testState = GamePad.GetState ( testPlayerIndex );
-				if ( testState.IsConnected ) {
-					Debug.Log ( "GamePad found {0}" + testPlayerIndex) ;
-					playerIndex = testPlayerIndex;
-					playerIndexSet = true;
-				}
-			}
-		}*/
-
 		state = GamePad.GetState ( playerIndex );
-
-
-
-//
-//		// Detect if a button was pressed this frame
-//		if (prevState.Buttons.A == ButtonState.Released && state.Buttons.A == ButtonState.Pressed)
-//		{
-//
-//		}
-//		// Detect if a button was released this frame
-//		if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released)
-//		{
-//
-//		}
+		
 		// Set vibration according to triggers
 		if (playerIndex == pone)
 		{
@@ -224,14 +198,6 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-//		// Get and set control inputs
-//		if (playerOne) {
-//			h = Input.GetAxis ("Horizontal");
-//			v = Input.GetAxis ("Vertical");
-//		} else {
-//			h = Input.GetAxis ("Horizontal2");
-//			v = Input.GetAxis ("Vertical2");
-//		}
 
 		// Function calls
 		Grounded ();
@@ -255,6 +221,7 @@ public class Player : MonoBehaviour
 			Vector3 spriteScale = transform.localScale;
 			spriteScale.x = 1;
 			transform.localScale = spriteScale;
+			UIspr.transform.localScale = new Vector3 (-UIDefaultScale, UIspr.transform.localScale.y, UIspr.transform.localScale.z);
 		}
 
 		if (!rightFaced)
@@ -262,9 +229,9 @@ public class Player : MonoBehaviour
 			Vector3 theScale = transform.localScale;
 			theScale.x = -1;
 			transform.localScale = theScale;
+			UIspr.transform.localScale = new Vector3 (UIDefaultScale, UIspr.transform.localScale.y, UIspr.transform.localScale.z);
 		}
 
-		
 	}
 
 	// Grounded check
@@ -340,10 +307,9 @@ public class Player : MonoBehaviour
 
 		
 		// Jump
-		if ((grounded == true) && Input.GetKeyDown(KeyCode.Space) && (!climbingLadder))
+		if ((grounded == true) && Input.GetKey(KeyCode.Space) && (!climbingLadder))
 		{
-			print("space pressed");
-			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+			playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
 		}
 
 		//Jump xbox controls
@@ -457,5 +423,35 @@ public class Player : MonoBehaviour
 		jumpForce = baseJumpForce / 2;
 
 		slowTimer = 1f;
+	}
+
+	void CaveInStart(GameObject caveInObj){
+		caveIn = caveInObj;
+	}
+
+	void CaveInRumble(){
+		caveInDistance = Vector3.Distance (transform.position, caveIn.transform.position);
+		rumbleAmt = Mathf.Lerp (1f, 0f, (caveInDistance / 20));
+
+		if (caveInDistance > 10){
+			if (playerIndex == pone){
+				padVibration(pone, 0, rumbleAmt);
+			}
+			if (playerIndex == ptwo){
+				padVibration(ptwo, 0, rumbleAmt);
+			}
+		} else {
+			if (playerIndex == pone){
+				padVibration(pone, rumbleAmt, rumbleAmt);
+			}
+			if (playerIndex == ptwo){
+				padVibration(ptwo, rumbleAmt, rumbleAmt);
+			}
+		}
+	}
+
+	void UIenable(){
+		UIspr.enabled = true;
+
 	}
 }
