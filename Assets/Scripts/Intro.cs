@@ -131,7 +131,7 @@ public class Intro : MonoBehaviour {
 			}
 
 			//Make hickory swing his pick
-			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.825f)){
+			if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)){
 				hickory.gameObject.SendMessage("Swing");
 			}
 
