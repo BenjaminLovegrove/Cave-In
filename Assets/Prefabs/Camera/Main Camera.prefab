@@ -48,6 +48,7 @@ GameObject:
   - 114: {fileID: 11449534}
   - 114: {fileID: 11488318}
   - 114: {fileID: 11423806}
+  - 114: {fileID: 11498490}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -311,6 +312,21 @@ MonoBehaviour:
   bigRumble: 0
   outroCamAim: {fileID: 413758}
   FTW: {fileID: 2311774}
+--- !u!114 &11498490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e2fcab92629e843a80bec27405ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOneScr: {fileID: 0}
+  playerTwoScr: {fileID: 0}
+  uiRestart: {fileID: 2800000, guid: 35e54998d535afc4c824780a0be91caa, type: 3}
+  uiSkip: {fileID: 2800000, guid: 5799b0f025ded7a4fb47db2be7c7478e, type: 3}
 --- !u!124 &12449534
 Behaviour:
   m_ObjectHideFlags: 1

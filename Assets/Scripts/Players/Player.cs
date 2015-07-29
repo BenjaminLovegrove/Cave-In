@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 	// Script to handle player controls and most interactions
 
 	public bool debugState = true;
+	public bool isDead = false;
 
 	public GameObject player;
 	public bool playerOne;
