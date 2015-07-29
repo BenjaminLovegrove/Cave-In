@@ -120,7 +120,7 @@ public class Intro : MonoBehaviour {
 				Camera.main.SendMessage ("DoCollisionShake");
 			}
 			//Cave in instantiate
-			if (introTimer < startIntroTimer * 0.2f && !caveInStarted){
+			if (introTimer < startIntroTimer * 0.1f && !caveInStarted){
 				CaveIn();
 			}
 			//Sorek and Hickory canMove;
@@ -130,6 +130,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 			}
 
+			//Make hickory swing his pick
 			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.825f)){
 				hickory.gameObject.SendMessage("Swing");
 			}

@@ -9,7 +9,7 @@ public class Trigger : MonoBehaviour {
 	// Update is called once per frame
 	void OnTriggerEnter (Collider col) {
 
-		col.SendMessage (triggerString);
+		col.SendMessage (triggerString, SendMessageOptions.DontRequireReceiver);
 
 		if (camTrigger){
 			Camera.main.SendMessage (triggerString);
