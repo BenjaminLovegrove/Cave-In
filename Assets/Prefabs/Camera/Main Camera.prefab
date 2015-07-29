@@ -89,6 +89,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &195186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495186}
+  - 114: {fileID: 11495186}
+  m_Layer: 0
+  m_Name: DetectGamepads
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &411774
 Transform:
   m_ObjectHideFlags: 1
@@ -127,6 +143,7 @@ Transform:
   - {fileID: 411774}
   - {fileID: 413758}
   - {fileID: 494508}
+  - {fileID: 495186}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &449534
@@ -153,6 +170,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 449532}
   m_RootOrder: 3
+--- !u!4 &495186
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449532}
+  m_RootOrder: 4
 --- !u!20 &2049534
 Camera:
   m_ObjectHideFlags: 1
@@ -411,6 +440,18 @@ MonoBehaviour:
   bigRumble: 0
   outroCamAim: {fileID: 413758}
   FTW: {fileID: 2311774}
+--- !u!114 &11495186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c78697f1df0b641bef0d59db6afac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedControllers: 0
 --- !u!114 &11498490
 MonoBehaviour:
   m_ObjectHideFlags: 1

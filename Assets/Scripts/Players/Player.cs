@@ -220,11 +220,12 @@ public class Player : MonoBehaviour
 		
 	}
 
-
+	//call this to set vibration on a platers controller
 	public static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
 		GamePad.SetVibration ( playerIndex, big, small );
 	}
-	
+
+	//call this to stop all vibration
 	public static void  stopPadVibration (  PlayerIndex playerIndex   ){
 		GamePad.SetVibration( playerIndex, 0, 0 );
 	}
@@ -298,53 +299,115 @@ public class Player : MonoBehaviour
 		///
 		if (keyboardActive)
 		{
-			//Keyboard
-			//Right
-			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+			if (player.name == "Sorek_Jarred")
 			{
-				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
-				rightFaced = true;
-				Flip ();
-				if (grounded && !sfxRun.isPlaying){
-					sfxRun.Play();
-				}
-			} 
-			// Left
-			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			{
-				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
-				rightFaced = false;
-				Flip ();
-				if (grounded && !sfxRun.isPlaying){
-					sfxRun.Play();
-				}
-			}
-
-			// Jump
-			if ((grounded == true) && Input.GetKey(KeyCode.Space) && (!climbingLadder))
-			{
-				playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
-				sfxJump.Play();
-			}
-
-			//climb
-			if (climbingLadder)
-			{
-				playerRigid.useGravity = false;
-				playerRigid.velocity = Vector3.zero;
 				//Keyboard
-				// Ascend
-				if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.UpArrow))
+				//Right
+				if (Input.GetKey(KeyCode.D))
 				{
-					player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
-				}
-				// Descend
-				else if (Input.GetKey(KeyCode.S) ||Input.GetKey(KeyCode.DownArrow))
+					player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+					rightFaced = true;
+					Flip ();
+					if (grounded && !sfxRun.isPlaying){
+						sfxRun.Play();
+					}
+				} 
+				// Left
+				if (Input.GetKey(KeyCode.A))
 				{
-					player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+					player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
+					rightFaced = false;
+					Flip ();
+					if (grounded && !sfxRun.isPlaying){
+						sfxRun.Play();
+					}
 				}
+				
+				// Jump
+				if ((grounded == true) && Input.GetKey(KeyCode.LeftAlt) && (!climbingLadder))
+				{
+					playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+					sfxJump.Play();
+				}
+				
+				//climb
+				if (climbingLadder)
+				{
+					playerRigid.useGravity = false;
+					playerRigid.velocity = Vector3.zero;
+					//Keyboard
+					// Ascend
+					if (Input.GetKey(KeyCode.W))
+					{
+						player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+					}
+					// Descend
+					else if (Input.GetKey(KeyCode.S))
+					{
+						player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+					}
+				}
+				else playerRigid.useGravity = true;
 			}
-			else playerRigid.useGravity = true;
+
+			if (player.name == "Hickory")
+			{
+				//Keyboard
+				//Right
+				if (Input.GetKey(KeyCode.Quote))
+				{
+					print ("quote - move right");
+					player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+					rightFaced = true;
+					Flip ();
+					if (grounded && !sfxRun.isPlaying){
+						sfxRun.Play();
+					}
+				} 
+				// Left
+				if (Input.GetKey(KeyCode.L))
+				{
+					print ("L - move left");
+					player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
+					rightFaced = false;
+					Flip ();
+					if (grounded && !sfxRun.isPlaying){
+						sfxRun.Play();
+					}
+				}
+				
+				// Jump
+				if ((grounded == true) && Input.GetKey(KeyCode.RightAlt) && (!climbingLadder))
+				{
+					print ("right alt - jump");
+					
+					playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+					sfxJump.Play();
+				}
+				
+				//climb
+				if (climbingLadder)
+				{
+					playerRigid.useGravity = false;
+					playerRigid.velocity = Vector3.zero;
+					//Keyboard
+					// Ascend
+					if (Input.GetKey(KeyCode.P))
+					{
+						print ("P - acsend climb");
+						player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+					}
+					// Descend
+					else if (Input.GetKey(KeyCode.Semicolon))
+					{
+						print ("semicolon - decend climb");
+						player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+					}
+				}
+				else playerRigid.useGravity = true;
+			}
+
+
 
 		}//end of keyboard controls
 
