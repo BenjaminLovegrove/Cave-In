@@ -4,6 +4,7 @@ using System.Collections;
 public class GampadConnected : MonoBehaviour {
 
 	public static int connectedControllers;
+	public int devControllers = 0;
 	private int maxControllers = 2;
 	//public Player playerScript;
 
@@ -18,6 +19,7 @@ public class GampadConnected : MonoBehaviour {
 	//check that two controllers are plugged in
 	void CheckControllerConnections()
 	{
+		connectedControllers += devControllers;
 		if (connectedControllers < maxControllers)
 		{
 			Debug.LogError ("2 Controllers Not plugged in, Enabling Keyboard controls");
