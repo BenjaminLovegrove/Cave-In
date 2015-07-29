@@ -86,6 +86,15 @@ public class Intro : MonoBehaviour {
 	}
 
 	void Update () {
+		//Double check that these mother fuckers are active/inactive
+		if (introTimer < startIntroTimer * 0.6f) {
+			if (introStuff.activeSelf){
+				ToggleAesthetics();
+				introStuff.SetActive (false);
+				outroStuff.SetActive (true);
+			}
+		}
+
 		introTimer -= Time.deltaTime;
 		if (!gameStarted) {
 			hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
