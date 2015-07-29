@@ -43,7 +43,7 @@ public class PickaxeHickory : MonoBehaviour {
 
 	void Swing(){
 
-		if (!swinging) {
+		if (!swinging && hickoryScr.grounded) {
 			swingTime = swingLength;
 			swinging = true;
 			//play animation

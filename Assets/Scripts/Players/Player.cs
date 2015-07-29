@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
 	public bool debugState = true;
 	public bool isDead = false;
+	public Animator anim;
 
 	public GameObject player;
 	public bool playerOne;
@@ -120,9 +121,12 @@ public class Player : MonoBehaviour
 		{
 			Debug.LogWarning ("Debug state = true");
 		}
+
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	void Update(){
+		Animate ();
 		//Disable UI after 2 button press
 		if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released){
 			UIdisable --;
@@ -591,7 +595,7 @@ public class Player : MonoBehaviour
 		movementForce = baseMovForce / 2.5f;
 		jumpForce = baseJumpForce / 1.25f;
 
-		slowTimer = 0.75f;
+		slowTimer = 1f;
 	}
 
 	void CaveInStart(GameObject caveInObj){
@@ -631,5 +635,82 @@ public class Player : MonoBehaviour
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
+	}
+
+	void Animate(){
+		//Soreks animations (note the player one bool)
+		if (Intro.introTimer < 0f && playerOne) {
+			if (!grounded && !climbingLadder) {
+				anim.SetBool ("Jump", true);
+			} else {
+				anim.SetBool ("Jump", false);
+			}
+
+			if (grounded) {
+				if (state.ThumbSticks.Left.X < -0.3f || state.ThumbSticks.Left.X > 0.3f) {
+					anim.SetBool ("Run", true);
+					anim.SetBool ("Idle", false);
+					if (slowTimer > 0f) {
+						anim.SetBool ("Run", false);
+						anim.SetBool ("Walkandpour", true);
+					} else {
+						anim.SetBool ("Walkandpour", false);
+					}
+				} else {
+					anim.SetBool ("Run", false);
+					anim.SetBool ("Idle", true);
+					anim.SetBool ("Walkandpour", false);
+				}
+			} else {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+
+			if (climbingLadder) {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", true);
+				anim.SetBool ("Jump", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+		}
+
+		//Hickorys animations (note the player one bool)
+		/*if (!menuActive && !playerOne) {
+			if (!grounded && !climbingLadder) {
+				anim.SetBool ("Jump", true);
+			} else {
+				anim.SetBool ("Jump", false);
+			}
+			
+			if (grounded) {
+				if (state.ThumbSticks.Left.X < -0.3f || state.ThumbSticks.Left.X > 0.3f) {
+					anim.SetBool ("Run", true);
+					anim.SetBool ("Idle", false);
+					if (state.Buttons.B == ButtonState.Pressed) {
+						anim.SetBool ("Run", false);
+						anim.SetBool ("Walkandpour", true);
+					}
+				} else {
+					anim.SetBool ("Run", false);
+					anim.SetBool ("Idle", true);
+				}
+			} else {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+			
+			if (climbingLadder) {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", true);
+				anim.SetBool ("Jump", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+		}*/
+
+
+
+
 	}
 }
