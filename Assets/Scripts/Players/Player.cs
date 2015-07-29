@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
 	public static float triggerR = 0.0f;
 
 	public bool menuActive = false;
+	public static bool keyboardActive = false;
+
 
 	void OnLevelWasLoaded(int level) {
 		print ("Level: " + level);
@@ -242,8 +244,6 @@ public class Player : MonoBehaviour
 		{
 			Debug.Log ("Player Grounded: "+ grounded);
 		}
-		
-	
 	}
 
 	// Flip sprite depending on direction
@@ -291,150 +291,167 @@ public class Player : MonoBehaviour
 	// Controls
 	private void Controls()
 	{
-		//Keyboard
-		//Right
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+				//---------------------------------------------------------------------------------//
+
+		///
+		//Everything keyboard controls related
+		///
+		if (keyboardActive)
 		{
-			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
-			rightFaced = true;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
+			//Keyboard
+			//Right
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+			{
+				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+				rightFaced = true;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
+			} 
+			// Left
+			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+			{
+				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
+				rightFaced = false;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
 			}
-		} 
+
+			// Jump
+			if ((grounded == true) && Input.GetKey(KeyCode.Space) && (!climbingLadder))
+			{
+				playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+				sfxJump.Play();
+			}
+
+			//climb
+			if (climbingLadder)
+			{
+				playerRigid.useGravity = false;
+				playerRigid.velocity = Vector3.zero;
+				//Keyboard
+				// Ascend
+				if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.UpArrow))
+				{
+					player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+				}
+				// Descend
+				else if (Input.GetKey(KeyCode.S) ||Input.GetKey(KeyCode.DownArrow))
+				{
+					player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+				}
+			}
+			else playerRigid.useGravity = true;
+
+		}//end of keyboard controls
+
+
+				//---------------------------------------------------------------------------------//
+
+		///
+		//Xbox controls in here
+		///
+		if (!keyboardActive)
+			{
+			//Xbox support
+			// Right
+			//print (state.ThumbSticks.Left.X);
+			if (state.ThumbSticks.Left.X > 0.3f )
+			{
+				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
+				rightFaced = true;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
+			}
+			else if (state.DPad.Right == ButtonState.Pressed)
+			{
+				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+				rightFaced = true;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
+			}
 			
-		// Left
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-		{
-			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
-			rightFaced = false;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
+			// Left
+			if (state.ThumbSticks.Left.X < -0.3f)
+			{
+				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
+				rightFaced = false;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
 			}
-		}
+			else if (state.DPad.Left == ButtonState.Pressed)
+			{
+				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
+				rightFaced = false;
+				Flip ();
+				if (grounded && !sfxRun.isPlaying){
+					sfxRun.Play();
+				}
+			}
 
-
-		//Xbox support
-		// Right
-		//print (state.ThumbSticks.Left.X);
-		if (state.ThumbSticks.Left.X > 0.3f )
-		{
-			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
-			rightFaced = true;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
-			}
-		}
-		else if (state.DPad.Right == ButtonState.Pressed)
-		{
-			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
-			rightFaced = true;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
-			}
-		}
-		
-		// Left
-		if (state.ThumbSticks.Left.X < -0.3f)
-		{
-			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
-			rightFaced = false;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
-			}
-		}
-		else if (state.DPad.Left == ButtonState.Pressed)
-		{
-			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
-			rightFaced = false;
-			Flip ();
-			if (grounded && !sfxRun.isPlaying){
-				sfxRun.Play();
-			}
-		}
-
-		
-		// Jump
-		if ((grounded == true) && Input.GetKey(KeyCode.Space) && (!climbingLadder))
-		{
-			playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
-			sfxJump.Play();
-		}
-
-		//Jump xbox controls
-		if ((grounded == true) && !jumpingNow && state.Buttons.A == ButtonState.Pressed  && (!climbingLadder) ||
-		    (grounded == true) && !jumpingNow && state.DPad.Up == ButtonState.Pressed && (!climbingLadder)) 
-		{
+			
+			//Jump xbox controls
+			if ((grounded == true) && !jumpingNow && state.Buttons.A == ButtonState.Pressed  && (!climbingLadder) ||
+			    (grounded == true) && !jumpingNow && state.DPad.Up == ButtonState.Pressed && (!climbingLadder)) 
+			{
 				StartCoroutine(JumpCoolDown());
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 				sfxJump.Play();
-
-		}
-
-		if (debugState)
-		{
-			Debug.Log("Jumping "+jumpingNow);
-
-//			if (playerIndex == pone)
-//				Debug.Log("Player one jumped");
-//
-//			if (playerIndex == ptwo)
-//				Debug.Log("Player two jumped");
-		}
-	
-	
-
-
-		// Climb
-		if (climbingLadder)
-		{
-			playerRigid.useGravity = false;
-			playerRigid.velocity = Vector3.zero;
-
-			//Keyboard
-			// Ascend
-			if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.UpArrow))
-			{
-				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
 			}
-			// Descend
-			else if (Input.GetKey(KeyCode.S) ||Input.GetKey(KeyCode.DownArrow))
+			if (debugState)
 			{
-				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+				Debug.Log("Jumping "+jumpingNow);
+				
+				//			if (playerIndex == pone)
+				//				Debug.Log("Player one jumped");
+				//
+				//			if (playerIndex == ptwo)
+				//				Debug.Log("Player two jumped");
 			}
 
-
-			//xbox
-			//Ascend
-			if (state.ThumbSticks.Left.Y > 0.1f)
+			// Climb
+			if (climbingLadder)
 			{
-				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+				playerRigid.useGravity = false;
+				playerRigid.velocity = Vector3.zero;
+				//xbox
+				//Ascend
+				if (state.ThumbSticks.Left.Y > 0.1f)
+				{
+					player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+				}
+				else if (state.DPad.Up == ButtonState.Pressed)
+				{
+					player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
+				}
+				
+				
+				// Descend
+				if (state.ThumbSticks.Left.Y < 0.1f)
+				{
+					player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
+				}
+				if (state.DPad.Down == ButtonState.Pressed)
+				{
+					print ("this doesnt work and is not needed for playtest, leaving for later");
+					player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
+				}
 			}
-			else if (state.DPad.Up == ButtonState.Pressed)
-			{
-				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
-			}
+			else playerRigid.useGravity = true;
+
+		}//end of xbox controls
 
 
-			// Descend
-			if (state.ThumbSticks.Left.Y < 0.1f)
-			{
-				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (state.ThumbSticks.Left.Y) * Time.deltaTime);
-			}
-			if (state.DPad.Down == ButtonState.Pressed)
-			{
-				print ("this doesnt work and is not needed for playtest, leaving for later");
-				player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
-			}
-		}
-		
-		else playerRigid.useGravity = true;
-
-	}
+	}//end of controls void
 
 	public IEnumerator JumpCoolDown()
 	{
