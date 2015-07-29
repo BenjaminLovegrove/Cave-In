@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (canPauseGame && Player.keyboardActive == true &&(Intro.introTimer < 0))
+		if (canPauseGame &&(Intro.introTimer < 0))
 		{
 			print ("can pause");
 			if (Input.GetKeyDown (KeyCode.Escape))
