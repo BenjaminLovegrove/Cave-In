@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
 	public bool debugState = true;
 	public bool isDead = false;
+	public Animator anim;
 
 	public GameObject player;
 	public bool playerOne;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 	Rigidbody playerRigid;
 	float movementForce;
 	float jumpForce;
+	float groundedRayDist = 1.5f; //Need to set this variable different as they have different heights now.
 
 	public bool canMove = true;
 	public float baseMovForce = 10f;
@@ -106,9 +108,15 @@ public class Player : MonoBehaviour
 
 
 	void Start(){
+		//Change raycast distance for taller player
+		if (!playerOne) {
+			groundedRayDist = 2.2f;
+		}
+
 		if (!menuActive)
 		{
 			UIDefaultScale = UIspr.transform.localScale.x;
+			PauseMenu.canPauseGame = true;
 		}
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
@@ -120,9 +128,12 @@ public class Player : MonoBehaviour
 		{
 			Debug.LogWarning ("Debug state = true");
 		}
+
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	void Update(){
+		Animate ();
 		//Disable UI after 2 button press
 		if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released){
 			UIdisable --;
@@ -224,7 +235,7 @@ public class Player : MonoBehaviour
 		}
 
 		//START BUTTON
-		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released && Intro.skipNum <= 2)
+		if (!keyboardActive && !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released && Intro.skipNum <= 2)
 		{
 			Intro.skipNum ++;
 			UI.displaySkip ++;
@@ -241,9 +252,7 @@ public class Player : MonoBehaviour
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
 					Application.LoadLevel("Level_1");
-				} else if (!otherPlayer.isDead && !isDead){
-					Application.LoadLevel("MenuPlaceholder");
-				}
+				} 
 			}
 		}
 
@@ -310,7 +319,7 @@ public class Player : MonoBehaviour
 		Vector3 leftExtent = new Vector3 (this.transform.position.x - collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
 		Vector3 rightExtent = new Vector3 (this.transform.position.x + collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
 
-		if (Physics.Raycast (this.transform.position, Vector3.down, 1.5f) || Physics.Raycast (leftExtent, Vector3.down,  1.5f)|| Physics.Raycast (rightExtent, Vector3.down,  1.5f))
+		if (Physics.Raycast (this.transform.position, Vector3.down, groundedRayDist) || Physics.Raycast (leftExtent, Vector3.down,  groundedRayDist)|| Physics.Raycast (rightExtent, Vector3.down,  groundedRayDist))
 		{
 			if (!grounded){
 				sfxLand.Play();
@@ -591,7 +600,7 @@ public class Player : MonoBehaviour
 		movementForce = baseMovForce / 2.5f;
 		jumpForce = baseJumpForce / 1.25f;
 
-		slowTimer = 0.75f;
+		slowTimer = 1f;
 	}
 
 	void CaveInStart(GameObject caveInObj){
@@ -631,5 +640,80 @@ public class Player : MonoBehaviour
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
+	}
+
+	void Animate(){
+		//Soreks animations (note the player one bool)
+		if (Intro.introTimer < 0f && playerOne) {
+			if (!grounded && !climbingLadder) {
+				anim.SetBool ("Jump", true);
+			} else {
+				anim.SetBool ("Jump", false);
+			}
+
+			if (grounded) {
+				if (state.ThumbSticks.Left.X < -0.3f || state.ThumbSticks.Left.X > 0.3f) {
+					anim.SetBool ("Run", true);
+					anim.SetBool ("Idle", false);
+					if (slowTimer > 0f) {
+						anim.SetBool ("Run", false);
+						anim.SetBool ("Walkandpour", true);
+					} else {
+						anim.SetBool ("Walkandpour", false);
+					}
+				} else {
+					anim.SetBool ("Run", false);
+					anim.SetBool ("Idle", true);
+					anim.SetBool ("Walkandpour", false);
+				}
+			} else {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+
+			if (climbingLadder) {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", true);
+				anim.SetBool ("Jump", false);
+				anim.SetBool ("Walkandpour", false);
+			}
+		}
+
+		//Hickorys animations (note the player one bool)
+		if (!menuActive && !playerOne) {
+			if (!grounded && !climbingLadder) {
+				anim.SetBool ("Idle", true); //to be replaced with a jump
+			} else {
+				//anim.SetBool ("Jump", false);
+			}
+			
+			if (grounded) {
+				if (state.ThumbSticks.Left.X < -0.3f || state.ThumbSticks.Left.X > 0.3f) {
+					anim.SetBool ("Run", true);
+					anim.SetBool ("Idle", false);
+					if (state.Buttons.B == ButtonState.Pressed) {
+						anim.SetBool ("Run", false);
+						//anim.SetTrigger ("Swing"); set by pickaxe script
+					}
+				} else {
+					anim.SetBool ("Run", false);
+					anim.SetBool ("Idle", true);
+				}
+			} else {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", false);
+			}
+			
+			if (climbingLadder) {
+				anim.SetBool ("Run", false);
+				anim.SetBool ("Idle", true);
+				//anim.SetBool ("Jump", false);
+			}
+		}
+
+
+
+
 	}
 }

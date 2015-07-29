@@ -5,17 +5,19 @@ public class PauseMenu : MonoBehaviour {
 
 	public static bool canPauseGame = false;
 
-	bool paused;
+	public bool paused;
+	//public bool devPause;
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (canPauseGame && Player.keyboardActive && Intro.watchIntro == false)
+		if (canPauseGame && Player.keyboardActive == true &&(Intro.introTimer < 0))
 		{
+			print ("can pause");
 			if (Input.GetKeyDown (KeyCode.Escape))
 			{
 				PauseGame();
@@ -28,7 +30,7 @@ public class PauseMenu : MonoBehaviour {
 		if (!paused)
 		{
 			paused = true;
-			Time.timeScale = 0.5f;
+			Time.timeScale = 0f;
 		}
 		else
 		{
@@ -45,13 +47,13 @@ public class PauseMenu : MonoBehaviour {
 			{
 				paused = false;
 				Time.timeScale = 1f;
-				//Application.LoadLevel(1);
+				Application.LoadLevel(1);
 			}
 			if (GUI.Button(new Rect((Screen.width/2)+ 25,(Screen.height/2) + 60,150,30), "Return To Menu"))
 			{
 				paused = false;
 				Time.timeScale = 1f;
-				//Application.LoadLevel(0);
+				Application.LoadLevel(0);
 			}
 		}
 	}

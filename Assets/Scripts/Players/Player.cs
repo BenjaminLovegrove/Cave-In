@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
 		if (!menuActive)
 		{
 			UIDefaultScale = UIspr.transform.localScale.x;
+			PauseMenu.canPauseGame = true;
 		}
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
@@ -251,9 +252,7 @@ public class Player : MonoBehaviour
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
 					Application.LoadLevel("Level_1");
-				} else if (!otherPlayer.isDead && !isDead){
-					Application.LoadLevel("MenuPlaceholder");
-				}
+				} 
 			}
 		}
 
