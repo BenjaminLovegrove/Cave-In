@@ -750,7 +750,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 943ec176f758ba842bc4a4988829026c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .100000001
+  m_Volume: .25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -808,7 +808,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 943ec176f758ba842bc4a4988829026c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .100000001
+  m_Volume: .25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -866,7 +866,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 84da9bf06c8464f47accd4d82c6ccf4e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .850000024
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1040,7 +1040,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 84da9bf06c8464f47accd4d82c6ccf4e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .850000024
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1274,7 +1274,8 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   playerOne: 0
-  playerLight: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  playerLight: {fileID: 193482}
   gravestone: {fileID: 21265008}
   UIspr: {fileID: 21291770}
   UIdisable: 2
@@ -1305,7 +1306,8 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   playerOne: 1
-  playerLight: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  playerLight: {fileID: 193490}
   gravestone: {fileID: 21265006}
   UIspr: {fileID: 21248508}
   UIdisable: 2

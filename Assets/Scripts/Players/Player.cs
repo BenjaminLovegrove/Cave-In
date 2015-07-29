@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
 
 	public GameObject player;
 	public bool playerOne;
+	public Player otherPlayer; //this is so you can check if the other player is dead for start button restart
 	public GameObject playerLight; //to be turned off when player dies
 	public SpriteRenderer gravestone; //to be abled when player dies
 
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
 	float UIDefaultScale;
+	bool introSkipped = false;
 
 	Rigidbody playerRigid;
 	float movementForce;
@@ -187,11 +189,24 @@ public class Player : MonoBehaviour
 			}
 		}
 
-		//Skip intro with start
+		//START BUTTON
 		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
 		{
-			Intro.Skip();
-			Debug.LogWarning("Dev skip Intro");
+			if (Intro.introTimer > 0f && !introSkipped){
+				Intro.Skip();
+				introSkipped = true;
+			}
+		}
+
+		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
+		if (state.Buttons.Start == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released) {
+			if (Intro.introTimer < -2f){
+				if (otherPlayer.isDead) {
+					Application.LoadLevel("Level_1");
+				} else if (!otherPlayer.isDead && !isDead){
+					Application.LoadLevel("MenuPlaceholder");
+				}
+			}
 		}
 
 		//Stop running sound instantly when jumping or climbing

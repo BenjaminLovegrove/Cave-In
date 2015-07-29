@@ -80,7 +80,7 @@ public class Intro : MonoBehaviour {
 	}
 
 	void Update () {
-
+		introTimer -= Time.deltaTime;
 		if (!gameStarted) {
 			hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
 		}
@@ -141,7 +141,7 @@ public class Intro : MonoBehaviour {
 			}
 
 
-			introTimer -= Time.deltaTime;
+
 			lerpTimer += Time.deltaTime / 5;
 		}
 	}
@@ -176,8 +176,7 @@ public class Intro : MonoBehaviour {
 	}
 
 	public static void Skip(){
-		introTimer = startIntroTimer * 0.01f;
-		cam.SendMessage("Intro", false);
-		//print ("void skip()");
+		introTimer = startIntroTimer * 0.5f;
+		cam.SendMessage ("Intro", false);
 	}
 }
