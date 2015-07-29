@@ -183,7 +183,7 @@ public class Intro : MonoBehaviour {
 	}
 
 	public static void Skip(){
-		introTimer = startIntroTimer * 0.5f;
+		introTimer = startIntroTimer * 0.3f;
 		cam.SendMessage ("Intro", false);
 	}
 }
