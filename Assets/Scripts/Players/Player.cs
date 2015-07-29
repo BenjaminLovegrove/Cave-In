@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
 	float UIDefaultScale;
-	bool introSkipped = false;
+	public bool introSkipped = false;
 
 	Rigidbody playerRigid;
 	float movementForce;
@@ -193,8 +193,10 @@ public class Player : MonoBehaviour
 		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
 		{
 			if (Intro.introTimer > 0f && !introSkipped){
-				Intro.Skip();
-				introSkipped = true;
+				if (!otherPlayer.introSkipped){
+					Intro.Skip();
+					introSkipped = true;
+				}
 			}
 		}
 

@@ -11,7 +11,9 @@ public class UI : MonoBehaviour {
 	
 	void OnGUI() {
 		if (Intro.introTimer > 0f){
-			GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkip, ScaleMode.ScaleToFit);
+			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped){
+				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkip, ScaleMode.ScaleToFit);
+			}
 		}
 
 		if (playerOneScr.isDead || playerTwoScr.isDead){

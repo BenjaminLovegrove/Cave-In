@@ -750,7 +750,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 943ec176f758ba842bc4a4988829026c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .25
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -808,7 +808,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 943ec176f758ba842bc4a4988829026c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .25
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
