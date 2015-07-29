@@ -17,7 +17,7 @@ public class LampSorek : MonoBehaviour {
 	void Update () {
 		fireCDtimer -= Time.deltaTime;
 
-		if (!sorekScr.isDead && !sorekScr.menuActive) 
+		if (!sorekScr.isDead && !sorekScr.menuActive && Intro.introTimer < 0f) 
 		{
 			if (!Player.keyboardActive)
 			{
