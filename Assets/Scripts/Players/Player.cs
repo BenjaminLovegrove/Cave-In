@@ -161,15 +161,6 @@ public class Player : MonoBehaviour
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
 		state = GamePad.GetState ( playerIndex );
-		
-		// Set vibration according to triggers
-		if (playerIndex == pone)
-		{
-			padVibration(pone, state.Triggers.Left, state.Triggers.Right);
-		}
-		if (playerIndex == ptwo){
-			padVibration(ptwo, state.Triggers.Left, state.Triggers.Right);
-		}
 
 		//Menu input. This is here because the player scripts are required for xinput to work.
 		if (menuActive)
