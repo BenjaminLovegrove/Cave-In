@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &109780
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 409780}
+  - 65: {fileID: 6509780}
+  - 114: {fileID: 11409780}
+  m_Layer: 0
+  m_Name: EndTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &116718
 GameObject:
   m_ObjectHideFlags: 1
@@ -2026,6 +2043,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &409780
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109780}
+  m_LocalRotation: {x: 0, y: 0, z: -.705264151, w: .708944738}
+  m_LocalPosition: {x: 20.2062511, y: 90.9120483, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 456474}
+  m_RootOrder: 2
 --- !u!4 &416718
 Transform:
   m_ObjectHideFlags: 1
@@ -3384,6 +3413,7 @@ Transform:
   m_Children:
   - {fileID: 456476}
   - {fileID: 456478}
+  - {fileID: 409780}
   m_Father: {fileID: 470228}
   m_RootOrder: 2
 --- !u!4 &456476
@@ -5159,7 +5189,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170228}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 2c9d0ea675624eb429cf334be82a8293, type: 2}
 --- !u!33 &3390206
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -5360,6 +5390,18 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6509780
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.57174683, y: 22.0732269, z: 5}
+  m_Center: {x: 1.78587341, y: 10.5366287, z: 0}
 --- !u!65 &6516718
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6392,6 +6434,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11409780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08fe841c18fb4642b4cc48ccab92800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTrigger: 1
+  triggerString: Outro
 --- !u!114 &11416718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7576,7 +7631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08fe841c18fb4642b4cc48ccab92800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTrigger: 1
+  camTrigger: 0
   triggerString: UIenable
 --- !u!114 &11456478
 MonoBehaviour:
@@ -7589,7 +7644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08fe841c18fb4642b4cc48ccab92800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTrigger: 1
+  camTrigger: 0
   triggerString: UIenable
 --- !u!114 &11470228
 MonoBehaviour:

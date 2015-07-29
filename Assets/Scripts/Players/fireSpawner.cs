@@ -30,7 +30,6 @@ public class fireSpawner : MonoBehaviour {
 		if (col.gameObject.tag == "Fire"){
 			col.SendMessage ("SetLifetime", lifetimeSet);
 			touchingFire ++;
-			print ("fire hit");
 		}
 	}
 

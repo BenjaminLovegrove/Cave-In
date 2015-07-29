@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
 
 	//xInput
-	bool playerIndexSet = false;
+//	bool playerIndexSet = false;
 	public PlayerIndex playerIndex;
 	public GamePadState state;
 	public GamePadState prevState;
@@ -261,7 +261,6 @@ public class Player : MonoBehaviour
 		{
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = true;
-			print ("move right");
 			Flip ();
 		}
 			
@@ -270,7 +269,6 @@ public class Player : MonoBehaviour
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
 			rightFaced = false;
-			print ("move left");
 			Flip ();
 		}
 
@@ -317,7 +315,6 @@ public class Player : MonoBehaviour
 		    (grounded == true) && !jumpingNow && state.DPad.Up == ButtonState.Pressed && (!climbingLadder)) 
 		{
 				StartCoroutine(JumpCoolDown());
-				print ("P1_Jumped_xbox_p1");
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
 
 		}
