@@ -14,7 +14,7 @@ public class fireSpawner : MonoBehaviour {
 		fireCooldown -= Time.deltaTime;
 		lifetime -= Time.deltaTime;
 
-		lifetimeSet = (lifetime / 5f) * 20f;
+		lifetimeSet = (lifetime / 5f) * 30f;
 		if ((touchingFire <= 0) && (fireCooldown <= 0)){
 			GameObject fire = Instantiate (fireObj, transform.position, Quaternion.identity) as GameObject;
 			fire.SendMessage ("SetLifetime", lifetimeSet);

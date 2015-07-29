@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CaveLamps : MonoBehaviour {
 
+	float difficultyModifier = 0.8f;
+
 	public float destroyTimer;
 	public GameObject lightSpark;
 	public bool sparkSpawn = false;
@@ -18,7 +20,7 @@ public class CaveLamps : MonoBehaviour {
 	void Update () {
 
 		if (sorek.canMove){
-			destroyTimer -= Time.deltaTime;
+			destroyTimer -= Time.deltaTime * difficultyModifier;
 		}
 		
 		if (destroyTimer <= 2 && !sparkSpawn)

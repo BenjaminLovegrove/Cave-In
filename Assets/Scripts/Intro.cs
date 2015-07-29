@@ -170,7 +170,7 @@ public class Intro : MonoBehaviour {
 
 	void Outro(){
 		cam.SendMessage("Intro", true);
-		lerpTimer = -1f;
+		lerpTimer = -0.1f;
 		outro = true;
 		outroCamStart = transform.position;
 	}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Fire : MonoBehaviour {
 
-	public float lifetime = 20f;
+	public float lifetime = 30f;
 	Light pointLight;
 	float lightStartIntensity;
 
@@ -14,8 +14,8 @@ public class Fire : MonoBehaviour {
 
 	void Update () {
 		lifetime -= Time.deltaTime;
-		transform.localScale = Vector3.Lerp (Vector3.zero, Vector3.one, lifetime / 20);
-		pointLight.intensity = Mathf.Lerp (0, lightStartIntensity, lifetime / 20);
+		transform.localScale = Vector3.Lerp (Vector3.zero, Vector3.one, lifetime / 30);
+		pointLight.intensity = Mathf.Lerp (0, lightStartIntensity, lifetime / 30);
 
 		if (lifetime <= 0){
 			Destroy(this.gameObject);
