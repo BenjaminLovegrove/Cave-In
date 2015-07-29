@@ -644,23 +644,35 @@ public class Player : MonoBehaviour
 
 			if (grounded) {
 				if (state.ThumbSticks.Left.X < -0.3f || state.ThumbSticks.Left.X > 0.3f) {
-					anim.SetBool ("Run", true);
 					anim.SetBool ("Idle", false);
 					if (slowTimer > 0f) {
 						anim.SetBool ("Run", false);
 						anim.SetBool ("Walkandpour", true);
+						anim.SetBool ("Idlepour", false);
 					} else {
 						anim.SetBool ("Walkandpour", false);
+						anim.SetBool ("Run", true);
+						anim.SetBool ("Idlepour", false);
 					}
 				} else {
-					anim.SetBool ("Run", false);
-					anim.SetBool ("Idle", true);
-					anim.SetBool ("Walkandpour", false);
+					if (slowTimer > 0f) {
+						anim.SetBool ("Run", false);
+						anim.SetBool ("Idle", false);
+						anim.SetBool ("Jump", false);
+						anim.SetBool ("Walkandpour", false);
+						anim.SetBool ("Idlepour", true);
+					} else {
+						anim.SetBool ("Run", false);
+						anim.SetBool ("Idle", true);
+						anim.SetBool ("Walkandpour", false);
+						anim.SetBool ("Idlepour", false);
+					}
 				}
 			} else {
 				anim.SetBool ("Run", false);
 				anim.SetBool ("Idle", false);
 				anim.SetBool ("Walkandpour", false);
+				anim.SetBool ("Idlepour", false);
 			}
 
 			if (climbingLadder) {
@@ -668,6 +680,7 @@ public class Player : MonoBehaviour
 				anim.SetBool ("Idle", true);
 				anim.SetBool ("Jump", false);
 				anim.SetBool ("Walkandpour", false);
+				anim.SetBool ("Idlepour", false);
 			}
 		}
 
