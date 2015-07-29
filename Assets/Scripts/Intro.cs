@@ -17,6 +17,11 @@ public class Intro : MonoBehaviour {
 	public GameObject caveInObj;
 	public Transform caveInSpawnPos;
 	public AudioClip CaveInSFX;
+	static bool skipped = false;
+
+	//Intro and outro aesthetics (to be switched after intro)
+	public GameObject introStuff;
+	public GameObject outroStuff;
 
 	public float smallRumble, bigRumble;
 
@@ -30,7 +35,7 @@ public class Intro : MonoBehaviour {
 	public Renderer FTW;
 	float FTWalpha = 1f;
 
-	List<GameObject> toggleObjs = new List<GameObject>();
+	//List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
 
@@ -162,17 +167,21 @@ public class Intro : MonoBehaviour {
 	}
 
 	void ToggleMe(GameObject obj){
-		toggleObjs.Add (obj);
+		//toggleObjs.Add (obj);
 	}
 
 	void ToggleAesthetics(){
-		foreach (GameObject obj in toggleObjs) {
+		//This list was not working in builds
+		/*foreach (GameObject obj in toggleObjs) {
 			if (obj.activeSelf){
 				obj.SetActive (false);
 			} else {
 				obj.SetActive (true);
 			}
-		}
+		}*/
+
+		introStuff.SetActive (false);
+		outroStuff.SetActive (true);
 	}
 
 	void Outro(){
@@ -183,7 +192,10 @@ public class Intro : MonoBehaviour {
 	}
 
 	public static void Skip(){
-		introTimer = startIntroTimer * 0.3f;
-		cam.SendMessage ("Intro", false);
+		if (!skipped) {
+			introTimer = startIntroTimer * 0.3f;
+			cam.SendMessage ("Intro", false);
+			Intro.skipped = true;
+		}
 	}
 }
