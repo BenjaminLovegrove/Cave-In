@@ -30,6 +30,7 @@ GameObject:
   - 65: {fileID: 6505626}
   - 114: {fileID: 11405626}
   - 54: {fileID: 5405626}
+  - 65: {fileID: 6592774}
   m_Layer: 0
   m_Name: spr_Rock01
   m_TagString: Untagged
@@ -44,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.71999979, y: 5.25, z: 0}
+  m_LocalPosition: {x: 7.75845194, y: 5.28855896, z: 0}
   m_LocalScale: {x: 1.73142099, y: 1.73142147, z: 1.73142147}
   m_Children:
   - {fileID: 405626}
@@ -113,6 +114,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.99805832, y: 5.1231966, z: .400000006}
   m_Center: {x: -.322902918, y: -1.86291921, z: 0}
+--- !u!65 &6592774
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.46000004, y: 8.10000038, z: .200000003}
+  m_Center: {x: 9.53674316e-07, y: 1.69000006, z: 0}
 --- !u!114 &11405624
 MonoBehaviour:
   m_ObjectHideFlags: 1
