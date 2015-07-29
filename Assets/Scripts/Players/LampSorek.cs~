@@ -7,7 +7,7 @@ public class LampSorek : MonoBehaviour {
 	Player sorekScr;
 	public GameObject fireSpread;
 	public AudioClip fireSFX;
-	public float fireCD = 1f;
+	public float fireCD = 0.5f;
 	float fireCDtimer;
 
 	void Start (){
@@ -17,19 +17,26 @@ public class LampSorek : MonoBehaviour {
 	void Update () {
 		fireCDtimer -= Time.deltaTime;
 
-		if (Input.GetKeyDown(KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder){
-			fireCDtimer = fireCD;
-			Instantiate (fireSpread, transform.position, Quaternion.identity);
-			AudioSource.PlayClipAtPoint (fireSFX, transform.position);
-			this.SendMessage("Slow");
-		}
-
-		if (sorekScr.prevState.Buttons.B == ButtonState.Released && sorekScr.state.Buttons.B == ButtonState.Pressed && fireCDtimer <= 0 && !sorekScr.climbingLadder){
-			print ("Fire_Xbox_P1");
-			fireCDtimer = fireCD;
-			Instantiate (fireSpread, transform.position, Quaternion.identity);
-			AudioSource.PlayClipAtPoint (fireSFX, transform.position);
-			this.SendMessage("Slow");
+		if (!sorekScr.isDead) 
+		{
+			if (!Player.keyboardActive)
+			{
+				if (sorekScr.state.Buttons.B == ButtonState.Pressed && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+					fireCDtimer = fireCD;
+					Instantiate (fireSpread, transform.position, Quaternion.identity);
+					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
+					this.SendMessage ("Slow");
+				}
+			}
+			else{
+				if (Input.GetKey (KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+					fireCDtimer = fireCD;
+					Instantiate (fireSpread, transform.position, Quaternion.identity);
+					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
+					this.SendMessage ("Slow");
+				}
+			}
+		
 		}
 
 	}

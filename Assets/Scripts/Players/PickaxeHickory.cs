@@ -18,20 +18,27 @@ public class PickaxeHickory : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!hickoryScr.isDead) {
-			if (hickoryScr.prevState.Buttons.B == ButtonState.Released && hickoryScr.state.Buttons.B == ButtonState.Pressed && swinging == false) {
-				Swing ();
+		if (!hickoryScr.isDead) 
+		{
+			if (!Player.keyboardActive)
+			{
+				if (hickoryScr.prevState.Buttons.B == ButtonState.Released && hickoryScr.state.Buttons.B == ButtonState.Pressed && swinging == false) {
+					Swing ();
+				}
 			}
-			if (Input.GetKeyDown (KeyCode.P) && swinging == false) {
+			else
+			{
+				if (Input.GetKeyDown (KeyCode.K) && swinging == false) {
 				Swing ();
 			}
 
-			if (swinging) {
-				swingTime -= Time.deltaTime;
+				if (swinging) {
+					swingTime -= Time.deltaTime;
 
-				if (swingTime <= 0f) {
-					swinging = false;
-					this.SendMessage ("CanMove", true);
+					if (swingTime <= 0f) {
+						swinging = false;
+						this.SendMessage ("CanMove", true);
+					}
 				}
 			}
 		}
