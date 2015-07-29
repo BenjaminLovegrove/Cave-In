@@ -9,12 +9,15 @@ public class Trigger : MonoBehaviour {
 	// Update is called once per frame
 	void OnTriggerEnter (Collider col) {
 
-		col.SendMessage (triggerString, SendMessageOptions.DontRequireReceiver);
+		if (col.tag == "Player") {
+			col.SendMessage (triggerString, SendMessageOptions.DontRequireReceiver);
+			Destroy (this.gameObject);
+		}
 
 		if (camTrigger){
 			Camera.main.SendMessage (triggerString);
 		}
 
-		Destroy (this.gameObject);
+
 	}
 }
