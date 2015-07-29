@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
 		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released && Intro.skipNum <= 2)
 		{
 			Intro.skipNum ++;
-			UI.displaySkip = true;
+			UI.displaySkip ++;
 			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
 				if (!otherPlayer.introSkipped){
 					Intro.Skip();
@@ -620,7 +620,10 @@ public class Player : MonoBehaviour
 	}
 
 	void UIenable(){
-		UIspr.enabled = true;
+		if (!keyboardActive)
+		{
+			UIspr.enabled = true;
+		}
 	}
 
 	void Crushed(){

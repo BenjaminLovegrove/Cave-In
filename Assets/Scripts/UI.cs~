@@ -8,17 +8,18 @@ public class UI : MonoBehaviour {
 
 	public Texture uiRestart;
 	public Texture uiSkipTwice, uiSkip;
-	public static bool displaySkip = false; //display the second skip ui
+	public static int displaySkip = 0; //display the second skip ui
 
 	void OnGUI() {
-		if (Intro.introTimer > 0f){
-			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && !displaySkip){
+		if (Intro.introTimer > 0f  ){
+			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 0){
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkipTwice, ScaleMode.ScaleToFit);
 			}
-			else if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip) 
+			else if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 1) 
 			{
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkip, ScaleMode.ScaleToFit);
 			}
+		
 		}
 
 		if (playerOneScr.isDead || playerTwoScr.isDead){

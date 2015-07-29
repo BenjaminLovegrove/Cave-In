@@ -89,7 +89,7 @@ public class Intro : MonoBehaviour {
 		/*SKIP*/
 		 if (Input.GetKeyDown(KeyCode.Escape) && skipNum <= 2){
 			skipNum ++;
-			UI.displaySkip = true;
+			UI.displaySkip ++;
 			if (skipNum >= 2)
 			{
 				Debug.LogWarning("Dev skip Intro");
