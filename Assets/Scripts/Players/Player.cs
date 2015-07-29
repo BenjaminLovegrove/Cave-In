@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public GameObject player;
 	public bool playerOne;
 	public GameObject playerLight; //to be turned off when player dies
+	public SpriteRenderer gravestone; //to be abled when player dies
 
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
@@ -493,5 +494,6 @@ public class Player : MonoBehaviour
 		isDead = true;
 		canMove = false;
 		playerLight.SetActive (false);
+		gravestone.enabled = true;
 	}
 }
