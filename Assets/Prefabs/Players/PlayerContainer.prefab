@@ -1274,11 +1274,12 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   playerOne: 0
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11493486}
   playerLight: {fileID: 193482}
   gravestone: {fileID: 21265008}
   UIspr: {fileID: 21291770}
   UIdisable: 2
+  introSkipped: 0
   canMove: 1
   baseMovForce: 10
   baseJumpForce: 400
@@ -1306,11 +1307,12 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   playerOne: 1
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11493484}
   playerLight: {fileID: 193490}
   gravestone: {fileID: 21265006}
   UIspr: {fileID: 21248508}
   UIdisable: 2
+  introSkipped: 0
   canMove: 1
   baseMovForce: 10
   baseJumpForce: 400
