@@ -12,6 +12,8 @@ public class CaveInKillBox : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rumbleSFX = GetComponent<AudioSource> ();
+
+		//This is to pass this gameobject to both players for distance checks
 		players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject playerTarg in players){
 			playerTarg.SendMessage("CaveInStart", this.gameObject, SendMessageOptions.DontRequireReceiver);
@@ -47,7 +49,7 @@ public class CaveInKillBox : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Player")
 		{
-			Debug.Log("Player was crushed by rocks");
+			col.SendMessage("Crushed");
 		}
 	}
 

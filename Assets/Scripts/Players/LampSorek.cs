@@ -17,18 +17,20 @@ public class LampSorek : MonoBehaviour {
 	void Update () {
 		fireCDtimer -= Time.deltaTime;
 
-		if (Input.GetKey(KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder){
-			fireCDtimer = fireCD;
-			Instantiate (fireSpread, transform.position, Quaternion.identity);
-			AudioSource.PlayClipAtPoint (fireSFX, transform.position);
-			this.SendMessage("Slow");
-		}
+		if (!sorekScr.isDead) {
+			if (Input.GetKey (KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+				fireCDtimer = fireCD;
+				Instantiate (fireSpread, transform.position, Quaternion.identity);
+				AudioSource.PlayClipAtPoint (fireSFX, transform.position);
+				this.SendMessage ("Slow");
+			}
 
-		if (sorekScr.state.Buttons.B == ButtonState.Pressed && fireCDtimer <= 0 && !sorekScr.climbingLadder){
-			fireCDtimer = fireCD;
-			Instantiate (fireSpread, transform.position, Quaternion.identity);
-			AudioSource.PlayClipAtPoint (fireSFX, transform.position);
-			this.SendMessage("Slow");
+			if (sorekScr.state.Buttons.B == ButtonState.Pressed && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+				fireCDtimer = fireCD;
+				Instantiate (fireSpread, transform.position, Quaternion.identity);
+				AudioSource.PlayClipAtPoint (fireSFX, transform.position);
+				this.SendMessage ("Slow");
+			}
 		}
 
 	}

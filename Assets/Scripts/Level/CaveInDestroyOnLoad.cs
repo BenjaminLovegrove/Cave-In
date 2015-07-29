@@ -11,7 +11,7 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionEnter (Collision col) {
+		col.gameObject.SendMessage ("Crushed", SendMessageOptions.DontRequireReceiver);
 	}
 }

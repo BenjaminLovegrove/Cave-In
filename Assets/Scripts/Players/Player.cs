@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
 	public GameObject player;
 	public bool playerOne;
+	public GameObject playerLight; //to be turned off when player dies
 
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
@@ -214,7 +215,9 @@ public class Player : MonoBehaviour
 		// Function calls
 		Grounded ();
 		if (canMove && !menuActive) {
-			Controls ();
+			if (!isDead){
+				Controls ();
+			}
 		}
 
 		if (debugState)
@@ -484,6 +487,11 @@ public class Player : MonoBehaviour
 
 	void UIenable(){
 		UIspr.enabled = true;
+	}
 
+	void Crushed(){
+		isDead = true;
+		canMove = false;
+		playerLight.SetActive (false);
 	}
 }

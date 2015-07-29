@@ -1213,8 +1213,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 0
+  isDead: 0
   player: {fileID: 0}
   playerOne: 0
+  playerLight: {fileID: 0}
   UIspr: {fileID: 21291770}
   UIdisable: 2
   canMove: 1
@@ -1241,8 +1243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 0
+  isDead: 0
   player: {fileID: 0}
   playerOne: 1
+  playerLight: {fileID: 0}
   UIspr: {fileID: 21248508}
   UIdisable: 2
   canMove: 1
