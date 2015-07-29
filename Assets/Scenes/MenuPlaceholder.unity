@@ -1747,6 +1747,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2003949585}
   - 114: {fileID: 2003949586}
+  - 114: {fileID: 2003949587}
   m_Layer: 0
   m_Name: DetectControllers
   m_TagString: Untagged
@@ -1777,6 +1778,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c78697f1df0b641bef0d59db6afac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2003949587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003949584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdaa982b495bb6e43931136886c70ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyTextController: {fileID: 24040028}
+  readyTextKeyboard: {fileID: 1542177373}
 --- !u!1 &2037100743
 GameObject:
   m_ObjectHideFlags: 0
