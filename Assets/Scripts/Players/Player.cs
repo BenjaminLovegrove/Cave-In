@@ -362,7 +362,8 @@ public class Player : MonoBehaviour
 				// Jump
 				if ((grounded == true) && Input.GetKey(KeyCode.LeftShift) && (!climbingLadder))
 				{
-					playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+					print ("P1_Jumped_LeftShift");
+					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
 					sfxJump.Play();
 				}
 				
@@ -415,9 +416,8 @@ public class Player : MonoBehaviour
 				// Jump
 				if ((grounded == true) && Input.GetKey(KeyCode.RightShift) && (!climbingLadder))
 				{
-					print ("right alt - jump");
-					
-					playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+					print ("P2_Jumped_RightShift");
+					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
 					sfxJump.Play();
 				}
 				
