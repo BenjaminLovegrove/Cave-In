@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Intro : MonoBehaviour {
 
 	public static bool watchIntro = true;
+	public static int skipNum = 0; 
 	public Player sorek;
 	public Player hickory;
 	public static Camera cam;
@@ -86,9 +87,14 @@ public class Intro : MonoBehaviour {
 		}
 
 		/*SKIP*/
-		 if (Input.GetKeyDown(KeyCode.Escape)){
-			Debug.LogWarning("Dev skip Intro");
-			Skip ();
+		 if (Input.GetKeyDown(KeyCode.Escape) && skipNum <= 2){
+			skipNum ++;
+			UI.displaySkip = true;
+			if (skipNum >= 2)
+			{
+				Debug.LogWarning("Dev skip Intro");
+				Skip ();
+			}
 		 }
 
 

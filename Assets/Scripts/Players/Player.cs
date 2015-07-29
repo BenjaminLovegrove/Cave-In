@@ -192,9 +192,11 @@ public class Player : MonoBehaviour
 		}
 
 		//START BUTTON
-		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
+		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released && Intro.skipNum <= 2)
 		{
-			if (Intro.introTimer > 0f && !introSkipped){
+			Intro.skipNum ++;
+			UI.displaySkip = true;
+			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
 				if (!otherPlayer.introSkipped){
 					Intro.Skip();
 					introSkipped = true;
