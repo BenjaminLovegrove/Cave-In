@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
 	float caveInDistance;
 	float rumbleAmt;
 
+	//SFX
+	public AudioSource sfxRun;
+	public AudioSource sfxJump;
+	public AudioSource sfxLand;
 
 	//xInput
 //	bool playerIndexSet = false;
@@ -45,7 +49,7 @@ public class Player : MonoBehaviour
 
 	public static PlayerIndex pone = PlayerIndex.One;
 	public static PlayerIndex ptwo = PlayerIndex.Two;
-	 
+
 	// Static variables for
 	public 	static float h1 = 0.0f;
 	public static float v1 = 0.0f;
@@ -76,7 +80,6 @@ public class Player : MonoBehaviour
 	public static float triggerR = 0.0f;
 
 	public bool menuActive = false;
-
 
 	void OnLevelWasLoaded(int level) {
 		print ("Level: " + level);
@@ -118,10 +121,12 @@ public class Player : MonoBehaviour
 			UIspr.enabled = false;
 		}
 
+		//Play cave in audio if cave in has started
 		if (caveIn != null){
 			CaveInRumble();
 		}
 
+		//Reset soreks movement to normal speed after lighting fire
 		if (movementForce < baseMovForce) {
 			slowTimer -= Time.deltaTime;
 
@@ -131,9 +136,9 @@ public class Player : MonoBehaviour
 			}
 		}
 
+		//Get last updates input states, then refresh to new
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
-
 		state = GamePad.GetState ( playerIndex );
 		
 		// Set vibration according to triggers
@@ -145,8 +150,7 @@ public class Player : MonoBehaviour
 			padVibration(ptwo, state.Triggers.Left, state.Triggers.Right);
 		}
 
-
-
+		//Menu input. This is here because the player scripts are required for xinput to work.
 		if (menuActive)
 		{
 			if (state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
@@ -180,11 +184,18 @@ public class Player : MonoBehaviour
 			}
 		}
 
+		//Skip intro with start
 		if ( !menuActive && Intro.watchIntro == true && state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
 		{
 			Intro.Skip();
 			Debug.LogWarning("Dev skip Intro");
 		}
+
+		//Stop running sound instantly when jumping or climbing
+		if (!grounded && sfxRun.isPlaying) {
+			sfxRun.Stop ();
+		}
+		
 	}
 
 
@@ -242,6 +253,9 @@ public class Player : MonoBehaviour
 
 		if (Physics.Raycast (this.transform.position, Vector3.down, 1.5f) || Physics.Raycast (leftExtent, Vector3.down,  1.5f)|| Physics.Raycast (rightExtent, Vector3.down,  1.5f))
 		{
+			if (!grounded){
+				sfxLand.Play();
+			}
 			grounded = true;
 		} 
 		else 
@@ -262,7 +276,10 @@ public class Player : MonoBehaviour
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = true;
 			Flip ();
-		}
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
+		} 
 			
 		// Left
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -270,6 +287,9 @@ public class Player : MonoBehaviour
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
 			rightFaced = false;
 			Flip ();
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
 		}
 
 
@@ -281,12 +301,18 @@ public class Player : MonoBehaviour
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = true;
 			Flip ();
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
 		}
 		else if (state.DPad.Right == ButtonState.Pressed)
 		{
 			player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = true;
 			Flip ();
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
 		}
 		
 		// Left
@@ -295,12 +321,18 @@ public class Player : MonoBehaviour
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (state.ThumbSticks.Left.X) * Time.deltaTime);
 			rightFaced = false;
 			Flip ();
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
 		}
 		else if (state.DPad.Left == ButtonState.Pressed)
 		{
 			player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
 			rightFaced = false;
 			Flip ();
+			if (grounded && !sfxRun.isPlaying){
+				sfxRun.Play();
+			}
 		}
 
 		
@@ -308,6 +340,7 @@ public class Player : MonoBehaviour
 		if ((grounded == true) && Input.GetKey(KeyCode.Space) && (!climbingLadder))
 		{
 			playerRigid.AddForce(Vector3.up * 100, ForceMode.Impulse);
+			sfxJump.Play();
 		}
 
 		//Jump xbox controls
@@ -316,6 +349,7 @@ public class Player : MonoBehaviour
 		{
 				StartCoroutine(JumpCoolDown());
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+				sfxJump.Play();
 
 		}
 
@@ -417,9 +451,9 @@ public class Player : MonoBehaviour
 	//Generally used for sorek when using his lamp
 	void Slow(){
 		movementForce = baseMovForce / 2.5f;
-		jumpForce = baseJumpForce / 2;
+		jumpForce = baseJumpForce / 1.25f;
 
-		slowTimer = 1f;
+		slowTimer = 0.75f;
 	}
 
 	void CaveInStart(GameObject caveInObj){
