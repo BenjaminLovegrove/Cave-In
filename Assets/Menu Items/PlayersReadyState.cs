@@ -14,12 +14,12 @@ public class PlayersReadyState : MonoBehaviour {
 
 		if (!p1_Ready)
 		{
-			print ("P1 ready");
+			//print ("P1 ready");
 			p1_Ready = true;
 		}
 		else
 		{
-			print ("P1 NOT ready");
+			//print ("P1 NOT ready");
 			p1_Ready = false;
 		}
 	}
@@ -28,12 +28,12 @@ public class PlayersReadyState : MonoBehaviour {
 
 		if (!p2_Ready)
 		{
-			print ("P2 ready");
+			//print ("P2 ready");
 			p2_Ready = true;
 		}
 		else
 		{
-			print ("P2 NOT ready");
+			//print ("P2 NOT ready");
 			p2_Ready = false;
 		}
 	}

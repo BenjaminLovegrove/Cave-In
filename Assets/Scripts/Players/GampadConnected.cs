@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GampadConnected : MonoBehaviour {
 
-	public int connectedControllers;
+	public static int connectedControllers;
 	private int maxControllers = 2;
 	//public Player playerScript;
 

@@ -106,7 +106,10 @@ public class Player : MonoBehaviour
 
 
 	void Start(){
-		UIDefaultScale = UIspr.transform.localScale.x;
+		if (!menuActive)
+		{
+			UIDefaultScale = UIspr.transform.localScale.x;
+		}
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
 		movementForce = baseMovForce;
@@ -160,7 +163,7 @@ public class Player : MonoBehaviour
 		//Menu input. This is here because the player scripts are required for xinput to work.
 		if (menuActive)
 		{
-			if (state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released)
+			if (state.Buttons.Start  == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released  && !keyboardActive)
 			{
 				print ("start in menu");
 				if (playerIndex == pone)
@@ -176,6 +179,35 @@ public class Player : MonoBehaviour
 					}
 				}
 
+				if (playerIndex == ptwo){
+					//Player 2 toggle
+					print ("P2, start in menu");
+					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+					}
+					else
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+					}
+				}
+			}
+			if (Input.GetKeyDown (KeyCode.Return) && keyboardActive)
+			{
+				print ("start in menu");
+				if (playerIndex == pone)
+				{
+					print ("P1, start in menu");
+					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+					}
+					else
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+					}
+				}
+				
 				if (playerIndex == ptwo){
 					//Player 2 toggle
 					print ("P2, start in menu");
@@ -216,7 +248,7 @@ public class Player : MonoBehaviour
 		}
 
 		//Stop running sound instantly when jumping or climbing
-		if (!grounded && sfxRun.isPlaying) {
+		if (!menuActive && !grounded && sfxRun.isPlaying) {
 			sfxRun.Stop ();
 		}
 		
@@ -234,18 +266,20 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-
-		// Function calls
-		Grounded ();
-		if (canMove && !menuActive) {
-			if (!isDead){
-				Controls ();
-			}
-		}
-
-		if (debugState)
+		if (!menuActive)
 		{
-			Debug.Log ("Player Grounded: "+ grounded);
+			// Function calls
+			Grounded ();
+			if (canMove) {
+				if (!isDead){
+					Controls ();
+				}
+			}
+
+			if (debugState)
+			{
+				Debug.Log ("Player Grounded: "+ grounded);
+			}
 		}
 	}
 

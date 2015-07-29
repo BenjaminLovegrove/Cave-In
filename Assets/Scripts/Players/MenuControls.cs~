@@ -1,0 +1,28 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class MenuControls : MonoBehaviour {
+	 
+	private int controllers;
+	public Event eventInput;
+
+
+	// Use this for initialization
+	void Start () {
+		controllers = GampadConnected.connectedControllers;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if (controllers <= 2)
+		{
+			//eventInput.SetActive = false;
+		}
+		else
+		{
+			//eventInput.SetActive = true;
+		}
+
+	}
+}
