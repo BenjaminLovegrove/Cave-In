@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
 		}
 
 		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
-		if (state.Buttons.Start == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released) {
+		if (state.Buttons.Start == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return)) {
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
 					Application.LoadLevel("Level_1");
