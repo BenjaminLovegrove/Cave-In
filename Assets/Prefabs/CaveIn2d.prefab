@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.48000002, y: 6.01999998, z: 0}
+  m_LocalPosition: {x: 8.29734135, y: 6.1456604, z: 0}
   m_LocalScale: {x: 1.73142099, y: 1.73142147, z: 1.73142147}
   m_Children:
   - {fileID: 405626}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d33fb99a0e55ad4b8f5cd2ac08bbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsReqd: 25
+  hitsReqd: 28
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 105624}
 --- !u!114 &11455488
