@@ -1787,6 +1787,7 @@ MonoBehaviour:
   lightSpark: {fileID: 0}
   sparkSpawn: 0
   sorek: {fileID: 0}
+  lampExplodeVis: {fileID: 0}
 --- !u!114 &11459672
 MonoBehaviour:
   m_ObjectHideFlags: 1

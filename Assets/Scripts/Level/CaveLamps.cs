@@ -9,11 +9,16 @@ public class CaveLamps : MonoBehaviour {
 	public GameObject lightSpark;
 	public bool sparkSpawn = false;
 	public Player sorek;
+	AudioSource lampExplode;
+	Light lightSource;
+	public GameObject lampExplodeVis;
 
 	// Use this for initialization
 	void Start () {
 		Playtest_LightManager.numLightsActive ++;
 		sorek = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		lightSource = GetComponentInChildren<Light> ();
+		lampExplode = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +35,12 @@ public class CaveLamps : MonoBehaviour {
 		}
 
 		if (destroyTimer < 0){
-			Destroy (this.gameObject);
+			lightSource.enabled = false;
+			if (!lampExplode.isPlaying){
+				Instantiate (lampExplodeVis, transform.position, Quaternion.identity);
+				lampExplode.Play ();
+				Destroy (this.gameObject, 1.5f);
+			}
 		}
 	
 	
