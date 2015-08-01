@@ -7,6 +7,8 @@ public class XboxControlManager : MonoBehaviour {
 
 	public static XboxControlManager xInput;
 
+	#region Debug Types
+	//This should just be controller debug, should be a script debug somewhere
 	public enum Debug_Types 
 	{
 		MSTRDBUG,
@@ -34,18 +36,28 @@ public class XboxControlManager : MonoBehaviour {
 	//Triggers
 	//Buttons
 	//maybe just duplicate the above debugs
+	#endregion
 
-	//Detect Controllers connected and state
+	#region Detect Controllers Connected and State
 	public  PlayerIndex playerIndex;
 	public  GamePadState state;
 	public  GamePadState prevState;
+
+	public  int connectedControllers;
+	public  int devControllers = 0; //use this if you only have one controller to use, type 1
+	public  int maxControllers = 2;
+	public  bool checkControllers = true;
+	public float checkRateInSeconds = 3.0f;
 	
 	public  PlayerIndex pone = PlayerIndex.One;
 	public  PlayerIndex ptwo = PlayerIndex.Two;
 	public  PlayerIndex pthree = PlayerIndex.Three;
 	public  PlayerIndex pfour = PlayerIndex.Four;
+	#endregion
+	
 
-	//xbox controller input
+
+	#region xbox Controller Inputs
 	private  float ThumbStickL_X = 0.0f;
 	private  float ThumbStickL_Y = 0.0f;
 	private  float ThumbStickR_X = 0.0f;
@@ -101,6 +113,13 @@ public class XboxControlManager : MonoBehaviour {
 	private  float triggerL = 0.0f;
 	private  float triggerR = 0.0f;
 
+	//Pad Vibration
+	public float bigRumble;
+	public float inspectorBRumble;
+	public float smallRumble;
+	public float inspectorSRumble;
+	#endregion
+
 		//---------------------------------------------------------------------------------//
 
 	void Awake (){
@@ -109,8 +128,34 @@ public class XboxControlManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		connectedControllers = Input.GetJoystickNames().Length;
+		connectedControllers = devControllers + connectedControllers;
+		if (checkControllers) {InvokeRepeating("CheckControllerConnections", 0, checkRateInSeconds);} //run the check repeatedly every xseconds
 	}
+
+	#region check that enough controllers are plugged in
+	void CheckControllerConnections()
+	{
+
+		if (connectedControllers < maxControllers)
+		{
+			Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");
+			//Player.keyboardActive = true;
+		}
+
+		if (devControllers > 0)
+		{
+			Debug.LogWarning ("Using Developer Mode, "+devControllers +" Controller/s Added. Total Controllers = " + (connectedControllers+devControllers));
+
+		}
+		
+		if (connectedControllers == maxControllers && devControllers == 0)
+		{
+			Debug.Log ("Detected "+ connectedControllers +" Controller/s");
+			//Player.keyboardActive = false;
+		}
+	}
+	#endregion
 
 
 	void LateUpdate () {
@@ -119,6 +164,9 @@ public class XboxControlManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		#region Function Calls
+		
+		#endregion
 
 	}
 
@@ -145,10 +193,8 @@ public class XboxControlManager : MonoBehaviour {
 		}
 		#endregion
 
-
-		#region Function Calls
-
-		#endregion
+		padVibration(0,triggerL, triggerR);
+	
 
 
 		#region Detect controllers connected
@@ -156,12 +202,14 @@ public class XboxControlManager : MonoBehaviour {
 		#endregion
 
 
+
+
+		#region Xbox controller inputs
 		//Get last updates input states, then refresh to new
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
 		//state = GamePad.GetState ( playerIndex );
 
-		#region Xbox controller inputs
 		ThumbStickL_X = state.ThumbSticks.Left.X;
 		ThumbStickL_Y = state.ThumbSticks.Left.Y;
 		ThumbStickR_X = state.ThumbSticks.Right.X;
@@ -364,11 +412,14 @@ public class XboxControlManager : MonoBehaviour {
 	}
 	#endregion
 
-//	static void  padVibration (  PlayerIndex playerIndex ,   float big ,   float small   ){
-//		GamePad.SetVibration ( playerIndex, big, small );
-//	}
-//	
-//	static void  stopPadVibration (  PlayerIndex playerIndex   ){
-//		GamePad.SetVibration( playerIndex, 0, 0 );
-//	}
+	void  padVibration (  PlayerIndex playerIndex , float bigRumble, float smallRumble   ){
+		GamePad.SetVibration ( playerIndex, bigRumble, smallRumble );
+		inspectorBRumble = bigRumble;
+		inspectorSRumble = smallRumble;
+	
+	}
+	
+	void  stopPadVibration (  PlayerIndex playerIndex   ){
+		GamePad.SetVibration( playerIndex, 0, 0 );
+	}
 }
