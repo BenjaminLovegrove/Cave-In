@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour {
 	void Update () {
 		if (canPauseGame &&(Intro.introTimer < 0))
 		{
-			print ("can pause");
+			//print ("can pause");
 			if (Input.GetKeyDown (KeyCode.Escape))
 			{
 				PauseGame();

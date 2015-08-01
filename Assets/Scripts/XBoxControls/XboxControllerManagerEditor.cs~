@@ -2,12 +2,12 @@
 using UnityEngine;
 using System.Collections;
 
-[CustomEditor(typeof(XboxControlManager))]
+[CustomEditor(typeof(Controller))]
 public class XboxControllerManagerEditor : Editor {
 
 	public override void OnInspectorGUI () {
 
-		XboxControlManager selected =  (XboxControlManager) target;
+		Controller selected =  (Controller) target;
 
 		#region Rumble Inspector Indication
 		float bigRumble = selected.inspectorBRumble;

@@ -2,10 +2,10 @@
 using System.Collections;
 using XInputDotNetPure; // Required in C#
 
-//Custom xInput plugin by Lulz
-public class XboxControlManager : MonoBehaviour {
+//Custom xInput by Lulz
+public class Controller : MonoBehaviour {
 
-	public static XboxControlManager xInput;
+	public static Controller xInput;
 
 	#region Debug Types
 	//This should just be controller debug, should be a script debug somewhere
@@ -40,6 +40,7 @@ public class XboxControlManager : MonoBehaviour {
 	#endregion
 
 	#region Detect Controllers Connected and State
+ //Use this only in the player scripts themselves to differentiate player controllers
 	public  PlayerIndex playerIndex;
 	public  GamePadState state;
 	public  GamePadState prevState;
@@ -60,60 +61,60 @@ public class XboxControlManager : MonoBehaviour {
 
 
 	#region xbox Controller Inputs
-	private  float ThumbStickL_X = 0.0f;
-	private  float ThumbStickL_Y = 0.0f;
-	private  float ThumbStickR_X = 0.0f;
-	private  float ThumbStickR_Y = 0.0f;
+	public  float ThumbStickL_X = 0.0f;
+	public  float ThumbStickL_Y = 0.0f;
+	public  float ThumbStickR_X = 0.0f;
+	public  float ThumbStickR_Y = 0.0f;
 
-	private  bool  OnButton_L_Stick = false;
-	private  bool  OnButton_R_Stick = false;
-	private  bool  OnButtonUp_L_Stick = false;
-	private  bool  OnButtonUp_R_Stick = false;
-	private  bool  OnButtonDown_L_Stick = false;
-	private  bool  OnButtonDown_R_Stick = false;
+	public  bool  OnButton_L_Stick = false;
+	public  bool  OnButton_R_Stick = false;
+	public  bool  OnButtonUp_L_Stick = false;
+	public  bool  OnButtonUp_R_Stick = false;
+	public  bool  OnButtonDown_L_Stick = false;
+	public  bool  OnButtonDown_R_Stick = false;
 
-	private  bool  OnButtonA = false;
-	private  bool  OnButtonB = false;
-	private  bool  OnButtonX = false;
-	private  bool  OnButtonY = false;
-	private  bool  OnButtonUpA = false;
-	private  bool  OnButtonUpB = false;
-	private  bool  OnButtonUpX = false;
-	private  bool  OnButtonUpY = false;
-	private  bool  OnButtonDownA = false;
-	private  bool  OnButtonDownB = false;
-	private  bool  OnButtonDownX = false;
-	private  bool  OnButtonDownY = false;
+	public  bool  OnButtonA = false;
+	public  bool  OnButtonB = false;
+	public  bool  OnButtonX = false;
+	public  bool  OnButtonY = false;
+	public  bool  OnButtonUpA = false;
+	public  bool  OnButtonUpB = false;
+	public  bool  OnButtonUpX = false;
+	public  bool  OnButtonUpY = false;
+	public  bool  OnButtonDownA = false;
+	public  bool  OnButtonDownB = false;
+	public  bool  OnButtonDownX = false;
+	public  bool  OnButtonDownY = false;
 
-	private  bool  OnButton_DpadUp = false;
-	private  bool  OnButton_DpadDown = false;
-	private  bool  OnButton_DpadLeft = false;
-	private  bool  OnButton_DpadRight = false;
-	private  bool  OnButtonUp_DpadUp = false;
-	private  bool  OnButtonUp_DpadDown = false;
-	private  bool  OnButtonUp_DpadLeft = false;
-	private  bool  OnButtonUp_DpadRight = false;
-	private  bool  OnButtonDown_DpadUp = false;
-	private  bool  OnButtonDown_DpadDown = false;
-	private  bool  OnButtonDown_DpadLeft = false;
-	private  bool  OnButtonDown_DpadRight = false;
+	public  bool  OnButton_DpadUp = false;
+	public  bool  OnButton_DpadDown = false;
+	public  bool  OnButton_DpadLeft = false;
+	public  bool  OnButton_DpadRight = false;
+	public  bool  OnButtonUp_DpadUp = false;
+	public  bool  OnButtonUp_DpadDown = false;
+	public  bool  OnButtonUp_DpadLeft = false;
+	public  bool  OnButtonUp_DpadRight = false;
+	public  bool  OnButtonDown_DpadUp = false;
+	public  bool  OnButtonDown_DpadDown = false;
+	public  bool  OnButtonDown_DpadLeft = false;
+	public  bool  OnButtonDown_DpadRight = false;
 
-	private  bool  OnButtonStart = false;
-	private  bool  OnButtonUpStart = false;
-	private  bool  OnButtonDownStart = false;
-	private  bool  OnButtonBack = false;
-	private  bool  OnButtonUpBack = false;
-	private  bool  OnButtonDownBack = false;
+	public  bool  OnButtonStart = false;
+	public  bool  OnButtonUpStart = false;
+	public  bool  OnButtonDownStart = false;
+	public  bool  OnButtonBack = false;
+	public  bool  OnButtonUpBack = false;
+	public  bool  OnButtonDownBack = false;
 
-	private  bool  shoulderL = false;
-	private  bool  shoulderL_Up = false;
-	private  bool  shoulderL_Down = false;
-	private  bool  shoulderR = false;
-	private  bool  shoulderR_Up = false;
-	private  bool  shoulderR_Down = false;
+	public  bool  shoulderL = false;
+	public  bool  shoulderL_Up = false;
+	public  bool  shoulderL_Down = false;
+	public  bool  shoulderR = false;
+	public  bool  shoulderR_Up = false;
+	public  bool  shoulderR_Down = false;
 
-	private  float triggerL = 0.0f;
-	private  float triggerR = 0.0f;
+	public  float triggerL = 0.0f;
+	public  float triggerR = 0.0f;
 
 	//Pad Vibration
 	public float bigRumble;
@@ -144,19 +145,19 @@ public class XboxControlManager : MonoBehaviour {
 		if (connectedControllers < maxControllers)
 		{
 			Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");
-			//Player.keyboardActive = true;
+			Player.keyboardActive = true;
 		}
 
 		if (devControllers > 0)
 		{
-			Debug.LogWarning ("Using Developer Mode, "+devControllers +" Controller/s Added. Total Controllers = " + (connectedControllers+devControllers));
+			Debug.LogWarning ("Using Developer Mode, "+(devControllers) +" Controller/s Added. Total Controllers = " + (connectedControllers));
 
 		}
 		
 		if (connectedControllers == maxControllers && devControllers == 0)
 		{
 			Debug.Log ("Detected "+ connectedControllers +" Controller/s");
-			//Player.keyboardActive = false;
+			Player.keyboardActive = false;
 		}
 	}
 	#endregion
@@ -169,8 +170,15 @@ public class XboxControlManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		#region Function Calls
-		
+
 		#endregion
+
+		if (!Application.isPlaying)
+		{
+			print ("resetting vibration");
+			Controller.xInput.padVibration(Player.pone, 0,0);
+			Controller.xInput.padVibration(Player.ptwo,0,0);
+		}
 
 	}
 
@@ -197,7 +205,7 @@ public class XboxControlManager : MonoBehaviour {
 		}
 		#endregion
 
-		padVibration(pone,triggerL, triggerR); //debug vibration
+
 
 		#region Xbox controller inputs
 		//Get last updates input states, then refresh to new
@@ -406,14 +414,15 @@ public class XboxControlManager : MonoBehaviour {
 	}
 	#endregion
 
-	void  padVibration (  PlayerIndex playerIndex , float bigRumble, float smallRumble   ){
+	#region Function to make the controller vibrate
+	public void  padVibration (  PlayerIndex playerIndex , float bigRumble, float smallRumble   ){
 		GamePad.SetVibration ( playerIndex, bigRumble, smallRumble );
 		inspectorBRumble = bigRumble;
 		inspectorSRumble = smallRumble;
-	
 	}
-	
-	void  stopPadVibration (  PlayerIndex playerIndex   ){
+	public void  stopPadVibration (  PlayerIndex playerIndex   ){
 		GamePad.SetVibration( playerIndex, 0, 0 );
 	}
+	#endregion
+
 }

@@ -17,11 +17,11 @@ public class LampSorek : MonoBehaviour {
 	void Update () {
 		fireCDtimer -= Time.deltaTime;
 
-		if (!sorekScr.isDead) 
+		if (!sorekScr.isDead && !sorekScr.menuActive && Intro.introTimer < 0f) 
 		{
 			if (!Player.keyboardActive)
 			{
-				if (sorekScr.state.Buttons.B == ButtonState.Pressed && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+				if (sorekScr.state.Buttons.B == ButtonState.Pressed && sorekScr.prevState.Buttons.B == ButtonState.Released && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
 					fireCDtimer = fireCD;
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
