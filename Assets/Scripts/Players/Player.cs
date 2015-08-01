@@ -57,34 +57,6 @@ public class Player : MonoBehaviour
 	public static PlayerIndex pone = PlayerIndex.One;
 	public static PlayerIndex ptwo = PlayerIndex.Two;
 
-	// Static variables for
-	public 	static float h1 = 0.0f;
-	public static float v1 = 0.0f;
-	
-	public static float h2 = 0.0f;
-	public static float v2 = 0.0f;
-	
-	public static bool  buttonA = false;
-	public static bool  buttonB = false;
-	public static bool  buttonX = false;
-	public static bool  buttonY = false;
-	
-	public static bool  dpadUp = false;
-	public static bool  dpadDown = false;
-	public static bool  dpadLeft = false;
-	public static bool  dpadRight = false;
-	
-	public static bool  buttonStart = false;
-	public static bool  buttonBack = false;
-	
-	public static bool  shoulderL = false;
-	public static bool  shoulderR = false;
-	
-	public static bool  stickL = false;
-	public static bool  stickR = false;
-	
-	public static float triggerL = 0.0f;
-	public static float triggerR = 0.0f;
 
 	public bool menuActive = false;
 	public static bool keyboardActive = false;

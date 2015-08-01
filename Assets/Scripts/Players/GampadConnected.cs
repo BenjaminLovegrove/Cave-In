@@ -4,7 +4,7 @@ using System.Collections;
 public class GampadConnected : MonoBehaviour {
 
 	public static int connectedControllers;
-	public int devControllers = 0;
+	public int devControllers = 0; //use this if you only have one controller to use, type 1
 	private int maxControllers = 2;
 	//public Player playerScript;
 
