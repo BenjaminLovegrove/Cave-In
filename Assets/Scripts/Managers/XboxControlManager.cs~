@@ -11,11 +11,12 @@ public class XboxControlManager : MonoBehaviour {
 	//This should just be controller debug, should be a script debug somewhere
 	public enum Debug_Types 
 	{
+		NONE,
 		MSTRDBUG,
 		STICK,
 		BUTTON,
-		TRIGGERS,
-		NONE
+		TRIGGERS
+
 		//Put All at the end of the main debug types
 		//MSTRDBUG_All
 		//MSTRDBUG_ButtonUp
