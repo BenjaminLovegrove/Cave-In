@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 409780}
   - 65: {fileID: 6509780}
   - 114: {fileID: 11409780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EndTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1566,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456474}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,7 +1583,7 @@ GameObject:
   - 4: {fileID: 456476}
   - 65: {fileID: 6556476}
   - 114: {fileID: 11456476}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SorekUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1600,7 +1600,7 @@ GameObject:
   - 4: {fileID: 456478}
   - 65: {fileID: 6556478}
   - 114: {fileID: 11456478}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HickoryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
