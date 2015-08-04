@@ -11,27 +11,37 @@ public class GampadConnected : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		connectedControllers = Input.GetJoystickNames().Length;
-		InvokeRepeating("CheckControllerConnections", 0, 3.0F); //run the check repeatedly every xseconds
+		InvokeRepeating("CheckControllerConnections", 0, 1.0F); //run the check repeatedly every xseconds
 	}
 
 
 	//check that two controllers are plugged in
 	void CheckControllerConnections()
 	{
-		connectedControllers += devControllers;
-		if (connectedControllers < maxControllers)
+		connectedControllers = Input.GetJoystickNames().Length;
+		if (connectedControllers == maxControllers && devControllers == 0)
 		{
-			Debug.LogError ("2 Controllers Not plugged in, Enabling Keyboard controls");
-			Player.keyboardActive = true;
+			Debug.Log ("Detected "+ connectedControllers +" Controller/s");
+			PlayerV2.keyboardActive = false;
+		}
+		else if (connectedControllers < maxControllers && devControllers == 0)
+		{
+			Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");
+			PlayerV2.keyboardActive = true;
+		}
+
+
+
+		if (devControllers > 0)
+		{
+			Debug.LogWarning ("Using Developer Mode, "+(devControllers) +" Controller/s Added. Total Controllers = " + (connectedControllers));
+			PlayerV2.keyboardActive = false;
 		}
 		
-		if (connectedControllers == maxControllers)
-		{
-			Debug.LogWarning ("Detected 2 Controller, Disabling keboard controls");
-			Player.keyboardActive = false;
-		}
+
 	}
+
+
 
 	void OnGUI()
 	{

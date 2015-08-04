@@ -19,7 +19,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 	
 	void Update () {
 		if (!hickoryScr.isDead) {
-			if (!Player.keyboardActive) {
+			if (!PlayerV2.keyboardActive) {
 				if (hickoryScr.xInput.OnButtonDownB && swinging == false) {
 					Swing ();
 				}
