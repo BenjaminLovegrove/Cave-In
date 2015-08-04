@@ -183,7 +183,7 @@ public class Controller : MonoBehaviour {
 	}
 
 	//FixedUpdate will run with the physics engine	
-	void FixedUpdate () {
+	public void FixedUpdate () {
 		#region Debug Switch		
 		switch(currDebug)
 		{
@@ -204,7 +204,6 @@ public class Controller : MonoBehaviour {
 			break;
 		}
 		#endregion
-
 
 
 		#region Xbox controller inputs

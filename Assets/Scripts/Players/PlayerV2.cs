@@ -6,7 +6,7 @@ using XInputDotNetPure; // Required in C#
 public class PlayerV2 : MonoBehaviour
 {
 
-	private Controller xInput;
+	public Controller xInput;
 	// Script to handle player controls and most interactions
 	
 	public bool debugState = true;
@@ -81,11 +81,19 @@ public class PlayerV2 : MonoBehaviour
 	
 
 	void Start(){
-		xInput = Controller.xInput;// makes it easier to write code similar to unity's Input. stuff
-
+		xInput = new Controller();// makes it easier to write code similar to unity's Input. stuff
 		//Change raycast distance for taller player
 		if (!playerOne) {
 			groundedRayDist = 2.2f;
+			xInput.playerIndex = PlayerIndex.Two;
+//			xInput.currDebug = Controller.Debug_Types.BUTTON;
+//			Debug.Log ("Starting player two");
+		}
+		else
+		{
+			xInput.playerIndex = PlayerIndex.One;
+//			xInput.currDebug = Controller.Debug_Types.BUTTON;
+//			Debug.Log ("Starting player one");
 		}
 		
 		if (!menuActive)
@@ -207,7 +215,7 @@ public class PlayerV2 : MonoBehaviour
 		//START BUTTON
 		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2)
 		{
-			print("what");
+			print("Start to skip");
 			Intro.skipNum ++;
 			UI.displaySkip ++;
 			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
@@ -248,6 +256,7 @@ public class PlayerV2 : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
+		xInput.FixedUpdate();
 		Animate ();
 
 		#region Calls the controls function which contains all movement
@@ -317,7 +326,6 @@ public class PlayerV2 : MonoBehaviour
 	private void Controls()
 	{
 		//---------------------------------------------------------------------------------//
-		
 		///
 		#region Everything keyboard controls related
 		///
