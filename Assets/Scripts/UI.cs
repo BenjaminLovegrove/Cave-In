@@ -3,8 +3,8 @@ using System.Collections;
 
 public class UI : MonoBehaviour {
 
-	public Player playerOneScr;
-	public Player playerTwoScr;
+	public PlayerV2 playerOneScr;
+	public PlayerV2 playerTwoScr;
 
 	public Texture uiRestart;
 	public Texture uiSkipTwice, uiSkip;

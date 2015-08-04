@@ -8,7 +8,7 @@ public class CaveLamps : MonoBehaviour {
 	public float destroyTimer;
 	public GameObject lightSpark;
 	public bool sparkSpawn = false;
-	public Player sorek;
+	public PlayerV2 sorek;
 	AudioSource lampExplode;
 	Light lightSource;
 	public GameObject lampExplodeVis;
@@ -16,7 +16,7 @@ public class CaveLamps : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Playtest_LightManager.numLightsActive ++;
-		sorek = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		sorek = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerV2> ();
 		lightSource = GetComponentInChildren<Light> ();
 		lampExplode = GetComponent<AudioSource> ();
 	}

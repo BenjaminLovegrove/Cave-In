@@ -215,10 +215,11 @@ public class PlayerV2 : MonoBehaviour
 		//START BUTTON
 		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2)
 		{
-			print("Start to skip");
+			Debug.LogWarning("Start to skip, not working with controler properly");
 			Intro.skipNum ++;
 			UI.displaySkip ++;
 			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
+				Intro.Skip();
 				if (!otherPlayer.introSkipped){
 					Intro.Skip();
 					introSkipped = true;
@@ -226,7 +227,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 		}
 		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
-		if (state.Buttons.Start == ButtonState.Pressed && prevState.Buttons.Start == ButtonState.Released || Input.GetKeyDown(KeyCode.Escape)) {
+		if (xInput.OnButtonDownStart || Input.GetKeyDown(KeyCode.Escape)) {
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
 					Application.LoadLevel("Level_1");
