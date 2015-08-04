@@ -35,7 +35,7 @@ public class FallingGround : MonoBehaviour {
 				foreach (Rigidbody rocks in rocksRB){
 					rocks.isKinematic = false;
 					rocks.useGravity = true;
-					Destroy (rocks.gameObject, 1f);
+					Destroy (rocks.gameObject, 10f);
 				}
 			}
 		}
