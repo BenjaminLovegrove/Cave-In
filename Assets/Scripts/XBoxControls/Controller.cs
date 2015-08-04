@@ -206,8 +206,6 @@ public class Controller : MonoBehaviour {
 		#endregion
 
 
-		Debug.Log (playerIndex);
-
 		#region Xbox controller inputs
 		//Get last updates input states, then refresh to new
 		prevState = state;

@@ -86,14 +86,14 @@ public class PlayerV2 : MonoBehaviour
 		if (!playerOne) {
 			groundedRayDist = 2.2f;
 			xInput.playerIndex = PlayerIndex.Two;
-			xInput.currDebug = Controller.Debug_Types.BUTTON;
-			Debug.Log ("Starting player two");
+//			xInput.currDebug = Controller.Debug_Types.BUTTON;
+//			Debug.Log ("Starting player two");
 		}
 		else
 		{
 			xInput.playerIndex = PlayerIndex.One;
-			xInput.currDebug = Controller.Debug_Types.BUTTON;
-			Debug.Log ("Starting player one");
+//			xInput.currDebug = Controller.Debug_Types.BUTTON;
+//			Debug.Log ("Starting player one");
 		}
 		
 		if (!menuActive)
@@ -215,7 +215,7 @@ public class PlayerV2 : MonoBehaviour
 		//START BUTTON
 		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2)
 		{
-			print("what");
+			print("Start to skip");
 			Intro.skipNum ++;
 			UI.displaySkip ++;
 			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
@@ -456,7 +456,6 @@ public class PlayerV2 : MonoBehaviour
 			//print (state.ThumbSticks.Left.X);
 			if (xInput.ThumbStickL_X > 0.3f )
 			{
-				Debug.Log(xInput.playerIndex);
 				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = true;
 				Flip ();
