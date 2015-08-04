@@ -183,7 +183,7 @@ public class Controller : MonoBehaviour {
 	}
 
 	//FixedUpdate will run with the physics engine	
-	void FixedUpdate () {
+	public void FixedUpdate () {
 		#region Debug Switch		
 		switch(currDebug)
 		{
@@ -206,6 +206,7 @@ public class Controller : MonoBehaviour {
 		#endregion
 
 
+		Debug.Log (playerIndex);
 
 		#region Xbox controller inputs
 		//Get last updates input states, then refresh to new

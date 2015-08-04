@@ -116,6 +116,7 @@ GameObject:
   - 114: {fileID: 11495186}
   - 114: {fileID: 11419112}
   - 114: {fileID: 11419114}
+  - 114: {fileID: 11445386}
   m_Layer: 0
   m_Name: XboxControlManager
   m_TagString: Untagged
@@ -433,7 +434,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195186}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0057a1ad786653f4288d16090801c402, type: 3}
   m_Name: 
@@ -523,6 +524,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae6e27d0a356f34ea5e4dbf914407c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11445386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c78697f1df0b641bef0d59db6afac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devControllers: 0
 --- !u!114 &11449534
 MonoBehaviour:
   m_ObjectHideFlags: 1
