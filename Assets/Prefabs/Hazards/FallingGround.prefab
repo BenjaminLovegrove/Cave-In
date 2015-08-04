@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42e76f68b9c6fe4d82df5f6837c39cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crumbleTimer: 1
+  crumbleTimer: .400000006
   crumble: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
 --- !u!135 &13576482
 SphereCollider:
