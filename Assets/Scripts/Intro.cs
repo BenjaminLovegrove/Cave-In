@@ -70,8 +70,8 @@ public class Intro : MonoBehaviour {
 			}
 			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.249f))
 			{
-				smallRumble = 5.0f;
-				bigRumble = 5.0f;
+				smallRumble = 0.9f;
+				bigRumble = 0.9f;
 			}
 			else 
 			{
@@ -79,8 +79,8 @@ public class Intro : MonoBehaviour {
 				bigRumble = 0f;
 			}
 
-			Player.padVibration(Player.pone,bigRumble,smallRumble);
-			Player.padVibration(Player.ptwo,bigRumble,smallRumble);
+			Controller.xInput.padVibration(Player.pone,bigRumble,smallRumble);
+			Controller.xInput.padVibration(Player.ptwo,bigRumble,smallRumble);
 		}
 
 	}

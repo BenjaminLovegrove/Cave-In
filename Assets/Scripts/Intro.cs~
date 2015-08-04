@@ -17,6 +17,11 @@ public class Intro : MonoBehaviour {
 	public GameObject caveInObj;
 	public Transform caveInSpawnPos;
 	public AudioClip CaveInSFX;
+	static bool skipped = false;
+
+	//Intro and outro aesthetics (to be switched after intro)
+	public GameObject introStuff;
+	public GameObject outroStuff;
 
 	public float smallRumble, bigRumble;
 
@@ -30,7 +35,7 @@ public class Intro : MonoBehaviour {
 	public Renderer FTW;
 	float FTWalpha = 1f;
 
-	List<GameObject> toggleObjs = new List<GameObject>();
+	//List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
 
@@ -65,8 +70,8 @@ public class Intro : MonoBehaviour {
 			}
 			else if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.249f))
 			{
-				smallRumble = 5.0f;
-				bigRumble = 5.0f;
+				smallRumble = 0.9f;
+				bigRumble = 0.9f;
 			}
 			else 
 			{
@@ -74,13 +79,22 @@ public class Intro : MonoBehaviour {
 				bigRumble = 0f;
 			}
 
-			Player.padVibration(Player.pone,bigRumble,smallRumble);
-			Player.padVibration(Player.ptwo,bigRumble,smallRumble);
+			Controller.xInput.padVibration(Player.pone,bigRumble,smallRumble);
+			Controller.xInput.padVibration(Player.ptwo,bigRumble,smallRumble);
 		}
 
 	}
 
 	void Update () {
+		//Double check that these mother fuckers are active/inactive
+		if (introTimer < startIntroTimer * 0.6f) {
+			if (introStuff.activeSelf){
+				ToggleAesthetics();
+				introStuff.SetActive (false);
+				outroStuff.SetActive (true);
+			}
+		}
+
 		introTimer -= Time.deltaTime;
 		if (!gameStarted) {
 			hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
@@ -89,7 +103,7 @@ public class Intro : MonoBehaviour {
 		/*SKIP*/
 		 if (Input.GetKeyDown(KeyCode.Escape) && skipNum <= 2){
 			skipNum ++;
-			UI.displaySkip = true;
+			UI.displaySkip ++;
 			if (skipNum >= 2)
 			{
 				Debug.LogWarning("Dev skip Intro");
@@ -120,7 +134,7 @@ public class Intro : MonoBehaviour {
 				Camera.main.SendMessage ("DoCollisionShake");
 			}
 			//Cave in instantiate
-			if (introTimer < startIntroTimer * 0.2f && !caveInStarted){
+			if (introTimer < startIntroTimer * 0.1f && !caveInStarted){
 				CaveIn();
 			}
 			//Sorek and Hickory canMove;
@@ -130,7 +144,8 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 			}
 
-			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.825f)){
+			//Make hickory swing his pick
+			if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)){
 				hickory.gameObject.SendMessage("Swing");
 			}
 
@@ -161,17 +176,21 @@ public class Intro : MonoBehaviour {
 	}
 
 	void ToggleMe(GameObject obj){
-		toggleObjs.Add (obj);
+		//toggleObjs.Add (obj);
 	}
 
 	void ToggleAesthetics(){
-		foreach (GameObject obj in toggleObjs) {
+		//This list was not working in builds
+		/*foreach (GameObject obj in toggleObjs) {
 			if (obj.activeSelf){
 				obj.SetActive (false);
 			} else {
 				obj.SetActive (true);
 			}
-		}
+		}*/
+
+		introStuff.SetActive (false);
+		outroStuff.SetActive (true);
 	}
 
 	void Outro(){
@@ -182,7 +201,10 @@ public class Intro : MonoBehaviour {
 	}
 
 	public static void Skip(){
-		introTimer = startIntroTimer * 0.5f;
-		cam.SendMessage ("Intro", false);
+		if (!skipped) {
+			introTimer = startIntroTimer * 0.3f;
+			cam.SendMessage ("Intro", false);
+			Intro.skipped = true;
+		}
 	}
 }

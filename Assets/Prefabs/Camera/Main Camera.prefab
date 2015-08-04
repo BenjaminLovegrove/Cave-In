@@ -114,8 +114,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 495186}
   - 114: {fileID: 11495186}
+  - 114: {fileID: 11419112}
+  - 114: {fileID: 11419114}
   m_Layer: 0
-  m_Name: DetectGamepads
+  m_Name: XboxControlManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,6 +427,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+--- !u!114 &11419112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0057a1ad786653f4288d16090801c402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currDebug: 0
+  playerIndex: 0
+  connectedControllers: 0
+  devControllers: 0
+  maxControllers: 2
+  checkControllers: 1
+  checkRateInSeconds: 3
+  pone: 0
+  ptwo: 1
+  pthree: 2
+  pfour: 3
+  ThumbStickL_X: 0
+  ThumbStickL_Y: 0
+  ThumbStickR_X: 0
+  ThumbStickR_Y: 0
+  OnButton_L_Stick: 0
+  OnButton_R_Stick: 0
+  OnButtonUp_L_Stick: 0
+  OnButtonUp_R_Stick: 0
+  OnButtonDown_L_Stick: 0
+  OnButtonDown_R_Stick: 0
+  OnButtonA: 0
+  OnButtonB: 0
+  OnButtonX: 0
+  OnButtonY: 0
+  OnButtonUpA: 0
+  OnButtonUpB: 0
+  OnButtonUpX: 0
+  OnButtonUpY: 0
+  OnButtonDownA: 0
+  OnButtonDownB: 0
+  OnButtonDownX: 0
+  OnButtonDownY: 0
+  OnButton_DpadUp: 0
+  OnButton_DpadDown: 0
+  OnButton_DpadLeft: 0
+  OnButton_DpadRight: 0
+  OnButtonUp_DpadUp: 0
+  OnButtonUp_DpadDown: 0
+  OnButtonUp_DpadLeft: 0
+  OnButtonUp_DpadRight: 0
+  OnButtonDown_DpadUp: 0
+  OnButtonDown_DpadDown: 0
+  OnButtonDown_DpadLeft: 0
+  OnButtonDown_DpadRight: 0
+  OnButtonStart: 0
+  OnButtonUpStart: 0
+  OnButtonDownStart: 0
+  OnButtonBack: 0
+  OnButtonUpBack: 0
+  OnButtonDownBack: 0
+  shoulderL: 0
+  shoulderL_Up: 0
+  shoulderL_Down: 0
+  shoulderR: 0
+  shoulderR_Up: 0
+  shoulderR_Down: 0
+  triggerL: 0
+  triggerR: 0
+  bigRumble: 0
+  inspectorBRumble: 0
+  smallRumble: 0
+  inspectorSRumble: 0
+--- !u!114 &11419114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53fa190e5f521a43bc3ad5517fc6055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11423806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -477,6 +564,8 @@ MonoBehaviour:
   caveInObj: {fileID: 105624, guid: 6e4a766f140d20c43ba53da733e9f571, type: 2}
   caveInSpawnPos: {fileID: 0}
   CaveInSFX: {fileID: 8300000, guid: bee5e81aae1b8e547934077f1149eecf, type: 3}
+  introStuff: {fileID: 0}
+  outroStuff: {fileID: 0}
   smallRumble: 0
   bigRumble: 0
   outroCamAim: {fileID: 413758}
@@ -487,7 +576,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195186}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79c78697f1df0b641bef0d59db6afac3, type: 3}
   m_Name: 

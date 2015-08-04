@@ -224,6 +224,8 @@ GameObject:
   - 65: {fileID: 6593482}
   - 54: {fileID: 5493480}
   - 114: {fileID: 11456432}
+  - 114: {fileID: 11414216}
+  - 114: {fileID: 11496318}
   m_Layer: 10
   m_Name: Hickory
   m_TagString: Player
@@ -260,6 +262,7 @@ GameObject:
   - 65: {fileID: 6593484}
   - 54: {fileID: 5493482}
   - 114: {fileID: 11483066}
+  - 114: {fileID: 11481230}
   m_Layer: 9
   m_Name: Sorek_Jarred
   m_TagString: Player
@@ -1190,6 +1193,40 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11414216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193484}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e09e37840f00b44a533e9f337f8747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugState: 0
+  isDead: 0
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  playerOne: 0
+  otherPlayer: {fileID: 11493486}
+  playerLight: {fileID: 193482}
+  gravestone: {fileID: 21265008}
+  UIspr: {fileID: 21291770}
+  UIdisable: 2
+  introSkipped: 0
+  canMove: 1
+  baseMovForce: 10
+  baseJumpForce: 500
+  slowTimer: 0
+  grounded: 0
+  rightFaced: 1
+  climbingLadder: 0
+  sfxRun: {fileID: 8200538}
+  sfxJump: {fileID: 8290192}
+  sfxLand: {fileID: 8290190}
+  playerIndex: 1
+  menuActive: 0
 --- !u!114 &11438914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1218,6 +1255,40 @@ MonoBehaviour:
   swingLength: 1
   PickHit: {fileID: 8300000, guid: 198f3ba6b5112224fbc84a1f3f5816aa, type: 3}
   hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
+--- !u!114 &11481230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193488}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e09e37840f00b44a533e9f337f8747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugState: 0
+  isDead: 0
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  playerOne: 0
+  otherPlayer: {fileID: 11493484}
+  playerLight: {fileID: 193490}
+  gravestone: {fileID: 21265008}
+  UIspr: {fileID: 21248508}
+  UIdisable: 2
+  introSkipped: 0
+  canMove: 1
+  baseMovForce: 10
+  baseJumpForce: 500
+  slowTimer: 0
+  grounded: 0
+  rightFaced: 1
+  climbingLadder: 0
+  sfxRun: {fileID: 8200538}
+  sfxJump: {fileID: 8290192}
+  sfxLand: {fileID: 8290190}
+  playerIndex: 0
+  menuActive: 0
 --- !u!114 &11483066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,6 +1475,17 @@ MonoBehaviour:
   pivotPoint: {x: 0, y: 0, z: 0}
   pivotPointType: 0
   ignoreOptimizations: 0
+--- !u!114 &11496318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193484}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56b4736c3d3113459367c2a56123716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21200524
 SpriteRenderer:
   m_ObjectHideFlags: 1

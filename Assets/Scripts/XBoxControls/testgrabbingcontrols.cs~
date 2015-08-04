@@ -1,0 +1,20 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class testgrabbingcontrols : MonoBehaviour {
+
+	private XboxControlManager xInput;
+
+	// Use this for initialization
+	void Start () {
+		xInput = XboxControlManager.xInput;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (xInput.OnButtonA)
+		{
+			print ("it works!");
+		}
+	}
+}
