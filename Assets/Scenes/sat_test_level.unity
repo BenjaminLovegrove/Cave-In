@@ -2044,6 +2044,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56b4736c3d3113459367c2a56123716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swingLength: 1
+  PickHit: {fileID: 0}
+  hickoryPickAxe: {fileID: 0}
 --- !u!114 &408210453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e09e37840f00b44a533e9f337f8747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xInput: {fileID: 0}
   debugState: 0
   isDead: 0
   anim: {fileID: 0}
@@ -8221,6 +8225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e09e37840f00b44a533e9f337f8747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xInput: {fileID: 0}
   debugState: 0
   isDead: 0
   anim: {fileID: 0}
