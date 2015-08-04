@@ -6,12 +6,12 @@ public class FallingGround : MonoBehaviour {
 	public float crumbleTimer = 1f;
 	public AudioClip crumble;
 	Rigidbody[] rocksRB;
-	Collider rockCollider;
+	Collider[] rockCollider;
 	bool first = true;
 
 	void Start () {
 		rocksRB = GetComponentsInChildren<Rigidbody> ();
-		rockCollider = GetComponent<Collider> ();
+		rockCollider = GetComponents<Collider> ();
 	}
 	
 	void OnTriggerStay(Collider col){
@@ -30,7 +30,8 @@ public class FallingGround : MonoBehaviour {
 					first = false;
 				}
 
-				rockCollider.enabled = false;
+				rockCollider[0].enabled = false;
+				rockCollider[1].enabled = false;
 				Destroy (this.gameObject, 3f);
 				foreach (Rigidbody rocks in rocksRB){
 					rocks.isKinematic = false;
