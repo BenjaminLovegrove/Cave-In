@@ -6,8 +6,8 @@ public class Intro : MonoBehaviour {
 
 	public static bool watchIntro = true;
 	public static int skipNum = 0; 
-	public Player sorek;
-	public Player hickory;
+	public PlayerV2 sorek;
+	public PlayerV2 hickory;
 	public static Camera cam;
 	public static float introTimer = 30f;
 	public static float startIntroTimer;

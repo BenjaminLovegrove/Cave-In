@@ -4,7 +4,7 @@ using System.Collections;
 public class LampFollow : MonoBehaviour {
 
 	public Transform p1_Sorek;
-	public Player sorekScr;
+	public PlayerV2 sorekScr;
 
 
 	// Update is called once per frame

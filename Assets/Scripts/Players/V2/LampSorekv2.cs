@@ -22,7 +22,6 @@ public class LampSorekv2 : MonoBehaviour {
 			if (!Player.keyboardActive)
 			{
 				if (sorekScr.xInput.OnButtonDownB && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
-					print ("fire placed");
 					fireCDtimer = fireCD;
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);

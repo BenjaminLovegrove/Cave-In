@@ -23,10 +23,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413376}
-  - 114: {fileID: 11413394}
   - 65: {fileID: 6513410}
   - 54: {fileID: 5413412}
-  - 114: {fileID: 11413388}
   - 114: {fileID: 11413392}
   - 114: {fileID: 11413390}
   m_Layer: 10
@@ -93,10 +91,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413384}
-  - 114: {fileID: 11413402}
   - 65: {fileID: 6513412}
   - 54: {fileID: 5413414}
-  - 114: {fileID: 11413396}
   - 114: {fileID: 11413400}
   - 114: {fileID: 11413398}
   m_Layer: 9
@@ -1194,20 +1190,6 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11413388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113376}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4acca2734677243b7119d7e6e8e95d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swingLength: 1
-  PickHit: {fileID: 8300000, guid: 198f3ba6b5112224fbc84a1f3f5816aa, type: 3}
-  hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
 --- !u!114 &11413390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1220,8 +1202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingLength: 1
-  PickHit: {fileID: 0}
-  hickoryPickAxe: {fileID: 0}
+  PickHit: {fileID: 8300000, guid: 97ff3675c31a7bf4f9e9eed35464a9fc, type: 3}
+  hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
 --- !u!114 &11413392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1239,7 +1221,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 0
-  otherPlayer: {fileID: 11413402}
+  otherPlayer: {fileID: 0}
   playerLight: {fileID: 113412}
   gravestone: {fileID: 21213406}
   UIspr: {fileID: 21213414}
@@ -1257,54 +1239,6 @@ MonoBehaviour:
   sfxLand: {fileID: 8213406}
   playerIndex: 1
   menuActive: 0
---- !u!114 &11413394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113376}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugState: 0
-  isDead: 0
-  anim: {fileID: 0}
-  player: {fileID: 0}
-  playerOne: 0
-  otherPlayer: {fileID: 11413402}
-  playerLight: {fileID: 113412}
-  gravestone: {fileID: 21213406}
-  UIspr: {fileID: 21213414}
-  UIdisable: 2
-  introSkipped: 0
-  canMove: 1
-  baseMovForce: 10
-  baseJumpForce: 500
-  slowTimer: 0
-  grounded: 0
-  rightFaced: 1
-  climbingLadder: 0
-  sfxRun: {fileID: 8213414}
-  sfxJump: {fileID: 8213410}
-  sfxLand: {fileID: 8213406}
-  playerIndex: 1
-  menuActive: 0
---- !u!114 &11413396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113384}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e13bd828c51de49ab71bea0c61307f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireSpread: {fileID: 196738, guid: 09ae53c7635178a4d905968791a13db8, type: 2}
-  fireSFX: {fileID: 8300000, guid: b5468b988ddee6d4890396fa0da8511e, type: 3}
-  fireCD: 1
 --- !u!114 &11413398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1336,7 +1270,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 1
-  otherPlayer: {fileID: 11413394}
+  otherPlayer: {fileID: 0}
   playerLight: {fileID: 113392}
   gravestone: {fileID: 21213406}
   UIspr: {fileID: 21213410}
@@ -1352,40 +1286,6 @@ MonoBehaviour:
   sfxRun: {fileID: 8213414}
   sfxJump: {fileID: 8213410}
   sfxLand: {fileID: 8213406}
-  playerIndex: 0
-  menuActive: 0
---- !u!114 &11413402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113384}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugState: 0
-  isDead: 0
-  anim: {fileID: 0}
-  player: {fileID: 0}
-  playerOne: 1
-  otherPlayer: {fileID: 11413394}
-  playerLight: {fileID: 113392}
-  gravestone: {fileID: 21213408}
-  UIspr: {fileID: 21213410}
-  UIdisable: 2
-  introSkipped: 0
-  canMove: 1
-  baseMovForce: 10
-  baseJumpForce: 500
-  slowTimer: 0
-  grounded: 0
-  rightFaced: 1
-  climbingLadder: 0
-  sfxRun: {fileID: 8213404}
-  sfxJump: {fileID: 8213412}
-  sfxLand: {fileID: 8213408}
   playerIndex: 0
   menuActive: 0
 --- !u!114 &11413404
@@ -1432,7 +1332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p1_Sorek: {fileID: 413384}
-  sorekScr: {fileID: 11413402}
+  sorekScr: {fileID: 11413400}
 --- !u!114 &11413408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1505,7 +1405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p2_Hickory: {fileID: 413376}
-  hickoryScr: {fileID: 11413394}
+  hickoryScr: {fileID: 11413392}
 --- !u!212 &21213404
 SpriteRenderer:
   m_ObjectHideFlags: 1

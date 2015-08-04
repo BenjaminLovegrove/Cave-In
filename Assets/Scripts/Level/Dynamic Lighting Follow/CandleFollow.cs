@@ -4,7 +4,7 @@ using System.Collections;
 public class CandleFollow : MonoBehaviour {
 
 	public Transform p2_Hickory;
-	public Player hickoryScr;
+	public PlayerV2 hickoryScr;
 	
 
 	// Update is called once per frame
