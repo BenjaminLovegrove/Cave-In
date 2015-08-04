@@ -19,7 +19,7 @@ public class LampSorekv2 : MonoBehaviour {
 		
 		if (!sorekScr.isDead && !sorekScr.menuActive && Intro.introTimer < 0f) 
 		{
-			if (!Player.keyboardActive)
+			if (!PlayerV2.keyboardActive)
 			{
 				if (sorekScr.xInput.OnButtonDownB && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
 					fireCDtimer = fireCD;

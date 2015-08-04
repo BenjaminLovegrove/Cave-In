@@ -11,7 +11,7 @@ public class GampadConnected : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("CheckControllerConnections", 0, 3.0F); //run the check repeatedly every xseconds
+		InvokeRepeating("CheckControllerConnections", 0, 1.0F); //run the check repeatedly every xseconds
 	}
 
 
@@ -22,12 +22,12 @@ public class GampadConnected : MonoBehaviour {
 		if (connectedControllers == maxControllers && devControllers == 0)
 		{
 			Debug.Log ("Detected "+ connectedControllers +" Controller/s");
-			Player.keyboardActive = false;
+			PlayerV2.keyboardActive = false;
 		}
 		else if (connectedControllers < maxControllers && devControllers == 0)
 		{
 			Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");
-			Player.keyboardActive = true;
+			PlayerV2.keyboardActive = true;
 		}
 
 
@@ -35,7 +35,7 @@ public class GampadConnected : MonoBehaviour {
 		if (devControllers > 0)
 		{
 			Debug.LogWarning ("Using Developer Mode, "+(devControllers) +" Controller/s Added. Total Controllers = " + (connectedControllers));
-			
+			PlayerV2.keyboardActive = false;
 		}
 		
 

@@ -359,7 +359,6 @@ public class PlayerV2 : MonoBehaviour
 				// Jump
 				if ((grounded == true) && Input.GetKey(KeyCode.LeftShift) && (!climbingLadder))
 				{
-					print ("P1_Jumped_LeftShift");
 					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
 					sfxJump.Play();
 				}
@@ -390,7 +389,6 @@ public class PlayerV2 : MonoBehaviour
 				//Right
 				if (Input.GetKey(KeyCode.Quote))
 				{
-					print ("quote - move right");
 					player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 					rightFaced = true;
 					Flip ();
@@ -401,7 +399,6 @@ public class PlayerV2 : MonoBehaviour
 				// Left
 				if (Input.GetKey(KeyCode.L))
 				{
-					print ("L - move left");
 					player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (-1) * Time.deltaTime);
 					rightFaced = false;
 					Flip ();
@@ -413,7 +410,6 @@ public class PlayerV2 : MonoBehaviour
 				// Jump
 				if ((grounded == true) && Input.GetKey(KeyCode.RightShift) && (!climbingLadder))
 				{
-					print ("P2_Jumped_RightShift");
 					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
 					sfxJump.Play();
 				}
@@ -427,13 +423,11 @@ public class PlayerV2 : MonoBehaviour
 					// Ascend
 					if (Input.GetKey(KeyCode.P))
 					{
-						print ("P - acsend climb");
 						player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (1) * Time.deltaTime);
 					}
 					// Descend
 					else if (Input.GetKey(KeyCode.Semicolon))
 					{
-						print ("semicolon - decend climb");
 						player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (-1) * Time.deltaTime);
 					}
 				}
