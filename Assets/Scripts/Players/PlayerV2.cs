@@ -6,7 +6,7 @@ using XInputDotNetPure; // Required in C#
 public class PlayerV2 : MonoBehaviour
 {
 
-	public Controller xInput;
+	public Controller xInput; //grab the Controller script that handles all xbox movement
 	// Script to handle player controls and most interactions
 	
 	public bool debugState = true;
@@ -81,10 +81,11 @@ public class PlayerV2 : MonoBehaviour
 	
 
 	void Start(){
-		xInput = new Controller();// makes it easier to write code similar to unity's Input. stuff
-		//Change raycast distance for taller player
+		xInput = new Controller();// Creates a new instance of the Controller script
+
+		#region Setup each instance of the Controller script according to each player
 		if (!playerOne) {
-			groundedRayDist = 2.2f;
+			groundedRayDist = 2.2f;//Change raycast distance for taller player
 			xInput.playerIndex = PlayerIndex.Two;
 //			xInput.currDebug = Controller.Debug_Types.BUTTON;
 //			Debug.Log ("Starting player two");
@@ -95,6 +96,7 @@ public class PlayerV2 : MonoBehaviour
 //			xInput.currDebug = Controller.Debug_Types.BUTTON;
 //			Debug.Log ("Starting player one");
 		}
+		#endregion
 		
 		if (!menuActive)
 		{
@@ -328,7 +330,7 @@ public class PlayerV2 : MonoBehaviour
 	{
 		//---------------------------------------------------------------------------------//
 		///
-		#region Everything keyboard controls related
+		#region Keyboard controls
 		///
 		if (keyboardActive)
 		{
@@ -541,7 +543,8 @@ public class PlayerV2 : MonoBehaviour
 		#endregion
 		
 	}//end of controls void
-	
+
+	#region Jump cooldown
 	public IEnumerator JumpCoolDown()
 	{
 		jumpingNow = true;
@@ -549,7 +552,9 @@ public class PlayerV2 : MonoBehaviour
 		yield return new WaitForSeconds(delay);
 		jumpingNow = false;
 	}
-	
+	#endregion
+
+	#region Climb Ladder State
 	// Sendmessage receiver for ladder state
 	void Ladder(float ladderState)
 	{
@@ -567,6 +572,7 @@ public class PlayerV2 : MonoBehaviour
 			i = 0;
 		}
 	}
+	#endregion
 	
 	void CanMove(bool move){
 		if (move == false) {
@@ -622,7 +628,8 @@ public class PlayerV2 : MonoBehaviour
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
 	}
-	
+
+	#region Animation
 	void Animate(){
 		//Soreks animations (note the player one bool)
 		if (Intro.introTimer < 0f && playerOne) {
@@ -633,7 +640,8 @@ public class PlayerV2 : MonoBehaviour
 			}
 			
 			if (grounded) {
-				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight) {
+				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight ||
+				    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)  ) {
 					anim.SetBool ("Idle", false);
 					if (slowTimer > 0f) {
 						anim.SetBool ("Run", false);
@@ -683,7 +691,8 @@ public class PlayerV2 : MonoBehaviour
 			}
 			
 			if (grounded) {
-				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight) {
+				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight
+				    || Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.Quote)) {
 					anim.SetBool ("Run", true);
 					anim.SetBool ("Idle", false);
 					if (xInput.OnButtonB) {
@@ -710,4 +719,5 @@ public class PlayerV2 : MonoBehaviour
 		
 		
 	}
+	#endregion
 }
