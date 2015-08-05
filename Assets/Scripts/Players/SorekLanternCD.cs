@@ -38,7 +38,6 @@ public class SorekLanternCD : MonoBehaviour {
 		//change lantern light
 		if (diminishAmt > 0.5f && diminishAmt < maxDiminish)
 		{
-			print ("running");
 			caveLightFlicker = Random.Range(minRange/(diminishAmt * minRange),maxRange/(diminishAmt * maxRange));
 		}
 		else if (diminishAmt <= 0.5f && diminishAmt < maxDiminish)
@@ -57,7 +56,6 @@ public class SorekLanternCD : MonoBehaviour {
 		if (diminishAmt > 0.5f && replenishTimer < 0 && !currDiminishing)
 		{
 			StartCoroutine(DiminishCD());
-			print ("restoring lantern");
 		}
 		else if (diminishAmt < 0.5)
 		{
