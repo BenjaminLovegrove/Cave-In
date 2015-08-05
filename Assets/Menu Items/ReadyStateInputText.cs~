@@ -13,7 +13,7 @@ public class ReadyStateInputText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	if (Player.keyboardActive)
+	if (PlayerV2.keyboardActive)
 		{
 			readyTextController.SetActive(false);
 			readyTextKeyboard.SetActive(true);

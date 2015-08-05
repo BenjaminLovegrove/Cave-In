@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 		if (!menuActive)
 		{
 			UIDefaultScale = UIspr.transform.localScale.x;
-			PauseMenu.canPauseGame = true;
+			//PauseMenu.canPauseGame = true;
 		}
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();

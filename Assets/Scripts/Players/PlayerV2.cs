@@ -60,6 +60,9 @@ public class PlayerV2 : MonoBehaviour
 	#endregion
 	
 	public bool menuActive = false;
+	private bool menuDefaultAnimation = false;
+	private bool menuReadyAnimation = false;
+	private bool swingInMenu = false;
 	public static bool keyboardActive = false;
 	
 	
@@ -97,12 +100,21 @@ public class PlayerV2 : MonoBehaviour
 //			Debug.Log ("Starting player one");
 		}
 		#endregion
-		
-		if (!menuActive)
+
+		if (menuActive) //if menu is active
+		{
+			rightFaced = false;
+			grounded = true;
+			menuDefaultAnimation = true;
+		}
+		else if (!menuActive) //if menu is NOT active
 		{
 			UIDefaultScale = UIspr.transform.localScale.x;
-			PauseMenu.canPauseGame = true;
+			menuDefaultAnimation = false;
+			grounded = false;
 		}
+
+
 		player = this.gameObject;
 		playerRigid = GetComponent<Rigidbody>();
 		movementForce = baseMovForce;
@@ -148,95 +160,6 @@ public class PlayerV2 : MonoBehaviour
 //		state = GamePad.GetState ( playerIndex );
 		#endregion
 
-		#region Ready State Toggle For Menu
-		//Menu input. This is here because the player scripts are required for xinput to work.
-		if (menuActive)
-		{
-			if (xInput.OnButtonDownStart && !keyboardActive)
-			{
-				print ("start in menu");
-				if (playerIndex == pone)
-				{
-					print ("P1, start in menu");
-					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
-					{
-						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
-					}
-					else
-					{
-						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
-					}
-				}
-				
-				if (playerIndex == ptwo){
-					//Player 2 toggle
-					print ("P2, start in menu");
-					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
-					{
-						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
-					}
-					else
-					{
-						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
-					}
-				}
-			}
-			if (Input.GetKeyDown (KeyCode.Return) && keyboardActive)
-			{
-				print ("start in menu");
-				if (playerIndex == pone)
-				{
-					print ("P1, start in menu");
-					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
-					{
-						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
-					}
-					else
-					{
-						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
-					}
-				}
-				
-				if (playerIndex == ptwo){
-					//Player 2 toggle
-					print ("P2, start in menu");
-					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
-					{
-						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
-					}
-					else
-					{
-						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
-					}
-				}
-			}
-		}
-		#endregion
-
-		#region Various Start Button Actions Throughout The Game
-		//START BUTTON
-		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2)
-		{
-			Debug.LogWarning("Start to skip, not working with controler properly");
-			Intro.skipNum ++;
-			UI.displaySkip ++;
-			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
-				Intro.Skip();
-				if (!otherPlayer.introSkipped){
-					Intro.Skip();
-					introSkipped = true;
-				}
-			}
-		}
-		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
-		if (xInput.OnButtonDownStart || Input.GetKeyDown(KeyCode.Escape)) {
-			if (Intro.introTimer < -2f){
-				if (otherPlayer.isDead) {
-					Application.LoadLevel("Level_1");
-				} 
-			}
-		}
-		#endregion
 		
 		//Stop running sound instantly when jumping or climbing
 		if (!menuActive && !grounded && sfxRun.isPlaying) {
@@ -259,7 +182,7 @@ public class PlayerV2 : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		xInput.FixedUpdate();
+		xInput.FixedUpdate(); //call the new instance of the Controller script FixedUpdate
 		Animate ();
 
 		#region Calls the controls function which contains all movement
@@ -277,6 +200,78 @@ public class PlayerV2 : MonoBehaviour
 			{
 				Debug.Log ("Player Grounded: "+ grounded);
 			}
+		}
+		#endregion
+
+		#region Ready State Toggle For Menu
+		//Menu input. This is here because the player scripts are required for xinput to work.
+		if (menuActive)
+		{
+			if (xInput.OnButtonDownStart && !keyboardActive || 
+			    Input.GetKeyDown (KeyCode.Return) && keyboardActive)
+			{
+				if (playerOne)
+				{
+					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+				}
+				
+				if (!playerOne){
+					//Player 2 toggle
+					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region Various Start Button Actions Throughout The Game
+		//START BUTTON
+		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2 && PauseMenu.canPauseGame == false)
+		{
+			Intro.skipNum ++;
+			UI.displaySkip ++;
+			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
+				Intro.Skip();
+				if (!otherPlayer.introSkipped){
+					Intro.Skip();
+					introSkipped = true;
+				}
+			}
+		}
+		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
+		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == false || Input.GetKeyDown(KeyCode.Escape) && PauseMenu.canPauseGame == false) {
+			if (Intro.introTimer < -2f){
+				if (otherPlayer.isDead) {
+					Application.LoadLevel("Level_1");
+				} 
+			}
+		}
+
+		//pause the game
+		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
+		{
+			PauseMenu.PauseGame();
 		}
 		#endregion
 	}
@@ -631,6 +626,22 @@ public class PlayerV2 : MonoBehaviour
 
 	#region Animation
 	void Animate(){
+		//Menu animations
+		if (!menuReadyAnimation && menuDefaultAnimation && playerOne || !menuReadyAnimation && menuDefaultAnimation && !playerOne)
+		{
+			//anim.SetBool ("Walkandpour", false); 
+			anim.SetBool ("Run", true);
+		}
+		else if (menuReadyAnimation && !menuDefaultAnimation  || menuReadyAnimation && !menuDefaultAnimation && !playerOne)
+		{
+			if (playerOne && !swingInMenu){
+				StartCoroutine(MenuFireAnimation());
+			}
+			if (!playerOne){anim.SetTrigger ("Swing");}
+		}
+
+
+
 		//Soreks animations (note the player one bool)
 		if (Intro.introTimer < 0f && playerOne) {
 			if (!grounded && !climbingLadder) {
@@ -641,7 +652,7 @@ public class PlayerV2 : MonoBehaviour
 			
 			if (grounded) {
 				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight ||
-				    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)  ) {
+				    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) ) {
 					anim.SetBool ("Idle", false);
 					if (slowTimer > 0f) {
 						anim.SetBool ("Run", false);
@@ -714,10 +725,17 @@ public class PlayerV2 : MonoBehaviour
 				//anim.SetBool ("Jump", false);
 			}
 		}
-		
-		
-		
-		
 	}
+
+	IEnumerator MenuFireAnimation()
+	{
+		swingInMenu = true;
+		anim.SetBool ("Run", false);
+		anim.SetBool ("Walkandpour", true); 
+		yield return new WaitForSeconds(1.0f);
+		anim.SetBool ("Walkandpour", false); 
+		swingInMenu = false;
+	}
+	
 	#endregion
 }

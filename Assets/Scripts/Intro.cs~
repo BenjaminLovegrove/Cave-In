@@ -6,14 +6,14 @@ public class Intro : MonoBehaviour {
 
 	public static bool watchIntro = true;
 	public static int skipNum = 0; 
-	public Player sorek;
-	public Player hickory;
+	public PlayerV2 sorek;
+	public PlayerV2 hickory;
 	public static Camera cam;
 	public static float introTimer = 30f;
 	public static float startIntroTimer;
 	public float lerpTimer;
-	bool caveInStarted = false;
-	bool gameStarted = false;
+	public static bool caveInStarted = false;
+	public static bool gameStarted = false;
 	public GameObject caveInObj;
 	public Transform caveInSpawnPos;
 	public AudioClip CaveInSFX;
@@ -55,6 +55,28 @@ public class Intro : MonoBehaviour {
 
 		sorekCamPos = new Vector3 (sorek.transform.position.x, sorek.transform.position.y, this.transform.position.z);
 		hickoryCamPos = new Vector3 (hickory.transform.position.x, hickory.transform.position.y, this.transform.position.z);
+
+
+		#region Force Intro to work from pause menu
+		if (PauseMenu.restartedLevel == true ) //force the intro to restart from pause menu
+		{
+			PauseMenu.restartedLevel = false;
+			gameStarted = false;
+			caveInStarted = false;
+			watchIntro = true;
+			introTimer = 1;
+		}
+		if (PauseMenu.mainMenuLoop == true)
+		{
+			introTimer = 30;
+			watchIntro = true;
+			PauseMenu.mainMenuLoop = false;
+			cam.SendMessage("Intro", true);
+			lerpToSorek = false;
+			gameStarted = false;
+			caveInStarted = false;
+		}
+		#endregion
 	}
 
 	void FixedUpdate()
@@ -86,6 +108,8 @@ public class Intro : MonoBehaviour {
 	}
 
 	void Update () {
+
+
 		//Double check that these mother fuckers are active/inactive
 		if (introTimer < startIntroTimer * 0.6f) {
 			if (introStuff.activeSelf){
@@ -106,7 +130,6 @@ public class Intro : MonoBehaviour {
 			UI.displaySkip ++;
 			if (skipNum >= 2)
 			{
-				Debug.LogWarning("Dev skip Intro");
 				Skip ();
 			}
 		 }
@@ -142,6 +165,7 @@ public class Intro : MonoBehaviour {
 				sorek.canMove = true;
 				hickory.canMove = true;
 				gameStarted = true;
+				PauseMenu.canPauseGame = true;
 			}
 
 			//Make hickory swing his pick
@@ -167,7 +191,7 @@ public class Intro : MonoBehaviour {
 		}
 	}
 
-	void CaveIn(){
+	public void CaveIn(){
 		caveInStarted = true;
 		Player.stopPadVibration(0);
 		cam.SendMessage("Intro", false);
@@ -205,6 +229,7 @@ public class Intro : MonoBehaviour {
 			introTimer = startIntroTimer * 0.3f;
 			cam.SendMessage ("Intro", false);
 			Intro.skipped = true;
+			PauseMenu.canPauseGame = true;
 		}
 	}
 }
