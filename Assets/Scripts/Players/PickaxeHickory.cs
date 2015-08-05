@@ -38,7 +38,6 @@ public class PickaxeHickory : MonoBehaviour {
 			}
 		}
 
-
 	}
 
 	void Swing(){
@@ -50,30 +49,47 @@ public class PickaxeHickory : MonoBehaviour {
 			//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
 			RaycastHit hit;
 			if (transform.localScale.x <= 0) {
-				if (Physics.Raycast (transform.position, -transform.right, out hit, 5f)) {
+				if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 7f, 0), -transform.right, out hit, 3f)) {
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					//Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
+					//Particle effect
+				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1.5f, 0), -transform.right, out hit, 3f)) { //this is a lower raycast to check for crates
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
 				}
 			} else {
-				if (Physics.Raycast (transform.position, transform.right, out hit, 5f)) {
+				if (Physics.Raycast (transform.position, transform.right, out hit, 3f)) {
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					//Instantiate (hickoryPickAxe, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 1, -3), Quaternion.identity);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
+					//Particle effect
+				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1.5f, 0), transform.right, out hit, 3f)) { //this is a lower raycast to check for crates
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
 				}
 			}
+
 
 			if (hit.collider == null) {
 				//Play swing and miss sound.

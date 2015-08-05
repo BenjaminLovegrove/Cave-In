@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21223260}
   - 65: {fileID: 6523260}
   - 54: {fileID: 5423260}
+  - 114: {fileID: 11491186}
   m_Layer: 0
   m_Name: spr_Crate
   m_TagString: Untagged
@@ -37,14 +38,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123260}
   serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 1
+  m_Mass: 40
+  m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 56
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!65 &6523260
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -55,8 +56,22 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.86486959, y: 4.70541573, z: .5}
+  m_Size: {x: 4.86486959, y: 4.70541573, z: 4}
   m_Center: {x: -.063784495, y: .0159469489, z: 0}
+--- !u!114 &11491186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d33fb99a0e55ad4b8f5cd2ac08bbd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitsReqd: 1
+  rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
+  CaveIn: {fileID: 0}
 --- !u!212 &21223260
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -39,7 +39,7 @@ public class CamController : MonoBehaviour {
 				Camera.main.orthographicSize += Time.deltaTime * 4;
 			}
 
-			if (Camera.main.orthographicSize > 5f) {
+			if (Camera.main.orthographicSize > 10f) {
 				if (p1Dist < distThreshold * 0.9f || p2Dist < distThreshold * 0.9f) {
 					Camera.main.orthographicSize -= Time.deltaTime * 4;
 				}

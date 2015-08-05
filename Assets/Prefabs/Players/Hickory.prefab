@@ -168,13 +168,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e89d3ff42e04b4884af2e6ce4dd8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugState: 1
+  isDead: 0
+  anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 0
-  playerRigid: {fileID: 0}
-  movementForce: 10
-  jumpForce: 120
-  playerHP: 0
+  otherPlayer: {fileID: 0}
+  playerLight: {fileID: 0}
+  gravestone: {fileID: 0}
+  UIspr: {fileID: 0}
+  UIdisable: 2
+  introSkipped: 0
+  canMove: 1
+  baseMovForce: 10
+  baseJumpForce: 500
+  slowTimer: 0
+  grounded: 0
+  rightFaced: 1
   climbingLadder: 0
+  sfxRun: {fileID: 0}
+  sfxJump: {fileID: 0}
+  sfxLand: {fileID: 0}
+  playerIndex: 0
+  menuActive: 0
 --- !u!114 &11459578
 MonoBehaviour:
   m_ObjectHideFlags: 1
