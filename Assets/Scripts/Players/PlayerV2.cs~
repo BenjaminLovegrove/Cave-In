@@ -354,9 +354,11 @@ public class PlayerV2 : MonoBehaviour
 				}
 				
 				// Jump
-				if ((grounded == true) && Input.GetKey(KeyCode.LeftShift) && (!climbingLadder))
+				if ((grounded == true) && !jumpingNow && Input.GetKey(KeyCode.LeftShift) && (!climbingLadder))
 				{
-					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
+
+					player.rigidbody.AddForce(Vector3.up * 400, ForceMode.Impulse);
+					StartCoroutine(JumpCoolDown());
 					sfxJump.Play();
 				}
 				
@@ -405,9 +407,10 @@ public class PlayerV2 : MonoBehaviour
 				}
 				
 				// Jump
-				if ((grounded == true) && Input.GetKey(KeyCode.RightShift) && (!climbingLadder))
+				if ((grounded == true) && !jumpingNow && Input.GetKey(KeyCode.RightShift) && (!climbingLadder))
 				{
-					player.rigidbody.AddForce(Vector3.up * 100, ForceMode.Impulse);
+					player.rigidbody.AddForce(Vector3.up * 400, ForceMode.Impulse);
+					StartCoroutine(JumpCoolDown());
 					sfxJump.Play();
 				}
 				
@@ -649,10 +652,12 @@ public class PlayerV2 : MonoBehaviour
 			} else {
 				anim.SetBool ("Jump", false);
 			}
-			
+		
+
 			if (grounded) {
-				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight ||
-				    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) ) {
+				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive  || xInput.ThumbStickL_X > 0.3f && !keyboardActive || 
+				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight && !keyboardActive||
+				    Input.GetKey(KeyCode.D) && keyboardActive || Input.GetKey(KeyCode.A) && keyboardActive) {
 					anim.SetBool ("Idle", false);
 					if (slowTimer > 0f) {
 						anim.SetBool ("Run", false);
@@ -702,8 +707,9 @@ public class PlayerV2 : MonoBehaviour
 			}
 			
 			if (grounded) {
-				if (xInput.ThumbStickL_X < -0.3f || xInput.ThumbStickL_X > 0.3f || xInput.OnButton_DpadLeft || xInput.OnButton_DpadRight
-				    || Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.Quote)) {
+				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive|| xInput.ThumbStickL_X > 0.3f && !keyboardActive|| 
+				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight&& !keyboardActive
+				    || Input.GetKey(KeyCode.L) && !keyboardActive|| Input.GetKey(KeyCode.Quote) && !keyboardActive) {
 					anim.SetBool ("Run", true);
 					anim.SetBool ("Idle", false);
 					if (xInput.OnButtonB) {

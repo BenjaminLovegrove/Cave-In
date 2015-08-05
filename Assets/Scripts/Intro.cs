@@ -17,7 +17,7 @@ public class Intro : MonoBehaviour {
 	public GameObject caveInObj;
 	public Transform caveInSpawnPos;
 	public AudioClip CaveInSFX;
-	static bool skipped = false;
+	public static bool skipped = false;
 
 	//Intro and outro aesthetics (to be switched after intro)
 	public GameObject introStuff;

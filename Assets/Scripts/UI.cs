@@ -11,7 +11,7 @@ public class UI : MonoBehaviour {
 	public static int displaySkip = 0; //display the second skip ui
 
 	void OnGUI() {
-		if (Intro.introTimer > 0f  ){
+		if (Intro.introTimer > 0f  && Intro.skipped == false){
 			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 0){
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkipTwice, ScaleMode.ScaleToFit);
 			}
