@@ -9,6 +9,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 	float swingTime;
 	public AudioClip PickHit;
 	public GameObject hickoryPickAxe;
+	public GameObject hitRockPre,hitWoodPre;
 	
 	bool swinging = false;
 	
@@ -58,7 +59,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					print (hit.collider.name);
-					//Particle effect
+					Instantiate( hitRockPre, hit.point, Quaternion.identity );
 				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), -transform.right, out hit, 2.5f)) { //this is a lower raycast to check for crates
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
@@ -67,7 +68,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
-					//Particle effect
+					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
 				}
 			} else {
 				if (Physics.Raycast (transform.position, transform.right, out hit, 2.5f)) {
@@ -78,7 +79,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
-					//Particle effect
+					Instantiate( hitRockPre, hit.point, Quaternion.identity );
 				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), transform.right, out hit, 2.5f)) { //this is a lower raycast to check for crates
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
@@ -87,7 +88,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
-					//Particle effect
+					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
 				}
 			}
 			

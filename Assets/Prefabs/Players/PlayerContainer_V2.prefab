@@ -1480,6 +1480,8 @@ MonoBehaviour:
   swingLength: 1
   PickHit: {fileID: 8300000, guid: 97ff3675c31a7bf4f9e9eed35464a9fc, type: 3}
   hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
+  hitRockPre: {fileID: 139956, guid: fd974b7c9047aca44ba341f2563fffca, type: 2}
+  hitWoodPre: {fileID: 103958, guid: ebb6ea481aed94f43b390d48e345532c, type: 2}
 --- !u!114 &11413392
 MonoBehaviour:
   m_ObjectHideFlags: 1
