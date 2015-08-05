@@ -12,10 +12,10 @@ public class UI : MonoBehaviour {
 
 	void OnGUI() {
 		if (Intro.introTimer > 0f  && Intro.skipped == false){
-			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 0){
+			if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 1){
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkipTwice, ScaleMode.ScaleToFit);
 			}
-			else if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 1) 
+			else if (!playerOneScr.introSkipped && !playerOneScr.introSkipped && displaySkip == 2) 
 			{
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkip, ScaleMode.ScaleToFit);
 			}

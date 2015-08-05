@@ -247,11 +247,11 @@ public class PlayerV2 : MonoBehaviour
 
 		#region Various Start Button Actions Throughout The Game
 		//START BUTTON
-		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 2 && PauseMenu.canPauseGame == false)
+		if (!keyboardActive && !menuActive && Intro.watchIntro == true && xInput.OnButtonDownStart && Intro.skipNum <= 3 && PauseMenu.canPauseGame == false)
 		{
 			Intro.skipNum ++;
 			UI.displaySkip ++;
-			if (Intro.skipNum >= 2 && Intro.introTimer > 0f && !introSkipped){
+			if (Intro.skipNum >= 3 && Intro.introTimer > 0f && !introSkipped){
 				Intro.Skip();
 				if (!otherPlayer.introSkipped){
 					Intro.Skip();

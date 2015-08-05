@@ -128,7 +128,7 @@ public class Intro : MonoBehaviour {
 		 if (Input.GetKeyDown(KeyCode.Escape) && skipNum <= 2){
 			skipNum ++;
 			UI.displaySkip ++;
-			if (skipNum >= 2)
+			if (skipNum >= 3)
 			{
 				Skip ();
 			}
