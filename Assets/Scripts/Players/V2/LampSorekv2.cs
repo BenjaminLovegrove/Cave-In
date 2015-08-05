@@ -10,6 +10,7 @@ public class LampSorekv2 : MonoBehaviour {
 	public float fireCD = 0.5f;
 	float fireCDtimer;
 	
+
 	void Start (){
 		sorekScr = GetComponent<PlayerV2> ();
 	}
@@ -21,7 +22,9 @@ public class LampSorekv2 : MonoBehaviour {
 		{
 			if (!PlayerV2.keyboardActive)
 			{
-				if (sorekScr.xInput.OnButtonDownB && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+				if (sorekScr.xInput.OnButtonDownB && fireCDtimer <= 0 && !sorekScr.climbingLadder && SorekLanternCD.diminishAmt < 0.9f) {
+					SorekLanternCD.diminishAmt += 0.05f;
+					SorekLanternCD.replenishTimer = 1.0f;
 					fireCDtimer = fireCD;
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
@@ -29,7 +32,9 @@ public class LampSorekv2 : MonoBehaviour {
 				}
 			}
 			else{
-				if (Input.GetKey (KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder) {
+				if (Input.GetKey (KeyCode.F) && fireCDtimer <= 0 && !sorekScr.climbingLadder && SorekLanternCD.diminishAmt < 0.9f) {
+					SorekLanternCD.diminishAmt += 0.05f;
+					SorekLanternCD.replenishTimer = 1.0f;
 					fireCDtimer = fireCD;
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);

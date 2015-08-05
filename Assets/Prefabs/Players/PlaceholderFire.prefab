@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
+  lampScript: 0
 --- !u!135 &13516646
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,7 +6,7 @@ public class GampadConnected : MonoBehaviour {
 	public static int connectedControllers;
 	public int devControllers = 0; //use this if you only have one controller to use, type 1
 	private int maxControllers = 2;
-	//public Player playerScript;
+	public bool debugControllers = false;
 
 
 	// Use this for initialization
@@ -21,12 +21,12 @@ public class GampadConnected : MonoBehaviour {
 		connectedControllers = Input.GetJoystickNames().Length;
 		if (connectedControllers == maxControllers && devControllers == 0)
 		{
-			Debug.Log ("Detected "+ connectedControllers +" Controller/s");
+			if (debugControllers){Debug.Log ("Detected "+ connectedControllers +" Controller/s");}
 			PlayerV2.keyboardActive = false;
 		}
 		else if (connectedControllers < maxControllers && devControllers == 0)
 		{
-			Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");
+			if (debugControllers){	Debug.LogWarning ("Not Enough Controllers Found for Maximum Players(" +maxControllers+ ")");}
 			PlayerV2.keyboardActive = true;
 		}
 
