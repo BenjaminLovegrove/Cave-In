@@ -28,9 +28,9 @@ GameObject:
   - 65: {fileID: 6505622}
   - 65: {fileID: 6505624}
   - 65: {fileID: 6505626}
-  - 114: {fileID: 11405626}
   - 54: {fileID: 5405626}
   - 65: {fileID: 6592774}
+  - 114: {fileID: 11405626}
   m_Layer: 0
   m_Name: spr_Rock01
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14880002, y: 5.10449982, z: -.254170001}
+  m_LocalPosition: {x: 19.8477726, y: 5.10763454, z: -.254170001}
   m_LocalScale: {x: 1.1875087, y: 1.18750906, z: 1.18750906}
   m_Children:
   - {fileID: 405626}
@@ -171,7 +171,7 @@ MonoBehaviour:
   caveInPrefab: {fileID: 125432, guid: cb072df4fc99bc24e852d2b647c82d9e, type: 2}
 --- !u!114 &11405626
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105626}
@@ -183,6 +183,7 @@ MonoBehaviour:
   hitsReqd: 28
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 105624}
+  destroyTime: 0
 --- !u!114 &11455488
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -49,7 +49,6 @@ public class Intro : MonoBehaviour {
 		startIntroTimer = introTimer;
 
 		if (watchIntro){
-			Debug.Log ("send cam message at start");
 			sorek.canMove = false;
 			hickory.canMove = false;
 			cam.SendMessage("Intro", true);
