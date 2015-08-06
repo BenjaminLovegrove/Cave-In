@@ -5,13 +5,13 @@ public class CaveInKillBox : MonoBehaviour {
 	public GameObject rockPreTestFall;
 	private bool rockfalling = false;
 	GameObject[] players;
-	AudioSource rumbleSFX;
-	float p1caveInDistance;
-	float p2caveInDistance;
+	//AudioSource rumbleSFX;
+	//float p1caveInDistance;
+	//float p2caveInDistance;
 
 	// Use this for initialization
 	void Start () {
-		rumbleSFX = GetComponent<AudioSource> ();
+		//rumbleSFX = GetComponent<AudioSource> ();
 
 		//This is to pass this gameobject to both players for distance checks
 		players = GameObject.FindGameObjectsWithTag ("Player");
@@ -26,13 +26,13 @@ public class CaveInKillBox : MonoBehaviour {
 			StartCoroutine(SpawnRock());
 		}
 
-		p1caveInDistance = Vector3.Distance (transform.position, players [0].transform.position);
-		p2caveInDistance = Vector3.Distance (transform.position, players [1].transform.position);
-		if (p1caveInDistance < p2caveInDistance){
+		//p1caveInDistance = Vector3.Distance (transform.position, players [0].transform.position);
+		//p2caveInDistance = Vector3.Distance (transform.position, players [1].transform.position);
+		/*if (p1caveInDistance < p2caveInDistance){
 			rumbleSFX.volume = Mathf.Lerp (1f, 0.2f, (p1caveInDistance / 20));
 		} else {
 			rumbleSFX.volume = Mathf.Lerp (1f, 0.2f, (p2caveInDistance / 20));
-		}
+		}*/
 
 
 	}
@@ -51,6 +51,10 @@ public class CaveInKillBox : MonoBehaviour {
 		{
 			col.SendMessage("Crushed");
 		}
+	}
+
+	public void KillMe(){
+		Destroy (this.gameObject);
 	}
 
 }
