@@ -106,19 +106,14 @@ public class SplineController : MonoBehaviour
 	/// </summary>
 	Transform[] GetTransforms()
 	{
-        if(points.Count > 0)
+        List<Transform> transforms = new List<Transform>();
+
+        foreach(GameObject point in points)
         {
-            List<Transform> transforms = new List<Transform>();
-
-            foreach(GameObject point in points)
-            {
-                transforms.Add(point.transform);
-            }
-
-            return transforms.ToArray();
+            transforms.Add(point.transform);
         }
 
-		return null;
+        return transforms.ToArray();
 	}
 
 	/// <summary>
