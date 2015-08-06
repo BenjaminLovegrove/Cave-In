@@ -7,6 +7,8 @@ public class Mineable : MonoBehaviour {
 	public AudioClip rockBreak;
 
 	public GameObject CaveIn;
+	public float destroyTime = 0f;
+
 
 	void PickHit(){
 		hitsReqd --;
@@ -18,7 +20,7 @@ public class Mineable : MonoBehaviour {
 			if (CaveIn != null){
 				CaveIn.SendMessage("StartGame");
 			}
-			Destroy (this.gameObject);
+			Destroy (this.gameObject, destroyTime);
 		}
 	}
 }

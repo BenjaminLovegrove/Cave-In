@@ -68,6 +68,7 @@ public class PauseMenu : MonoBehaviour {
 				Intro.gameStarted = false;
 				Intro.skipNum = 0;
 				Intro.watchIntro = false;
+				Intro.introTimer = 30.0f;
 				Application.LoadLevel(0);
 			}
 		}

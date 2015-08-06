@@ -160,6 +160,47 @@ public class PlayerV2 : MonoBehaviour
 //		state = GamePad.GetState ( playerIndex );
 		#endregion
 
+
+		#region Ready State Toggle For Menu -Keyboard-
+		//Menu input. This is here because the player scripts are required for xinput to work.
+		if (menuActive)
+		{
+			if (Input.GetKeyDown (KeyCode.Return) && keyboardActive || Input.GetKeyDown (KeyCode.KeypadEnter)) //keyboard controls for menu ready
+			{
+				if (playerOne)
+				{
+					print ("Players hit start");
+					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+
+					//Player 2 toggle
+					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+				}
+			}
+		}
+		#endregion
+
 		
 		//Stop running sound instantly when jumping or climbing
 		if (!menuActive && !grounded && sfxRun.isPlaying) {
@@ -203,12 +244,11 @@ public class PlayerV2 : MonoBehaviour
 		}
 		#endregion
 
-		#region Ready State Toggle For Menu
+		#region Ready State Toggle For Menu -Xbox-
 		//Menu input. This is here because the player scripts are required for xinput to work.
 		if (menuActive)
 		{
-			if (xInput.OnButtonDownStart && !keyboardActive || 
-			    Input.GetKeyDown (KeyCode.Return) && keyboardActive)
+			if (xInput.OnButtonDownStart && !keyboardActive)//xbox controls for menu
 			{
 				if (playerOne)
 				{
@@ -709,7 +749,7 @@ public class PlayerV2 : MonoBehaviour
 			if (grounded) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive|| xInput.ThumbStickL_X > 0.3f && !keyboardActive|| 
 				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight&& !keyboardActive
-				    || Input.GetKey(KeyCode.L) && !keyboardActive|| Input.GetKey(KeyCode.Quote) && !keyboardActive) {
+				    || Input.GetKey(KeyCode.L) && keyboardActive|| Input.GetKey(KeyCode.Quote) && keyboardActive) {
 					anim.SetBool ("Run", true);
 					anim.SetBool ("Idle", false);
 					if (xInput.OnButtonB) {
