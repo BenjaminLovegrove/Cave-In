@@ -15,34 +15,44 @@ public class SorekLanternCD : MonoBehaviour {
 	public float inspectorReplenish;
 
 	public static float replenishTimer = 1.0f;
+	public Color defaultColor;
+	private float lightCurrDim;
+
+	//public Light light;
 	
 	// Use this for initialization
 	void Start () {
-		
 		
 	}
 	
 	void FixedUpdate()
 	{
-
+		defaultColor = new Color(202f/255.0f,138f/255.0f,40f/255.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		replenishTimer -= Time.deltaTime;
 
+		//print (defaultColor.ToString());
 
+		//to see these variables in the inspector
 		inspectorDiminish = diminishAmt;
 		inspectorReplenish = replenishTimer;
 
 		//change lantern light
-		if (diminishAmt > 0.5f && diminishAmt < maxDiminish)
+		if (diminishAmt > maxDiminish / 2.0f && diminishAmt < maxDiminish)
 		{
 			caveLightFlicker = Random.Range(minRange/(diminishAmt * minRange),maxRange/(diminishAmt * maxRange));
+			//light.color = new Color(202f / (diminishAmt),138f / (diminishAmt),40f/ (diminishAmt),0f);
+			lightCurrDim = Mathf.MoveTowards(lightCurrDim, diminishAmt , 0.05f * Time.deltaTime);
+			light.color = (defaultColor * ((1.0f - lightCurrDim)*2.0f));
+
 		}
-		else if (diminishAmt <= 0.5f && diminishAmt < maxDiminish)
+		else if (diminishAmt <= maxDiminish / 2.0f && diminishAmt < maxDiminish)
 		{
 			caveLightFlicker = Random.Range(minRange,maxRange);
+			light.color = defaultColor;
 		}
 
 		//max diminish amount catch

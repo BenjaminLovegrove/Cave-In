@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &113758
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.2999992, y: 101.400002, z: -10}
+  m_LocalPosition: {x: 347.299988, y: 132.699997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 449534}
@@ -427,7 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fb3f66a13ac8459a92150311cda6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
 --- !u!114 &11419112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -536,6 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devControllers: 0
+  debugControllers: 0
 --- !u!114 &11449534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,6 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devControllers: 0
+  debugControllers: 0
 --- !u!114 &11498490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -611,6 +612,8 @@ MonoBehaviour:
   uiRestart: {fileID: 2800000, guid: 35e54998d535afc4c824780a0be91caa, type: 3}
   uiSkipTwice: {fileID: 2800000, guid: baa80a3e35d9c24408f3eef7634f7802, type: 3}
   uiSkip: {fileID: 2800000, guid: 5799b0f025ded7a4fb47db2be7c7478e, type: 3}
+  topUiBars: {fileID: 2800000, guid: a8fd08c0ec91f5f419bafa2e79f01da2, type: 3}
+  bottomUiBars: {fileID: 2800000, guid: 5a0dc1f7068b1814181c0632f49cdbdf, type: 3}
 --- !u!124 &12449534
 Behaviour:
   m_ObjectHideFlags: 1

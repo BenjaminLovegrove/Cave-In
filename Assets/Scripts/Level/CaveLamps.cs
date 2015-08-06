@@ -34,7 +34,7 @@ public class CaveLamps : MonoBehaviour {
 			Instantiate (lightSpark, this.transform.position, Quaternion.identity);
 		}
 
-		if (destroyTimer < 0){
+		if (destroyTimer < 0 && lightSource != null){
 			lightSource.enabled = false;
 			if (!lampExplode.isPlaying){
 				Instantiate (lampExplodeVis, transform.position, Quaternion.identity);
