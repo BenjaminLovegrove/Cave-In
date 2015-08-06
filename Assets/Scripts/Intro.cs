@@ -187,7 +187,7 @@ public class Intro : MonoBehaviour {
 			//OUTRO//
 			if (outro){
 				transform.position = Vector3.Lerp(outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
-				FTWalpha = Mathf.Lerp(0,1,lerpTimer / 5);
+				FTWalpha = Mathf.Lerp(0,1,lerpTimer / 3);
 				FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
 
 				if (lerpTimer > 6f) {
