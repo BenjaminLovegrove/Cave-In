@@ -38,13 +38,18 @@ public class Intro : MonoBehaviour {
 	//List<GameObject> toggleObjs = new List<GameObject>();
 
 	bool lerpToSorek = false; //This is just a hack to set the lerp timer to 0 only once.
+	void Awake()
+	{
+		BeginIntro();
+	}
 
 	// Use this for initialization
-	void Start () {
+	public void BeginIntro() {
 		cam = Camera.main;
 		startIntroTimer = introTimer;
 
 		if (watchIntro){
+			Debug.Log ("send cam message at start");
 			sorek.canMove = false;
 			hickory.canMove = false;
 			cam.SendMessage("Intro", true);
@@ -68,6 +73,11 @@ public class Intro : MonoBehaviour {
 		}
 		if (PauseMenu.mainMenuLoop == true)
 		{
+			print ("running menu loop");
+			sorek.canMove = false;
+			hickory.canMove = false;
+			cam.SendMessage("Intro", true);
+			lerpTimer = -1f;
 			introTimer = 30;
 			watchIntro = true;
 			PauseMenu.mainMenuLoop = false;
@@ -75,6 +85,7 @@ public class Intro : MonoBehaviour {
 			lerpToSorek = false;
 			gameStarted = false;
 			caveInStarted = false;
+			print ("running menu loop end");
 		}
 		#endregion
 	}
@@ -226,6 +237,7 @@ public class Intro : MonoBehaviour {
 
 	public static void Skip(){
 		if (!skipped) {
+			Debug.Log("are you running when I reload level??");
 			introTimer = startIntroTimer * 0.3f;
 			cam.SendMessage ("Intro", false);
 			Intro.skipped = true;
