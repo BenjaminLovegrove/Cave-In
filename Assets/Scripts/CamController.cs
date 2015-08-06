@@ -11,6 +11,8 @@ public class CamController : MonoBehaviour {
 	Vector3 p2Pos;
 	Vector3 playerCenter;
 	Vector3 camCenter;
+	bool deathCam = false;
+	Vector3 deathCamPos;
 
 	float p1Dist;
 	float p2Dist;
@@ -46,6 +48,11 @@ public class CamController : MonoBehaviour {
 			}
 		}
 
+		if (deathCam) {
+			transform.position = Vector3.Lerp(transform.position, deathCamPos, Time.deltaTime/3);
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 8f, Time.deltaTime / 5);
+		}
+
 	}
 
 	void Intro (bool playIntro){
@@ -53,6 +60,15 @@ public class CamController : MonoBehaviour {
 			gamePlay = false;
 		} else {
 			gamePlay = true;
+			deathCam = false;
 		}
+	}
+
+	void Death (Vector3 deathPos){
+
+		gamePlay = false;
+		deathCam = true;
+		deathCamPos = deathPos;
+
 	}
 }

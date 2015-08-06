@@ -48,6 +48,7 @@ public class PlayersReadyState : MonoBehaviour {
 
 	public IEnumerator LoadLevel()
 	{
+		CheckpointManager.checkpointSpawn = false;
 		yield return new WaitForSeconds(1.0f);
 		Application.LoadLevel(1);
 	}

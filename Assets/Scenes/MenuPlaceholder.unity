@@ -73,7 +73,6 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
-    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &24040028
 GameObject:
@@ -617,6 +616,7 @@ MonoBehaviour:
   otherPlayer: {fileID: 0}
   playerLight: {fileID: 1266589581}
   gravestone: {fileID: 133185010}
+  playerSpr: {fileID: 0}
   UIspr: {fileID: 2044441575}
   UIdisable: 2
   introSkipped: 0
@@ -1198,6 +1198,50 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!1001 &608042035
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -13.0371704
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 23.0028152
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -.00125002861
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+  m_RootGameObject: {fileID: 749751100}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &703990358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1448,46 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &749751100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 127422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+  m_PrefabInternal: {fileID: 608042035}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 749751102}
+  - 114: {fileID: 749751101}
+  m_Layer: 0
+  m_Name: CheckpointManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &749751101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11427422, guid: ab8485e6384261046a7bc38e7cfbb769,
+    type: 2}
+  m_PrefabInternal: {fileID: 608042035}
+  m_GameObject: {fileID: 749751100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619e9b8f5a8173e4694efc674dc4bbdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &749751102
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 427422, guid: ab8485e6384261046a7bc38e7cfbb769, type: 2}
+  m_PrefabInternal: {fileID: 608042035}
+  m_GameObject: {fileID: 749751100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.0371704, y: 23.0028152, z: -.00125002861}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &784011345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1832,7 @@ AudioSource:
   m_GameObject: {fileID: 963242876}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: ff4eb39f1bbb32346b2c82fd1b2db0d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97d1e7112cb59354b97aa2ff0b4bfd2b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3397,6 +3481,7 @@ MonoBehaviour:
   otherPlayer: {fileID: 0}
   playerLight: {fileID: 784011345}
   gravestone: {fileID: 133185010}
+  playerSpr: {fileID: 0}
   UIspr: {fileID: 210209098}
   UIdisable: 2
   introSkipped: 0
@@ -3427,6 +3512,8 @@ MonoBehaviour:
   swingLength: 1
   PickHit: {fileID: 8300000, guid: 97ff3675c31a7bf4f9e9eed35464a9fc, type: 3}
   hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
+  hitRockPre: {fileID: 0}
+  hitWoodPre: {fileID: 0}
 --- !u!54 &1927244591
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3650,6 +3737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devControllers: 0
+  debugControllers: 0
 --- !u!114 &2003949587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3934,8 +4022,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295

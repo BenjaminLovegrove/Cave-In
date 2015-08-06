@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ladderFall: 0
-  ladderParent: {fileID: 0}
+  ladderParent: {fileID: 156518}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

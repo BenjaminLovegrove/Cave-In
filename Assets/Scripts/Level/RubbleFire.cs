@@ -9,6 +9,8 @@ public class RubbleFire : MonoBehaviour {
 	public Light fireLight;
 	public SpriteRenderer fireSprite;
 	AudioSource fireAudio;
+	public Transform p1check;
+	public Transform p2check;
 
 	void Start () {
 		fireAudio = GetComponent<AudioSource> ();
@@ -27,6 +29,9 @@ public class RubbleFire : MonoBehaviour {
 			fireSprite.enabled = true;
 			fireAudio.enabled = true;
 			lit = true;
+			CheckpointManager.checkpointSpawn = true;
+			CheckpointManager.p1checkpoint = p1check.position;
+			CheckpointManager.p2checkpoint = p2check.position;
 		}
 
 	}

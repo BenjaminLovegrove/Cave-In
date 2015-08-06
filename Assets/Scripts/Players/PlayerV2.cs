@@ -15,9 +15,10 @@ public class PlayerV2 : MonoBehaviour
 	
 	public GameObject player;
 	public bool playerOne;
-	public Player otherPlayer; //this is so you can check if the other player is dead for start button restart
+	public PlayerV2 otherPlayer; //this is so you can check if the other player is dead for start button restart
 	public GameObject playerLight; //to be turned off when player dies
 	public SpriteRenderer gravestone; //to be abled when player dies
+	public SpriteRenderer playerSpr;
 	
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
@@ -85,6 +86,7 @@ public class PlayerV2 : MonoBehaviour
 	
 
 	void Start(){
+
 		xInput = new Controller();// Creates a new instance of the Controller script
 
 		#region Setup each instance of the Controller script according to each player
@@ -131,6 +133,18 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Update(){
+
+		//DeathStuff
+		if (isDead) {
+			playerSpr.enabled = false;
+		} else {
+			playerSpr.enabled = true;
+		}
+		if (otherPlayer.isDead && canMove) {
+			canMove = false;
+		}
+
+		//Flip Hickory when rock falls
 		if (Intro.introTimer <= (Intro.startIntroTimer * 0.09f) && startFlipped == false && !playerOne){
 			rightFaced = false;
 			Flip ();
@@ -672,6 +686,7 @@ public class PlayerV2 : MonoBehaviour
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
+		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
 	}
 
 	#region Animation

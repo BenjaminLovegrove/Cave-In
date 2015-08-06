@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &129458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429458}
+  m_Layer: 8
+  m_Name: p2spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &129460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429460}
+  m_Layer: 8
+  m_Name: p1spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &191464
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +114,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &429458
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9000001, y: 1.34000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495824}
+  m_RootOrder: 4
+--- !u!4 &429460
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.94000006, y: 1.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495824}
+  m_RootOrder: 3
 --- !u!4 &491464
 Transform:
   m_ObjectHideFlags: 1
@@ -102,13 +156,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195824}
-  m_LocalRotation: {x: 0, y: 0, z: -.0484062806, w: .998827755}
-  m_LocalPosition: {x: -19.7399998, y: 22.3999996, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: .0465537533, w: .998915851}
+  m_LocalPosition: {x: -27.7800007, y: -7.13000107, z: -.469999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495826}
   - {fileID: 495828}
   - {fileID: 491464}
+  - {fileID: 429460}
+  - {fileID: 429458}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &495826
@@ -304,6 +360,8 @@ MonoBehaviour:
   lightTime: 3
   fireLight: {fileID: 10895830}
   fireSprite: {fileID: 21295830}
+  p1check: {fileID: 429460}
+  p2check: {fileID: 429458}
 --- !u!212 &21291464
 SpriteRenderer:
   m_ObjectHideFlags: 1

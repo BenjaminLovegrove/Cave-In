@@ -1391,7 +1391,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: .641379297, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 2
   m_Range: 1
   m_SpotAngle: 30
@@ -1426,7 +1426,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: .79411763, g: .53953284, b: .157655716, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Intensity: 6
   m_Range: 4
   m_SpotAngle: 30
@@ -1499,9 +1499,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 0
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11413400}
   playerLight: {fileID: 113412}
   gravestone: {fileID: 21213406}
+  playerSpr: {fileID: 21213404}
   UIspr: {fileID: 21213414}
   UIdisable: 2
   introSkipped: 0
@@ -1548,9 +1549,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 1
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11413392}
   playerLight: {fileID: 113392}
   gravestone: {fileID: 21213406}
+  playerSpr: {fileID: 21213412}
   UIspr: {fileID: 21213410}
   UIdisable: 2
   introSkipped: 0
@@ -1700,6 +1702,7 @@ MonoBehaviour:
   flickerTiming: .100000001
   inspectorDiminish: 0
   inspectorReplenish: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11454966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1758,6 +1761,7 @@ MonoBehaviour:
   flickerTiming: .100000001
   inspectorDiminish: 0
   inspectorReplenish: 0
+  defaultColor: {r: .897058845, g: .790219605, b: .626622021, a: 0}
 --- !u!212 &21213404
 SpriteRenderer:
   m_ObjectHideFlags: 1

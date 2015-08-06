@@ -61,6 +61,7 @@ public class PauseMenu : MonoBehaviour {
 			}
 			if (GUI.Button(new Rect((Screen.width/2)+ 25,(Screen.height/2) + 95,150,30), "Return To Menu"))
 			{
+				CheckpointManager.checkpointSpawn = false;
 				paused = false;
 				Time.timeScale = 1f;
 				mainMenuLoop = true;

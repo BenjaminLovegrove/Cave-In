@@ -67,7 +67,6 @@ public class Intro : MonoBehaviour {
 			PauseMenu.restartedLevel = false;
 			gameStarted = false;
 			caveInStarted = false;
-			watchIntro = true;
 			introTimer = 1;
 		}
 		if (PauseMenu.mainMenuLoop == true)
@@ -78,7 +77,6 @@ public class Intro : MonoBehaviour {
 			cam.SendMessage("Intro", true);
 			lerpTimer = -1f;
 			introTimer = 30;
-			watchIntro = true;
 			PauseMenu.mainMenuLoop = false;
 			cam.SendMessage("Intro", true);
 			lerpToSorek = false;
@@ -87,6 +85,13 @@ public class Intro : MonoBehaviour {
 			print ("running menu loop end");
 		}
 		#endregion
+
+		if (CheckpointManager.checkpointSpawn) {
+			watchIntro = false;
+			Skip ();
+			sorek.gameObject.transform.position = CheckpointManager.p1checkpoint;
+			hickory.gameObject.transform.position = CheckpointManager.p2checkpoint;
+		}
 	}
 
 	void FixedUpdate()
@@ -122,10 +127,12 @@ public class Intro : MonoBehaviour {
 
 		//Double check that these mother fuckers are active/inactive
 		if (introTimer < startIntroTimer * 0.6f) {
-			if (introStuff.activeSelf){
-				ToggleAesthetics();
-				introStuff.SetActive (false);
-				outroStuff.SetActive (true);
+			if (introStuff != null){
+				if (introStuff.activeSelf){
+					ToggleAesthetics();
+					introStuff.SetActive (false);
+					outroStuff.SetActive (true);
+				}
 			}
 		}
 
@@ -145,44 +152,47 @@ public class Intro : MonoBehaviour {
 		 }
 
 
-		if (watchIntro){
-			if (introTimer > startIntroTimer * 0.6f){
-				transform.position = Vector3.Lerp(this.transform.position, hickoryCamPos, lerpTimer);
+		if (watchIntro) {
+			if (introTimer > startIntroTimer * 0.6f) {
+				transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer);
 			}
 			//Cam move to sorek holding lamp.
-			if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)){
-				if (lerpToSorek == false){
-					ToggleAesthetics();
+			if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
+				if (lerpToSorek == false) {
+					ToggleAesthetics ();
 					lerpToSorek = true;
 					lerpTimer = 0f;
 				}
-				transform.position = Vector3.Lerp(this.transform.position, sorekCamPos, lerpTimer);
+				transform.position = Vector3.Lerp (this.transform.position, sorekCamPos, lerpTimer);
 			}
 			//Cam gameplay on (set to normal cam)
-			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.4f)){
-				cam.SendMessage("Intro", false);
+			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.4f)) {
+				cam.SendMessage ("Intro", false);
 			}
 			//Screen shake
-			if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)){
+			if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)) {
 				Camera.main.SendMessage ("DoCollisionShake");
 			}
 			//Cave in instantiate
-			if (introTimer < startIntroTimer * 0.1f && !caveInStarted){
-				CaveIn();
+			if (introTimer < startIntroTimer * 0.1f && !caveInStarted) {
+				CaveIn ();
 			}
-			//Sorek and Hickory canMove;
-			if (introTimer < 0f && !gameStarted){
-				sorek.canMove = true;
-				hickory.canMove = true;
-				gameStarted = true;
-				PauseMenu.canPauseGame = true;
-			}
+
 
 			//Make hickory swing his pick
-			if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)){
-				hickory.gameObject.SendMessage("Swing");
+			if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)) {
+				hickory.gameObject.SendMessage ("Swing");
 			}
+		}
 
+		//Sorek and Hickory canMove;
+		if (introTimer < 0f && !gameStarted) {
+			sorek.canMove = true;
+			hickory.canMove = true;
+			gameStarted = true;
+			PauseMenu.canPauseGame = true;
+			cam.SendMessage ("Intro", false);
+		}
 
 			//OUTRO//
 			if (outro){
@@ -198,7 +208,7 @@ public class Intro : MonoBehaviour {
 
 
 			lerpTimer += Time.deltaTime / 5;
-		}
+
 	}
 
 	public void CaveIn(){
@@ -236,7 +246,6 @@ public class Intro : MonoBehaviour {
 
 	public static void Skip(){
 		if (!skipped) {
-			Debug.Log("are you running when I reload level??");
 			introTimer = startIntroTimer * 0.3f;
 			cam.SendMessage ("Intro", false);
 			Intro.skipped = true;
