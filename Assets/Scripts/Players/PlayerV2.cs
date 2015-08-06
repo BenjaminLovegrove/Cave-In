@@ -39,6 +39,7 @@ public class PlayerV2 : MonoBehaviour
 	private float h;
 	private float v;
 	private bool jumpingNow = false;
+	bool startFlipped = false;
 	
 	//CI Rumble
 	GameObject caveIn;
@@ -130,6 +131,12 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Update(){
+		if (Intro.introTimer <= (Intro.startIntroTimer * 0.09f) && startFlipped == false && !playerOne){
+			rightFaced = false;
+			Flip ();
+			startFlipped = true;
+		}
+
 		//Disable UI after 2 button press
 		if (xInput.OnButtonDownB){
 			UIdisable --;
