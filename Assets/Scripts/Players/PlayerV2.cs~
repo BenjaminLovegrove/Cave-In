@@ -65,6 +65,7 @@ public class PlayerV2 : MonoBehaviour
 	private bool menuDefaultAnimation = false;
 	private bool menuReadyAnimation = false;
 	private bool swingInMenu = false;
+	private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
 	
 	
@@ -82,7 +83,11 @@ public class PlayerV2 : MonoBehaviour
 		}
 		
 	}
-	
+
+	void Awake()
+	{
+		anim = GetComponentInChildren<Animator> ();
+	}
 
 	void Start(){
 
@@ -105,6 +110,7 @@ public class PlayerV2 : MonoBehaviour
 
 		if (menuActive) //if menu is active
 		{
+			anim.SetBool ("Run", true);
 			rightFaced = false;
 			grounded = true;
 			menuDefaultAnimation = true;
@@ -127,11 +133,11 @@ public class PlayerV2 : MonoBehaviour
 		{
 			Debug.LogWarning ("Debug state = true");
 		}
-		
-		anim = GetComponentInChildren<Animator> ();
 	}
 	
 	void Update(){
+
+
 
 		//DeathStuff
 		if (isDead) {
@@ -277,12 +283,15 @@ public class PlayerV2 : MonoBehaviour
 						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
 						menuDefaultAnimation = false;
 						menuReadyAnimation = true;
+						StartCoroutine(MenuFireAnimation());
+				
 					}
 					else
 					{
 						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
 						menuDefaultAnimation = true;
 						menuReadyAnimation = false;
+						if (!swingInMenu){anim.SetBool ("Run", true);}
 					}
 				}
 				
@@ -293,12 +302,15 @@ public class PlayerV2 : MonoBehaviour
 						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
 						menuDefaultAnimation = false;
 						menuReadyAnimation = true;
+
+
 					}
 					else
 					{
 						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
 						menuDefaultAnimation = true;
 						menuReadyAnimation = false;
+						anim.SetBool ("Run", true);
 					}
 				}
 			}
@@ -691,20 +703,17 @@ public class PlayerV2 : MonoBehaviour
 
 	#region Animation
 	void Animate(){
-		//Menu animations
-		if (!menuReadyAnimation && menuDefaultAnimation && playerOne || !menuReadyAnimation && menuDefaultAnimation && !playerOne)
+
+		//Hickory menu animtion
+		if (menuActive && !menuDefaultAnimation && menuReadyAnimation && !playerOne)
 		{
-			//anim.SetBool ("Walkandpour", false); 
+			anim.SetBool ("Run", false);
+			anim.SetTrigger ("Swing");
+		}
+		else if (menuActive && menuDefaultAnimation && !menuReadyAnimation && playerOne && !swingInMenu)
+		{
 			anim.SetBool ("Run", true);
 		}
-		else if (menuReadyAnimation && !menuDefaultAnimation  || menuReadyAnimation && !menuDefaultAnimation && !playerOne)
-		{
-			if (playerOne && !swingInMenu){
-				StartCoroutine(MenuFireAnimation());
-			}
-			if (!playerOne){anim.SetTrigger ("Swing");}
-		}
-
 
 
 		//Soreks animations (note the player one bool)
@@ -804,6 +813,6 @@ public class PlayerV2 : MonoBehaviour
 		anim.SetBool ("Walkandpour", false); 
 		swingInMenu = false;
 	}
-	
+
 	#endregion
 }
