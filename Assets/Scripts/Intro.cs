@@ -91,6 +91,8 @@ public class Intro : MonoBehaviour {
 			Skip ();
 			sorek.gameObject.transform.position = CheckpointManager.p1checkpoint;
 			hickory.gameObject.transform.position = CheckpointManager.p2checkpoint;
+			sorek.canMove = true;
+			hickory.canMove = true;
 		}
 	}
 
