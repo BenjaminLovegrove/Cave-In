@@ -18,6 +18,7 @@ public class CamController : MonoBehaviour {
 	float p2Dist;
 
 	float distThreshold;
+	float maxSize = 30.0f; //how far apart is the maximum for the othorgraphic size of the camera
 	
 	void FixedUpdate () {
 
@@ -37,7 +38,7 @@ public class CamController : MonoBehaviour {
 			p2Dist = Vector3.Distance (p2Pos, camCenter);
 
 			//Resize camera to match
-			if (p1Dist > distThreshold || p2Dist > distThreshold){
+			if (p1Dist > distThreshold && Camera.main.orthographicSize < maxSize || p2Dist > distThreshold && Camera.main.orthographicSize < maxSize){
 				Camera.main.orthographicSize += Time.deltaTime * 4;
 			}
 

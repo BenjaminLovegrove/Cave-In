@@ -1476,9 +1476,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 0
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11427422}
   playerLight: {fileID: 127388}
   gravestone: {fileID: 21227418}
+  playerSpr: {fileID: 21227428}
   UIspr: {fileID: 21227420}
   UIdisable: 2
   introSkipped: 0
@@ -1584,9 +1585,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   player: {fileID: 0}
   playerOne: 1
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 11427412}
   playerLight: {fileID: 127386}
   gravestone: {fileID: 21227418}
+  playerSpr: {fileID: 21227422}
   UIspr: {fileID: 21227424}
   UIdisable: 2
   introSkipped: 0
@@ -1662,6 +1664,8 @@ MonoBehaviour:
   swingLength: 1
   PickHit: {fileID: 8300000, guid: 97ff3675c31a7bf4f9e9eed35464a9fc, type: 3}
   hickoryPickAxe: {fileID: 168076, guid: 48cd56de582be554c97113973903a65d, type: 2}
+  hitRockPre: {fileID: 0}
+  hitWoodPre: {fileID: 0}
 --- !u!212 &21227418
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1726,7 +1730,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 7622bd25c755cb34baa186dc6fa98e24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa1f2b4a4bc97f948be3732ee29b3334, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21227424
 SpriteRenderer:

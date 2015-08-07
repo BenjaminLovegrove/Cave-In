@@ -69,12 +69,11 @@ public class PlayerV2 : MonoBehaviour
 	
 	
 	void OnLevelWasLoaded(int level) {
-		print ("Level: " + level);
+		//print ("Level: " + level);
 		
 		if (level == 0)
 		{
 			menuActive = true;
-			print ("Menu Loaded");
 		}
 		
 		if (level >= 1)
