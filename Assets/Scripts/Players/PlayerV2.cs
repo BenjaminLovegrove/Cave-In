@@ -760,7 +760,7 @@ public class PlayerV2 : MonoBehaviour
 		}
 		
 		//Hickorys animations (note the player one bool)
-		if (!menuActive && !playerOne) {
+		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
 			if (!grounded && !climbingLadder) {
 				anim.SetBool ("Idle", true); //to be replaced with a jump
 			} else {
