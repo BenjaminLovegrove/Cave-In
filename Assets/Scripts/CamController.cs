@@ -18,7 +18,7 @@ public class CamController : MonoBehaviour {
 	float p2Dist;
 
 	float distThreshold;
-	float maxSize = 30.0f; //how far apart is the maximum for the othorgraphic size of the camera
+	float maxSize = 100.0f; //how far apart is the maximum for the othorgraphic size of the camera
 	
 	void FixedUpdate () {
 

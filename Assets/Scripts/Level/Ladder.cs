@@ -9,6 +9,8 @@ public class Ladder : MonoBehaviour {
 	Rigidbody ladderRb;
 	bool triggered = false;
 
+	public GameObject p1,p2;
+
 	void Start () {
 		ladderCol = ladderParent.GetComponent<Collider> ();
 		ladderRb = ladderParent.GetComponent<Rigidbody> ();
@@ -16,9 +18,12 @@ public class Ladder : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col) {
 		if (col.gameObject.tag == "Player" && !triggered) {
-			ladderCol.enabled = false;
+			Destroy (ladderCol);
 			ladderRb.isKinematic = false;
 			ladderRb.useGravity = true;
+			p1.SendMessage("Ladder", 0f);
+			p2.SendMessage("Ladder", 0f);
+			Destroy (this.gameObject);
 		}
 	}
 }

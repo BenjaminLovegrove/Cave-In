@@ -32,11 +32,13 @@ public class PauseMenu : MonoBehaviour {
 	{
 		if (!paused)
 		{
+			Screen.showCursor = true;
 			paused = true;
 			Time.timeScale = 0f;
 		}
 		else
 		{
+			Screen.showCursor = false;
 			paused = false;
 			Time.timeScale = 1f;
 		}
@@ -49,6 +51,7 @@ public class PauseMenu : MonoBehaviour {
 			if (GUI.Button(new Rect((Screen.width/2)+ 25,(Screen.height/2) + 25,150,30), "Resume Game"))
 			{
 				paused = false;
+				Screen.showCursor = false;
 				Time.timeScale = 1f;
 			}
 
@@ -57,6 +60,7 @@ public class PauseMenu : MonoBehaviour {
 				paused = false;
 				Time.timeScale = 1f;
 				restartedLevel = true;
+				Screen.showCursor = false;
 				Application.LoadLevel(1);
 			}
 			if (GUI.Button(new Rect((Screen.width/2)+ 25,(Screen.height/2) + 95,150,30), "Return To Menu"))
@@ -70,6 +74,7 @@ public class PauseMenu : MonoBehaviour {
 				Intro.skipNum = 0;
 				Intro.watchIntro = false;
 				Intro.introTimer = 30.0f;
+				Screen.showCursor = false;
 				Application.LoadLevel(0);
 			}
 		}
