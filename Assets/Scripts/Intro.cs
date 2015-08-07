@@ -96,6 +96,9 @@ public class Intro : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+
+
+
 		if (watchIntro)
 		{
 
@@ -123,91 +126,91 @@ public class Intro : MonoBehaviour {
 	}
 
 	void Update () {
+		//OUTRO//
+		if (outro) {
+			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
+			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 3);
+			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
+			
+			if (lerpTimer > 6f) {
+				Application.LoadLevel ("MenuPlaceholder");
+			}
+		} else {
 
-
-		//Double check that these mother fuckers are active/inactive
-		if (introTimer < startIntroTimer * 0.6f) {
-			if (introStuff != null){
-				if (introStuff.activeSelf){
-					ToggleAesthetics();
-					introStuff.SetActive (false);
-					outroStuff.SetActive (true);
+			//Double check that these mother fuckers are active/inactive
+			if (introTimer < startIntroTimer * 0.6f) {
+				if (introStuff != null) {
+					if (introStuff.activeSelf) {
+						ToggleAesthetics ();
+						introStuff.SetActive (false);
+						outroStuff.SetActive (true);
+					}
 				}
 			}
-		}
 
-		introTimer -= Time.deltaTime;
-		if (!gameStarted) {
-			hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
-		}
-
-		/*SKIP*/
-		 if (Input.GetKeyDown(KeyCode.Escape) && skipNum <= 2){
-			skipNum ++;
-			UI.displaySkip ++;
-			if (skipNum >= 3)
-			{
-				Skip ();
+			introTimer -= Time.deltaTime;
+			if (!gameStarted) {
+				hickory.canMove = false; //had to do this every update because he could move after swinging his pick (canmove is enabled when pick swing ends).
 			}
-		 }
 
-
-		if (watchIntro) {
-			if (introTimer > startIntroTimer * 0.6f) {
-				transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer);
-			}
-			//Cam move to sorek holding lamp.
-			if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
-				if (lerpToSorek == false) {
-					ToggleAesthetics ();
-					lerpToSorek = true;
-					lerpTimer = 0f;
+			/*SKIP*/
+			if (Input.GetKeyDown (KeyCode.Escape) && skipNum <= 2) {
+				skipNum ++;
+				UI.displaySkip ++;
+				if (skipNum >= 3) {
+					Skip ();
 				}
-				transform.position = Vector3.Lerp (this.transform.position, sorekCamPos, lerpTimer);
 			}
-			//Cam gameplay on (set to normal cam)
-			if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.4f)) {
+
+
+			if (watchIntro) {
+				if (introTimer > startIntroTimer * 0.6f) {
+					transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer);
+				}
+				//Cam move to sorek holding lamp.
+				if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
+					if (lerpToSorek == false) {
+						ToggleAesthetics ();
+						lerpToSorek = true;
+						lerpTimer = 0f;
+					}
+					transform.position = Vector3.Lerp (this.transform.position, sorekCamPos, lerpTimer);
+				}
+				//Cam gameplay on (set to normal cam)
+				if ((introTimer > startIntroTimer * 0.3f) && (introTimer < startIntroTimer * 0.4f)) {
+					cam.SendMessage ("Intro", false);
+				}
+				//Screen shake
+				if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)) {
+					Camera.main.SendMessage ("DoCollisionShake");
+				}
+				//Cave in instantiate
+				if (introTimer < startIntroTimer * 0.1f && !caveInStarted) {
+					CaveIn ();
+				}
+
+
+				//Make hickory swing his pick
+				if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)) {
+					hickory.gameObject.SendMessage ("Swing");
+				}
+			}
+
+			//Sorek and Hickory canMove;
+			if (introTimer < 0f && !gameStarted) {
+				sorek.canMove = true;
+				hickory.canMove = true;
+				gameStarted = true;
+				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
 			}
-			//Screen shake
-			if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)) {
-				Camera.main.SendMessage ("DoCollisionShake");
-			}
-			//Cave in instantiate
-			if (introTimer < startIntroTimer * 0.1f && !caveInStarted) {
-				CaveIn ();
-			}
 
-
-			//Make hickory swing his pick
-			if ((introTimer > startIntroTimer * 0.15f) && (introTimer < startIntroTimer * 0.825f)) {
-				hickory.gameObject.SendMessage ("Swing");
-			}
 		}
-
-		//Sorek and Hickory canMove;
-		if (introTimer < 0f && !gameStarted) {
-			sorek.canMove = true;
-			hickory.canMove = true;
-			gameStarted = true;
-			PauseMenu.canPauseGame = true;
-			cam.SendMessage ("Intro", false);
-		}
-
-			//OUTRO//
-			if (outro){
-				transform.position = Vector3.Lerp(outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
-				FTWalpha = Mathf.Lerp(0,1,lerpTimer / 3);
-				FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
-
-				if (lerpTimer > 6f) {
-					Application.LoadLevel("MenuPlaceholder");
-				}
-			}
 
 
 
 			lerpTimer += Time.deltaTime / 5;
+
 
 	}
 

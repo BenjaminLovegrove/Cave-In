@@ -5,14 +5,14 @@ public class Ladder : MonoBehaviour {
 
 	public bool ladderFall = false;
 	public GameObject ladderParent;
-	Collider ladderCol;
+	//Collider ladderCol;
 	Rigidbody ladderRb;
 	bool triggered = false;
 
-	public GameObject p1,p2;
+	//public GameObject p1,p2;
 
 	void Start () {
-		ladderCol = ladderParent.GetComponent<Collider> ();
+	//	ladderCol = ladderParent.GetComponent<Collider> ();
 		ladderRb = ladderParent.GetComponent<Rigidbody> ();
 	}
 
@@ -21,8 +21,8 @@ public class Ladder : MonoBehaviour {
 			//Destroy (ladderCol);
 			ladderRb.isKinematic = false;
 			ladderRb.useGravity = true;
-			p1.SendMessage("Ladder", 0f);
-			p2.SendMessage("Ladder", 0f);
+		//	p1.SendMessage("Ladder", 0f);
+		//	p2.SendMessage("Ladder", 0f);
 			Destroy (this.gameObject, 0.5f);
 		}
 	}

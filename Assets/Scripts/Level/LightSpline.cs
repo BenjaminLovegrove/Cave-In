@@ -30,10 +30,14 @@ public class LightSpline : MonoBehaviour {
 			wire.SetPosition(i, new Vector3 (lamps[i].transform.position.x, lamps[i].transform.position.y + 0.5f, -0.2f));
 		}
 
-		lampDistance = Vector3.Distance(lamps[currentLamp].transform.position, lamps[currentLamp + 1].transform.position);
-		speedModifier = lampDistance;
+		if (currentLamp + 1 == lamps.Length) {
+			this.enabled = false;
+		} else {
+			lampDistance = Vector3.Distance (lamps [currentLamp].transform.position, lamps [currentLamp + 1].transform.position);
+			speedModifier = lampDistance;
+		}
 
-		if (triggered = true){
+		if (triggered == true){
 			if (firstBlown == false){
 				BlowFirst();
 			}
