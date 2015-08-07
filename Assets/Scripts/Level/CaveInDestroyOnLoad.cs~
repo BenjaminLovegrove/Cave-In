@@ -4,7 +4,7 @@ using System.Collections;
 public class CaveInDestroyOnLoad : MonoBehaviour {
 
 	public float desTimer = 5f;
-	bool deathNotice = false;
+	public bool deathNotice = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +13,11 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnCollisionEnter (Collision col) {
-		col.gameObject.SendMessage ("Crushed", SendMessageOptions.DontRequireReceiver);
-		StartCoroutine(NotifyOfDeath());
+		if (col.gameObject.tag == "Player")
+		{
+			col.gameObject.SendMessage ("Crushed", SendMessageOptions.DontRequireReceiver);
+			StartCoroutine(NotifyOfDeath());
+		}
 	}
 
 	void OnGUI()
@@ -29,7 +32,7 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 	{
 		deathNotice = true;
 		yield return new WaitForSeconds (5.0f);
-		deathNotice = true;
+		deathNotice = false;
 		
 		
 	}
