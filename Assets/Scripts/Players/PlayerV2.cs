@@ -693,11 +693,14 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Crushed(){
-		PauseMenu.canPauseGame = false;
 		isDead = true;
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
+		Intro.gameStarted = false;
+		Intro.caveInStarted = false;
+		Intro.introTimer = 999;
+		PauseMenu.canPauseGame = false;
 		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
 	}
 
