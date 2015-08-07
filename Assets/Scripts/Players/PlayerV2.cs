@@ -323,7 +323,7 @@ public class PlayerV2 : MonoBehaviour
 		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == false || Input.GetKeyDown(KeyCode.Escape) && PauseMenu.canPauseGame == false) {
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
-					Application.LoadLevel("Level_1");
+					Application.LoadLevel(1);
 				} 
 			}
 		}
@@ -681,6 +681,7 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Crushed(){
+		PauseMenu.canPauseGame = false;
 		isDead = true;
 		canMove = false;
 		playerLight.SetActive (false);

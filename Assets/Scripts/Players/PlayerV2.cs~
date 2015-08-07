@@ -15,9 +15,10 @@ public class PlayerV2 : MonoBehaviour
 	
 	public GameObject player;
 	public bool playerOne;
-	public Player otherPlayer; //this is so you can check if the other player is dead for start button restart
+	public PlayerV2 otherPlayer; //this is so you can check if the other player is dead for start button restart
 	public GameObject playerLight; //to be turned off when player dies
 	public SpriteRenderer gravestone; //to be abled when player dies
+	public SpriteRenderer playerSpr;
 	
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
@@ -39,6 +40,7 @@ public class PlayerV2 : MonoBehaviour
 	private float h;
 	private float v;
 	private bool jumpingNow = false;
+	bool startFlipped = false;
 	
 	//CI Rumble
 	GameObject caveIn;
@@ -67,12 +69,11 @@ public class PlayerV2 : MonoBehaviour
 	
 	
 	void OnLevelWasLoaded(int level) {
-		print ("Level: " + level);
+		//print ("Level: " + level);
 		
 		if (level == 0)
 		{
 			menuActive = true;
-			print ("Menu Loaded");
 		}
 		
 		if (level >= 1)
@@ -84,6 +85,7 @@ public class PlayerV2 : MonoBehaviour
 	
 
 	void Start(){
+
 		xInput = new Controller();// Creates a new instance of the Controller script
 
 		#region Setup each instance of the Controller script according to each player
@@ -130,6 +132,24 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Update(){
+
+		//DeathStuff
+		if (isDead) {
+			playerSpr.enabled = false;
+		} else {
+			playerSpr.enabled = true;
+		}
+		if (otherPlayer.isDead && canMove) {
+			canMove = false;
+		}
+
+		//Flip Hickory when rock falls
+		if (Intro.introTimer <= (Intro.startIntroTimer * 0.09f) && startFlipped == false && !playerOne){
+			rightFaced = false;
+			Flip ();
+			startFlipped = true;
+		}
+
 		//Disable UI after 2 button press
 		if (xInput.OnButtonDownB){
 			UIdisable --;
@@ -158,6 +178,47 @@ public class PlayerV2 : MonoBehaviour
 //		prevState = state;
 //		state = GamePad.GetState(playerIndex);
 //		state = GamePad.GetState ( playerIndex );
+		#endregion
+
+
+		#region Ready State Toggle For Menu -Keyboard-
+		//Menu input. This is here because the player scripts are required for xinput to work.
+		if (menuActive)
+		{
+			if (Input.GetKeyDown (KeyCode.Return) && keyboardActive || Input.GetKeyDown (KeyCode.KeypadEnter)) //keyboard controls for menu ready
+			{
+				if (playerOne)
+				{
+					print ("Players hit start");
+					if (GameObject.Find("P1").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P1").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+
+					//Player 2 toggle
+					if (GameObject.Find("P2").GetComponent<Toggle>().isOn == false)
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
+						menuDefaultAnimation = false;
+						menuReadyAnimation = true;
+					}
+					else
+					{
+						GameObject.Find("P2").GetComponent<Toggle>().isOn = false;
+						menuDefaultAnimation = true;
+						menuReadyAnimation = false;
+					}
+				}
+			}
+		}
 		#endregion
 
 		
@@ -203,12 +264,11 @@ public class PlayerV2 : MonoBehaviour
 		}
 		#endregion
 
-		#region Ready State Toggle For Menu
+		#region Ready State Toggle For Menu -Xbox-
 		//Menu input. This is here because the player scripts are required for xinput to work.
 		if (menuActive)
 		{
-			if (xInput.OnButtonDownStart && !keyboardActive || 
-			    Input.GetKeyDown (KeyCode.Return) && keyboardActive)
+			if (xInput.OnButtonDownStart && !keyboardActive)//xbox controls for menu
 			{
 				if (playerOne)
 				{
@@ -263,7 +323,7 @@ public class PlayerV2 : MonoBehaviour
 		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == false || Input.GetKeyDown(KeyCode.Escape) && PauseMenu.canPauseGame == false) {
 			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
-					Application.LoadLevel("Level_1");
+					Application.LoadLevel(1);
 				} 
 			}
 		}
@@ -621,10 +681,12 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Crushed(){
+		PauseMenu.canPauseGame = false;
 		isDead = true;
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
+		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
 	}
 
 	#region Animation
@@ -699,7 +761,7 @@ public class PlayerV2 : MonoBehaviour
 		}
 		
 		//Hickorys animations (note the player one bool)
-		if (!menuActive && !playerOne) {
+		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
 			if (!grounded && !climbingLadder) {
 				anim.SetBool ("Idle", true); //to be replaced with a jump
 			} else {
@@ -709,7 +771,7 @@ public class PlayerV2 : MonoBehaviour
 			if (grounded) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive|| xInput.ThumbStickL_X > 0.3f && !keyboardActive|| 
 				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight&& !keyboardActive
-				    || Input.GetKey(KeyCode.L) && !keyboardActive|| Input.GetKey(KeyCode.Quote) && !keyboardActive) {
+				    || Input.GetKey(KeyCode.L) && keyboardActive|| Input.GetKey(KeyCode.Quote) && keyboardActive) {
 					anim.SetBool ("Run", true);
 					anim.SetBool ("Idle", false);
 					if (xInput.OnButtonB) {
