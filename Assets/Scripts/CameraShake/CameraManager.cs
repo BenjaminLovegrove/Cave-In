@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
 
 	void DoCollisionShake()
 	{
-		shakeIntensity = 0.1f;
+		shakeIntensity = 0.15f;
 		shakeTime = 0.3f;
 	}
 

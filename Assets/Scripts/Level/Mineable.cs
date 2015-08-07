@@ -18,7 +18,8 @@ public class Mineable : MonoBehaviour {
 				AudioSource.PlayClipAtPoint(rockBreak, transform.position);
 			}
 			if (CaveIn != null){
-				CaveIn.SendMessage("StartGame");
+				GameObject newCaveIn = Instantiate (CaveIn) as GameObject;
+				newCaveIn.SendMessage("StartCaveIn");
 			}
 			Destroy (this.gameObject, destroyTime);
 		}

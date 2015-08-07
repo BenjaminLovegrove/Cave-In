@@ -12,7 +12,6 @@ public class CaveInKillBox : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//rumbleSFX = GetComponent<AudioSource> ();
-
 		//This is to pass this gameobject to both players for distance checks
 		players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject playerTarg in players){
@@ -22,9 +21,13 @@ public class CaveInKillBox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Camera.main.SendMessage ("DoExplosionShake");
+
 		if (!rockfalling){
 			StartCoroutine(SpawnRock());
 		}
+
+
 
 		//p1caveInDistance = Vector3.Distance (transform.position, players [0].transform.position);
 		//p2caveInDistance = Vector3.Distance (transform.position, players [1].transform.position);
@@ -54,7 +57,15 @@ public class CaveInKillBox : MonoBehaviour {
 	}
 
 	public void KillMe(){
+		players [0].SendMessage ("CaveInStarted", false);
 		Destroy (this.gameObject);
 	}
+
+	public void StartCaveIn(){
+		players[0].SendMessage ("CaveInStart", this.gameObject,SendMessageOptions.DontRequireReceiver); 
+		players[1].SendMessage ("CaveInStart", this.gameObject,SendMessageOptions.DontRequireReceiver);
+		players[2].SendMessage ("CaveInStart", this.gameObject,SendMessageOptions.DontRequireReceiver);
+	}
+
 
 }
