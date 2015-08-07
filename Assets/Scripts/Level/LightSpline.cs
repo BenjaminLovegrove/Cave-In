@@ -46,7 +46,7 @@ public class LightSpline : MonoBehaviour {
 			if (currentLamp + 1 == lamps.Length){
 				this.enabled = false;
 			} else {
-				sparkSpeed += Time.deltaTime / (speedModifier * 0.4f);
+				sparkSpeed += (Time.deltaTime * 2) / (speedModifier * 0.4f);
 
 				//Lerp spark to next pos
 				spark.transform.position = Vector3.Lerp (new Vector3(lamps [currentLamp].transform.position.x, lamps [currentLamp].transform.position.y + 0.3f, -0.2f),new Vector3 (lamps [currentLamp + 1].transform.position.x, lamps [currentLamp + 1].transform.position.y + 0.3f, -0.2f), sparkSpeed);

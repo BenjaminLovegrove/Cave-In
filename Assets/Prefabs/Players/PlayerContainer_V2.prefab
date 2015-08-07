@@ -1551,7 +1551,7 @@ MonoBehaviour:
   playerOne: 1
   otherPlayer: {fileID: 11413392}
   playerLight: {fileID: 113392}
-  gravestone: {fileID: 21213406}
+  gravestone: {fileID: 21213408}
   playerSpr: {fileID: 21213412}
   UIspr: {fileID: 21213410}
   UIdisable: 2
