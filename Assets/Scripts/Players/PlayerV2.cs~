@@ -284,7 +284,7 @@ public class PlayerV2 : MonoBehaviour
 						menuDefaultAnimation = false;
 						menuReadyAnimation = true;
 						StartCoroutine(MenuFireAnimation());
-				
+				//make it rumble for feedback
 					}
 					else
 					{
@@ -302,7 +302,7 @@ public class PlayerV2 : MonoBehaviour
 						GameObject.Find("P2").GetComponent<Toggle>().isOn = true;
 						menuDefaultAnimation = false;
 						menuReadyAnimation = true;
-
+						//make it rumble for feedback
 
 					}
 					else
@@ -333,12 +333,12 @@ public class PlayerV2 : MonoBehaviour
 		}
 		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
 		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == false || Input.GetKeyDown(KeyCode.Escape) && PauseMenu.canPauseGame == false) {
-			if (Intro.introTimer < -2f){
 				if (otherPlayer.isDead) {
 					Application.LoadLevel(1);
 				} 
-			}
+			
 		}
+
 
 		//pause the game
 		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
@@ -694,13 +694,13 @@ public class PlayerV2 : MonoBehaviour
 	
 	void Crushed(){
 		isDead = true;
+		PauseMenu.canPauseGame = false;
 		canMove = false;
 		playerLight.SetActive (false);
 		gravestone.enabled = true;
 		Intro.gameStarted = false;
 		Intro.caveInStarted = false;
-		Intro.introTimer = 999;
-		PauseMenu.canPauseGame = false;
+		Intro.introTimer = 15;
 		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
 	}
 

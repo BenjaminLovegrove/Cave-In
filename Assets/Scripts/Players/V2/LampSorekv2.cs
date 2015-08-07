@@ -23,7 +23,6 @@ public class LampSorekv2 : MonoBehaviour {
 			if (!PlayerV2.keyboardActive)
 			{
 				if (sorekScr.xInput.OnButtonB && fireCDtimer <= 0 && !sorekScr.climbingLadder && SorekLanternCD.diminishAmt < 0.9f) {
-					print ("FIRE");
 					SorekLanternCD.diminishAmt += 0.05f;
 					SorekLanternCD.replenishTimer = 1.0f;
 					fireCDtimer = fireCD;

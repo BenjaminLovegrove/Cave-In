@@ -19,6 +19,9 @@ public class Intro : MonoBehaviour {
 	public AudioClip CaveInSFX;
 	public static bool skipped = false;
 
+	public float inspectorTimer = Intro.introTimer;
+	public float inspectorStartTimer= Intro.startIntroTimer;
+
 	//Intro and outro aesthetics (to be switched after intro)
 	public GameObject introStuff;
 	public GameObject outroStuff;

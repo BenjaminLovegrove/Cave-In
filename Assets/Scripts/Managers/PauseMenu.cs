@@ -76,7 +76,7 @@ public class PauseMenu : MonoBehaviour {
 	//				Intro.gameStarted = false;
 	//				Intro.skipNum = 0;
 	//				Intro.watchIntro = false;
-	//				Intro.introTimer = 30.0f;
+	//				Intro.introTimer = 15.0f;
 	//				Screen.showCursor = false;
 	//				Application.LoadLevel(0);
 	//			}
