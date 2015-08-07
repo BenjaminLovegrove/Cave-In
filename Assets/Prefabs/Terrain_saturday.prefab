@@ -22618,7 +22618,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107914}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: c0d904fa3c0a76446bcdae8c7a0e1b5c, type: 2}
 --- !u!33 &3307916
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -36146,9 +36146,8 @@ MonoBehaviour:
   collidersTop: 1
   collidersBottom: 1
   colliderThickness: .100000001
-  directionOverrides: 6400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000
+  directionOverrides: 64000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000
   vertScales:
-  - 1
   - 1
   - 1
   - 1
@@ -37096,6 +37095,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37111,6 +37111,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37126,6 +37127,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37141,6 +37143,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37156,6 +37159,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37171,6 +37175,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37186,6 +37191,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37201,6 +37207,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37216,6 +37223,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37231,6 +37239,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37246,6 +37255,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37261,6 +37271,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37276,6 +37287,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!114 &11412082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37291,6 +37303,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37306,6 +37319,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11412088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37321,6 +37335,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 102608, guid: 4d35e68c422b39649b1d3c9d881a5560, type: 2}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11415830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42203,6 +42218,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11480234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42218,6 +42234,7 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 157956, guid: 44e9baa50d158c549975fb81265bb643, type: 2}
   destroyTime: .800000012
+  triggerLights: {fileID: 0}
 --- !u!114 &11482274
 MonoBehaviour:
   m_ObjectHideFlags: 1
