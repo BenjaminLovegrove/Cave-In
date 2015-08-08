@@ -137,7 +137,10 @@ public class PlayerV2 : MonoBehaviour
 	
 	void Update(){
 
-
+		if (isDead){
+			Controller.xInput.stopPadVibration(pone);
+			Controller.xInput.stopPadVibration(ptwo);
+		}
 
 		//DeathStuff
 		if (isDead) {
@@ -815,6 +818,11 @@ public class PlayerV2 : MonoBehaviour
 		yield return new WaitForSeconds(1.0f);
 		anim.SetBool ("Walkandpour", false); 
 		swingInMenu = false;
+	}
+
+	void OnDestroy(){
+		Controller.xInput.stopPadVibration(pone);
+		Controller.xInput.stopPadVibration(ptwo);
 	}
 
 	#endregion
