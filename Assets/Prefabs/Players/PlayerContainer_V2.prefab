@@ -1508,7 +1508,7 @@ MonoBehaviour:
   introSkipped: 0
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 550
+  baseJumpForce: 575
   slowTimer: 0
   grounded: 0
   rightFaced: 1
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   introSkipped: 0
   canMove: 1
   baseMovForce: 10
-  baseJumpForce: 450
+  baseJumpForce: 525
   slowTimer: 0
   grounded: 0
   rightFaced: 1

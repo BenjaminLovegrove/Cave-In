@@ -20,7 +20,7 @@ public class PickaxeHickory : MonoBehaviour {
 	void Update () {
 		if (!hickoryScr.isDead) {
 			if (!Player.keyboardActive) {
-				if (hickoryScr.state.Buttons.B == ButtonState.Pressed && swinging == false&& swinging == false) {
+				if (hickoryScr.state.Buttons.B == ButtonState.Pressed && swinging == false) {
 					Swing ();
 				}
 			} else {

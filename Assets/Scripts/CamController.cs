@@ -19,8 +19,19 @@ public class CamController : MonoBehaviour {
 
 	float distThreshold;
 	float maxSize = 100.0f; //how far apart is the maximum for the othorgraphic size of the camera
+
+	Vector3 p1ScreenPoint;
+	Vector3 p2ScreenPoint;
+	float vertThreshold1;
+	float vertThreshold2;
 	
 	void FixedUpdate () {
+
+		/*p1ScreenPoint = camera.ScreenToWorldPoint (p1Pos);
+		p2ScreenPoint = camera.ScreenToWorldPoint (p2Pos);
+		vertThreshold1 = Screen.height * 0.65f;
+		vertThreshold2 = Screen.height * 0.35f;*/
+
 
 		if (gamePlay){
 			//Keep cam between players
@@ -31,7 +42,7 @@ public class CamController : MonoBehaviour {
 			p1Pos = Camera.main.WorldToScreenPoint (player1.position);
 			p2Pos = Camera.main.WorldToScreenPoint (player2.position);
 			camCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-			distThreshold = Screen.width * 0.2f;
+			distThreshold = Screen.width * 0.3f;
 
 			//Player distance from screen center
 			p1Dist = Vector3.Distance (p1Pos, camCenter);
@@ -41,11 +52,21 @@ public class CamController : MonoBehaviour {
 			if (p1Dist > distThreshold && Camera.main.orthographicSize < maxSize || p2Dist > distThreshold && Camera.main.orthographicSize < maxSize){
 				Camera.main.orthographicSize += Time.deltaTime * 4;
 			}
+			/*if (p1ScreenPoint.y > vertThreshold1 && Camera.main.orthographicSize < maxSize || p2ScreenPoint.y > vertThreshold1 && Camera.main.orthographicSize < maxSize){
+				Camera.main.orthographicSize += Time.deltaTime * 4;
+			}
+			if (p1ScreenPoint.y < vertThreshold2 && Camera.main.orthographicSize < maxSize || p2ScreenPoint.y < vertThreshold2 && Camera.main.orthographicSize < maxSize){
+				Camera.main.orthographicSize += Time.deltaTime * 4;
+			}*/
 
 			if (Camera.main.orthographicSize > 10f) {
 				if (p1Dist < distThreshold * 0.9f || p2Dist < distThreshold * 0.9f) {
 					Camera.main.orthographicSize -= Time.deltaTime * 4;
 				}
+			}
+
+			if (Camera.main.orthographicSize < 10f) {
+				Camera.main.orthographicSize += Time.deltaTime * 4;
 			}
 		}
 

@@ -38,7 +38,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123260}
   serializedVersion: 2
-  m_Mass: 40
+  m_Mass: 20
   m_Drag: 1
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -72,6 +72,8 @@ MonoBehaviour:
   hitsReqd: 1
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 0}
+  destroyTime: 0
+  triggerLights: {fileID: 0}
 --- !u!212 &21223260
 SpriteRenderer:
   m_ObjectHideFlags: 1
