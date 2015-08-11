@@ -4,11 +4,7 @@ using System.Collections;
 public class CaveLamps : MonoBehaviour {
 
 	float difficultyModifier = 0.8f;
-
-	public float destroyTimer;
-	public GameObject lightSpark;
-	public bool sparkSpawn = false;
-	public PlayerV2 sorek;
+	
 	AudioSource lampExplode;
 	Light lightSource;
 	public GameObject lampExplodeVis;
@@ -16,34 +12,19 @@ public class CaveLamps : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Playtest_LightManager.numLightsActive ++;
-		sorek = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerV2> ();
 		lightSource = GetComponentInChildren<Light> ();
 		lampExplode = GetComponent<AudioSource> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		if (sorek.canMove){
-			destroyTimer -= Time.deltaTime * difficultyModifier;
-		}
-		
-		if (destroyTimer <= 2 && !sparkSpawn)
+	public void OnSplinePointReached()
+	{
+		lightSource.enabled = false;
+		if (!lampExplode.isPlaying)
 		{
-			sparkSpawn = true;
-			Instantiate (lightSpark, this.transform.position, Quaternion.identity);
+			Instantiate (lampExplodeVis, transform.position, Quaternion.identity);
+			lampExplode.Play ();
+			Destroy (this.gameObject, 1.5f);
 		}
-
-		if (destroyTimer < 0 && lightSource != null){
-			lightSource.enabled = false;
-			if (!lampExplode.isPlaying){
-				Instantiate (lampExplodeVis, transform.position, Quaternion.identity);
-				lampExplode.Play ();
-				Destroy (this.gameObject, 1.5f);
-			}
-		}
-	
-	
 	}
 
 	void OnDestroy()
