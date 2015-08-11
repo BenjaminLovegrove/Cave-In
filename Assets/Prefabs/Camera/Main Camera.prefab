@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &113758
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +85,7 @@ GameObject:
   - 114: {fileID: 11423806}
   - 114: {fileID: 11498490}
   - 114: {fileID: 11431316}
+  - 114: {fileID: 11409796}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -353,7 +354,7 @@ MeshCollider:
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!81 &8141566
 AudioListener:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141566}
@@ -506,6 +507,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fb3f66a13ac8459a92150311cda6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11409796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdc49554da79254cab310d997147cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toEnable:
+  - {fileID: 111774}
 --- !u!114 &11419112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -698,6 +712,8 @@ MonoBehaviour:
   caveInObj: {fileID: 105624, guid: 6e4a766f140d20c43ba53da733e9f571, type: 2}
   caveInSpawnPos: {fileID: 0}
   CaveInSFX: {fileID: 8300000, guid: bee5e81aae1b8e547934077f1149eecf, type: 3}
+  inspectorTimer: 30
+  inspectorStartTimer: 0
   introStuff: {fileID: 0}
   outroStuff: {fileID: 0}
   smallRumble: 0

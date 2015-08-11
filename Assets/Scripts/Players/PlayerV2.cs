@@ -696,6 +696,11 @@ public class PlayerV2 : MonoBehaviour
 	}
 	
 	void Crushed(){
+		if (!otherPlayer.isDead && !isDead){
+			Intro.ci1difficulty = Intro.ci1difficulty * 0.9f;
+			Intro.ci2difficulty = Intro.ci2difficulty * 0.9f;
+		}
+
 		isDead = true;
 		PauseMenu.canPauseGame = false;
 		canMove = false;
