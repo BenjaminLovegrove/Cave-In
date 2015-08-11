@@ -31,7 +31,9 @@ public class Fire : MonoBehaviour {
 	}
 
 	void SetLifetime(float lt){
-		lifetime = lt;
+		if (lifetime < lt){
+			lifetime = lt;
+		}
 	}
 	
 }

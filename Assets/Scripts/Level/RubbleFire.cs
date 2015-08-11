@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RubbleFire : MonoBehaviour {
 
-	public float lightTime = 1f;
+	float lightTime = 0.5f;
 	bool lit;
 	public bool resetDifficulty = false;
 
