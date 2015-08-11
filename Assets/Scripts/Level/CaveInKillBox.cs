@@ -5,18 +5,26 @@ public class CaveInKillBox : MonoBehaviour {
 	public GameObject rockPreTestFall;
 	private bool rockfalling = false;
 	GameObject[] players;
-	//AudioSource rumbleSFX;
-	//float p1caveInDistance;
-	//float p2caveInDistance;
+	Animator anim;
+	public float caveInNumber;
+
 
 	// Use this for initialization
 	void Start () {
-		//rumbleSFX = GetComponent<AudioSource> ();
-		//This is to pass this gameobject to both players for distance checks
+
+		anim = GetComponent<Animator> ();
+
+		if (caveInNumber == 1){
+			anim.speed = Intro.ci1difficulty;
+		} else if (caveInNumber == 2){
+			anim.speed = Intro.ci2difficulty;
+		}
+
 		players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject playerTarg in players){
 			playerTarg.SendMessage("CaveInStart", this.gameObject, SendMessageOptions.DontRequireReceiver);
 		}
+	
 	}
 	
 	// Update is called once per frame
@@ -27,15 +35,6 @@ public class CaveInKillBox : MonoBehaviour {
 			StartCoroutine(SpawnRock());
 		}
 
-
-
-		//p1caveInDistance = Vector3.Distance (transform.position, players [0].transform.position);
-		//p2caveInDistance = Vector3.Distance (transform.position, players [1].transform.position);
-		/*if (p1caveInDistance < p2caveInDistance){
-			rumbleSFX.volume = Mathf.Lerp (1f, 0.2f, (p1caveInDistance / 20));
-		} else {
-			rumbleSFX.volume = Mathf.Lerp (1f, 0.2f, (p2caveInDistance / 20));
-		}*/
 
 
 	}

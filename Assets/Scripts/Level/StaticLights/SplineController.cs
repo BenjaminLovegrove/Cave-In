@@ -7,6 +7,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(LineRenderer))]
 public class SplineController : MonoBehaviour
 {
+	public GameObject splineObject; //The spline object to move.
+
     public List<GameObject> points = new List<GameObject>();    //The spline points
 
     public int vertexCount = 100;                               //Number of vertices to use for rendering/moving along the spline. (Editor/Play Mode)
@@ -15,21 +17,19 @@ public class SplineController : MonoBehaviour
     public bool showPointsInPlayMode = true;                    //Show points in play mode for debugging.
 
     //Members
-    private SplineInterpolator m_splineInterpolator;            //The spline interpolator instance.
-    private Transform[] m_transforms;                           //The transforms of our spline points.
+    private SplineInterpolator m_splineInterpolator;            //The spline interpolator instance.                          //The transforms of our spline points.
 
 	void OnDrawGizmos()
 	{
         //Convert our points into an array of transforms.
-		Transform[] trans = GetTransforms();
-		if (trans.Length < 2)
+		if (points.Count < 2)
         {
 			return;
         }
 
         //Set up our interpolator instance.
 		SplineInterpolator splineInterpolator = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
-		SetupSplineInterpolator(splineInterpolator, trans);
+		SetupSplineInterpolator(splineInterpolator, points);
 		splineInterpolator.StartInterpolation(null, false);
 
         //Get our LineRenderer instance, and draw the spline in editor.
@@ -47,16 +47,14 @@ public class SplineController : MonoBehaviour
 
 	void Start()
 	{
-		m_transforms = GetTransforms();
-
-        if (m_transforms.Length < 2)
+        if (points.Count < 2)
         {
             return;
         }
 
         //Set up our interpolator instance.
         this.m_splineInterpolator = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
-        SetupSplineInterpolator(this.m_splineInterpolator, m_transforms);
+        SetupSplineInterpolator(this.m_splineInterpolator, points);
         this.m_splineInterpolator.StartInterpolation(null, false);
 
         //Get our LineRenderer instance, and draw the spline in play mode.
@@ -87,33 +85,17 @@ public class SplineController : MonoBehaviour
 
 	}
 
-	void SetupSplineInterpolator(SplineInterpolator interp, Transform[] trans)
+	void SetupSplineInterpolator(SplineInterpolator interp, List<GameObject> gameObjects)
 	{
 		interp.Reset();
 
-		float step = duration / (trans.Length - 1);
+		float step = duration / (gameObjects.Count - 1);
 
-		int c;
-		for (c = 0; c < trans.Length; c++)
+		for (int i = 0; i < gameObjects.Count; i++)
 		{
-            interp.AddPoint(trans[c].position, trans[c].rotation, step * c, new Vector2(0, 1));
+			Transform transform = gameObjects[i].transform;
+			interp.AddPoint(gameObjects[i], transform.position, transform.rotation, step * i, new Vector2(0, 1));
 		}
-	}
-
-
-	/// <summary>
-	/// Returns point transforms. Ordered by their index in the point list.
-	/// </summary>
-	Transform[] GetTransforms()
-	{
-        List<Transform> transforms = new List<Transform>();
-
-        foreach(GameObject point in points)
-        {
-            transforms.Add(point.transform);
-        }
-
-        return transforms.ToArray();
 	}
 
 	/// <summary>
@@ -149,10 +131,13 @@ public class SplineController : MonoBehaviour
 	/// </summary>
 	void FollowSpline()
 	{
-		if (m_transforms.Length > 0)
+		if (points.Count > 0)
 		{
-			SetupSplineInterpolator(this.m_splineInterpolator, m_transforms);
-			this.m_splineInterpolator.StartInterpolation(null, true);
+			SetupSplineInterpolator(this.m_splineInterpolator, points);
+			this.m_splineInterpolator.StartInterpolation(delegate(){
+				Destroy (splineObject);
+			}, true);
+			points[0].gameObject.SendMessage("OnSplinePointReached");
 		}
 	}
 }

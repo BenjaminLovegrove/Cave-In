@@ -9,13 +9,14 @@ public class SplineInterpolator : MonoBehaviour
 {
 	internal class SplineNode
 	{
+		internal GameObject gameObject;
 		internal Vector3 Point;
 		internal Quaternion Rot;
 		internal float Time;
 		internal Vector2 EaseIO;
 
-		internal SplineNode(Vector3 p, Quaternion q, float t, Vector2 io) { Point = p; Rot = q; Time = t; EaseIO = io; }
-		internal SplineNode(SplineNode o) { Point = o.Point; Rot = o.Rot; Time = o.Time; EaseIO = o.EaseIO; }
+		internal SplineNode(GameObject gameObject, Vector3 p, Quaternion q, float t, Vector2 io) { this.gameObject = gameObject; Point = p; Rot = q; Time = t; EaseIO = io; }
+		internal SplineNode(SplineNode o) { this.gameObject = o.gameObject; Point = o.Point; Rot = o.Rot; Time = o.Time; EaseIO = o.EaseIO; }
 	}
 
     //Members
@@ -54,12 +55,12 @@ public class SplineInterpolator : MonoBehaviour
 		m_rotations = false;
 	}
 
-	public void AddPoint(Vector3 pos, Quaternion quat, float timeInSeconds, Vector2 easeInOut)
+	public void AddPoint(GameObject gameObject, Vector3 pos, Quaternion quat, float timeInSeconds, Vector2 easeInOut)
 	{
 		if (m_state != InterpolationState.RESET)
 			throw new System.Exception("Cannot add points after start");
 
-		m_nodes.Add(new SplineNode(pos, quat, timeInSeconds, easeInOut));
+		m_nodes.Add(new SplineNode(gameObject, pos, quat, timeInSeconds, easeInOut));
 	}
 
 	private void SetInput()
@@ -102,9 +103,11 @@ public class SplineInterpolator : MonoBehaviour
 			if (m_currentIndex < m_nodes.Count - 3)
 			{
 				m_currentIndex++;
+				m_nodes[m_currentIndex].gameObject.SendMessage("OnSplinePointReached", SendMessageOptions.DontRequireReceiver);
 			}
 			else
 			{
+				//Destroy(this.gameObject);
 				m_state = InterpolationState.STOPPED;
 
 				// We stop right in the end point

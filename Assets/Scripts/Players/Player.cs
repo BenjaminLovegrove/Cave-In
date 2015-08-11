@@ -599,6 +599,10 @@ public class Player : MonoBehaviour
 	}
 
 	void Crushed(){
+		if (!otherPlayer.isDead && !isDead){
+			Intro.ci1difficulty = Intro.ci1difficulty * 0.9f;
+			Intro.ci2difficulty = Intro.ci2difficulty * 0.9f;
+		}
 		isDead = true;
 		canMove = false;
 		playerLight.SetActive (false);
