@@ -248,7 +248,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 5278a6f535ade2b489cb768ed07e4cdb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .699999988
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c589aa44740da41a02e22fa7122132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightTime: 3
+  resetDifficulty: 0
   fireLight: {fileID: 10895830}
   fireSprite: {fileID: 21295830}
   p1check: {fileID: 429460}
