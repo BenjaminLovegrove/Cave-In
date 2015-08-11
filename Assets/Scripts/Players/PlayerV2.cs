@@ -67,8 +67,8 @@ public class PlayerV2 : MonoBehaviour
 	private bool swingInMenu = false;
 	private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
-	
-	
+
+
 	void OnLevelWasLoaded(int level) {
 		//print ("Level: " + level);
 		
@@ -394,7 +394,8 @@ public class PlayerV2 : MonoBehaviour
 		}
 	}
 	#endregion
-	
+
+
 	// Controls
 	private void Controls()
 	{

@@ -18,7 +18,7 @@ public class CamController : MonoBehaviour {
 	float p2Dist;
 
 	float distThreshold;
-	float maxSize = 100.0f; //how far apart is the maximum for the othorgraphic size of the camera
+	float maxSize = 30.0f; //how far apart is the maximum for the othorgraphic size of the camera
 
 	Vector3 p1ScreenPoint;
 	Vector3 p2ScreenPoint;
@@ -75,6 +75,11 @@ public class CamController : MonoBehaviour {
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 8f, Time.deltaTime / 5);
 		}
 
+	}
+
+	void OnBecameInvisible()
+	{
+		print ("GET BACK IN VIEW");
 	}
 
 	void Intro (bool playIntro){

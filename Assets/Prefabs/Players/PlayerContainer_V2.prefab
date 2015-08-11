@@ -44,6 +44,7 @@ GameObject:
   - 4: {fileID: 413378}
   - 212: {fileID: 21213404}
   - 95: {fileID: 9513412}
+  - 114: {fileID: 11497334}
   m_Layer: 0
   m_Name: Hickory_sprite
   m_TagString: Untagged
@@ -179,6 +180,7 @@ GameObject:
   - 4: {fileID: 413394}
   - 212: {fileID: 21213412}
   - 95: {fileID: 9513414}
+  - 114: {fileID: 11497332}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -1762,6 +1764,28 @@ MonoBehaviour:
   inspectorDiminish: 0
   inspectorReplenish: 0
   defaultColor: {r: .897058845, g: .790219605, b: .626622021, a: 0}
+--- !u!114 &11497332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf712516c7fa82459851e07e5986b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11497334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf712516c7fa82459851e07e5986b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21213404
 SpriteRenderer:
   m_ObjectHideFlags: 1
