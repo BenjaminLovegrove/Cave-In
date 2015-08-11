@@ -10,9 +10,7 @@ public class deathPitCam : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 	
 		if (col.gameObject.tag == "Player"){
-			if (pitCam){
-				Camera.main.SendMessage ("DeathPit", pitCam);
-			}
+			Camera.main.SendMessage ("DeathPit", pitCam);
 		}
 
 	}

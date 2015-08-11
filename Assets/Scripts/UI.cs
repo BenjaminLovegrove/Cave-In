@@ -9,6 +9,7 @@ public class UI : MonoBehaviour {
 	public Texture uiRestart;
 	public Texture uiSkipTwice, uiSkip;
 	public Texture topUiBars, bottomUiBars;
+	public Texture checkpoint;
 	public static int displaySkip = 0; //display the second skip ui
 
 	float camY;
@@ -41,6 +42,7 @@ public class UI : MonoBehaviour {
 			{
 				GUI.DrawTexture (new Rect(Screen.width * 0.75f, Screen.height * 0.75f, Screen.width / 5, Screen.width / 5), uiSkip, ScaleMode.ScaleToFit);
 			}
+
 
 
 		}

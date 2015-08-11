@@ -65,7 +65,7 @@ public class PlayerV2 : MonoBehaviour
 	private bool menuDefaultAnimation = false;
 	private bool menuReadyAnimation = false;
 	private bool swingInMenu = false;
-	private bool currentlyAnimating = false;
+	//private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
 
 

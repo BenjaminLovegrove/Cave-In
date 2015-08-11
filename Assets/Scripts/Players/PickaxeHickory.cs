@@ -67,6 +67,11 @@ public class PickaxeHickory : MonoBehaviour {
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
+				} else {
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
 				}
 			} else {
 				if (Physics.Raycast (transform.position, transform.right, out hit, 3f)) {
@@ -87,13 +92,14 @@ public class PickaxeHickory : MonoBehaviour {
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					//Particle effect
+				} else {
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
 				}
-			}
+			} 
 
-
-			if (hit.collider == null) {
-				//Play swing and miss sound.
-			}
 		}
 
 	}

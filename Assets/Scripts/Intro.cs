@@ -9,7 +9,7 @@ public class Intro : MonoBehaviour {
 	public PlayerV2 sorek;
 	public PlayerV2 hickory;
 	public static Camera cam;
-	public static float introTimer = 30f;
+	public static float introTimer = 25f;
 	public static float startIntroTimer;
 	public float lerpTimer;
 	public static bool caveInStarted = false;
@@ -82,7 +82,7 @@ public class Intro : MonoBehaviour {
 			hickory.canMove = false;
 			cam.SendMessage("Intro", true);
 			lerpTimer = -1f;
-			introTimer = 30;
+			introTimer = startIntroTimer;
 			PauseMenu.mainMenuLoop = false;
 			cam.SendMessage("Intro", true);
 			lerpToSorek = false;

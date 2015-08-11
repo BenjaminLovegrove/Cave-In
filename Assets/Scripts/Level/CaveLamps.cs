@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CaveLamps : MonoBehaviour {
 
-	float difficultyModifier = 0.8f;
+	//float difficultyModifier = 0.8f;
 	
 	AudioSource lampExplode;
 	Light lightSource;

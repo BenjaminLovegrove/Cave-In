@@ -1559,7 +1559,7 @@ MonoBehaviour:
   UIdisable: 2
   introSkipped: 0
   canMove: 1
-  baseMovForce: 10
+  baseMovForce: 12
   baseJumpForce: 525
   slowTimer: 0
   grounded: 0
