@@ -94,7 +94,10 @@ public class Intro : MonoBehaviour {
 
 		if (CheckpointManager.checkpointSpawn) {
 			watchIntro = false;
-			Skip ();
+			introTimer = startIntroTimer * 0.01f;
+			cam.SendMessage ("Intro", false);
+			Intro.skipped = true;
+			PauseMenu.canPauseGame = true;
 			sorek.gameObject.transform.position = CheckpointManager.p1checkpoint;
 			hickory.gameObject.transform.position = CheckpointManager.p2checkpoint;
 			sorek.canMove = true;
