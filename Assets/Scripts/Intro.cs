@@ -22,6 +22,9 @@ public class Intro : MonoBehaviour {
 	public float inspectorTimer = Intro.introTimer;
 	public float inspectorStartTimer= Intro.startIntroTimer;
 
+	public static float ci1difficulty = 1f;
+	public static float ci2difficulty = 2f;
+
 	//Intro and outro aesthetics (to be switched after intro)
 	public GameObject introStuff;
 	public GameObject outroStuff;
@@ -170,7 +173,7 @@ public class Intro : MonoBehaviour {
 
 			if (watchIntro) {
 				if (introTimer > startIntroTimer * 0.6f) {
-					transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer);
+					transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer / 3);
 				}
 				//Cam move to sorek holding lamp.
 				if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
