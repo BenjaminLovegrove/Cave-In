@@ -13,6 +13,7 @@ public class CamController : MonoBehaviour {
 	Vector3 camCenter;
 	bool deathCam = false;
 	Vector3 deathCamPos;
+	bool deathPit = false;
 
 	float p1Dist;
 	float p2Dist;
@@ -75,6 +76,11 @@ public class CamController : MonoBehaviour {
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 8f, Time.deltaTime / 5);
 		}
 
+		if (deathPit){
+			transform.position = Vector3.Lerp(transform.position, deathCamPos, Time.deltaTime/3);
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 15f, Time.deltaTime / 5);
+		}
+
 	}
 
 	void OnBecameInvisible()
@@ -97,5 +103,15 @@ public class CamController : MonoBehaviour {
 		deathCam = true;
 		deathCamPos = deathPos;
 
+	}
+
+	void DeathPit (bool pit){
+		if (pit == true){
+			gamePlay = false;
+			deathPit = true;
+		} else {
+			deathPit = false;
+			gamePlay = true;
+		}
 	}
 }
