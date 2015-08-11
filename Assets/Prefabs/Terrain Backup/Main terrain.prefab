@@ -4564,10 +4564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 57
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487196
 MonoBehaviour:
@@ -4580,10 +4576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 41
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487198
 MonoBehaviour:
@@ -4596,10 +4588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 15
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487200
 MonoBehaviour:
@@ -4612,10 +4600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 12
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487202
 MonoBehaviour:
@@ -4628,10 +4612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 37
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487204
 MonoBehaviour:
@@ -4644,10 +4624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 24
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487206
 MonoBehaviour:
@@ -4660,10 +4636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 20
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487208
 MonoBehaviour:
@@ -4676,10 +4648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 2
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487210
 MonoBehaviour:
@@ -4692,10 +4660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 46
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487212
 MonoBehaviour:
@@ -4708,10 +4672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 64
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487214
 MonoBehaviour:
@@ -4724,10 +4684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 31
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487216
 MonoBehaviour:
@@ -4740,10 +4696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 18
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487218
 MonoBehaviour:
@@ -4756,10 +4708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 35
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487220
 MonoBehaviour:
@@ -4772,10 +4720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 28
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487222
 MonoBehaviour:
@@ -4788,10 +4732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 54
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487224
 MonoBehaviour:
@@ -4804,10 +4744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 43.5
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487226
 MonoBehaviour:
@@ -4820,10 +4756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 50
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487228
 MonoBehaviour:
@@ -4836,10 +4768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 8
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487230
 MonoBehaviour:
@@ -4852,10 +4780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 5
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 0}
 --- !u!114 &11487232
 MonoBehaviour:

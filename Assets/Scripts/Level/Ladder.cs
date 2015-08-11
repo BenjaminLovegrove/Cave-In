@@ -19,10 +19,12 @@ public class Ladder : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		if (col.gameObject.tag == "Player" && !triggered) {
 			//Destroy (ladderCol);
+
 			ladderRb.isKinematic = false;
 			ladderRb.useGravity = true;
 		//	p1.SendMessage("Ladder", 0f);
 		//	p2.SendMessage("Ladder", 0f);
+			col.gameObject.SendMessage("Ladder", 0f, SendMessageOptions.DontRequireReceiver);
 			Destroy (this.gameObject, 0.5f);
 		}
 	}
