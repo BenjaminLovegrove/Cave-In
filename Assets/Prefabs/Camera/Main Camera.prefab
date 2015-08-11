@@ -49,6 +49,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &119180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 419180}
+  m_Layer: 0
+  m_Name: deathPitCamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &141566
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +194,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 449532}
   m_RootOrder: 2
+--- !u!4 &419180
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -273, y: -10.4000015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449532}
+  m_RootOrder: 7
 --- !u!4 &441566
 Transform:
   m_ObjectHideFlags: 1
@@ -198,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 347.299988, y: 132.699997, z: -10}
+  m_LocalPosition: {x: 347.5, y: 132.800003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 449534}
@@ -208,6 +235,7 @@ Transform:
   - {fileID: 495186}
   - {fileID: 406250}
   - {fileID: 441566}
+  - {fileID: 419180}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &449534
@@ -662,6 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  deathPitCamPos: {fileID: 419180}
 --- !u!114 &11468752
 MonoBehaviour:
   m_ObjectHideFlags: 1
