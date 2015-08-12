@@ -36,7 +36,10 @@ public class PauseMenu : MonoBehaviour {
 			Screen.showCursor = true;
 			paused = true;
 			Time.timeScale = 0f;
-		}
+			Controller.xInput.stopPadVibration(Player.pone);
+			Controller.xInput.stopPadVibration(Player.ptwo);
+	
+}
 		else
 		{
 			Screen.showCursor = false;

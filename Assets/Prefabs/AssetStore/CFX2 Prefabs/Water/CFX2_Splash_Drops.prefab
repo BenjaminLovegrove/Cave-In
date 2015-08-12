@@ -112,7 +112,7 @@ GameObject:
   - 4: {fileID: 400012}
   - 198: {fileID: 19800012}
   - 199: {fileID: 19900012}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11457000}
   m_Layer: 0
   m_Name: CFX2_Splash_Drops
   m_TagString: Untagged
@@ -210,7 +210,7 @@ Transform:
   - {fileID: 400008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400002
+--- !u!114 &11457000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -218,10 +218,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
+  m_Script: {fileID: 11500000, guid: a29357bee2a422140ac0294be4d895b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
+  desTimer: 1
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

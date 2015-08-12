@@ -29,6 +29,8 @@ public class Intro : MonoBehaviour {
 	public GameObject introStuff;
 	public GameObject outroStuff;
 
+	public GameObject fallingRocksPre;
+
 	public float smallRumble, bigRumble;
 
 	Vector3 sorekCamPos;
@@ -193,11 +195,13 @@ public class Intro : MonoBehaviour {
 				}
 				//Screen shake
 				if ((introTimer > startIntroTimer * 0f) && (introTimer < startIntroTimer * 0.3f)) {
+					Instantiate (fallingRocksPre, fallingRocksPre.transform.position, Quaternion.identity);
 					Camera.main.SendMessage ("DoCollisionShake");
 				}
 				//Cave in instantiate
 				if (introTimer < startIntroTimer * 0.1f && !caveInStarted) {
 					CaveIn ();
+
 				}
 
 

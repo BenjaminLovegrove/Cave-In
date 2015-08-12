@@ -415,9 +415,12 @@ public class Controller : MonoBehaviour {
 
 	#region Function to make the controller vibrate
 	public void  padVibration (  PlayerIndex playerIndex , float bigRumble, float smallRumble   ){
-		GamePad.SetVibration ( playerIndex, bigRumble, smallRumble );
-		inspectorBRumble = bigRumble;
-		inspectorSRumble = smallRumble;
+		if (PauseMenu.paused == false)
+		{
+			GamePad.SetVibration ( playerIndex, bigRumble, smallRumble );
+			inspectorBRumble = bigRumble;
+			inspectorSRumble = smallRumble;
+		}
 	}
 	public void  stopPadVibration (  PlayerIndex playerIndex   ){
 		GamePad.SetVibration( playerIndex, 0, 0 );

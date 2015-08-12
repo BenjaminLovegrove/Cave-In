@@ -36,7 +36,7 @@ public class CameraManager : MonoBehaviour
 
 	void Update()
 	{
-		if (shakeTime > 0)
+		if (shakeTime > 0 && PauseMenu.paused == false)
 		{
 			originalPos = transform.position;
 			transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;

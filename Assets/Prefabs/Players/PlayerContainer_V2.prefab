@@ -429,7 +429,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 6.75, z: 0}
+  m_LocalPosition: {x: -1.63, y: 7.11999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413384}
@@ -1518,6 +1518,8 @@ MonoBehaviour:
   sfxRun: {fileID: 8213414}
   sfxJump: {fileID: 8213410}
   sfxLand: {fileID: 8213406}
+  waterSplash: {fileID: 100012, guid: e0232b959f2e08546a2f9f3cd836bd4f, type: 2}
+  waterExitSplash: {fileID: 100000, guid: 9afdc541a9d50964e87f1316ce876bfc, type: 2}
   playerIndex: 1
   menuActive: 0
 --- !u!114 &11413398
@@ -1568,6 +1570,8 @@ MonoBehaviour:
   sfxRun: {fileID: 8213414}
   sfxJump: {fileID: 8213410}
   sfxLand: {fileID: 8213406}
+  waterSplash: {fileID: 100012, guid: e0232b959f2e08546a2f9f3cd836bd4f, type: 2}
+  waterExitSplash: {fileID: 100000, guid: 9afdc541a9d50964e87f1316ce876bfc, type: 2}
   playerIndex: 0
   menuActive: 0
 --- !u!114 &11413404

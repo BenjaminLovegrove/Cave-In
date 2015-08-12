@@ -50,7 +50,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 			//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
 			RaycastHit hit;
 			if (transform.localScale.x <= 0) {
-				if (Physics.Raycast (transform.position, -transform.right, out hit, 2.5f)) {
+				if (Physics.Raycast (transform.position, -transform.right, out hit, 2.5f)&& hit.collider.gameObject.name == "MineableRock") {
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
@@ -58,9 +58,8 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					AudioSource.PlayClipAtPoint (PickHit, transform.position);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
-					print (hit.collider.name);
 					Instantiate( hitRockPre, hit.point, Quaternion.identity );
-				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), -transform.right, out hit, 2.5f)) { //this is a lower raycast to check for crates
+				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), -transform.right, out hit, 2.5f)&& hit.collider.gameObject.name == "MineableRock") { //this is a lower raycast to check for crates
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
@@ -70,8 +69,15 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
 				}
+				else if (Intro.introTimer < 0)
+				{
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
+				}
 			} else {
-				if (Physics.Raycast (transform.position, transform.right, out hit, 2.5f)) {
+				if (Physics.Raycast (transform.position, transform.right, out hit, 2.5f)&& hit.collider.gameObject.name == "MineableRock") {
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
@@ -80,7 +86,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitRockPre, hit.point, Quaternion.identity );
-				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), transform.right, out hit, 2.5f)) { //this is a lower raycast to check for crates
+				} else if (Physics.Raycast (new Vector3(transform.position.x, transform.position.y - 1f, 0), transform.right, out hit, 2.5f)&& hit.collider.gameObject.name == "MineableRock") { //this is a lower raycast to check for crates
 					hickoryScr.anim.SetBool ("Run", false);
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
@@ -89,6 +95,13 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
+				}
+				else if (Intro.introTimer < 0)
+				{
+					hickoryScr.anim.SetBool ("Run", false);
+					hickoryScr.anim.SetBool ("Idle", false);
+					hickoryScr.anim.SetTrigger ("Swing");
+					this.SendMessage ("CanMove", false);
 				}
 			}
 			

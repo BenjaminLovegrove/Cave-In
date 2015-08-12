@@ -53,6 +53,8 @@ public class PlayerV2 : MonoBehaviour
 	public AudioSource sfxJump;
 	public AudioSource sfxLand;
 
+	public GameObject waterSplash, waterExitSplash;
+
 	#region Determine Player Index Variables
 	//xInput
 	public PlayerIndex playerIndex;
@@ -68,6 +70,8 @@ public class PlayerV2 : MonoBehaviour
 	private bool swingInMenu = false;
 	//private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
+
+
 
 
 	void OnLevelWasLoaded(int level) {
@@ -152,6 +156,7 @@ public class PlayerV2 : MonoBehaviour
 		if (otherPlayer.isDead && canMove) {
 			canMove = false;
 		}
+
 
 		//Flip Hickory when rock falls
 		if (Intro.introTimer <= (Intro.startIntroTimer * 0.09f) && startFlipped == false && !playerOne){
@@ -351,6 +356,7 @@ public class PlayerV2 : MonoBehaviour
 		}
 		#endregion
 	}
+
 
 	#region Flip character sprite
 	// Flip sprite depending on direction
@@ -568,8 +574,7 @@ public class PlayerV2 : MonoBehaviour
 			
 			
 			//Jump xbox controls
-			if ((grounded == true) && !jumpingNow && xInput.OnButtonDownA && (!climbingLadder) ||
-			    (grounded == true) && !jumpingNow && xInput.OnButtonDown_DpadUp && (!climbingLadder)) 
+			if ((grounded == true) && !jumpingNow && xInput.OnButtonDownA && (!climbingLadder)) 
 			{
 				StartCoroutine(JumpCoolDown());
 				playerRigid.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
@@ -828,9 +833,29 @@ public class PlayerV2 : MonoBehaviour
 		swingInMenu = false;
 	}
 
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.gameObject.name == "WaterTrigger")
+		{
+			Instantiate (waterSplash,this.transform.position, Quaternion.identity);
+		}
+	}
+
+	void OnTriggerExit(Collider col)
+	{
+		if (col.gameObject.name == "WaterTrigger")
+		{
+			Instantiate (waterExitSplash,this.transform.position, Quaternion.identity);
+		}
+	}
+
 	void OnDestroy(){
-		Controller.xInput.stopPadVibration(pone);
-		Controller.xInput.stopPadVibration(ptwo);
+		//stop all vibrations as soon as the game is stopped
+		if (!keyboardActive && !menuActive)
+		{
+			Controller.xInput.stopPadVibration(pone);
+			Controller.xInput.stopPadVibration(ptwo);
+		}
 	}
 
 	#endregion

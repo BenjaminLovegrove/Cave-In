@@ -5,6 +5,7 @@ public class LevelKillBox : MonoBehaviour {
 
 	public Transform p1TelePos, p2TelePos;
 	bool deathNotice = false;
+	public Texture resetOnDeathTexture;
 
 	void Awake()
 	{
@@ -30,7 +31,8 @@ public class LevelKillBox : MonoBehaviour {
 	{
 		if (deathNotice)
 		{
-			GUI.Label(new Rect(Screen.width/ 2,Screen.height/2,Screen.width,Screen.height),"Rest Player Position After Falling!");
+			//GUI.Label(new Rect(Screen.width/ 2,Screen.height/2,Screen.width,Screen.height),"Rest Player Position After Falling!");
+			GUI.DrawTexture (new Rect(Screen.width / 4 , Screen.height / 4, Screen.width /2, Screen.width /2), resetOnDeathTexture);
 		}
 	}
 
@@ -38,7 +40,7 @@ public class LevelKillBox : MonoBehaviour {
 	{
 		deathNotice = true;
 		yield return new WaitForSeconds (5.0f);
-		deathNotice = true;
+		deathNotice = false;
 
 
 	}

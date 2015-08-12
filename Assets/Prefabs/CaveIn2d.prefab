@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .801381469, y: 6.69069815, z: -.254170001}
+  m_LocalPosition: {x: 8.39000034, y: 4.0999999, z: -.25}
   m_LocalScale: {x: 1.1875087, y: 1.18750906, z: 1.18750906}
   m_Children:
   - {fileID: 405626}
@@ -125,7 +125,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8.46000004, y: 7.1500001, z: .200000003}
-  m_Center: {x: 9.53674316e-07, y: 1.69000006, z: 0}
+  m_Center: {x: 9.53674316e-07, y: .810000002, z: 0}
 --- !u!114 &11405624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +154,8 @@ MonoBehaviour:
   rockBreak: {fileID: 8300000, guid: 112d71f39c6dcb6408176c11f82d3cd5, type: 3}
   CaveIn: {fileID: 105624}
   destroyTime: 0
+  triggerLights: {fileID: 0}
+  rockDestruction: {fileID: 0}
 --- !u!212 &21205626
 SpriteRenderer:
   m_ObjectHideFlags: 1
