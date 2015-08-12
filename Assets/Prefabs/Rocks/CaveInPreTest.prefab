@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acaec0b05eed6c946aaf0d31563e584b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desTimer: 5
+  deathNotice: 0
+  crushedMessage: {fileID: 2800000, guid: 95d1ca26fdd19c446b1e16dfb478f1a9, type: 3}
 --- !u!135 &13522064
 SphereCollider:
   m_ObjectHideFlags: 1
