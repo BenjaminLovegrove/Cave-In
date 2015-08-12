@@ -367,7 +367,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: cc3529723d01d474193ce584d6a3cc8e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .5
+  m_Volume: .400000006
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -730,6 +730,7 @@ MonoBehaviour:
   uiSkip: {fileID: 2800000, guid: 5799b0f025ded7a4fb47db2be7c7478e, type: 3}
   topUiBars: {fileID: 2800000, guid: a8fd08c0ec91f5f419bafa2e79f01da2, type: 3}
   bottomUiBars: {fileID: 2800000, guid: 5a0dc1f7068b1814181c0632f49cdbdf, type: 3}
+  checkpoint: {fileID: 0}
 --- !u!124 &12441566
 Behaviour:
   m_ObjectHideFlags: 1
