@@ -33,6 +33,7 @@ public class RubbleFire : MonoBehaviour {
 			fireLight.enabled = true;
 			fireSprite.enabled = true;
 			fireAudio.enabled = true;
+			flameSpr.enabled = true;
 			lit = true;
 			if (resetDifficulty){
 				Intro.ci1difficulty = 1f;
@@ -41,7 +42,6 @@ public class RubbleFire : MonoBehaviour {
 			if (p1check != null && p2check !=null)
 			{
 				uiLerp = 1f;
-				flameSpr.enabled = false;
 				CheckpointManager.checkpointSpawn = true;
 				CheckpointManager.p1checkpoint = p1check.position;
 				CheckpointManager.p2checkpoint = p2check.position;
