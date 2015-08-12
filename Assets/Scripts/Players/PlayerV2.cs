@@ -24,7 +24,8 @@ public class PlayerV2 : MonoBehaviour
 	public int UIdisable = 2;
 	float UIDefaultScale;
 	public bool introSkipped = false;
-	
+
+	Vector3 playerScreenPoint;
 	Rigidbody playerRigid;
 	float movementForce;
 	float jumpForce;
@@ -399,6 +400,7 @@ public class PlayerV2 : MonoBehaviour
 	// Controls
 	private void Controls()
 	{
+		playerScreenPoint = Camera.main.WorldToScreenPoint (transform.position);
 		//---------------------------------------------------------------------------------//
 		///
 		#region Keyboard controls
@@ -525,7 +527,7 @@ public class PlayerV2 : MonoBehaviour
 			//Xbox support
 			// Right
 			//print (state.ThumbSticks.Left.X);
-			if (xInput.ThumbStickL_X > 0.3f )
+			if (xInput.ThumbStickL_X > 0.3f && playerScreenPoint.x < (Screen.width * 0.95))
 			{
 				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = true;
@@ -534,7 +536,7 @@ public class PlayerV2 : MonoBehaviour
 					sfxRun.Play();
 				}
 			}
-			else if (xInput.OnButton_DpadRight)
+			else if (xInput.OnButton_DpadRight && playerScreenPoint.x < (Screen.width * 0.95))
 			{
 				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
 				rightFaced = true;
@@ -545,7 +547,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 			
 			// Left
-			if (xInput.ThumbStickL_X < -0.3f)
+			if (xInput.ThumbStickL_X < -0.3f && playerScreenPoint.x > (Screen.width * 0.05))
 			{
 				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = false;
@@ -554,7 +556,7 @@ public class PlayerV2 : MonoBehaviour
 					sfxRun.Play();
 				}
 			}
-			else if (xInput.OnButton_DpadLeft)
+			else if (xInput.OnButton_DpadLeft && playerScreenPoint.x > (Screen.width * 0.05))
 			{
 				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
 				rightFaced = false;
