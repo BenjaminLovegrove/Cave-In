@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using XInputDotNetPure; // Required in C#
+using CobaltMetrics.DataTypes.Unity;
 
 public class PickaxeHickoryv2 : MonoBehaviour {
 	
@@ -42,7 +43,9 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 	}
 	
 	void Swing(){
-		
+
+		//CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
+
 		if (!swinging) {
 			swingTime = swingLength;
 			swinging = true;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using XInputDotNetPure; // Required in C#
+using CobaltMetrics.DataTypes.Unity;
 
 public class LampSorekv2 : MonoBehaviour {
 	
@@ -9,7 +10,6 @@ public class LampSorekv2 : MonoBehaviour {
 	public AudioClip fireSFX;
 	public float fireCD = 0.5f;
 	float fireCDtimer;
-	
 
 	void Start (){
 		sorekScr = GetComponent<PlayerV2> ();
@@ -29,6 +29,7 @@ public class LampSorekv2 : MonoBehaviour {
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
 					this.SendMessage ("Slow");
+					//CMetricVector.Vector2 ("p2Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
 				}
 			}
 			else{
@@ -39,6 +40,7 @@ public class LampSorekv2 : MonoBehaviour {
 					Instantiate (fireSpread, transform.position, Quaternion.identity);
 					AudioSource.PlayClipAtPoint (fireSFX, transform.position);
 					this.SendMessage ("Slow");
+					//CMetricVector.Vector2 ("p2Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
 				}
 			}
 			
