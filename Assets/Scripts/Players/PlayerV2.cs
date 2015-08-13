@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using XInputDotNetPure; // Required in C#
+using CobaltMetrics;
+using CobaltMetrics.DataTypes.Unity;
 
 public class PlayerV2 : MonoBehaviour
 {
@@ -71,7 +73,7 @@ public class PlayerV2 : MonoBehaviour
 	//private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
 
-
+	private float m_metricPushTimer = 2f; //Metrics
 
 
 	void OnLevelWasLoaded(int level) {
@@ -147,6 +149,27 @@ public class PlayerV2 : MonoBehaviour
 			Controller.xInput.stopPadVibration(ptwo);
 		}
 
+		//Metrics Begin
+//		if(canMove)
+//		{
+//			m_metricPushTimer -= Time.deltaTime;
+//
+//			if(m_metricPushTimer <= 0f)
+//			{
+//				m_metricPushTimer = 5f;
+//
+//				if(playerOne)
+//				{
+//					CMetricVector.Vector3("p1Pos", transform.position);
+//				}
+//				else
+//				{
+//					CMetricVector.Vector3("p2Pos", transform.position);
+//				}
+//			}
+//		}
+		//Metrics End
+
 		//DeathStuff
 		if (isDead) {
 			playerSpr.enabled = false;
@@ -155,6 +178,10 @@ public class PlayerV2 : MonoBehaviour
 		}
 		if (otherPlayer.isDead && canMove) {
 			canMove = false;
+			//Metrics Begin
+			//CMetricVector.Vector3("p1DeathPos", transform.position);
+			//CMetricVector.Vector3("p2DeathPos", transform.position);
+			//Metrics End
 		}
 
 
