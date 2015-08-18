@@ -27,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156834}
   m_LocalRotation: {x: 0, y: 0, z: .185347155, w: .982673168}
-  m_LocalPosition: {x: 240.429993, y: 129.309998, z: .0153510002}
-  m_LocalScale: {x: .295594782, y: .295594722, z: .295594722}
+  m_LocalPosition: {x: 244.053009, y: 128.422104, z: .0153510002}
+  m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,9 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acaec0b05eed6c946aaf0d31563e584b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desTimer: 5
+  desTimer: 8
   deathNotice: 0
   crushedMessage: {fileID: 2800000, guid: 95d1ca26fdd19c446b1e16dfb478f1a9, type: 3}
+  caveInRock: 1
 --- !u!135 &13522064
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -82,8 +83,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.46745634
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 4.10752678
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!212 &21226614
 SpriteRenderer:
   m_ObjectHideFlags: 1

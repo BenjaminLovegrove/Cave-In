@@ -656,7 +656,7 @@ public class PlayerV2 : MonoBehaviour
 	public IEnumerator JumpCoolDown()
 	{
 		jumpingNow = true;
-		float delay = 0.55f;
+		float delay = 0.1f;
 		yield return new WaitForSeconds(delay);
 		jumpingNow = false;
 	}
@@ -730,10 +730,12 @@ public class PlayerV2 : MonoBehaviour
 		}
 	}
 	
-	void Crushed(){
+	void Crushed(bool CaveIn){
 		if (!otherPlayer.isDead && !isDead){
-			Intro.ci1difficulty = Intro.ci1difficulty * 0.8f;
-			Intro.ci2difficulty = Intro.ci2difficulty * 0.8f;
+			if (Intro.ci1difficulty > 0.2f && CaveIn){
+				Intro.ci1difficulty -= 0.2f;
+				Intro.ci2difficulty -= 0.2f;
+			}
 		}
 
 		isDead = true;

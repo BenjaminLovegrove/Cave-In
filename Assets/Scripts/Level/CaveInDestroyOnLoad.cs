@@ -6,7 +6,7 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 	public float desTimer = 5f;
 	public bool deathNotice = false;
 	public Texture crushedMessage;
-
+	public bool caveInRock;
 	// Use this for initialization
 	void Start () {
 		Destroy(gameObject, desTimer);
@@ -16,7 +16,7 @@ public class CaveInDestroyOnLoad : MonoBehaviour {
 	void OnCollisionEnter (Collision col) {
 		if (col.gameObject.tag == "Player")
 		{
-			col.gameObject.SendMessage ("Crushed", SendMessageOptions.DontRequireReceiver);
+			col.gameObject.SendMessage ("Crushed", caveInRock, SendMessageOptions.DontRequireReceiver);
 			StartCoroutine(NotifyOfDeath());
 		}
 	}

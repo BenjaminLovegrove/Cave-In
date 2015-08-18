@@ -51,7 +51,7 @@ public class CaveInKillBox : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Player")
 		{
-			col.SendMessage("Crushed");
+			col.SendMessage("Crushed", true);
 		}
 	}
 
