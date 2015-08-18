@@ -53,6 +53,9 @@ public class Intro : MonoBehaviour {
 
 	// Use this for initialization
 	public void BeginIntro() {
+		introTimer = 25f;
+		introStuff.SetActive (true);
+
 		cam = Camera.main;
 		startIntroTimer = introTimer;
 
@@ -109,8 +112,6 @@ public class Intro : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-
-
 
 		if (watchIntro)
 		{

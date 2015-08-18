@@ -138,7 +138,7 @@ public class PlayerV2 : MonoBehaviour
 		
 		if (debugState)
 		{
-			Debug.LogWarning ("Debug state = true");
+			Debug.LogWarning ("Debug state " + debugState);
 		}
 	}
 	
@@ -732,8 +732,8 @@ public class PlayerV2 : MonoBehaviour
 	
 	void Crushed(){
 		if (!otherPlayer.isDead && !isDead){
-			Intro.ci1difficulty = Intro.ci1difficulty * 0.9f;
-			Intro.ci2difficulty = Intro.ci2difficulty * 0.9f;
+			Intro.ci1difficulty = Intro.ci1difficulty * 0.8f;
+			Intro.ci2difficulty = Intro.ci2difficulty * 0.8f;
 		}
 
 		isDead = true;
@@ -771,7 +771,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 		
 
-			if (grounded) {
+			if (grounded && !menuActive) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive  || xInput.ThumbStickL_X > 0.3f && !keyboardActive || 
 				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight && !keyboardActive||
 				    Input.GetKey(KeyCode.D) && keyboardActive || Input.GetKey(KeyCode.A) && keyboardActive) {
@@ -852,6 +852,7 @@ public class PlayerV2 : MonoBehaviour
 
 	IEnumerator MenuFireAnimation()
 	{
+		//Soreks menu animation
 		swingInMenu = true;
 		anim.SetBool ("Run", false);
 		anim.SetBool ("Walkandpour", true); 
