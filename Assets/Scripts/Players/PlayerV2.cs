@@ -144,30 +144,45 @@ public class PlayerV2 : MonoBehaviour
 	
 	void Update(){
 
+		if (PauseMenu.paused)
+		{
+			prevState = xInput.state;
+			state = GamePad.GetState(playerIndex);
+			print ("checking for states");
+			if (xInput.OnButtonDownStart)
+			{
+				print ("testing input while game paused");
+			}
+		}
+
 		if (isDead){
 			Controller.xInput.stopPadVibration(pone);
 			Controller.xInput.stopPadVibration(ptwo);
 		}
 
 		//Metrics Begin
-//		if(canMove)
-//		{
-//			m_metricPushTimer -= Time.deltaTime;
-//
-//			if(m_metricPushTimer <= 0f)
-//			{
-//				m_metricPushTimer = 5f;
-//
-//				if(playerOne)
-//				{
-//					CMetricVector.Vector3("p1Pos", transform.position);
-//				}
-//				else
-//				{
-//					CMetricVector.Vector3("p2Pos", transform.position);
-//				}
-//			}
-//		}
+		if(canMove)
+		{
+			m_metricPushTimer -= Time.deltaTime;
+
+			if(m_metricPushTimer <= 0f)
+			{
+				m_metricPushTimer = 5f;
+
+				if(playerOne)
+				{
+
+					CMetricVector.Vector3("p1Pos", transform.position);
+					print ("P1Pos");
+				}
+				else
+				{
+
+					CMetricVector.Vector3("p2Pos", transform.position);
+					print ("P2Pos");
+				}
+			}
+		}
 		//Metrics End
 
 		//DeathStuff

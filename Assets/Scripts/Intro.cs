@@ -147,7 +147,7 @@ public class Intro : MonoBehaviour {
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
 			
 			if (lerpTimer > 6f) {
-				//CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				CobaltMetrics.Metrics.StopMetrics(); //Metrics
 				Application.LoadLevel ("MenuPlaceholder");
 			}
 		} else {
@@ -220,7 +220,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
-				//CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a"); //Metrics
+				CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a"); //Metrics
 			}
 
 		}

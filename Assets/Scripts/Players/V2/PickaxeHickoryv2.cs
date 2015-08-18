@@ -44,11 +44,10 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 	
 	void Swing(){
 
-		//CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
-
 		if (!swinging) {
 			swingTime = swingLength;
 			swinging = true;
+			CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
 			
 			//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
 			RaycastHit hit;
