@@ -57,7 +57,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position, 0.5f);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitRockPre, hit.point, Quaternion.identity );
@@ -66,7 +66,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position, 0.5f);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
@@ -84,7 +84,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position, 0.5f);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitRockPre, hit.point, Quaternion.identity );
@@ -93,7 +93,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 					hickoryScr.anim.SetBool ("Idle", false);
 					hickoryScr.anim.SetTrigger ("Swing");
 					this.SendMessage ("CanMove", false);
-					AudioSource.PlayClipAtPoint (PickHit, transform.position);
+					AudioSource.PlayClipAtPoint (PickHit, transform.position, 0.5f);
 					hit.collider.gameObject.SendMessage ("PickHit", SendMessageOptions.DontRequireReceiver);
 					hit.collider.gameObject.SendMessageUpwards ("PickHit", SendMessageOptions.DontRequireReceiver);
 					Instantiate( hitWoodPre, hit.point, Quaternion.identity );
