@@ -392,7 +392,7 @@ public class PlayerV2 : MonoBehaviour
 
 
 		//pause the game
-		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
+		if (!menuActive && xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
 		{
 			PauseMenu.PauseGame();
 		}

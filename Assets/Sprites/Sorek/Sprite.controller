@@ -486,10 +486,10 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: anim_Sorek_Run
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 0cee13c89e04d3841ac3875f4b0b4454, type: 2}
+  - {fileID: 7400000, guid: 69f676d02b65ad7448a5fb31ca37310f, type: 2}
   m_ParentStateMachine: {fileID: 110719510}
   m_Position: {x: -120, y: -240, z: 0}
   m_IKOnFeet: 0
@@ -543,13 +543,6 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110208450}
-      second:
-      - {fileID: 110165906}
-      - {fileID: 110186288}
-      - {fileID: 110138848}
-      - {fileID: 110103028}
-    data:
       first: {fileID: 110296184}
       second:
       - {fileID: 110113186}
@@ -577,6 +570,13 @@ StateMachine:
       - {fileID: 110193098}
       - {fileID: 110118016}
       - {fileID: 110195630}
+    data:
+      first: {fileID: 110208450}
+      second:
+      - {fileID: 110165906}
+      - {fileID: 110186288}
+      - {fileID: 110138848}
+      - {fileID: 110103028}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 36, y: 228, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
