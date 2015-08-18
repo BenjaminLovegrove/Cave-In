@@ -19,6 +19,8 @@ public class CollisionManager : MonoBehaviour
 
 	public bool ladder;
 
+	private bool functional; //to turn ladders off after they fall
+
 	void OnTriggerEnter(Collider temp)
 	{
 		/*
@@ -54,7 +56,7 @@ public class CollisionManager : MonoBehaviour
 			// Ladder enter send message function
 			else */
 
-		if (ladder)
+		if (ladder && functional)
 
 			{
 				temp.gameObject.SendMessage("Ladder", 1f, SendMessageOptions.DontRequireReceiver);
@@ -83,6 +85,10 @@ public class CollisionManager : MonoBehaviour
 			temp.gameObject.SendMessage("Ladder", 0f, SendMessageOptions.DontRequireReceiver);
 			//Debug.Log ("Jumped off Ladder");
 		}
+	}
+
+	void NotFunctional(){
+		functional = false;
 	}
 	
 }

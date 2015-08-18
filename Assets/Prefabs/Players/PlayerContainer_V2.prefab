@@ -498,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.14000034, y: 24.4300003, z: 0}
+  m_LocalPosition: {x: 4.59000015, y: -3.9000001, z: 0}
   m_LocalScale: {x: -1, y: 2.0625, z: 1}
   m_Children:
   - {fileID: 413388}
@@ -1762,8 +1762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a898f7537d0f40b4a97a445e44807e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 8
-  maxRange: 9
+  minRange: 9
+  maxRange: 10
   flickerTiming: .100000001
   inspectorDiminish: 0
   inspectorReplenish: 0

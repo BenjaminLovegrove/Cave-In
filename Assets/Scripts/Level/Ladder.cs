@@ -19,7 +19,7 @@ public class Ladder : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col) {
 		if (col.gameObject.tag == "Player" && !triggered) {
-
+			this.BroadcastMessage("NotFunctional");
 			ladderRb.isKinematic = false;
 			ladderRb.useGravity = true;
 			ladderCol.enabled = false;
