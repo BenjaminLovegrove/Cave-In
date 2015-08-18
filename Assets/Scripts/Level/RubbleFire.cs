@@ -27,13 +27,24 @@ public class RubbleFire : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter (Collider col) {
+		if (col.collider.gameObject.tag == "Player") {
+			col.gameObject.SendMessage("EnterBurnable");
+		}
+	}
+	void OnTriggerExit (Collider col) {
+		if (col.collider.gameObject.tag == "Player") {
+			col.gameObject.SendMessage("ExitBurnable");
+		}
+	}
+
 	void Update(){
 
 		if (lightTime < 0 && !lit) {
+			flameSpr.enabled = true;
 			fireLight.enabled = true;
 			fireSprite.enabled = true;
 			fireAudio.enabled = true;
-			flameSpr.enabled = true;
 			lit = true;
 			if (resetDifficulty){
 				Intro.ci1difficulty = 1f;
