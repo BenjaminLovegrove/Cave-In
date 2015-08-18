@@ -173,13 +173,11 @@ public class PlayerV2 : MonoBehaviour
 				{
 
 					CMetricVector.Vector3("p1Pos", transform.position);
-					print ("P1Pos");
 				}
 				else
 				{
 
 					CMetricVector.Vector3("p2Pos", transform.position);
-					print ("P2Pos");
 				}
 			}
 		}

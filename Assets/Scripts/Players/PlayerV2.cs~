@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using XInputDotNetPure; // Required in C#
+using CobaltMetrics;
+using CobaltMetrics.DataTypes.Unity;
 
 public class PlayerV2 : MonoBehaviour
 {
@@ -71,7 +73,7 @@ public class PlayerV2 : MonoBehaviour
 	//private bool currentlyAnimating = false;
 	public static bool keyboardActive = false;
 
-
+	private float m_metricPushTimer = 2f; //Metrics
 
 
 	void OnLevelWasLoaded(int level) {
@@ -136,16 +138,50 @@ public class PlayerV2 : MonoBehaviour
 		
 		if (debugState)
 		{
-			Debug.LogWarning ("Debug state = true");
+			Debug.LogWarning ("Debug state " + debugState);
 		}
 	}
 	
 	void Update(){
 
+		if (PauseMenu.paused)
+		{
+			prevState = xInput.state;
+			state = GamePad.GetState(playerIndex);
+			print ("checking for states");
+			if (xInput.OnButtonDownStart)
+			{
+				print ("testing input while game paused");
+			}
+		}
+
 		if (isDead){
 			Controller.xInput.stopPadVibration(pone);
 			Controller.xInput.stopPadVibration(ptwo);
 		}
+
+		//Metrics Begin
+		if(canMove)
+		{
+			m_metricPushTimer -= Time.deltaTime;
+
+			if(m_metricPushTimer <= 0f)
+			{
+				m_metricPushTimer = 5f;
+
+				if(playerOne)
+				{
+
+					CMetricVector.Vector3("p1Pos", transform.position);
+				}
+				else
+				{
+
+					CMetricVector.Vector3("p2Pos", transform.position);
+				}
+			}
+		}
+		//Metrics End
 
 		//DeathStuff
 		if (isDead) {
@@ -155,6 +191,10 @@ public class PlayerV2 : MonoBehaviour
 		}
 		if (otherPlayer.isDead && canMove) {
 			canMove = false;
+			//Metrics Begin
+			//CMetricVector.Vector3("p1DeathPos", transform.position);
+			//CMetricVector.Vector3("p2DeathPos", transform.position);
+			//Metrics End
 		}
 
 
@@ -350,7 +390,7 @@ public class PlayerV2 : MonoBehaviour
 
 
 		//pause the game
-		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
+		if (!menuActive && xInput.OnButtonDownStart && PauseMenu.canPauseGame == true &&(Intro.introTimer < 0))
 		{
 			PauseMenu.PauseGame();
 		}
@@ -629,7 +669,7 @@ public class PlayerV2 : MonoBehaviour
 	public IEnumerator JumpCoolDown()
 	{
 		jumpingNow = true;
-		float delay = 0.55f;
+		float delay = 0.1f;
 		yield return new WaitForSeconds(delay);
 		jumpingNow = false;
 	}
@@ -703,10 +743,12 @@ public class PlayerV2 : MonoBehaviour
 		}
 	}
 	
-	void Crushed(){
+	void Crushed(bool CaveIn){
 		if (!otherPlayer.isDead && !isDead){
-			Intro.ci1difficulty = Intro.ci1difficulty * 0.9f;
-			Intro.ci2difficulty = Intro.ci2difficulty * 0.9f;
+			if (Intro.ci1difficulty > 0.2f && CaveIn){
+				Intro.ci1difficulty -= 0.2f;
+				Intro.ci2difficulty -= 0.2f;
+			}
 		}
 
 		isDead = true;
@@ -744,7 +786,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 		
 
-			if (grounded) {
+			if (grounded && !menuActive) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive  || xInput.ThumbStickL_X > 0.3f && !keyboardActive || 
 				    xInput.OnButton_DpadLeft && !keyboardActive|| xInput.OnButton_DpadRight && !keyboardActive||
 				    Input.GetKey(KeyCode.D) && keyboardActive || Input.GetKey(KeyCode.A) && keyboardActive) {
@@ -825,6 +867,7 @@ public class PlayerV2 : MonoBehaviour
 
 	IEnumerator MenuFireAnimation()
 	{
+		//Soreks menu animation
 		swingInMenu = true;
 		anim.SetBool ("Run", false);
 		anim.SetBool ("Walkandpour", true); 
@@ -837,7 +880,8 @@ public class PlayerV2 : MonoBehaviour
 	{
 		if (col.gameObject.name == "WaterTrigger")
 		{
-			Instantiate (waterSplash,this.transform.position, Quaternion.identity);
+			Instantiate (waterSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
+			//splash sound
 		}
 	}
 
@@ -845,7 +889,8 @@ public class PlayerV2 : MonoBehaviour
 	{
 		if (col.gameObject.name == "WaterTrigger")
 		{
-			Instantiate (waterExitSplash,this.transform.position, Quaternion.identity);
+			Instantiate (waterExitSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
+			//water walking sound
 		}
 	}
 
