@@ -865,7 +865,8 @@ public class PlayerV2 : MonoBehaviour
 	{
 		if (col.gameObject.name == "WaterTrigger")
 		{
-			Instantiate (waterSplash,this.transform.position, Quaternion.identity);
+			Instantiate (waterSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
+			//splash sound
 		}
 	}
 
@@ -873,7 +874,8 @@ public class PlayerV2 : MonoBehaviour
 	{
 		if (col.gameObject.name == "WaterTrigger")
 		{
-			Instantiate (waterExitSplash,this.transform.position, Quaternion.identity);
+			Instantiate (waterExitSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
+			//water walking sound
 		}
 	}
 
