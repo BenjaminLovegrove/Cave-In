@@ -10,6 +10,8 @@ using UnityEngine.UI;
 /// audio effects
 /// xbox input delay for selcting
 /// split the inputs for two controllers
+/// 
+/// coroutines need to not have yields and be replaced with time.realtimesincestart
 /// </summary>
 
 public class PauseInputManager : MonoBehaviour {
@@ -21,7 +23,9 @@ public class PauseInputManager : MonoBehaviour {
 	public Text 
 		resumeGame,
 		loadLastCheckpoint,
-		exitGame;
+		exitGame,
+		quitYes,
+		quitNo;
 
 	public int itemSelected = 0;
 
@@ -44,6 +48,7 @@ public class PauseInputManager : MonoBehaviour {
 		#region controller support for Pause Menu
 		if (PauseMenu.paused && PlayerV2.keyboardActive == false)
 		{
+			print ("running pause menu");
 			//Allow the player to switch between the menu
 			if (Input.GetAxis ("Vertical") >= 0.5f && Input.GetAxis ("Vertical") <= 1.0f  && !PauseMenu.selecting)
 			{
@@ -82,11 +87,11 @@ public class PauseInputManager : MonoBehaviour {
 			{
 				if (itemSelected == 0) 
 				{
-					//print ("NO");
+					quitNo.color = hoverCol;
 				}
 				if (itemSelected == 1)
 				{
-					//print ("YES");
+					quitYes.color = hoverCol;
 				}
 			}
 		}
@@ -183,9 +188,10 @@ public class PauseInputManager : MonoBehaviour {
 		#endregion
 	}
 
-	#region Keyboard Input for pause menu
+	#region Keyboard Event Inputs for pause menu
 	public void Hover()
 	{
+		//Main options
 		if (this.name == "Resume")
 		{
 			resumeGame.color = hoverCol;
@@ -197,6 +203,16 @@ public class PauseInputManager : MonoBehaviour {
 		if (gameObject.name == "Exit")
 		{
 			exitGame.color = hoverCol;
+		}
+
+		//quit options
+		if (this.name == "Yes")
+		{
+			quitYes.color = hoverCol;
+		}
+		if (gameObject.name == "No")
+		{
+			quitNo.color = hoverCol;
 		}
 
 	}
@@ -215,6 +231,16 @@ public class PauseInputManager : MonoBehaviour {
 		{
 			exitGame.color = defaultCol;
 		}
+
+		//quit options
+		if (this.name == "Yes")
+		{
+			quitYes.color = defaultCol;
+		}
+		if (gameObject.name == "No")
+		{
+			quitNo.color = defaultCol;
+		}
 	}
 
 	public void SelectOption()
@@ -230,6 +256,16 @@ public class PauseInputManager : MonoBehaviour {
 		if (gameObject.name == "Exit")
 		{
 			StartCoroutine (Exiting());
+		}
+
+		//quit options
+		if (this.name == "Yes")
+		{
+			StartCoroutine(YesQuit());
+		}
+		if (gameObject.name == "No")
+		{
+			StartCoroutine(NoQuit());
 		}
 	}
 
@@ -248,9 +284,24 @@ public class PauseInputManager : MonoBehaviour {
 	private IEnumerator Exiting( )
 	{
 		exitGame.color = pressCol;
+		PauseMenu.quitCheck = true;
 		yield return new WaitForSeconds (buttonDelay);
-		print ("Exiting Game");
+		PauseMenu.quitCheck = true;
 	}
+
+	private IEnumerator YesQuit()
+	{
+		quitYes.color = pressCol;
+		yield return new WaitForSeconds (buttonDelay);
+		Application.Quit();
+	}
+	private IEnumerator NoQuit()
+	{
+		quitNo.color = pressCol;
+		yield return new WaitForSeconds (buttonDelay);
+		quitCheck = false;
+	}
+
 
 	#endregion
 
@@ -320,7 +371,10 @@ public class PauseInputManager : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Label(new Rect(10, 10, 100, 20), "Item Selected " + itemSelected); //quick debug of what the controller is slecting
+		if (PauseMenu.paused && PlayerV2.keyboardActive == false)
+		{
+			GUI.Label(new Rect(10, 10, 100, 20), "Item Selected " + itemSelected); //quick debug of what the controller is slecting
+		}
 	}
 
 }
