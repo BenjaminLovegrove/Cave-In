@@ -220,7 +220,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
-				CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a"); //Metrics
+				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a")); //Metrics
 			}
 
 		}

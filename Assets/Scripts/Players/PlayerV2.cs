@@ -171,16 +171,7 @@ public class PlayerV2 : MonoBehaviour
 			{
 				m_metricPushTimer = 5f;
 
-				if(playerOne)
-				{
-
-					CMetricVector.Vector3("p1Pos", transform.position);
-				}
-				else
-				{
-
-					CMetricVector.Vector3("p2Pos", transform.position);
-				}
+				CMetricVector.Vector3(playerOne ? "p1Pos" : "p2Pos", transform.position);
 			}
 		}
 		//Metrics End
@@ -194,8 +185,8 @@ public class PlayerV2 : MonoBehaviour
 		if (otherPlayer.isDead && canMove) {
 			canMove = false;
 			//Metrics Begin
-			//CMetricVector.Vector3("p1DeathPos", transform.position);
-			//CMetricVector.Vector3("p2DeathPos", transform.position);
+			CMetricVector.Vector3("p1DeathPos", transform.position);
+			CMetricVector.Vector3("p2DeathPos", transform.position);
 			//Metrics End
 		}
 
