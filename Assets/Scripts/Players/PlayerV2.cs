@@ -146,17 +146,6 @@ public class PlayerV2 : MonoBehaviour
 	
 	void Update(){
 
-		if (PauseMenu.paused)
-		{
-			prevState = xInput.state;
-			state = GamePad.GetState(playerIndex);
-			print ("checking for states");
-			if (xInput.OnButtonDownStart)
-			{
-				print ("testing input while game paused");
-			}
-		}
-
 		if (isDead){
 			Controller.xInput.stopPadVibration(pone);
 			Controller.xInput.stopPadVibration(ptwo);

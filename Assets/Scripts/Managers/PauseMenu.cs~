@@ -51,26 +51,26 @@ public class PauseMenu : MonoBehaviour {
 			{
 				if (itemSelected == 0) 
 				{
-					print ("Resume");
+					//print ("Resume");
 				}
 				if (itemSelected == 1)
 				{
-					print ("Return Last Checkpoint");
+					//print ("Return Last Checkpoint");
 				}
 				if (itemSelected == 2)
 				{
-					print ("Exit Game");
+					//print ("Exit Game");
 				}
 			}
 			else if (quitCheck)
 			{
 				if (itemSelected == 0) 
 				{
-					print ("NO");
+					//print ("NO");
 				}
 				if (itemSelected == 1)
 				{
-					print ("YES");
+					//print ("YES");
 				}
 			}
 		}
@@ -218,7 +218,6 @@ public class PauseMenu : MonoBehaviour {
 		if ( Time.realtimeSinceStartup > start + delay)
 		{
 			PauseMenu.selecting =false;
-			print ("realtime delay ended");
 			yield return null;
 		}
 
