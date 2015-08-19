@@ -15,6 +15,13 @@ public class PauseMenu : MonoBehaviour {
 	public static bool selecting = false;
 	float selectDely = 0.2f;
 
+	//Text gameobjects
+	public GameObject 
+		canvasObj,
+		resumeGame,
+		loadLastCheckpoint,
+		exitGame;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -105,7 +112,7 @@ public class PauseMenu : MonoBehaviour {
 			if (itemSelected == 0)  //NO
 			{
 				quitCheck = false;
-				itemSelected = 2;
+				itemSelected = 0;
 			}
 			if (itemSelected == 1) //YES
 			{
