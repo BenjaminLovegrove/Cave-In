@@ -47,7 +47,7 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 		if (!swinging) {
 			swingTime = swingLength;
 			swinging = true;
-			print (swinging);
+			//print (swinging);
 
 			RaycastHit hit;
 			if (transform.localScale.x <= 0) {
@@ -110,6 +110,9 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 				//Play swing and miss sound.
 			}
 		}
-		CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
+		if (Intro.introTimer <=0)
+		{
+			CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
+		}
 	}
 }
