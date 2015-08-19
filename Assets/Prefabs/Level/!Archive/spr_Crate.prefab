@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6523260}
   - 54: {fileID: 5423260}
   - 114: {fileID: 11491186}
+  - 65: {fileID: 6593866}
   m_Layer: 0
   m_Name: spr_Crate
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123260}
   m_LocalRotation: {x: 0, y: 0, z: -.0373478718, w: .999302328}
-  m_LocalPosition: {x: 128.960007, y: 33.8899994, z: 0}
+  m_LocalPosition: {x: 20.996645, y: 46.3029556, z: 0}
   m_LocalScale: {x: .260124832, y: .260124832, z: .260124832}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,6 +59,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.86486959, y: 4.70541573, z: 4}
   m_Center: {x: -.063784495, y: .0159469489, z: 0}
+--- !u!65 &6593866
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.11999989, y: 5.11999989, z: 5}
+  m_Center: {x: 0, y: 1.52587891e-05, z: 0}
 --- !u!114 &11491186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,6 +87,7 @@ MonoBehaviour:
   CaveIn: {fileID: 0}
   destroyTime: 0
   triggerLights: {fileID: 0}
+  rockDestruction: {fileID: 0}
 --- !u!212 &21223260
 SpriteRenderer:
   m_ObjectHideFlags: 1
