@@ -19,7 +19,7 @@ public class CollisionManager : MonoBehaviour
 
 	public bool ladder;
 
-	private bool functional; //to turn ladders off after they fall
+	private bool functional = true; //to turn ladders off after they fall
 
 	void OnTriggerEnter(Collider temp)
 	{

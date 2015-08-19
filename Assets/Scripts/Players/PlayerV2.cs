@@ -40,6 +40,7 @@ public class PlayerV2 : MonoBehaviour
 	public bool grounded = false;
 	public bool rightFaced = true;
 	public bool climbingLadder;
+	private float ladderSlow = 1;
 	private float h;
 	private float v;
 	private bool jumpingNow = false;
@@ -425,8 +426,8 @@ public class PlayerV2 : MonoBehaviour
 	// Grounded check
 	private void Grounded()
 	{
-		Vector3 leftExtent = new Vector3 (this.transform.position.x - collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
-		Vector3 rightExtent = new Vector3 (this.transform.position.x + collider.bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
+		Vector3 leftExtent = new Vector3 ((this.transform.position.x - collider.bounds.size.x / 2) - 1, this.transform.position.y, this.transform.position.z);
+		Vector3 rightExtent = new Vector3 ((this.transform.position.x + collider.bounds.size.x / 2) + 1, this.transform.position.y, this.transform.position.z);
 		
 		if (Physics.Raycast (this.transform.position, Vector3.down, groundedRayDist) || Physics.Raycast (leftExtent, Vector3.down,  groundedRayDist)|| Physics.Raycast (rightExtent, Vector3.down,  groundedRayDist))
 		{
@@ -575,7 +576,7 @@ public class PlayerV2 : MonoBehaviour
 			//print (state.ThumbSticks.Left.X);
 			if (xInput.ThumbStickL_X > 0.3f && playerScreenPoint.x < (Screen.width * 0.95))
 			{
-				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
+				player.transform.Translate(Vector3.right * (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = true;
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
@@ -584,7 +585,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 			else if (xInput.OnButton_DpadRight && playerScreenPoint.x < (Screen.width * 0.95))
 			{
-				player.transform.Translate(Vector3.right * movementForce * Mathf.Abs (1) * Time.deltaTime);
+				player.transform.Translate(Vector3.right *  (movementForce / ladderSlow) * Mathf.Abs (1) * Time.deltaTime);
 				rightFaced = true;
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
@@ -595,7 +596,7 @@ public class PlayerV2 : MonoBehaviour
 			// Left
 			if (xInput.ThumbStickL_X < -0.3f && playerScreenPoint.x > (Screen.width * 0.05))
 			{
-				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
+				player.transform.Translate(Vector3.left *  (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = false;
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
@@ -604,7 +605,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 			else if (xInput.OnButton_DpadLeft && playerScreenPoint.x > (Screen.width * 0.05))
 			{
-				player.transform.Translate(Vector3.left * movementForce * Mathf.Abs (1) * Time.deltaTime);
+				player.transform.Translate(Vector3.left *  (movementForce / ladderSlow) * Mathf.Abs (1) * Time.deltaTime);
 				rightFaced = false;
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
@@ -683,10 +684,15 @@ public class PlayerV2 : MonoBehaviour
 		
 		if (i == 1)
 		{
+			ladderSlow = 3;
 			climbingLadder = true;
 		}
 		
-		else climbingLadder = false;
+		else 
+		{
+			ladderSlow = 1;
+			climbingLadder = false;
+		}
 		
 		if (!climbingLadder)
 		{
