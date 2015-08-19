@@ -501,6 +501,7 @@ MonoBehaviour:
   ladderFall: 1
   ladderParent: {fileID: 108750}
   ladderCol: {fileID: 6508750}
+  ladderFallSFX: {fileID: 8300000, guid: 654c9e158949fca4dbc41f184ff84d3c, type: 3}
 --- !u!136 &13608748
 CapsuleCollider:
   m_ObjectHideFlags: 1

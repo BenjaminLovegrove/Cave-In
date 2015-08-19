@@ -6,6 +6,7 @@ public class Ladder : MonoBehaviour {
 	public bool ladderFall = false;
 	public GameObject ladderParent;
 	public Collider ladderCol;
+	public AudioClip ladderFallSFX;
 	Rigidbody ladderRb;
 	bool triggered = false;
 
@@ -19,6 +20,7 @@ public class Ladder : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col) {
 		if (col.gameObject.tag == "Player" && !triggered) {
+			AudioSource.PlayClipAtPoint(ladderFallSFX, transform.position);
 			this.BroadcastMessage("NotFunctional");
 			ladderRb.isKinematic = false;
 			ladderRb.useGravity = true;

@@ -47,9 +47,8 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 		if (!swinging) {
 			swingTime = swingLength;
 			swinging = true;
-			CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
-			
-			//Hit object infront. This should probably done a few seconds later timed with the animation when we have it.
+			print (swinging);
+
 			RaycastHit hit;
 			if (transform.localScale.x <= 0) {
 				if (Physics.Raycast (transform.position, -transform.right, out hit, 2.5f)&& hit.collider.gameObject.name == "MineableRock") {
@@ -111,6 +110,6 @@ public class PickaxeHickoryv2 : MonoBehaviour {
 				//Play swing and miss sound.
 			}
 		}
-		
+		CMetricVector.Vector2 ("p1Action", new Vector2 (transform.position.x, transform.position.y)); //Metrics
 	}
 }

@@ -1505,6 +1505,7 @@ MonoBehaviour:
   playerLight: {fileID: 113412}
   gravestone: {fileID: 21213406}
   playerSpr: {fileID: 21213404}
+  playerDeath: {fileID: 8300000, guid: 77eaa13c612042a438445468f183e47b, type: 3}
   UIspr: {fileID: 21213414}
   UIdisable: 2
   introSkipped: 0
@@ -1557,6 +1558,7 @@ MonoBehaviour:
   playerLight: {fileID: 113392}
   gravestone: {fileID: 21213408}
   playerSpr: {fileID: 21213412}
+  playerDeath: {fileID: 8300000, guid: 77eaa13c612042a438445468f183e47b, type: 3}
   UIspr: {fileID: 21213410}
   UIdisable: 2
   introSkipped: 0

@@ -839,7 +839,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00999999978, y: -1.16999996, z: -10}
+  m_LocalPosition: {x: 13.3000002, y: 11.9499998, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 459610}
@@ -851,7 +851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.71000004, y: 0, z: 7.17999983}
+  m_LocalPosition: {x: 1.71000004, y: 0, z: 2.51999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459620}
@@ -949,7 +949,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 9.72999954}
+  m_LocalPosition: {x: 0, y: -0, z: 5.38000011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459652}
@@ -1219,8 +1219,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.6100006, y: 8.92000008, z: -58.4700012}
-  m_LocalScale: {x: 1, y: 6.39890718, z: 22.6534367}
+  m_LocalPosition: {x: -14.8800001, y: 8.72000027, z: -58.4700012}
+  m_LocalScale: {x: 1.93398309, y: 12.3753796, z: 43.811367}
   m_Children: []
   m_Father: {fileID: 459676}
   m_RootOrder: 0
@@ -1777,7 +1777,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 29bcd2b721f6e964597970f70c8dd668, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1786,21 +1786,21 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
-      value: 1
+    - time: .0044096387
+      value: .606451631
       inSlope: 0
-      outSlope: 0
+      outSlope: -1.00200403
       tangentMode: 0
-    - time: 1
+    - time: .600000024
       value: 0
-      inSlope: 0
+      inSlope: -1.00200403
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
@@ -1834,7 +1834,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 2.5
   m_Range: 20.1800003
   m_SpotAngle: 30
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRange: 0
-  maxRange: 20
+  maxRange: 25
   flickerTiming: .150000006
 --- !u!114 &11459676
 MonoBehaviour:

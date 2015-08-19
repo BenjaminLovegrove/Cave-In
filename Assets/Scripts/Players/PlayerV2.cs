@@ -21,6 +21,7 @@ public class PlayerV2 : MonoBehaviour
 	public GameObject playerLight; //to be turned off when player dies
 	public SpriteRenderer gravestone; //to be abled when player dies
 	public SpriteRenderer playerSpr;
+	public AudioClip playerDeath;
 	
 	public SpriteRenderer UIspr;
 	public int UIdisable = 2;
@@ -757,6 +758,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 		}
 
+		AudioSource.PlayClipAtPoint (playerDeath, transform.position);
 		isDead = true;
 		PauseMenu.canPauseGame = false;
 		canMove = false;
