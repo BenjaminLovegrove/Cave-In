@@ -271,35 +271,80 @@ public class PauseInputManager : MonoBehaviour {
 
 	private IEnumerator Resuming( )
 	{
-		resumeGame.color = pressCol;
-		yield return new WaitForSeconds (buttonDelay);
-		PauseMenu.PauseGame();
+		float start = Time.realtimeSinceStartup;
+		while ( Time.realtimeSinceStartup < start + buttonDelay)
+		{
+			resumeGame.color = pressCol;
+			yield return null;
+		}
+		if ( Time.realtimeSinceStartup > start + buttonDelay)
+		{
+				PauseMenu.PauseGame();
+			yield return null;
+		}
 	}
 	private IEnumerator Reloading( )
 	{
-		loadLastCheckpoint.color = pressCol;
-		yield return new WaitForSeconds (buttonDelay);
-		print ("Reloading Game");
+		float start = Time.realtimeSinceStartup;
+		while ( Time.realtimeSinceStartup < start + buttonDelay)
+		{
+			loadLastCheckpoint.color = pressCol;
+			yield return null;
+		}
+		if ( Time.realtimeSinceStartup > start + buttonDelay)
+		{
+			PauseMenu.paused = false;
+			Time.timeScale = 1f;
+			PauseMenu.restartedLevel = true;
+			Screen.showCursor = false;
+			itemSelected = 0;
+			PauseMenu.selecting = false;
+			Application.LoadLevel(1);
+			yield return null;
+		}
 	}
 	private IEnumerator Exiting( )
 	{
-		exitGame.color = pressCol;
-		PauseMenu.quitCheck = true;
-		yield return new WaitForSeconds (buttonDelay);
-		PauseMenu.quitCheck = true;
+		float start = Time.realtimeSinceStartup;
+		while ( Time.realtimeSinceStartup < start + buttonDelay)
+		{
+			exitGame.color = pressCol;
+			yield return null;
+		}
+		if ( Time.realtimeSinceStartup > start + buttonDelay)
+		{
+			PauseMenu.quitCheck = true;
+			yield return null;
+		}
 	}
 
 	private IEnumerator YesQuit()
 	{
-		quitYes.color = pressCol;
-		yield return new WaitForSeconds (buttonDelay);
-		Application.Quit();
+		float start = Time.realtimeSinceStartup;
+		while ( Time.realtimeSinceStartup < start + buttonDelay)
+		{
+			quitYes.color = pressCol;
+			yield return null;
+		}
+		if ( Time.realtimeSinceStartup > start + buttonDelay)
+		{
+			Application.Quit();
+			yield return null;
+		}
 	}
 	private IEnumerator NoQuit()
 	{
-		quitNo.color = pressCol;
-		yield return new WaitForSeconds (buttonDelay);
-		quitCheck = false;
+		float start = Time.realtimeSinceStartup;
+		while ( Time.realtimeSinceStartup < start + buttonDelay)
+		{
+			quitNo.color = pressCol;
+			yield return null;
+		}
+		if ( Time.realtimeSinceStartup > start + buttonDelay)
+		{
+			PauseMenu.quitCheck = false;
+			yield return null;
+		}
 	}
 
 
