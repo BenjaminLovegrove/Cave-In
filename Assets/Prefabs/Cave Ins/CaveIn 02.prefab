@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockPreTestFall: {fileID: 156834, guid: ae6a24a249f45104d827330a3c5e5128, type: 2}
+  caveInNumber: 0
+  fallingRockPre: {fileID: 123932, guid: 1d247559479c1c546918118660c0ca9c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

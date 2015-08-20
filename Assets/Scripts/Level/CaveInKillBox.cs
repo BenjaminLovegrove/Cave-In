@@ -7,6 +7,7 @@ public class CaveInKillBox : MonoBehaviour {
 	GameObject[] players;
 	Animator anim;
 	public float caveInNumber;
+	public GameObject fallingRockPre;
 
 
 	// Use this for initialization
@@ -34,8 +35,14 @@ public class CaveInKillBox : MonoBehaviour {
 		if (!rockfalling){
 			StartCoroutine(SpawnRock());
 		}
+		Instantiate (fallingRockPre, this.transform.position, Quaternion.identity);
 
 
+
+	}
+
+	void FixedUpdate()
+	{
 
 	}
 
@@ -47,13 +54,13 @@ public class CaveInKillBox : MonoBehaviour {
 		rockfalling = false;
 	}
 
-	void OnTriggerEnter(Collider col)
-	{
-		if (col.gameObject.tag == "Player")
-		{
-			col.SendMessage("Crushed", true);
-		}
-	}
+//	void OnTriggerEnter(Collider col)
+//	{
+//		if (col.gameObject.tag == "Player")
+//		{
+//			col.SendMessage("Crushed", true);
+//		}
+//	}
 
 	public void KillMe(){
 		players [0].SendMessage ("CaveInStarted", false);
