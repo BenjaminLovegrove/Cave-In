@@ -30,7 +30,7 @@ public class PauseInputManager : MonoBehaviour {
 	public int itemSelected = 0;
 
 	public bool selecting;
-	public bool quitCheck;
+	public bool PauseMenu.quitCheck;
 	float selectDely = 0.2f;
 
 
@@ -40,7 +40,7 @@ public class PauseInputManager : MonoBehaviour {
 		hoverCol = Color.red;
 		pressCol = Color.green;
 		selecting = PauseMenu.selecting;
-		quitCheck = PauseMenu.quitCheck;
+		//quitCheck = PauseMenu.quitCheck;
 	}
 
 	void Update()
@@ -62,7 +62,7 @@ public class PauseInputManager : MonoBehaviour {
 			}
 			
 			//menu choices
-			if (!quitCheck)
+			if (!PauseMenu.quitCheck)
 			{
 				if (itemSelected == 0) 
 				{
@@ -83,63 +83,91 @@ public class PauseInputManager : MonoBehaviour {
 					exitGame.color = hoverCol;
 				}
 			}
-			else if (quitCheck)
+			else if (PauseMenu.quitCheck)
 			{
 				if (itemSelected == 0) 
 				{
+					quitYes.color = defaultCol;
 					quitNo.color = hoverCol;
 				}
 				if (itemSelected == 1)
 				{
 					quitYes.color = hoverCol;
+					quitNo.color = defaultCol;
 				}
 			}
 		}
+		if (this.name == "Resume")
+		{
 
+		}
+		if (gameObject.name == "Reload")
+		{
+
+		}
+		if (gameObject.name == "Exit")
+		{
+
+		}
+		
+		//quit options
+		if (this.name == "Yes")
+		{
+
+		}
+		if (gameObject.name == "No")
+		{
+
+		}
 
 		//accept button
-		if (Input.GetKeyDown (KeyCode.JoystickButton0) && !quitCheck)
+		if (Input.GetKeyDown (KeyCode.JoystickButton0) && !PauseMenu.quitCheck)
 		{
 			if (itemSelected == 0)  //Resume Game
 			{
-				PauseMenu.paused = false;	
-				Screen.showCursor = false;	
-				Time.timeScale = 1f;
-				itemSelected = 0;
-				PauseMenu.selecting = false;
+				StartCoroutine (Resuming());
+//				PauseMenu.paused = false;	
+//				Screen.showCursor = false;	
+//				Time.timeScale = 1f;
+//				itemSelected = 0;
+//				PauseMenu.selecting = false;
 			}
 			if (itemSelected == 1) //Load Last Checkpoint
 			{
-				PauseMenu.paused = false;
-				Time.timeScale = 1f;
-				PauseMenu.restartedLevel = true;
-				Screen.showCursor = false;
-				itemSelected = 0;
-				PauseMenu.selecting = false;
-				Application.LoadLevel(1);
+				StartCoroutine (Reloading());
+//				PauseMenu.paused = false;
+//				Time.timeScale = 1f;
+//				PauseMenu.restartedLevel = true;
+//				Screen.showCursor = false;
+//				itemSelected = 0;
+//				PauseMenu.selecting = false;
+//				Application.LoadLevel(1);
 			} 
 			if (itemSelected == 2) //Exit Game
 			{
-				quitCheck = true;
+				StartCoroutine (Exiting());
+//				quitCheck = true;
 				itemSelected = 0;
 			} 
 		}
-		else if (Input.GetKeyDown (KeyCode.JoystickButton0) && quitCheck)
+		else if (Input.GetKeyDown (KeyCode.JoystickButton0) && PauseMenu.quitCheck)
 		{
 			if (itemSelected == 0)  //NO
 			{
-				quitCheck = false;
+				StartCoroutine(NoQuit());
+//				quitCheck = false;
 				itemSelected = 0;
 			}
 			if (itemSelected == 1) //YES
 			{
-				Application.Quit();
+				StartCoroutine(YesQuit());
+//				Application.Quit();
 				Debug.LogWarning ("Player Quit The Game");
 			} 
 		}
 		
 		//Back Buttons
-		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && !quitCheck) // B on menu
+		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && !PauseMenu.quitCheck) // B on menu
 		{
 			PauseMenu.paused = false;	
 			Screen.showCursor = false;	
@@ -147,9 +175,9 @@ public class PauseInputManager : MonoBehaviour {
 			itemSelected = 0;
 			PauseMenu.selecting = false;
 		}
-		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && quitCheck) // B on quit menu
+		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && PauseMenu.quitCheck) // B on quit menu
 		{
-			quitCheck = false;
+			PauseMenu.quitCheck = false;
 		}
 		
 		//		if (Input.GetKeyDown (KeyCode.Joystick1Button7) && !quitCheck) //start on menu
@@ -158,32 +186,36 @@ public class PauseInputManager : MonoBehaviour {
 		//			Screen.showCursor = false;	
 		//			Time.timeScale = 1f;
 		//		}
-		if (Input.GetKeyDown (KeyCode.Joystick1Button7) && quitCheck) //start on quit menu
+		if (Input.GetKeyDown (KeyCode.Joystick1Button7) && PauseMenu.quitCheck) //start on quit menu
 		{
 			if (itemSelected == 0)  //NO
 			{
-				quitCheck = false;
+				PauseMenu.quitCheck = false;
 				itemSelected = 2;
 			}
 			if (itemSelected == 1) //YES
 			{
+				PauseMenu.quitCheck = false;
 				Application.Quit();
 				Debug.LogWarning ("Player Quit The Game");
 			} 
 		}
 		
-		if (Input.GetKeyDown (KeyCode.Joystick1Button6) && !quitCheck) // back on menu
+		if (Input.GetKeyDown (KeyCode.Joystick1Button6) && !PauseMenu.quitCheck) // back on menu
 		{
+			print ("this running?");
 			PauseMenu.paused = false;	
 			Screen.showCursor = false;	
 			Time.timeScale = 1f;
 			itemSelected = 0;
 			PauseMenu.selecting = false;
 		}
-		if (Input.GetKeyDown(KeyCode.Joystick1Button6) && quitCheck) // back on quit menu
+		if (Input.GetKeyDown(KeyCode.Joystick1Button6) && PauseMenu.quitCheck) // back on quit menu
 		{
-			quitCheck = false;
-			itemSelected = 2;
+			print (" or isthis running?");
+			StartCoroutine(NoQuit());
+			//quitCheck = false;
+			itemSelected = 0;
 		}
 		#endregion
 	}
@@ -357,14 +389,14 @@ public class PauseInputManager : MonoBehaviour {
 		//	print ("increase start");
 		StartCoroutine (WaitForRealSeconds(selectDely, selecting));
 		itemSelected ++;
-		if (!quitCheck)
+		if (!PauseMenu.quitCheck)
 		{
 			if (itemSelected == 3)
 			{
 				itemSelected = 0;
 			}
 		}
-		else if (quitCheck)
+		else if (PauseMenu.quitCheck)
 		{
 			if (itemSelected == 2)
 			{
@@ -379,14 +411,14 @@ public class PauseInputManager : MonoBehaviour {
 		//	print ("decrease start");
 		StartCoroutine (WaitForRealSeconds(selectDely, selecting));
 		itemSelected --;
-		if (!quitCheck)
+		if (!PauseMenu.quitCheck)
 		{
 			if (itemSelected == -1)
 			{
 				itemSelected = 2;
 			}
 		}
-		else if (quitCheck)
+		else if (PauseMenu.quitCheck)
 		{
 			if (itemSelected == -1)
 			{
