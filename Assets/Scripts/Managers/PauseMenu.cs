@@ -39,21 +39,21 @@ public class PauseMenu : MonoBehaviour {
 		//show or hide the pause menu options
 		if (paused && !quitCheck)
 		{
-			print ("main options");
+			//print ("main options");
 			canvasObj.SetActive(true);
 			mainOptions.SetActive(true);
 			quitOptions.SetActive(false);
 		}
 		if (!paused && !quitCheck) 
 		{
-			print ("Menu hidden");
+			//print ("Menu hidden");
 			canvasObj.SetActive(false);
 			quitOptions.SetActive(false);
 		}
 
 		if (paused && quitCheck)
 		{
-			print ("quit options");
+			//print ("quit options");
 			mainOptions.SetActive(false);
 			quitOptions.SetActive(true);
 		}

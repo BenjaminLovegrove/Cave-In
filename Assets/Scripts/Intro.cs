@@ -148,6 +148,7 @@ public class Intro : MonoBehaviour {
 			
 			if (lerpTimer > 6f) {
 				CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				PauseMenu.mainMenuLoop = true;
 				Application.LoadLevel ("MenuPlaceholder");
 			}
 		} else {

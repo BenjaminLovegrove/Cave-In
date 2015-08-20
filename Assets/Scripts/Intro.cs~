@@ -53,6 +53,9 @@ public class Intro : MonoBehaviour {
 
 	// Use this for initialization
 	public void BeginIntro() {
+		introTimer = 25f;
+		introStuff.SetActive (true);
+
 		cam = Camera.main;
 		startIntroTimer = introTimer;
 
@@ -110,8 +113,6 @@ public class Intro : MonoBehaviour {
 	void FixedUpdate()
 	{
 
-
-
 		if (watchIntro)
 		{
 
@@ -146,6 +147,8 @@ public class Intro : MonoBehaviour {
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
 			
 			if (lerpTimer > 6f) {
+				CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				PauseMenu.mainMenuLoop = true;
 				Application.LoadLevel ("MenuPlaceholder");
 			}
 		} else {
@@ -218,6 +221,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
+				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a")); //Metrics
 			}
 
 		}
