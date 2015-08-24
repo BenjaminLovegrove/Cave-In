@@ -5,6 +5,7 @@ public class FallingGround : MonoBehaviour {
 
 	public float crumbleTimer = 1f;
 	public AudioClip crumble;
+	public int playersRequired = 2;
 	Rigidbody[] rocksRB;
 	Collider[] rockCollider;
 	bool first = true;
@@ -17,7 +18,7 @@ public class FallingGround : MonoBehaviour {
 
 	void Update(){
 		//Standing time until they crumble
-		if (playerCount >= 2) {
+		if (playerCount >= playersRequired) {
 			crumbleTimer -= Time.deltaTime;
 		}
 		

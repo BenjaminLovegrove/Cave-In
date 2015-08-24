@@ -1503,7 +1503,7 @@ MonoBehaviour:
   playerOne: 0
   otherPlayer: {fileID: 11413400}
   playerLight: {fileID: 113412}
-  gravestone: {fileID: 21213406}
+  gravestone: {fileID: 126402, guid: 5041471af5f397148acf9debcbad25e4, type: 2}
   playerSpr: {fileID: 21213404}
   playerDeath: {fileID: 8300000, guid: 77eaa13c612042a438445468f183e47b, type: 3}
   UIspr: {fileID: 21213414}
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   playerOne: 1
   otherPlayer: {fileID: 11413392}
   playerLight: {fileID: 113392}
-  gravestone: {fileID: 21213408}
+  gravestone: {fileID: 126402, guid: 5041471af5f397148acf9debcbad25e4, type: 2}
   playerSpr: {fileID: 21213412}
   playerDeath: {fileID: 8300000, guid: 77eaa13c612042a438445468f183e47b, type: 3}
   UIspr: {fileID: 21213410}

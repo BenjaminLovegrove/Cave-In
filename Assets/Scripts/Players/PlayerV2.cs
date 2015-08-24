@@ -19,7 +19,7 @@ public class PlayerV2 : MonoBehaviour
 	public bool playerOne;
 	public PlayerV2 otherPlayer; //this is so you can check if the other player is dead for start button restart
 	public GameObject playerLight; //to be turned off when player dies
-	public SpriteRenderer gravestone; //to be abled when player dies
+	public GameObject gravestone; //to be abled when player dies
 	public SpriteRenderer playerSpr;
 	public AudioClip playerDeath;
 	
@@ -364,7 +364,7 @@ public class PlayerV2 : MonoBehaviour
 		}
 		//Restart level if other player isdead. Go to menu if neither are dead. Dead player cant press start.
 		if (xInput.OnButtonDownStart && PauseMenu.canPauseGame == false || Input.GetKeyDown(KeyCode.Escape) && PauseMenu.canPauseGame == false) {
-				if (otherPlayer.isDead) {
+				if (otherPlayer.isDead || isDead) {
 					Application.LoadLevel(1);
 				} 
 			
@@ -733,8 +733,8 @@ public class PlayerV2 : MonoBehaviour
 	void Crushed(bool CaveIn){
 		if (!otherPlayer.isDead && !isDead){
 			if (Intro.ci1difficulty > 0.2f && CaveIn){
-				Intro.ci1difficulty -= 0.2f;
-				Intro.ci2difficulty -= 0.2f;
+				Intro.ci1difficulty -= 0.15f;
+				Intro.ci2difficulty -= 0.15f;
 			}
 		}
 
@@ -743,11 +743,13 @@ public class PlayerV2 : MonoBehaviour
 		PauseMenu.canPauseGame = false;
 		canMove = false;
 		playerLight.SetActive (false);
-		gravestone.enabled = true;
+		//gravestone.enabled = true;
+		Instantiate (gravestone, transform.position, Quaternion.identity);
 		Intro.gameStarted = false;
 		Intro.caveInStarted = false;
 		Intro.introTimer = 15;
 		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
+		Invoke ("AutoRestart", 3f);
 	}
 
 	#region Animation
@@ -889,6 +891,10 @@ public class PlayerV2 : MonoBehaviour
 			Controller.xInput.stopPadVibration(pone);
 			Controller.xInput.stopPadVibration(ptwo);
 		}
+	}
+
+	void AutoRestart(){
+		Application.LoadLevel(1);
 	}
 
 	#endregion

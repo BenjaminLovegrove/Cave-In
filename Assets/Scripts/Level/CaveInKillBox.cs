@@ -64,6 +64,7 @@ public class CaveInKillBox : MonoBehaviour {
 
 	public void KillMe(){
 		players [0].SendMessage ("CaveInStarted", false);
+		players [1].SendMessage ("CaveInStarted", false);
 		Destroy (this.gameObject);
 	}
 
