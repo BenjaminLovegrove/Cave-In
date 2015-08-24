@@ -3760,7 +3760,7 @@ MonoBehaviour:
   - {fileID: 155686}
   - {fileID: 155684}
   vertexCount: 300
-  duration: 120
+  duration: 30
 --- !u!114 &11455682
 MonoBehaviour:
   m_ObjectHideFlags: 1
