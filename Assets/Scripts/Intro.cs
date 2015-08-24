@@ -42,6 +42,7 @@ public class Intro : MonoBehaviour {
 	public Transform outroCamAim;
 	public Renderer FTW;
 	float FTWalpha = 1f;
+	public GameObject creditText;
 
 	//List<GameObject> toggleObjs = new List<GameObject>();
 
@@ -146,11 +147,18 @@ public class Intro : MonoBehaviour {
 			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 3);
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
 			
-			if (lerpTimer > 6f) {
+			if (lerpTimer > 20f) {
 				CobaltMetrics.Metrics.StopMetrics(); //Metrics
 				PauseMenu.mainMenuLoop = true;
 				Application.LoadLevel ("MenuPlaceholder");
 			}
+
+			if (lerpTimer > 5f) {
+				if (hickory.xInput.OnButtonDownA || sorek.xInput.OnButtonDownA){
+					Application.LoadLevel ("MenuPlaceholder");
+				}
+			}
+
 		} else {
 
 			//Double check that these mother fuckers are active/inactive
@@ -264,6 +272,7 @@ public class Intro : MonoBehaviour {
 		lerpTimer = -0.1f;
 		outro = true;
 		outroCamStart = transform.position;
+		creditText.SetActive (true);
 	}
 
 	public static void Skip(){

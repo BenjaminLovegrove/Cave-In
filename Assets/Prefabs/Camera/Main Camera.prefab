@@ -498,6 +498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fb3f66a13ac8459a92150311cda6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasObj: {fileID: 0}
+  mainOptions: {fileID: 0}
+  quitOptions: {fileID: 0}
 --- !u!114 &11419112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,10 +698,12 @@ MonoBehaviour:
   inspectorStartTimer: 0
   introStuff: {fileID: 0}
   outroStuff: {fileID: 0}
+  fallingRocksPre: {fileID: 123932, guid: 1d247559479c1c546918118660c0ca9c, type: 2}
   smallRumble: 0
   bigRumble: 0
   outroCamAim: {fileID: 413758}
   FTW: {fileID: 2311774}
+  creditText: {fileID: 0}
 --- !u!114 &11495186
 MonoBehaviour:
   m_ObjectHideFlags: 1
