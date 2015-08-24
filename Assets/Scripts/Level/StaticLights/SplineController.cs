@@ -95,7 +95,8 @@ public class SplineController : MonoBehaviour
         for (int i = 0; i < gameObjects.Count; i++)
         {
             Transform transform = gameObjects[i].transform;
-            interp.AddPoint(gameObjects[i], transform.position, transform.rotation, step * i, new Vector2(0, 1));
+			Vector3 offset = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+            interp.AddPoint(gameObjects[i], offset, transform.rotation, step * i, new Vector2(0, 1));
         }
     }
 
