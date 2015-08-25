@@ -847,6 +847,7 @@ public class PlayerV2 : MonoBehaviour
 			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
 				anim.speed = Mathf.Abs (xInput.ThumbStickL_Y);
 				anim.SetBool("Climbing", true);
+				anim.SetBool ("Idle", false);
 			}
 			else{
 				anim.speed = 0;
