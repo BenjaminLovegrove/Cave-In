@@ -79,7 +79,7 @@ public class CamController : MonoBehaviour {
 
 		if (deathPit){
 			transform.position = Vector3.Lerp(transform.position, deathPitCamPos.position, Time.deltaTime);
-			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 15f, Time.deltaTime / 5);
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 20f, Time.deltaTime / 3);
 		}
 
 	}

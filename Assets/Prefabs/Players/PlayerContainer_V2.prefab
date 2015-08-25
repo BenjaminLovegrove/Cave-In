@@ -1521,6 +1521,7 @@ MonoBehaviour:
   sfxLand: {fileID: 8213406}
   waterSplash: {fileID: 100012, guid: e0232b959f2e08546a2f9f3cd836bd4f, type: 2}
   waterExitSplash: {fileID: 100000, guid: 9afdc541a9d50964e87f1316ce876bfc, type: 2}
+  waterSplashSFX: {fileID: 8300000, guid: c5a99ba010dc11944a5b91ee59e9111a, type: 3}
   playerIndex: 1
   menuActive: 0
 --- !u!114 &11413398
@@ -1574,6 +1575,7 @@ MonoBehaviour:
   sfxLand: {fileID: 8213406}
   waterSplash: {fileID: 100012, guid: e0232b959f2e08546a2f9f3cd836bd4f, type: 2}
   waterExitSplash: {fileID: 100000, guid: 9afdc541a9d50964e87f1316ce876bfc, type: 2}
+  waterSplashSFX: {fileID: 8300000, guid: c5a99ba010dc11944a5b91ee59e9111a, type: 3}
   playerIndex: 0
   menuActive: 0
 --- !u!114 &11413404

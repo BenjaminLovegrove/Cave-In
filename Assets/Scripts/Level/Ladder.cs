@@ -26,6 +26,7 @@ public class Ladder : MonoBehaviour {
 			ladderRb.useGravity = true;
 			ladderCol.enabled = false;
 			col.gameObject.SendMessage("Ladder", 0f, SendMessageOptions.DontRequireReceiver);
+			triggered = true;
 		}
 	}
 }

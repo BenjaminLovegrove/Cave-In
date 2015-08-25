@@ -58,6 +58,7 @@ public class PlayerV2 : MonoBehaviour
 	public AudioSource sfxLand;
 
 	public GameObject waterSplash, waterExitSplash;
+	public AudioClip waterSplashSFX;
 
 	#region Determine Player Index Variables
 	//xInput
@@ -739,11 +740,12 @@ public class PlayerV2 : MonoBehaviour
 	void Crushed(bool CaveIn){
 		if (!otherPlayer.isDead && !isDead){
 			if (Intro.ci1difficulty > 0.2f && CaveIn){
-				Intro.ci1difficulty -= 0.15f;
-				Intro.ci2difficulty -= 0.15f;
+				Intro.ci1difficulty -= 0.10f;
+				Intro.ci2difficulty -= 0.10f;
 			}
+		}
 		
-
+		if (!isDead){
 			AudioSource.PlayClipAtPoint (playerDeath, transform.position);
 			isDead = true;
 			PauseMenu.canPauseGame = false;
@@ -757,6 +759,7 @@ public class PlayerV2 : MonoBehaviour
 			Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
 			Invoke ("AutoRestart", 3f);
 		}
+		
 	}
 
 	#region Animation
@@ -901,7 +904,7 @@ public class PlayerV2 : MonoBehaviour
 		if (col.gameObject.name == "WaterTrigger")
 		{
 			Instantiate (waterSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
-			//splash sound
+			AudioSource.PlayClipAtPoint(waterSplashSFX, transform.position);
 		}
 	}
 
@@ -910,7 +913,7 @@ public class PlayerV2 : MonoBehaviour
 		if (col.gameObject.name == "WaterTrigger")
 		{
 			Instantiate (waterExitSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
-			//water walking sound
+			AudioSource.PlayClipAtPoint(waterSplashSFX, transform.position);
 		}
 	}
 
