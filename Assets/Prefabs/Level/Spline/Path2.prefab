@@ -3726,7 +3726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c4859f7b1dbab478053327e4ac6749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineObjectInst: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
+  splineObjectInst: {fileID: 100256, guid: 72a1852fb7f20f44eadc1b42ffd72245, type: 2}
   points:
   - {fileID: 155800}
   - {fileID: 155794}
@@ -3761,6 +3761,7 @@ MonoBehaviour:
   - {fileID: 155684}
   vertexCount: 300
   duration: 30
+  test: 0
 --- !u!114 &11455682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3772,6 +3773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d939b39c0a2621e459ee691caf7d3fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splineObject: {fileID: 0}
 --- !u!114 &11455684
 MonoBehaviour:
   m_ObjectHideFlags: 1
