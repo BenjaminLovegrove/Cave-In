@@ -768,13 +768,29 @@ public class PlayerV2 : MonoBehaviour
 
 
 		//Soreks animations (note the player one bool)
-		if (Intro.introTimer < 0f && playerOne) {
+		if (Intro.introTimer < 0f && playerOne && !menuActive) {
 			if (!grounded && !climbingLadder) {
 				anim.SetBool ("Jump", true);
 			} else {
 				anim.SetBool ("Jump", false);
 			}
-		
+
+			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
+				anim.speed = 1;
+				anim.SetBool("Climbing", true);
+			}
+			else{
+				anim.speed = 0;
+			}
+
+			if (!grounded && !climbingLadder ) {
+				anim.speed = 1;
+				anim.SetBool ("Idle", true); //to be replaced with a jump
+			} else if (grounded && !climbingLadder) {
+				anim.SetBool("Climbing", false);
+				anim.speed = 1;
+				//anim.SetBool ("Jump", false);
+			}
 
 			if (grounded && !menuActive) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive  || xInput.ThumbStickL_X > 0.3f && !keyboardActive || 
@@ -811,20 +827,27 @@ public class PlayerV2 : MonoBehaviour
 				anim.SetBool ("Idlepour", false);
 			}
 			
-			if (climbingLadder) {
-				anim.SetBool ("Run", false);
-				anim.SetBool ("Idle", true);
-				anim.SetBool ("Jump", false);
-				anim.SetBool ("Walkandpour", false);
-				anim.SetBool ("Idlepour", false);
-			}
+
+			
+
 		}
 		
 		//Hickorys animations (note the player one bool)
 		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
+			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
+				anim.speed = 1;
+				anim.SetBool("Climbing", true);
+			}
+			else{
+				anim.speed = 0;
+			}
+
 			if (!grounded && !climbingLadder) {
+				anim.speed = 1;
 				anim.SetBool ("Idle", true); //to be replaced with a jump
-			} else {
+			} else if (grounded && !climbingLadder) {
+				anim.SetBool("Climbing", false);
+				anim.speed = 1;
 				//anim.SetBool ("Jump", false);
 			}
 			
