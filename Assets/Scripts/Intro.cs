@@ -150,8 +150,8 @@ public class Intro : MonoBehaviour {
 	void Update () {
 		//OUTRO//
 		if (outro) {
-			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
-			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 3);
+			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 7.5f);
+			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 2f);
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
 
 			//Music lerps
