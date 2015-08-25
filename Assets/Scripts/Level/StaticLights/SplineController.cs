@@ -26,28 +26,28 @@ public class SplineController : MonoBehaviour
 	
     void OnDrawGizmos()
     {
-        //Convert our points into an array of transforms.
-        if (points.Count < 2)
-        {
-            return;
-        }
-
-        //Set up our interpolator instance.
-        SplineInterpolator splineInterpolator = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
-        SetupSplineInterpolator(splineInterpolator, points);
-        splineInterpolator.StartInterpolation(null, false);
-
-        //Get our LineRenderer instance, and draw the spline in editor.
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetVertexCount(vertexCount);
-
-        for (int c = 0; c < vertexCount; c++)
-        {
-            float currTime = c * duration / vertexCount;
-            Vector3 currPos = splineInterpolator.GetHermiteAtTime(currTime);
-
-            lineRenderer.SetPosition(c, currPos);
-        }
+//        //Convert our points into an array of transforms.
+//        if (points.Count < 2)
+//        {
+//            return;
+//        }
+//
+//        //Set up our interpolator instance.
+//        SplineInterpolator splineInterpolator = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+//        SetupSplineInterpolator(splineInterpolator, points);
+//        splineInterpolator.StartInterpolation(null, false);
+//
+//        //Get our LineRenderer instance, and draw the spline in editor.
+//        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+//        lineRenderer.SetVertexCount(vertexCount);
+//
+//        for (int c = 0; c < vertexCount; c++)
+//        {
+//            float currTime = c * duration / vertexCount;
+//            Vector3 currPos = splineInterpolator.GetHermiteAtTime(currTime);
+//
+//            lineRenderer.SetPosition(c, currPos);
+//        }
     }
 
 	void Update()
@@ -118,7 +118,6 @@ public class SplineController : MonoBehaviour
         {
 			//Create our GameObject
 			splineObject = (GameObject) Instantiate(splineObjectInst, transform.position, transform.rotation);
-			splineObject.transform.parent = this.transform;
 			m_splineInterpolator.splineObject = splineObject;
 
             SetupSplineInterpolator(this.m_splineInterpolator, points);
