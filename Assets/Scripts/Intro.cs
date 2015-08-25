@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[assembly: System.Reflection.AssemblyVersion("1.0.*")]
 public class Intro : MonoBehaviour {
 
 	public static bool watchIntro = true;
-	public static int skipNum = 0; 
+	public static int skipNum = 0;
 	public PlayerV2 sorek;
 	public PlayerV2 hickory;
 	public static Camera cam;
@@ -124,7 +125,7 @@ public class Intro : MonoBehaviour {
 		if (watchIntro)
 		{
 
-			//do xbox rumble here 
+			//do xbox rumble here
 			if ((introTimer > startIntroTimer * 0.25f) && (introTimer < startIntroTimer * 0.5f))
 			{
 				smallRumble = Random.Range(0.1f, 0.2f);
@@ -135,7 +136,7 @@ public class Intro : MonoBehaviour {
 				smallRumble = 0.9f;
 				bigRumble = 0.9f;
 			}
-			else 
+			else
 			{
 				smallRumble = 0f;
 				bigRumble = 0f;
@@ -240,7 +241,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
-				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a")); //Metrics
+				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())); //Metrics
 			}
 
 		}
