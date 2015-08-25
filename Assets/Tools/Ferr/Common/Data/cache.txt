@@ -11,4 +11,3 @@ Assets/Tools/Ferr/2DTerrain/TerrainMaterials/SandTerrainMaterial.prefab
 [Ferr2DT_PathTerrain]
 Assets/Prefabs/Terrain Backup/Main terrain.prefab
 Assets/Prefabs/Terrain Backup/Main terrain v2.prefab
-Assets/Prefabs/Camera/Main Camera.prefab
