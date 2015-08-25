@@ -43,6 +43,11 @@ public class Intro : MonoBehaviour {
 	public Renderer FTW;
 	float FTWalpha = 1f;
 	public GameObject creditText;
+	public AudioSource gameplayAudio;
+	public AudioSource outroMusic;
+
+	float gameplayStartVol;
+	float outroAimVol;
 
 	//List<GameObject> toggleObjs = new List<GameObject>();
 
@@ -50,6 +55,8 @@ public class Intro : MonoBehaviour {
 	void Awake()
 	{
 		BeginIntro();
+		gameplayStartVol = gameplayAudio.volume;
+		outroAimVol = gameplayStartVol;
 	}
 
 	// Use this for initialization
@@ -146,7 +153,11 @@ public class Intro : MonoBehaviour {
 			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
 			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 3);
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
-			
+
+			//Music lerps
+			gameplayAudio.volume = Mathf.Lerp(gameplayStartVol, 0, lerpTimer);
+			outroMusic.volume = Mathf.Lerp (0, outroAimVol, lerpTimer);
+
 			if (lerpTimer > 20f) {
 				CobaltMetrics.Metrics.StopMetrics(); //Metrics
 				PauseMenu.mainMenuLoop = true;
@@ -273,6 +284,7 @@ public class Intro : MonoBehaviour {
 		outro = true;
 		outroCamStart = transform.position;
 		creditText.SetActive (true);
+		outroMusic.Play ();
 	}
 
 	public static void Skip(){
