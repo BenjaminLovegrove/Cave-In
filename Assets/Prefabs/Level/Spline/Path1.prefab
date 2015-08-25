@@ -539,7 +539,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &139506
 GameObject:
@@ -1194,7 +1194,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &139580
 GameObject:
@@ -1554,7 +1554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439482}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &439480
 Transform:
   m_ObjectHideFlags: 1
@@ -1604,7 +1604,7 @@ Transform:
   - {fileID: 439438}
   - {fileID: 439518}
   m_Father: {fileID: 439482}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &439482
 Transform:
   m_ObjectHideFlags: 1
@@ -1615,8 +1615,8 @@ Transform:
   m_LocalPosition: {x: .953217506, y: -.0198726654, z: .46875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 439480}
   - {fileID: 439478}
+  - {fileID: 439480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &439484
@@ -1934,7 +1934,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.662529, y: 60.1360283, z: 0}
+  m_LocalPosition: {x: 27.662529, y: 60.1360321, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .100000001}
   m_Children:
   - {fileID: 439590}
@@ -4474,7 +4474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c4859f7b1dbab478053327e4ac6749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineObjectInst: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
+  splineObjectInst: {fileID: 100256, guid: 72a1852fb7f20f44eadc1b42ffd72245, type: 2}
   points:
   - {fileID: 139504}
   - {fileID: 139476}
@@ -4516,6 +4516,7 @@ MonoBehaviour:
   - {fileID: 139518}
   vertexCount: 300
   duration: 30
+  test: 0
 --- !u!114 &11439440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4527,6 +4528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d939b39c0a2621e459ee691caf7d3fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splineObject: {fileID: 0}
 --- !u!114 &11439442
 MonoBehaviour:
   m_ObjectHideFlags: 1
