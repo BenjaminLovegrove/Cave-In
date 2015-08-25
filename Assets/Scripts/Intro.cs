@@ -200,7 +200,7 @@ public class Intro : MonoBehaviour {
 
 			if (watchIntro) {
 				if (introTimer > startIntroTimer * 0.6f) {
-					transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer / 3);
+					transform.position = Vector3.Slerp (this.transform.position, hickoryCamPos, lerpTimer / 20);
 				}
 				//Cam move to sorek holding lamp.
 				if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
