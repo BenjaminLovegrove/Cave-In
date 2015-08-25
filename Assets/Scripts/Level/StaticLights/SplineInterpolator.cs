@@ -24,15 +24,12 @@ public class SplineInterpolator : MonoBehaviour
 	private InterpolationState m_state = InterpolationState.STOPPED;
 	private bool m_rotations;
 
+	public GameObject splineObject;
+
     float m_currentTime;
     int m_currentIndex = 1;
 
 	private OnEndCallback mOnEndCallback;
-
-	void Awake()
-	{
-		Reset();
-	}
 
 	public void StartInterpolation(OnEndCallback endCallback, bool bRotations)
 	{
@@ -46,8 +43,9 @@ public class SplineInterpolator : MonoBehaviour
 		SetInput();
 	}
 
-	public void Reset()
+	public void Reset(GameObject splineObject)
 	{
+		this.splineObject = splineObject;
 		m_nodes.Clear();
 		m_state = InterpolationState.RESET;
 		m_currentIndex = 1;
@@ -111,10 +109,10 @@ public class SplineInterpolator : MonoBehaviour
 				m_state = InterpolationState.STOPPED;
 
 				// We stop right in the end point
-				transform.position = m_nodes[m_nodes.Count - 2].Point;
+				splineObject.transform.position = m_nodes[m_nodes.Count - 2].Point;
 
 				if (m_rotations)
-					transform.rotation = m_nodes[m_nodes.Count - 2].Rot;
+					splineObject.transform.rotation = m_nodes[m_nodes.Count - 2].Rot;
 
 				// We call back to inform that we are ended
 				if (mOnEndCallback != null)
@@ -130,11 +128,11 @@ public class SplineInterpolator : MonoBehaviour
 			// Smooth the param
 			param = MathUtils.Ease(param, m_nodes[m_currentIndex].EaseIO.x, m_nodes[m_currentIndex].EaseIO.y);
 
-			transform.position = GetHermiteInternal(m_currentIndex, param);
+			splineObject.transform.position = GetHermiteInternal(m_currentIndex, param);
 
 			if (m_rotations)
 			{
-				transform.rotation = GetSquad(m_currentIndex, param);
+				splineObject.transform.rotation = GetSquad(m_currentIndex, param);
 			}
 		}
 	}

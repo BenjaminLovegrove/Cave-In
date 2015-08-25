@@ -19,9 +19,11 @@ public class SplineController : MonoBehaviour
 
     private bool triggered = false;
 
+	public bool test = false;
+
     //Members
     private SplineInterpolator m_splineInterpolator;            //The spline interpolator instance.                          //The transforms of our spline points.
-
+	
     void OnDrawGizmos()
     {
         //Convert our points into an array of transforms.
@@ -48,6 +50,15 @@ public class SplineController : MonoBehaviour
         }
     }
 
+	void Update()
+	{
+		if(test)
+		{
+			Trigger();
+			test = false;
+		}
+	}
+
     public void Trigger()
     {
         if (triggered)
@@ -55,10 +66,7 @@ public class SplineController : MonoBehaviour
             return;
         }
 
-        triggered = true;
-
-        //Create our GameObject
-        splineObject = (GameObject) Instantiate(splineObjectInst, transform.position, transform.rotation);
+		triggered = true;
 
         if (points.Count < 2)
         {
@@ -67,6 +75,7 @@ public class SplineController : MonoBehaviour
 
         //Set up our interpolator instance.
         this.m_splineInterpolator = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+
         SetupSplineInterpolator(this.m_splineInterpolator, points);
         this.m_splineInterpolator.StartInterpolation(null, false);
 
@@ -88,15 +97,15 @@ public class SplineController : MonoBehaviour
 
     void SetupSplineInterpolator(SplineInterpolator interp, List<GameObject> gameObjects)
     {
-        interp.Reset();
+        interp.Reset(splineObject);
 
         float step = duration / (gameObjects.Count - 1);
 
         for (int i = 0; i < gameObjects.Count; i++)
         {
-            Transform transform = gameObjects[i].transform;
-			Vector3 offset = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
-            interp.AddPoint(gameObjects[i], offset, transform.rotation, step * i, new Vector2(0, 1));
+            Transform trans = gameObjects[i].transform;
+			Vector3 offset = new Vector3(trans.position.x, trans.position.y + 0.4f, trans.position.z);
+            interp.AddPoint(gameObjects[i], offset, trans.rotation, step * i, new Vector2(0, 1));
         }
     }
 
@@ -107,10 +116,17 @@ public class SplineController : MonoBehaviour
     {
         if (points.Count > 0)
         {
+			//Create our GameObject
+			splineObject = (GameObject) Instantiate(splineObjectInst, transform.position, transform.rotation);
+			splineObject.transform.parent = this.transform;
+			m_splineInterpolator.splineObject = splineObject;
+
             SetupSplineInterpolator(this.m_splineInterpolator, points);
+
             this.m_splineInterpolator.StartInterpolation(delegate(){
                 Destroy (splineObject);
             }, true);
+
             points[0].gameObject.SendMessage("OnSplinePointReached");
         }
     }

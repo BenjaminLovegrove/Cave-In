@@ -9,11 +9,27 @@ public class CaveLamps : MonoBehaviour {
 	Light lightSource;
 	public GameObject lampExplodeVis;
 
+	private float timer = 1.5f;
+
 	// Use this for initialization
 	void Start () {
 		Playtest_LightManager.numLightsActive ++;
 		lightSource = GetComponentInChildren<Light> ();
 		lampExplode = GetComponent<AudioSource> ();
+	}
+
+	void Update()
+	{
+		if(lampExplode.isPlaying)
+		{
+			timer -= Time.deltaTime;
+
+			if(timer <= 0f)
+			{
+				lampExplode.Stop();
+				this.gameObject.SetActive(false);
+			}
+		}
 	}
 
 	public void OnSplinePointReached()
@@ -23,7 +39,6 @@ public class CaveLamps : MonoBehaviour {
 		{
 			Instantiate (lampExplodeVis, transform.position, Quaternion.identity);
 			lampExplode.Play ();
-			Destroy (this.gameObject, 1.5f);
 		}
 	}
 
