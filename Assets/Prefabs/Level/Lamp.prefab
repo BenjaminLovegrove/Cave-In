@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &119242
 GameObject:
@@ -35,7 +35,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &192038
 GameObject:
@@ -254,10 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab83ddda8c053d468de23427ed84cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimer: 5
-  lightSpark: {fileID: 100256, guid: 2415691a9f7181c488b78f239d10cca1, type: 2}
-  sparkSpawn: 0
-  sorek: {fileID: 0}
   lampExplodeVis: {fileID: 116646, guid: 12d1c59d82b42d3419abebbc252be84f, type: 2}
 --- !u!114 &11492038
 MonoBehaviour:

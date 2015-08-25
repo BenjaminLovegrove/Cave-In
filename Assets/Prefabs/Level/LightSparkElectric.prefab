@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400256}
   - 198: {fileID: 19800256}
   - 199: {fileID: 19900256}
-  - 114: {fileID: 11437510}
   m_Layer: 0
   m_Name: LightSparkElectric
   m_TagString: Untagged
@@ -30,18 +29,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11437510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29357bee2a422140ac0294be4d895b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desTimer: 3
 --- !u!198 &19800256
 ParticleSystem:
   m_ObjectHideFlags: 1
