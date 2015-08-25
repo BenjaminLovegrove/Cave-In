@@ -58,6 +58,7 @@ public class PlayerV2 : MonoBehaviour
 	public AudioSource sfxLand;
 
 	public GameObject waterSplash, waterExitSplash;
+	public AudioClip waterSplashSFX;
 
 	#region Determine Player Index Variables
 	//xInput
@@ -559,6 +560,7 @@ public class PlayerV2 : MonoBehaviour
 			{
 				player.transform.Translate(Vector3.right * (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = true;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_X);
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
 					sfxRun.Play();
@@ -573,12 +575,17 @@ public class PlayerV2 : MonoBehaviour
 					sfxRun.Play();
 				}
 			}
+			else 
+			{
+				anim.speed = 1.0f;
+			}
 			
 			// Left
 			if (xInput.ThumbStickL_X < -0.3f && playerScreenPoint.x > (Screen.width * 0.05))
 			{
 				player.transform.Translate(Vector3.left *  (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = false;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_X);
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
 					sfxRun.Play();
@@ -733,23 +740,26 @@ public class PlayerV2 : MonoBehaviour
 	void Crushed(bool CaveIn){
 		if (!otherPlayer.isDead && !isDead){
 			if (Intro.ci1difficulty > 0.2f && CaveIn){
-				Intro.ci1difficulty -= 0.15f;
-				Intro.ci2difficulty -= 0.15f;
+				Intro.ci1difficulty -= 0.10f;
+				Intro.ci2difficulty -= 0.10f;
 			}
 		}
-
-		AudioSource.PlayClipAtPoint (playerDeath, transform.position);
-		isDead = true;
-		PauseMenu.canPauseGame = false;
-		canMove = false;
-		playerLight.SetActive (false);
-		//gravestone.enabled = true;
-		Instantiate (gravestone, transform.position, Quaternion.identity);
-		Intro.gameStarted = false;
-		Intro.caveInStarted = false;
-		Intro.introTimer = 15;
-		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
-		Invoke ("AutoRestart", 3f);
+		
+		if (!isDead){
+			AudioSource.PlayClipAtPoint (playerDeath, transform.position);
+			isDead = true;
+			PauseMenu.canPauseGame = false;
+			canMove = false;
+			playerLight.SetActive (false);
+			//gravestone.enabled = true;
+			Instantiate (gravestone, transform.position, Quaternion.identity);
+			Intro.gameStarted = false;
+			Intro.caveInStarted = false;
+			Intro.introTimer = 15;
+			Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
+			Invoke ("AutoRestart", 3f);
+		}
+		
 	}
 
 	#region Animation
@@ -768,13 +778,29 @@ public class PlayerV2 : MonoBehaviour
 
 
 		//Soreks animations (note the player one bool)
-		if (Intro.introTimer < 0f && playerOne) {
+		if (Intro.introTimer < 0f && playerOne && !menuActive) {
 			if (!grounded && !climbingLadder) {
 				anim.SetBool ("Jump", true);
 			} else {
 				anim.SetBool ("Jump", false);
 			}
-		
+
+			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
+				anim.speed = 1;
+				anim.SetBool("Climbing", true);
+			}
+			else{
+				anim.speed = 0;
+			}
+
+			if (!grounded && !climbingLadder ) {
+				anim.speed = 1;
+				anim.SetBool ("Idle", true); //to be replaced with a jump
+			} else if (grounded && !climbingLadder) {
+				anim.SetBool("Climbing", false);
+				anim.speed = 1;
+				//anim.SetBool ("Jump", false);
+			}
 
 			if (grounded && !menuActive) {
 				if (xInput.ThumbStickL_X < -0.3f && !keyboardActive  || xInput.ThumbStickL_X > 0.3f && !keyboardActive || 
@@ -811,20 +837,27 @@ public class PlayerV2 : MonoBehaviour
 				anim.SetBool ("Idlepour", false);
 			}
 			
-			if (climbingLadder) {
-				anim.SetBool ("Run", false);
-				anim.SetBool ("Idle", true);
-				anim.SetBool ("Jump", false);
-				anim.SetBool ("Walkandpour", false);
-				anim.SetBool ("Idlepour", false);
-			}
+
+			
+
 		}
 		
 		//Hickorys animations (note the player one bool)
 		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
+			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
+				anim.speed = 1;
+				anim.SetBool("Climbing", true);
+			}
+			else{
+				anim.speed = 0;
+			}
+
 			if (!grounded && !climbingLadder) {
+				anim.speed = 1;
 				anim.SetBool ("Idle", true); //to be replaced with a jump
-			} else {
+			} else if (grounded && !climbingLadder) {
+				anim.SetBool("Climbing", false);
+				anim.speed = 1;
 				//anim.SetBool ("Jump", false);
 			}
 			
@@ -871,7 +904,7 @@ public class PlayerV2 : MonoBehaviour
 		if (col.gameObject.name == "WaterTrigger")
 		{
 			Instantiate (waterSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
-			//splash sound
+			AudioSource.PlayClipAtPoint(waterSplashSFX, transform.position);
 		}
 	}
 
@@ -880,7 +913,7 @@ public class PlayerV2 : MonoBehaviour
 		if (col.gameObject.name == "WaterTrigger")
 		{
 			Instantiate (waterExitSplash,new Vector3 (this.transform.position.x,this.transform.position.y -2.0f, this.transform.position.z), Quaternion.identity);
-			//water walking sound
+			AudioSource.PlayClipAtPoint(waterSplashSFX, transform.position);
 		}
 	}
 

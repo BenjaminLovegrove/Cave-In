@@ -38,6 +38,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Climbing
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -190,6 +196,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110144432
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110296184}
+  m_DstState: {fileID: 110268388}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Climbing
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110154580
 Transition:
   serializedVersion: 2
@@ -330,6 +356,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110177036
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110268388}
+  m_DstState: {fileID: 110296184}
+  m_TransitionDuration: .294117659
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Climbing
+    m_EventTreshold: 0
+    m_ExitTime: .705882311
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110186288
 Transition:
   serializedVersion: 2
@@ -461,7 +507,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 6d48f830fff223a4891966539e5bd855, type: 2}
   m_ParentStateMachine: {fileID: 110719510}
-  m_Position: {x: -144, y: 84, z: 0}
+  m_Position: {x: -372, y: 132, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -506,7 +552,22 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 3e5b74df568c044478312b68c60dc9dd, type: 2}
   m_ParentStateMachine: {fileID: 110719510}
-  m_Position: {x: 96, y: -48, z: 0}
+  m_Position: {x: 240, y: 72, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110268388
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: anim_Sorek_LadderClimb (Final)
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 8899380eabe448947ab84b7ba6005b3d, type: 2}
+  m_ParentStateMachine: {fileID: 110719510}
+  m_Position: {x: -24, y: 180, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -539,16 +600,21 @@ StateMachine:
   - {fileID: 110227588}
   - {fileID: 110259464}
   - {fileID: 110208450}
+  - {fileID: 110268388}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110296184}
+      first: {fileID: 110268388}
       second:
-      - {fileID: 110113186}
-      - {fileID: 110163836}
-      - {fileID: 110139202}
-      - {fileID: 110154580}
+      - {fileID: 110177036}
+    data:
+      first: {fileID: 110208450}
+      second:
+      - {fileID: 110165906}
+      - {fileID: 110186288}
+      - {fileID: 110138848}
+      - {fileID: 110103028}
     data:
       first: {fileID: 110219510}
       second:
@@ -571,12 +637,13 @@ StateMachine:
       - {fileID: 110118016}
       - {fileID: 110195630}
     data:
-      first: {fileID: 110208450}
+      first: {fileID: 110296184}
       second:
-      - {fileID: 110165906}
-      - {fileID: 110186288}
-      - {fileID: 110138848}
-      - {fileID: 110103028}
+      - {fileID: 110113186}
+      - {fileID: 110163836}
+      - {fileID: 110139202}
+      - {fileID: 110154580}
+      - {fileID: 110144432}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 36, y: 228, z: 0}
+  m_AnyStatePosition: {x: 48, y: 288, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
