@@ -559,6 +559,7 @@ public class PlayerV2 : MonoBehaviour
 			{
 				player.transform.Translate(Vector3.right * (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = true;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_X);
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
 					sfxRun.Play();
@@ -573,12 +574,17 @@ public class PlayerV2 : MonoBehaviour
 					sfxRun.Play();
 				}
 			}
+			else 
+			{
+				anim.speed = 1.0f;
+			}
 			
 			// Left
 			if (xInput.ThumbStickL_X < -0.3f && playerScreenPoint.x > (Screen.width * 0.05))
 			{
 				player.transform.Translate(Vector3.left *  (movementForce / ladderSlow) * Mathf.Abs (xInput.ThumbStickL_X) * Time.deltaTime);
 				rightFaced = false;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_X);
 				Flip ();
 				if (grounded && !sfxRun.isPlaying){
 					sfxRun.Play();
@@ -736,20 +742,21 @@ public class PlayerV2 : MonoBehaviour
 				Intro.ci1difficulty -= 0.15f;
 				Intro.ci2difficulty -= 0.15f;
 			}
-		}
+		
 
-		AudioSource.PlayClipAtPoint (playerDeath, transform.position);
-		isDead = true;
-		PauseMenu.canPauseGame = false;
-		canMove = false;
-		playerLight.SetActive (false);
-		//gravestone.enabled = true;
-		Instantiate (gravestone, transform.position, Quaternion.identity);
-		Intro.gameStarted = false;
-		Intro.caveInStarted = false;
-		Intro.introTimer = 15;
-		Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
-		Invoke ("AutoRestart", 3f);
+			AudioSource.PlayClipAtPoint (playerDeath, transform.position);
+			isDead = true;
+			PauseMenu.canPauseGame = false;
+			canMove = false;
+			playerLight.SetActive (false);
+			//gravestone.enabled = true;
+			Instantiate (gravestone, transform.position, Quaternion.identity);
+			Intro.gameStarted = false;
+			Intro.caveInStarted = false;
+			Intro.introTimer = 15;
+			Camera.main.SendMessage("Death", new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z));
+			Invoke ("AutoRestart", 3f);
+		}
 	}
 
 	#region Animation
