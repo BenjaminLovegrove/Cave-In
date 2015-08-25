@@ -37,7 +37,7 @@ public class Intro : MonoBehaviour {
 	Vector3 hickoryCamPos;
 
 	//outro
-	bool outro = false;
+	public bool outro = false;
 	Vector3 outroCamStart;
 	public Transform outroCamAim;
 	public Renderer FTW;

@@ -6,6 +6,7 @@ public class JokeBox : MonoBehaviour {
 	public AudioClip[] madJokesYo;
 	public float jokeTimer = 13f;
 	public float counter = 0f;
+	public bool menu = false;
 	AudioSource jokeBox;
 	AudioClip dialogueQueue;
 	int audioSelect;
@@ -16,7 +17,7 @@ public class JokeBox : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Intro.introTimer < -5f) {
+		if (Intro.introTimer < -5f || menu) {
 			counter += Time.deltaTime;
 		}
 
