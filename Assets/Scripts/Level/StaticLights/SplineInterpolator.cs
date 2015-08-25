@@ -90,7 +90,7 @@ public class SplineInterpolator : MonoBehaviour
 
 	private void Update()
 	{
-		if (m_state == InterpolationState.RESET || m_state == InterpolationState.STOPPED || m_nodes.Count < 4)
+		if (m_state == InterpolationState.RESET || m_state == InterpolationState.STOPPED || splineObject == null || m_nodes.Count < 4)
 			return;
 
 		m_currentTime += Time.deltaTime;
