@@ -575,7 +575,7 @@ public class PlayerV2 : MonoBehaviour
 					sfxRun.Play();
 				}
 			}
-			else 
+			else if (!climbingLadder)
 			{
 				anim.speed = 1.0f;
 			}
@@ -794,7 +794,7 @@ public class PlayerV2 : MonoBehaviour
 			}
 
 			if (!grounded && !climbingLadder ) {
-				anim.speed = 1;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_Y);
 				anim.SetBool ("Idle", true); //to be replaced with a jump
 			} else if (grounded && !climbingLadder) {
 				anim.SetBool("Climbing", false);
@@ -845,7 +845,7 @@ public class PlayerV2 : MonoBehaviour
 		//Hickorys animations (note the player one bool)
 		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
 			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
-				anim.speed = 1;
+				anim.speed = Mathf.Abs (xInput.ThumbStickL_Y);
 				anim.SetBool("Climbing", true);
 			}
 			else{
