@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[assembly: System.Reflection.AssemblyVersion("1.0.*")]
 public class Intro : MonoBehaviour {
 
 	public static bool watchIntro = true;
-	public static int skipNum = 0; 
+	public static int skipNum = 0;
 	public PlayerV2 sorek;
 	public PlayerV2 hickory;
 	public static Camera cam;
@@ -37,11 +38,17 @@ public class Intro : MonoBehaviour {
 	Vector3 hickoryCamPos;
 
 	//outro
-	bool outro = false;
+	public bool outro = false;
 	Vector3 outroCamStart;
 	public Transform outroCamAim;
 	public Renderer FTW;
 	float FTWalpha = 1f;
+	public GameObject creditText;
+	public AudioSource gameplayAudio;
+	public AudioSource outroMusic;
+
+	float gameplayStartVol;
+	float outroAimVol;
 
 	//List<GameObject> toggleObjs = new List<GameObject>();
 
@@ -49,6 +56,8 @@ public class Intro : MonoBehaviour {
 	void Awake()
 	{
 		BeginIntro();
+		gameplayStartVol = gameplayAudio.volume;
+		outroAimVol = gameplayStartVol;
 	}
 
 	// Use this for initialization
@@ -116,7 +125,7 @@ public class Intro : MonoBehaviour {
 		if (watchIntro)
 		{
 
-			//do xbox rumble here 
+			//do xbox rumble here
 			if ((introTimer > startIntroTimer * 0.25f) && (introTimer < startIntroTimer * 0.5f))
 			{
 				smallRumble = Random.Range(0.1f, 0.2f);
@@ -127,7 +136,7 @@ public class Intro : MonoBehaviour {
 				smallRumble = 0.9f;
 				bigRumble = 0.9f;
 			}
-			else 
+			else
 			{
 				smallRumble = 0f;
 				bigRumble = 0f;
@@ -142,15 +151,39 @@ public class Intro : MonoBehaviour {
 	void Update () {
 		//OUTRO//
 		if (outro) {
-			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 5);
-			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 3);
+			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 7.5f);
+			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 4f);
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
-			
-			if (lerpTimer > 6f) {
+			PauseMenu.canPauseGame = false;
+
+			//Music lerps
+			gameplayAudio.volume = Mathf.Lerp(gameplayStartVol, 0, lerpTimer);
+			outroMusic.volume = Mathf.Lerp (0, outroAimVol, lerpTimer);
+			if (lerpTimer >= 1 && lerpTimer <= 3)
+			{
+				hickory.canMove = false;
+				sorek.canMove = false;
+			}
+
+			if (lerpTimer > 20f) {
 				CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				hickory.canMove = true;
+				sorek.canMove = true;
 				PauseMenu.mainMenuLoop = true;
 				Application.LoadLevel ("MenuPlaceholder");
 			}
+
+			if (lerpTimer > 7.5f) {
+				if (hickory.xInput.OnButtonDownA || hickory.xInput.OnButtonDownStart || sorek.xInput.OnButtonDownA || sorek.xInput.OnButtonDownStart){
+					CobaltMetrics.Metrics.StopMetrics(); //Metrics
+					hickory.canMove = true;
+					sorek.canMove = true;
+					PauseMenu.mainMenuLoop = true;
+					PauseMenu.canPauseGame = true;
+					Application.LoadLevel ("MenuPlaceholder");
+				}
+			}
+
 		} else {
 
 			//Double check that these mother fuckers are active/inactive
@@ -181,7 +214,7 @@ public class Intro : MonoBehaviour {
 
 			if (watchIntro) {
 				if (introTimer > startIntroTimer * 0.6f) {
-					transform.position = Vector3.Lerp (this.transform.position, hickoryCamPos, lerpTimer / 3);
+					transform.position = Vector3.Slerp (this.transform.position, hickoryCamPos, lerpTimer / 20);
 				}
 				//Cam move to sorek holding lamp.
 				if ((introTimer > startIntroTimer * 0.4f) && (introTimer < startIntroTimer * 0.6f)) {
@@ -221,7 +254,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
-				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a")); //Metrics
+				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())); //Metrics
 			}
 
 		}
@@ -264,6 +297,8 @@ public class Intro : MonoBehaviour {
 		lerpTimer = -0.1f;
 		outro = true;
 		outroCamStart = transform.position;
+		creditText.SetActive (true);
+		outroMusic.Play ();
 	}
 
 	public static void Skip(){

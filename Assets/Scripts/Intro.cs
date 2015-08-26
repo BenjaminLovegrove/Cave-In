@@ -152,21 +152,34 @@ public class Intro : MonoBehaviour {
 		//OUTRO//
 		if (outro) {
 			transform.position = Vector3.Lerp (outroCamStart, outroCamAim.transform.position, lerpTimer / 7.5f);
-			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 2f);
+			FTWalpha = Mathf.Lerp (0, 1, lerpTimer / 4f);
 			FTW.material.color = new Color (FTW.material.color.r, FTW.material.color.g, FTW.material.color.b, FTWalpha);
+			PauseMenu.canPauseGame = false;
 
 			//Music lerps
 			gameplayAudio.volume = Mathf.Lerp(gameplayStartVol, 0, lerpTimer);
 			outroMusic.volume = Mathf.Lerp (0, outroAimVol, lerpTimer);
+			if (lerpTimer >= 1 && lerpTimer <= 3)
+			{
+				hickory.canMove = false;
+				sorek.canMove = false;
+			}
 
 			if (lerpTimer > 20f) {
 				CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				hickory.canMove = true;
+				sorek.canMove = true;
 				PauseMenu.mainMenuLoop = true;
 				Application.LoadLevel ("MenuPlaceholder");
 			}
 
-			if (lerpTimer > 5f) {
-				if (hickory.xInput.OnButtonDownA || sorek.xInput.OnButtonDownA){
+			if (lerpTimer > 7.5f) {
+				if (hickory.xInput.OnButtonDownA || hickory.xInput.OnButtonDownStart || sorek.xInput.OnButtonDownA || sorek.xInput.OnButtonDownStart){
+					CobaltMetrics.Metrics.StopMetrics(); //Metrics
+					hickory.canMove = true;
+					sorek.canMove = true;
+					PauseMenu.mainMenuLoop = true;
+					PauseMenu.canPauseGame = true;
 					Application.LoadLevel ("MenuPlaceholder");
 				}
 			}
