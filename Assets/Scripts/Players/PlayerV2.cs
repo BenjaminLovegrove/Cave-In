@@ -789,6 +789,11 @@ public class PlayerV2 : MonoBehaviour
 				anim.speed = 1;
 				anim.SetBool("Climbing", true);
 			}
+			else if (climbingLadder && xInput.OnButton_DpadUp || climbingLadder && xInput.OnButton_DpadDown)
+			{
+				anim.speed = 1;
+				anim.SetBool("Climbing", true);
+			}
 			else{
 				anim.speed = 0;
 			}
@@ -846,6 +851,12 @@ public class PlayerV2 : MonoBehaviour
 		if (!menuActive && !playerOne && Intro.introTimer < 0f) {
 			if (climbingLadder && xInput.ThumbStickL_Y >0.2f || climbingLadder && xInput.ThumbStickL_Y < -0.2f){
 				anim.speed = Mathf.Abs (xInput.ThumbStickL_Y);
+				anim.SetBool("Climbing", true);
+				anim.SetBool ("Idle", false);
+			}
+			else if (climbingLadder && xInput.OnButton_DpadUp || climbingLadder && xInput.OnButton_DpadDown)
+			{
+				anim.speed = 1;
 				anim.SetBool("Climbing", true);
 				anim.SetBool ("Idle", false);
 			}
