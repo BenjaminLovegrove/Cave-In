@@ -74,6 +74,8 @@ public class Intro : MonoBehaviour {
 			cam.SendMessage("Intro", true);
 			lerpTimer = -1f;
 		} else {
+			print ("GAME STARTED = TRUE ON LOADUP");
+			Debug.LogError ("If You See This From The Main Menu, Make Sure watchIntro = true before you load the main menu scene");
 			gameStarted = true;
 		}
 
@@ -165,14 +167,8 @@ public class Intro : MonoBehaviour {
 				sorek.canMove = false;
 			}
 
-			if (lerpTimer > 20f) {
-				CobaltMetrics.Metrics.StopMetrics(); //Metrics
-				hickory.canMove = true;
-				sorek.canMove = true;
-				PauseMenu.mainMenuLoop = true;
-				Application.LoadLevel ("MenuPlaceholder");
-			}
-
+		
+			//Allow players to proceed to main menu
 			if (lerpTimer > 7.5f) {
 				if (hickory.xInput.OnButtonDownA || hickory.xInput.OnButtonDownStart || sorek.xInput.OnButtonDownA || sorek.xInput.OnButtonDownStart){
 					CobaltMetrics.Metrics.StopMetrics(); //Metrics
@@ -180,8 +176,19 @@ public class Intro : MonoBehaviour {
 					sorek.canMove = true;
 					PauseMenu.mainMenuLoop = true;
 					PauseMenu.canPauseGame = true;
+					watchIntro = true;
 					Application.LoadLevel ("MenuPlaceholder");
 				}
+			}
+
+			//Force game to load main menu if idle too long
+			if (lerpTimer > 20f) {
+				CobaltMetrics.Metrics.StopMetrics(); //Metrics
+				hickory.canMove = true;
+				sorek.canMove = true;
+				PauseMenu.mainMenuLoop = true;
+				watchIntro = true;
+				Application.LoadLevel ("MenuPlaceholder");
 			}
 
 		} else {
@@ -254,6 +261,7 @@ public class Intro : MonoBehaviour {
 				gameStarted = true;
 				PauseMenu.canPauseGame = true;
 				cam.SendMessage ("Intro", false);
+				Debug.LogWarning ("If You See This Right After Loading The Game From Menu, Check All Variables");
 				print(CobaltMetrics.Metrics.StartMetrics("500765a0c404e7599d18013af92b3d0a", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())); //Metrics
 			}
 

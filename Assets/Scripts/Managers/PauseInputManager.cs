@@ -221,7 +221,8 @@ public class PauseInputManager : MonoBehaviour {
 	}
 
 	#region Keyboard Event Inputs for pause menu
-	public void Hover()
+	//These functions are called through the Canvas Trigger event system
+	public void Hover() 
 	{
 		//Main options
 		if (this.name == "Resume")
@@ -301,7 +302,7 @@ public class PauseInputManager : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator Resuming( )
+	private IEnumerator Resuming( ) //Run if resume pause menu option selected
 	{
 		float start = Time.realtimeSinceStartup;
 		while ( Time.realtimeSinceStartup < start + buttonDelay)
@@ -311,11 +312,11 @@ public class PauseInputManager : MonoBehaviour {
 		}
 		if ( Time.realtimeSinceStartup > start + buttonDelay)
 		{
-				PauseMenu.PauseGame();
+			PauseMenu.PauseGame();
 			yield return null;
 		}
 	}
-	private IEnumerator Reloading( )
+	private IEnumerator Reloading( ) //Run if Load Last Checkpoint pause menu option selected
 	{
 		float start = Time.realtimeSinceStartup;
 		while ( Time.realtimeSinceStartup < start + buttonDelay)
@@ -335,7 +336,7 @@ public class PauseInputManager : MonoBehaviour {
 			yield return null;
 		}
 	}
-	private IEnumerator Exiting( )
+	private IEnumerator Exiting( ) //Run if exit game selected
 	{
 		float start = Time.realtimeSinceStartup;
 		while ( Time.realtimeSinceStartup < start + buttonDelay)
@@ -384,7 +385,7 @@ public class PauseInputManager : MonoBehaviour {
 
 
 	//xbox controls
-	private IEnumerator SelectionIncrease()
+	private IEnumerator SelectionIncrease() //On controller input go to next availabe option in the menu
 	{
 		//	print ("increase start");
 		StartCoroutine (WaitForRealSeconds(selectDely, selecting));
@@ -406,7 +407,7 @@ public class PauseInputManager : MonoBehaviour {
 		yield return null;
 		//	print ("increase end");
 	}
-	private IEnumerator SelectionDecrease()
+	private IEnumerator SelectionDecrease() //On controller input go to previous option in the menu
 	{
 		//	print ("decrease start");
 		StartCoroutine (WaitForRealSeconds(selectDely, selecting));

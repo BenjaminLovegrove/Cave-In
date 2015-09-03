@@ -89,7 +89,7 @@ public class PauseMenu : MonoBehaviour {
 	void OnGUI() {
 		if (paused)
 		{
-
+			//placeholder menu code, keep incase new one breaks
 			/*	
 			if (!quitCheck)
 			{
