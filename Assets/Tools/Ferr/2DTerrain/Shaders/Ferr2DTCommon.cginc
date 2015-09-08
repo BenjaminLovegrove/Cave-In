@@ -1,5 +1,7 @@
 // Upgrade NOTE: commented out 'half4 unity_LightmapST', a built-in variable
 
+// Upgrade NOTE: commented out 'half4 unity_LightmapST', a built-in variable
+
 #define UNITY_4
 
 #if defined(UNITY_4)
@@ -8,7 +10,7 @@
 
 #if defined(FERR2DT_LIGHTMAP) && defined(UNITY_4)
 sampler2D_half unity_Lightmap;
-half4          unity_LightmapST;
+// half4          unity_LightmapST;
 #endif
 
 #if defined(FERR2DT_TINT)
